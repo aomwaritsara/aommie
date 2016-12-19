@@ -122,4 +122,10 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
+
+    public function actionTemplate()
+    {
+        $this ->layout ='template';
+        return $this ->render('template');
+    }
 }
