@@ -9,6 +9,7 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
+use yii\helpers\Url;
 
 AppAsset::register($this);
 ?>
@@ -116,10 +117,12 @@ AppAsset::register($this);
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
+          
           <ul class="treeview-menu">
-            <li><a href="index.html"><i class="fa fa-check-square"></i> แก้ไขข้อมูลผู้ประกอบการ</a></li>
+            <li><a href="<?= Url::to(['staff/index']) ?>"><i class="fa fa-check-square"></i> แก้ไขข้อมูลผู้ประกอบการ</a></li>
             <li ><a href="index2.html"><i class="fa fa-check-square"></i> ตั้งค่าอพาร์ตเมนต์</a></li>
-            <li ><a href="index2.html"><i class="fa fa-check-square"></i> ตั้งค่าอัตราค่าใช้จ่าย</a></li>
+            <li ><a href="<?= Url::to(['service/index'])?>"> <i class="fa fa-check-square"></i> ตั้งค่าอัตราค่าใช้จ่าย</a></li>
+            <li><?= Html::a('link text', Url::to(Url::toRoute('staff/index') , true)); ?> </li>
           </ul>
         </li>
 
@@ -154,14 +157,15 @@ AppAsset::register($this);
     <!-- /.sidebar -->
   </aside>
   
-
+<div class="content-wrapper">
     <div class="container">
+    
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
         <?= $content ?> 
+        </div>
     </div>
-
 
 
 <?php $this->endBody() ?>
