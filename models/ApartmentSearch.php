@@ -5,12 +5,12 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Service;
+use app\models\Apartment;
 
 /**
- * ServiceSearch represents the model behind the search form about `app\models\Service`.
+ * ApartmentSearch represents the model behind the search form about `app\models\Apartment`.
  */
-class ServiceSearch extends Service
+class ApartmentSearch extends Apartment
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class ServiceSearch extends Service
     public function rules()
     {
         return [
-            [['Service_Id', 'Name', 'Option'], 'safe'],
-            [['Price'], 'integer'],
+            [['Apart_Id', 'NumRoom', 'NumFloor'], 'integer'],
+            [['Name', 'Address', 'Tel', 'Email', 'Status'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class ServiceSearch extends Service
      */
     public function search($params)
     {
-        $query = Service::find();
+        $query = Apartment::find();
 
         // add conditions that should always apply here
 
@@ -59,12 +59,16 @@ class ServiceSearch extends Service
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'Price' => $this->Price,
+            'Apart_Id' => $this->Apart_Id,
+            'NumRoom' => $this->NumRoom,
+            'NumFloor' => $this->NumFloor,
         ]);
 
-        $query->andFilterWhere(['like', 'Service_Id', $this->Service_Id])
-            ->andFilterWhere(['like', 'Name', $this->Name])
-            ->andFilterWhere(['like', 'Option', $this->Option]);
+        $query->andFilterWhere(['like', 'Name', $this->Name])
+            ->andFilterWhere(['like', 'Address', $this->Address])
+            ->andFilterWhere(['like', 'Tel', $this->Tel])
+            ->andFilterWhere(['like', 'Email', $this->Email])
+            ->andFilterWhere(['like', 'Status', $this->Status]);
 
         return $dataProvider;
     }

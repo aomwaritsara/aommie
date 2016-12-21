@@ -3,16 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\Models\Service;
-use app\Models\ServiceSearch;
+use app\models\Apartment;
+use app\models\ApartmentSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * ServiceController implements the CRUD actions for Service model.
+ * ApartmentController implements the CRUD actions for Apartment model.
  */
-class ServiceController extends Controller
+class ApartmentController extends Controller
 {
     /**
      * @inheritdoc
@@ -30,12 +30,12 @@ class ServiceController extends Controller
     }
 
     /**
-     * Lists all Service models.
+     * Lists all Apartment models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new ServiceSearch();
+        $searchModel = new ApartmentSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,8 +45,8 @@ class ServiceController extends Controller
     }
 
     /**
-     * Displays a single Service model.
-     * @param string $id
+     * Displays a single Apartment model.
+     * @param integer $id
      * @return mixed
      */
     public function actionView($id)
@@ -57,16 +57,16 @@ class ServiceController extends Controller
     }
 
     /**
-     * Creates a new Service model.
+     * Creates a new Apartment model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Service();
+        $model = new Apartment();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->Service_Id]);
+            return $this->redirect(['view', 'id' => $model->Apart_Id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -75,9 +75,9 @@ class ServiceController extends Controller
     }
 
     /**
-     * Updates an existing Service model.
+     * Updates an existing Apartment model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param string $id
+     * @param integer $id
      * @return mixed
      */
     public function actionUpdate($id)
@@ -85,7 +85,7 @@ class ServiceController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->Service_Id]);
+            return $this->redirect(['view', 'id' => $model->Apart_Id]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -94,9 +94,9 @@ class ServiceController extends Controller
     }
 
     /**
-     * Deletes an existing Service model.
+     * Deletes an existing Apartment model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param string $id
+     * @param integer $id
      * @return mixed
      */
     public function actionDelete($id)
@@ -107,15 +107,15 @@ class ServiceController extends Controller
     }
 
     /**
-     * Finds the Service model based on its primary key value.
+     * Finds the Apartment model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param string $id
-     * @return Service the loaded model
+     * @param integer $id
+     * @return Apartment the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Service::findOne($id)) !== null) {
+        if (($model = Apartment::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
