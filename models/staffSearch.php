@@ -5,12 +5,12 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\staff;
+use app\Models\Staff;
 
 /**
- * staffSearch represents the model behind the search form about `app\models\staff`.
+ * StaffSearch represents the model behind the search form about `app\Models\Staff`.
  */
-class staffSearch extends staff
+class StaffSearch extends Staff
 {
     /**
      * @inheritdoc
@@ -40,7 +40,7 @@ class staffSearch extends staff
      */
     public function search($params)
     {
-        $query = staff::find();
+        $query = Staff::find();
 
         // add conditions that should always apply here
 
@@ -62,7 +62,7 @@ class staffSearch extends staff
             ->andFilterWhere(['like', 'Password', $this->Password])
             ->andFilterWhere(['like', 'Name', $this->Name])
             ->andFilterWhere(['like', 'Tel', $this->Tel])
-            ->andFilterWhere(['like', 'E-mail', $this->E-mail])
+            ->andFilterWhere(['like', 'E_mail', $this->E_mail])
             ->andFilterWhere(['like', 'Address', $this->Address])
             ->andFilterWhere(['like', 'Status', $this->Status])
             ->andFilterWhere(['like', 'Type', $this->Type]);

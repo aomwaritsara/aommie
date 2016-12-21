@@ -1,16 +1,16 @@
 <?php
 
-namespace app\Controllers;
+namespace app\controllers;
 
 use Yii;
-use app\models\staff;
-use app\models\staffSearch;
-use yii\web\Controller;
+use app\models\Staff;
+use app\models\StaffSearch;
+use yii\web\controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
+//eieiieieieie
 /**
- * StaffController implements the CRUD actions for staff model.
+ * StaffController implements the CRUD actions for Staff model.
  */
 class StaffController extends Controller
 {
@@ -30,12 +30,12 @@ class StaffController extends Controller
     }
 
     /**
-     * Lists all staff models.
+     * Lists all Staff models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new staffSearch();
+        $searchModel = new StaffSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +45,7 @@ class StaffController extends Controller
     }
 
     /**
-     * Displays a single staff model.
+     * Displays a single Staff model.
      * @param string $id
      * @return mixed
      */
@@ -57,13 +57,13 @@ class StaffController extends Controller
     }
 
     /**
-     * Creates a new staff model.
+     * Creates a new Staff model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new staff();
+        $model = new Staff();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->Staff_Id]);
@@ -75,7 +75,7 @@ class StaffController extends Controller
     }
 
     /**
-     * Updates an existing staff model.
+     * Updates an existing Staff model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param string $id
      * @return mixed
@@ -94,7 +94,7 @@ class StaffController extends Controller
     }
 
     /**
-     * Deletes an existing staff model.
+     * Deletes an existing Staff model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param string $id
      * @return mixed
@@ -107,15 +107,15 @@ class StaffController extends Controller
     }
 
     /**
-     * Finds the staff model based on its primary key value.
+     * Finds the Staff model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param string $id
-     * @return staff the loaded model
+     * @return Staff the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = staff::findOne($id)) !== null) {
+        if (($model = Staff::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

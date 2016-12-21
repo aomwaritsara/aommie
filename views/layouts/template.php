@@ -29,7 +29,7 @@ AppAsset::register($this);
 <header class="main-header">
 
     <!-- Logo -->
-    <a href="index2.html" class="logo">
+    <a href="#" class="logo">
            
       <!-- logo for regular state and mobile devices -->
       <span class="logo-lg"><b>Apartment</b></span>
@@ -84,14 +84,14 @@ AppAsset::register($this);
 
 
         <li class="treeview">
-          <a href="#">
+          <a href="pages/widgets.html">
             <i class="fa  fa-user"></i>
             <span>ตรวจสอบผู้เข้าพัก</span>
          </a>
         </li>
 
         <li>
-          <a href="/site/index">
+          <a href="pages/widgets.html">
             <i class="fa  fa-dashboard"></i> <span>บันทึกเลขมิเตอร์</span>
           </a>
         </li>
@@ -117,12 +117,10 @@ AppAsset::register($this);
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
-          
           <ul class="treeview-menu">
             <li><a href="<?= Url::to(['staff/index']) ?>"><i class="fa fa-check-square"></i> แก้ไขข้อมูลผู้ประกอบการ</a></li>
             <li ><a href="index2.html"><i class="fa fa-check-square"></i> ตั้งค่าอพาร์ตเมนต์</a></li>
-            <li ><a href="<?= Url::to(['service/index'])?>"> <i class="fa fa-check-square"></i> ตั้งค่าอัตราค่าใช้จ่าย</a></li>
-            <li><?= Html::a('link text', Url::to(Url::toRoute('staff/index') , true)); ?> </li>
+            <li ><a href="index2.html"><i class="fa fa-check-square"></i> ตั้งค่าอัตราค่าใช้จ่าย</a></li>
           </ul>
         </li>
 
@@ -156,17 +154,18 @@ AppAsset::register($this);
     </section>
     <!-- /.sidebar -->
   </aside>
-  
-<div class="content-wrapper">
-    <div class="container">
+  <div class="content-wrapper">
+    <div class="content-header">
+   
     
+   
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
         <?= $content ?> 
-        </div>
-    </div>
 
+</div>
+</div>
 
 <?php $this->endBody() ?>
 </body>

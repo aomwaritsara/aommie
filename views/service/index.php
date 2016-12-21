@@ -11,6 +11,18 @@ $this->title = 'Services';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="service-index">
-eieiieieieiei
-    
+
+    <h1><?= Html::encode($this->title) ?></h1>
+    <?php echo $this->render('_search', ['model' => $searchModel]); ?>
+
+    <p>
+        <?= Html::a('Create Service', ['create'], ['class' => 'btn btn-success']) ?>
+    </p>
+    <?= ListView::widget([
+        'dataProvider' => $dataProvider,
+        'itemOptions' => ['class' => 'item'],
+        'itemView' => function ($model, $key, $index, $widget) {
+            return Html::a(Html::encode($model->Name), ['view', 'id' => $model->Service_Id]);
+        },
+    ]) ?>
 </div>
