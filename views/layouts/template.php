@@ -76,7 +76,7 @@ AppAsset::register($this);
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="index.html"><i class="fa fa-check-square"></i> การจองห้องพัก</a></li>
+            <li><a href="<?= Url::to(['room/index']) ?>"><i class="fa fa-check-square"></i> การจองห้องพัก</a></li>
             <li ><a href="index2.html"><i class="fa fa-check-square"></i> การเช่าห้องพัก</a></li>
             <li ><a href="index2.html"><i class="fa fa-check-square"></i> การคืนห้องพัก</a></li>
           </ul>
