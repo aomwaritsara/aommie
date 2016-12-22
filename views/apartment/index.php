@@ -29,9 +29,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'Apart_Id',
             'Name:ntext',
-            'Address:ntext',
+            //'Address:ntext',
             'Tel',
-            'Email:email',
+            //'Email:email',
             // 'NumRoom',
             // 'NumFloor',
             // 'Status',

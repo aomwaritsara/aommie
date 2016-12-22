@@ -13,12 +13,11 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="apartment-create">
 
   <div class="box box-success">
-            <div class="box-header with-border">
+           <div class="box-header with-border">
     <h4>จัดการข้อมูลอพาร์ตเมนต์</h4>
     <div class="box-tools pull-right">
-                <?= Html::a('<span class = "fa fa-plus"></span>เพิ่มข้อมูลอพาร์ตเมนต์', ['create'], ['class' => 'btn btn-success']) ?>
-               
-              </div>
+                               
+    </div>
               <!-- /.box-tools -->
             </div>
    
