@@ -21,7 +21,8 @@ class AppAsset extends AssetBundle
         'css/site.css',
         'dist/css/AdminLTE.min.css',
         'dist/css/skins/_all-skins.min.css',
-        'dist/font/css/font-awesome.min.css'
+        'dist/font/css/font-awesome.min.css',
+        'css/nook.css'
 
     ];
     public $js = [
