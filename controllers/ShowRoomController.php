@@ -6,10 +6,11 @@ use yii\web\Controller;
 use yii\data\Pagination;
 use app\models\Room;
 use yii\db\Query;
-$connection = \Yii::$app->db;
-class RoomController extends Controller
+
+class ShowRoomController extends \yii\web\Controller
 {
-    public function actionIndex()
+  
+      public function actionIndex()
     {
         $query = Room::find();
         $rooms = $query->orderBy('Room_Id')->all();
@@ -21,4 +22,5 @@ class RoomController extends Controller
             'numFloor' => $numFloor
         ]);
     }
+
 }
