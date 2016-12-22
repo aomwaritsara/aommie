@@ -4,19 +4,19 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\ApartmentSearch */
+/* @var $searchModel app\models\SetRoomSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Apartments';
+$this->title = 'Set Rooms';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="apartment-index">
+<div class="set-room-index">
 
-<div class="box box-success">
+    <div class="box box-success box-solid">
             <div class="box-header with-border">
-    <h4>จัดการข้อมูลอพาร์ตเมนต์</h4>
+    <h4>ตั้งค่าอพาร์ตเมนต์</h4>
     <div class="box-tools pull-right">
-                <?= Html::a('<span class = "fa fa-plus"></span>เพิ่มข้อมูลอพาร์ตเมนต์', ['create'], ['class' => 'btn btn-success']) ?>
+                <?= Html::a('<span class = "fa fa-plus"></span>เพิ่มข้อมูลตั้งค่าอพาร์ตเมนต์', ['create'], ['class' => 'btn btn-block btn-primary btn-sm']) ?>
                
               </div>
               <!-- /.box-tools -->
@@ -28,13 +28,10 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'Apart_Id',
-            'Name:ntext',
-            //'Address:ntext',
-            'Tel',
-            //'Email:email',
-            // 'NumRoom',
-            // 'NumFloor',
-            // 'Status',
+            'Room_Id',
+            'Name',
+            'Floor',
+            'Status',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

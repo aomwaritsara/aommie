@@ -3,16 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Apartment;
-use app\models\ApartmentSearch;
+use app\models\Staff;
+use app\models\StaffSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * ApartmentController implements the CRUD actions for Apartment model.
+ * StaffController implements the CRUD actions for Staff model.
  */
-class ApartmentController extends Controller
+class StaffController extends Controller
 {
     /**
      * @inheritdoc
@@ -30,12 +30,12 @@ class ApartmentController extends Controller
     }
 
     /**
-     * Lists all Apartment models.
+     * Lists all Staff models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new ApartmentSearch();
+        $searchModel = new StaffSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,8 +45,8 @@ class ApartmentController extends Controller
     }
 
     /**
-     * Displays a single Apartment model.
-     * @param integer $id
+     * Displays a single Staff model.
+     * @param string $id
      * @return mixed
      */
     public function actionView($id)
@@ -57,16 +57,16 @@ class ApartmentController extends Controller
     }
 
     /**
-     * Creates a new Apartment model.
+     * Creates a new Staff model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Apartment();
+        $model = new Staff();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->Apart_Id]);
+            return $this->redirect(['view', 'id' => $model->Staff_Id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -75,9 +75,9 @@ class ApartmentController extends Controller
     }
 
     /**
-     * Updates an existing Apartment model.
+     * Updates an existing Staff model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
+     * @param string $id
      * @return mixed
      */
     public function actionUpdate($id)
@@ -85,7 +85,7 @@ class ApartmentController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->Apart_Id]);
+            return $this->redirect(['view', 'id' => $model->Staff_Id]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -94,9 +94,9 @@ class ApartmentController extends Controller
     }
 
     /**
-     * Deletes an existing Apartment model.
+     * Deletes an existing Staff model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
+     * @param string $id
      * @return mixed
      */
     public function actionDelete($id)
@@ -107,15 +107,15 @@ class ApartmentController extends Controller
     }
 
     /**
-     * Finds the Apartment model based on its primary key value.
+     * Finds the Staff model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
-     * @return Apartment the loaded model
+     * @param string $id
+     * @return Staff the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Apartment::findOne($id)) !== null) {
+        if (($model = Staff::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
