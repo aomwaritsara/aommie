@@ -23,8 +23,10 @@ AppAsset::register($this);
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
-<body class="sidebar-mini skin-purple">
+<body class="sidebar-mini skin-blue">
 <?php $this->beginBody() ?>
+
+
 
 <header class="main-header">
 
@@ -46,8 +48,11 @@ AppAsset::register($this);
 
     </nav>
   </header>
+  <div class="wrapper">
   <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
+
+
     <section class="sidebar" style="height: auto;">
       <!-- Sidebar user panel -->
       <div class="user-panel">
@@ -125,7 +130,7 @@ AppAsset::register($this);
         </li>
 
         <li>
-          <a href="pages/widgets.html">
+          <a href="<?= Url::to(['financial-apartment/index']) ?>">
             <i class="fa   fa-building-o"></i> <span>ค่าใช้จ่ายกิจการ</span>
           </a>
         </li>
@@ -154,6 +159,7 @@ AppAsset::register($this);
     </section>
     <!-- /.sidebar -->
   </aside>
+
   <div class="content-wrapper">
     <div class="content-header">
    
@@ -171,3 +177,4 @@ AppAsset::register($this);
 </body>
 </html>
 <?php $this->endPage() ?>
+</div>
