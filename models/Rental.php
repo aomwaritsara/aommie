@@ -47,14 +47,14 @@ class Rental extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'Apart_Id' => 'รหัสอพาร์ตเมนต์',
-            'Room_Id' => 'รหัสห้องพัก',
-            'Cus_Id' => 'รหัสประจำตัวประชาชน',
-            'DateFrom' => 'วันที่เริ่มเช่า',
-            'DateTo' => 'วันที่สิ้นสุดการเช่า',
-            'NumCus' => 'จำนวนผู้เข้าพัก',
-            'Deposit' => 'จำนวนเงินประกันห้อง',
-            'Status' => 'สถานะการเช่า',
+            'Apart_Id' => 'Apart  ID',
+            'Room_Id' => 'Room  ID',
+            'Cus_Id' => 'Cus  ID',
+            'DateFrom' => 'Date From',
+            'DateTo' => 'Date To',
+            'NumCus' => 'Num Cus',
+            'Deposit' => 'Deposit',
+            'Status' => 'Status',
         ];
     }
 }

@@ -47,14 +47,14 @@ class Apartment extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'Apart_Id' => 'รหัสอพาร์ตเมนต์',
-            'Name' => 'ชื่ออพาร์ตเมนต์',
-            'Address' => 'ที่อยู่',
-            'Tel' => 'เบอร์โทรศัพท์',
-            'Email' => 'อีเมล',
-            'NumRoom' => 'จำนวนห้องพัก',
-            'NumFloor' => 'จำนวนชั้น',
-            'Status' => 'สถานะ',
+            'Apart_Id' => 'Apart  ID',
+            'Name' => 'Name',
+            'Address' => 'Address',
+            'Tel' => 'Tel',
+            'Email' => 'Email',
+            'NumRoom' => 'Num Room',
+            'NumFloor' => 'Num Floor',
+            'Status' => 'Status',
         ];
     }
 }

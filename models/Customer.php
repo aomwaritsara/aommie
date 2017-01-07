@@ -45,12 +45,12 @@ class Customer extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'Cus_Id' => 'รหัสประจำตัวประชาชน',
-            'Fname' => 'ชื่อ',
-            'Lname' => 'นามสกุล',
-            'Tel' => 'เบอร์โทรศัพท์',
-            'Email' => 'อีเมล',
-            'Address' => 'ที่อยู่',
+            'Cus_Id' => 'Cus  ID',
+            'Fname' => 'Fname',
+            'Lname' => 'Lname',
+            'Tel' => 'Tel',
+            'Email' => 'Email',
+            'Address' => 'Address',
         ];
     }
 }

@@ -10,6 +10,7 @@ use yii\db\Query;
 class ShowRoomController extends \yii\web\Controller
 {
   
+  
       public function actionIndex()
     {
         $query = Room::find();

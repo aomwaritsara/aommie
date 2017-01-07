@@ -42,10 +42,10 @@ class Service extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'Service_Id' => 'รหัสบริการเสริม',
-            'Name' => 'ชื่อบริการเสริม',
-            'Price' => 'ราคาบริการเสริม',
-            'Unit' => 'หน่วยบริการเสริม',
+            'Service_Id' => 'Service  ID',
+            'Name' => 'Name',
+            'Price' => 'Price',
+            'Unit' => 'Unit',
         ];
     }
 }

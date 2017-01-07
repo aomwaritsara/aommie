@@ -44,13 +44,13 @@ class Serviceofrental extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'Apart_Id' => 'รหัสอพาร์ตเมนต์',
-            'Room_Id' => 'รหัสห้องพัก',
-            'Service_Id' => 'รหัสบริการเสริม',
-            'SoR_Id' => 'รหัสบริการเสริมของห้องพัก',
-            'Amount' => 'จำนวน',
-            'Cost' => 'ราคา',
-            'TotalCost' => 'ราคารวม',
+            'Apart_Id' => 'Apart  ID',
+            'Room_Id' => 'Room  ID',
+            'Service_Id' => 'Service  ID',
+            'SoR_Id' => 'So R  ID',
+            'Amount' => 'Amount',
+            'Cost' => 'Cost',
+            'TotalCost' => 'Total Cost',
         ];
     }
 }

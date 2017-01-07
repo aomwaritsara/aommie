@@ -5,23 +5,22 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "roomtype".
+ * This is the model class for table "deposit".
  *
  * @property integer $Apart_Id
  * @property string $Room_Id
- * @property string $Type
+ * @property string $Cus_Id
  * @property integer $Price
- * @property integer $Eletricity
- * @property integer $Watersupply
+ * @property string $Status
  */
-class Roomtype extends \yii\db\ActiveRecord
+class Deposit extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'roomtype';
+        return 'deposit';
     }
 
     /**
@@ -30,10 +29,11 @@ class Roomtype extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['Apart_Id', 'Room_Id', 'Type', 'Price', 'Eletricity', 'Watersupply'], 'required'],
-            [['Apart_Id', 'Price', 'Eletricity', 'Watersupply'], 'integer'],
+            [['Apart_Id', 'Room_Id', 'Cus_Id', 'Price', 'Status'], 'required'],
+            [['Apart_Id', 'Price'], 'integer'],
             [['Room_Id'], 'string', 'max' => 10],
-            [['Type'], 'string', 'max' => 20],
+            [['Cus_Id'], 'string', 'max' => 13],
+            [['Status'], 'string', 'max' => 1],
         ];
     }
 
@@ -45,10 +45,9 @@ class Roomtype extends \yii\db\ActiveRecord
         return [
             'Apart_Id' => 'Apart  ID',
             'Room_Id' => 'Room  ID',
-            'Type' => 'Type',
+            'Cus_Id' => 'Cus  ID',
             'Price' => 'Price',
-            'Eletricity' => 'Eletricity',
-            'Watersupply' => 'Watersupply',
+            'Status' => 'Status',
         ];
     }
 }
