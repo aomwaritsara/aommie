@@ -22,11 +22,14 @@ class AppAsset extends AssetBundle
         'dist/css/AdminLTE.min.css',
         'dist/css/skins/_all-skins.min.css',
         'dist/font/css/font-awesome.min.css',
-        'css/nook.css'
+        'css/nook.css',
+        'dist/css/bootstrap.min.css'
 
     ];
     public $js = [
-    "dist/js/app.min.js"
+    "dist/js/app.min.js",
+    "dist/js/bootstrap.min.js",
+    "dist/js/jquery.min.js"
     ];
     public $depends = [
         'yii\web\YiiAsset',

@@ -34,7 +34,7 @@ use yii\widgets\LinkPager;
 	        	<div class="borderRoom" <?= $color_style ?> >
 	                 <p class="h4" align="center"><?= $room->Room_Id ?> </p>
 	                 <p class="h4" align="center"><?= $Status_detail ?> </p>
-	                 <button type="button" class="btn btn-info btn-responsive btn-xs" data-toggle="modal" data-target="#myModal">Detail</button>
+	                 <button type="button" class="btn btn-info btn-responsive btn-xs center-block" data-toggle="modal" data-target="#myModal">Detail</button>
 	            </div>
 	       	</div>    
 		     <?php   endif;   ?>
@@ -44,4 +44,33 @@ use yii\widgets\LinkPager;
    	 <?php endforeach; //end for floor?> 
 
 
+</div>
+
+
+
+
+
+
+<!-- Modal input eieieieieiei -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content input details-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">ห้องที่ ......</h4>
+      </div>
+      <div class="modal-body">
+        <p>เจ้าของ</p> 
+        <p>eieieiieieieiei</p>
+        <p>555555555555555</p>
+        <img src="http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
 </div>

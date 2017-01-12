@@ -8,7 +8,8 @@ use app\models\SetRoomSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
+use app\models\Apartment;
+use yii\base\Model;
 /**
  * SetRoomController implements the CRUD actions for SetRoom model.
  */
@@ -65,14 +66,27 @@ class SetRoomController extends Controller
     public function actionCreate()
     {
         $model = new SetRoom();
+        $modell = new Apartment();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'Apart_Id' => $model->Apart_Id, 'Room_Id' => $model->Room_Id]);
         } else {
             return $this->render('create', [
+                'modell' => $modell,
                 'model' => $model,
+                
             ]);
-        }
+        } 
+
+    /*if($model->load(Yii::$app->request->post()) && $modell->load(Yii::$app->request->post()) && Model::validateMultiple([$model,$modell])){
+        $modell->save();
+        return $this->redirect(['view', 'Apart_Id' => $model->Apart_Id, 'Room_Id' => $model->Room_Id]);
+    } else {
+        return $this->render('create', [
+            'model' => $model,
+            'modell'=>$modell
+        ]);
+    } */
     }
 
     /**
