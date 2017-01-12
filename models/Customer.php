@@ -13,6 +13,9 @@ use Yii;
  * @property string $Tel
  * @property string $Email
  * @property string $Address
+ *
+ * @property Booking[] $bookings
+ * @property Rental[] $rentals
  */
 class Customer extends \yii\db\ActiveRecord
 {
@@ -52,5 +55,21 @@ class Customer extends \yii\db\ActiveRecord
             'Email' => 'Email',
             'Address' => 'Address',
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getBookings()
+    {
+        return $this->hasMany(Booking::className(), ['Cus_Id' => 'Cus_Id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getRentals()
+    {
+        return $this->hasMany(Rental::className(), ['Cus_Id' => 'Cus_Id']);
     }
 }

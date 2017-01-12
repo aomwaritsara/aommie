@@ -31,7 +31,7 @@ AppAsset::register($this);
 <header class="main-header">
 
     <!-- Logo -->
-    <a href="#" class="logo">
+    <a href="<?= Url::to(['show-room/index']) ?>" class="logo">
            
       <!-- logo for regular state and mobile devices -->
       <span class="logo-lg"><b>Apartment</b></span>
@@ -81,22 +81,22 @@ AppAsset::register($this);
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?= Url::to(['show-room/index']) ?>"><i class="fa fa-check-square"></i> การจองห้องพัก</a></li>
-            <li ><a href="index2.html"><i class="fa fa-check-square"></i> การเช่าห้องพัก</a></li>
-            <li ><a href="index2.html"><i class="fa fa-check-square"></i> การคืนห้องพัก</a></li>
+            <li><a href="<?= Url::to(['booking/index']) ?>"><i class="fa fa-check-square"></i> การจองห้องพัก</a></li>
+            <li ><a href="<?= Url::to(['rental/index']) ?>"><i class="fa fa-check-square"></i> การเช่าห้องพัก</a></li>
+            <li ><a href="<?= Url::to(['rental/index']) ?>"><i class="fa fa-check-square"></i> การคืนห้องพัก</a></li>
           </ul>
         </li>
 
 
         <li class="treeview">
-          <a href="pages/widgets.html">
+          <a href="<?= Url::to(['customer/index']) ?>">
             <i class="fa  fa-user"></i>
             <span>ตรวจสอบผู้เข้าพัก</span>
          </a>
         </li>
 
         <li>
-          <a href="pages/widgets.html">
+          <a href="<?= Url::to(['history/index']) ?>">
             <i class="fa  fa-dashboard"></i> <span>บันทึกเลขมิเตอร์</span>
           </a>
         </li>
@@ -125,7 +125,7 @@ AppAsset::register($this);
           <ul class="treeview-menu">
             <li><a href="<?= Url::to(['staff/index']) ?>"><i class="fa fa-check-square"></i> แก้ไขข้อมูลผู้ประกอบการ</a></li>
             <li ><a href="<?= Url::to(['set-room/index']) ?>"><i class="fa fa-check-square"></i> ตั้งค่าอพาร์ตเมนต์</a></li>
-            <li ><a href="index2.html"><i class="fa fa-check-square"></i> ตั้งค่าอัตราค่าใช้จ่าย</a></li>
+            <li ><a href="<?= Url::to(['roomtype/index']) ?>"><i class="fa fa-check-square"></i> ตั้งค่าอัตราค่าใช้จ่าย</a></li>
           </ul>
         </li>
 
