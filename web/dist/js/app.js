@@ -170,13 +170,13 @@ $(function () {
     $.AdminLTE.pushMenu.activate(o.sidebarToggleSelector);
   }
 
-  /*Activate Bootstrap tooltip
+  //Activate Bootstrap tooltip
   if (o.enableBSToppltip) {
     $('body').tooltip({
       selector: o.BSTooltipSelector
     });
   }
-*/
+
   //Activate box widget
   if (o.enableBoxWidget) {
     $.AdminLTE.boxWidget.activate();

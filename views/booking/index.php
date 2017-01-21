@@ -22,9 +22,9 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            //['class' => 'yii\grid\SerialColumn'],
 
-            'Apart_Id',
+            //'Apart_Id',
             'Room_Id',
             'Cus_Id',
             'Booking_Date',

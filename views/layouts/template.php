@@ -103,13 +103,13 @@ AppAsset::register($this);
 
         
         <li>
-          <a href="pages/widgets.html">
+          <a href="<?= Url::to(['payment/index']) ?>">
             <i class="fa fa-calculator "></i> <span>ใบแจ้งหนี้รายเดือน</span>
           </a>
         </li>
 
         <li>
-          <a href="pages/widgets.html">
+          <a href="<?= Url::to(['bill/index']) ?>">
             <i class="fa  fa-file-o"></i> <span>ใบเสร็จชำระเงิน</span>
           </a>
         </li>

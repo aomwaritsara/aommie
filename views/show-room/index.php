@@ -59,13 +59,17 @@ use yii\widgets\LinkPager;
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">ห้องที่ ......</h4>
+        <h4 class="modal-title">ห้องที่ test</h4>
       </div>
       <div class="modal-body">
-        <p>เจ้าของ</p> 
-        <p>eieieiieieieiei</p>
-        <p>555555555555555</p>
-        <img src="http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg">
+        <p>ห้อง &nbsp A324</p> 
+        <p>ชื่อ ทดสอบ โชว์รายละเอียด</p>
+        <p>วันที่ 12/1/2560 </p>
+        <p>สถานะห้อง ว่าง/จอง/เช่า/คืนห้อง</p>
+        <p>ประเภทห้อง ทั่วไป/ร้านค้า </p>
+       	<p>เงินประกัน 2700 บาท </p>
+       <p>	<button>จอง</button>	 <button>เช่า</button> <button>คืนห้องพัก</button> </p>
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
