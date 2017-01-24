@@ -119,7 +119,8 @@ class RoomtypeController extends Controller
      */
     protected function findModel($Apart_Id, $Room_Id)
     {
-        if (($model = Roomtype::findOne(['Apart_Id' => $Apart_Id, 'Room_Id' => $Room_Id])) !== null) {
+         $model = Roomtype::find()->joinWith('room')->where(['roomtype.Apart_Id' => $Apart_Id])->andWhere(['roomtype.Room_Id' => $Room_Id])->one();
+        if ($model !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

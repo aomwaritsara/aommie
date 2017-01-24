@@ -13,6 +13,9 @@ use Yii;
  * @property integer $Price
  * @property integer $Eletricity
  * @property integer $Watersupply
+ *
+ * @property Room $apart
+ * @property Room $room
  */
 class Roomtype extends \yii\db\ActiveRecord
 {
@@ -34,6 +37,8 @@ class Roomtype extends \yii\db\ActiveRecord
             [['Apart_Id', 'Price', 'Eletricity', 'Watersupply'], 'integer'],
             [['Room_Id'], 'string', 'max' => 10],
             [['Type'], 'string', 'max' => 20],
+            [['Apart_Id'], 'exist', 'skipOnError' => true, 'targetClass' => Room::className(), 'targetAttribute' => ['Apart_Id' => 'Apart_Id']],
+            [['Room_Id'], 'exist', 'skipOnError' => true, 'targetClass' => Room::className(), 'targetAttribute' => ['Room_Id' => 'Room_Id']],
         ];
     }
 
@@ -50,5 +55,21 @@ class Roomtype extends \yii\db\ActiveRecord
             'Eletricity' => 'Eletricity',
             'Watersupply' => 'Watersupply',
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getApart()
+    {
+        return $this->hasOne(Room::className(), ['Apart_Id' => 'Apart_Id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getRoom()
+    {
+        return $this->hasOne(Room::className(), ['Room_Id' => 'Room_Id']);
     }
 }

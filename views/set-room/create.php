@@ -6,13 +6,12 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\SetRoom */
 
-$this->title = 'Create Set Room';
+$this->title = 'เพิ่มการตั้งค่าอพาร์ตเมนต์';
 $this->params['breadcrumbs'][] = ['label' => 'Set Rooms', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="set-room-create">
-
-   
+ 
 
     <div class="box box-success box-solid">
             <div class="box-header with-border">
@@ -25,8 +24,8 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
 
     <?= $this->render('_form', [
-        'model' => $model,
-        'modell'=> $modell,
+        'model1' => $model1,
+        'model2'=> $model2,
     ]) ?>
 
 </div>

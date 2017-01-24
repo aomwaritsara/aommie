@@ -1,13 +1,14 @@
 <?php
 
 use yii\helpers\Html;
-
+use app\models\SetRoom ;
+use app\models\Roomtype; 
 /* @var $this yii\web\View */
 /* @var $model app\models\SetRoom */
 
-$this->title = 'Update Set Room: ' . $model->Name;
+$this->title = 'Update Set Room: ' . $model1->Name;
 $this->params['breadcrumbs'][] = ['label' => 'Set Rooms', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->Name, 'url' => ['view', 'Apart_Id' => $model->Apart_Id, 'Room_Id' => $model->Room_Id]];
+$this->params['breadcrumbs'][] = ['label' => $model1->Name, 'url' => ['view', 'Apart_Id' => $model1->Apart_Id, 'Room_Id' => $model1->Room_Id]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="set-room-update">
@@ -15,7 +16,8 @@ $this->params['breadcrumbs'][] = 'Update';
     <h1><?= Html::encode($this->title) ?></h1>
 
     <?= $this->render('_form', [
-        'model' => $model,
+        'model1' => $model1,
+        'model2' => $model2,
     ]) ?>
 
 </div>
