@@ -12,6 +12,19 @@ use yii\widgets\LinkPager;
         	<div class="box-tools pull-right" ></div>
     </div>
 	
+    <?php 
+    	$roomModal     = "-";
+    	$cusNameModal  = "-";
+    	$DateModal     = "-";
+    	$StatusModal   = "-";
+    	$roomTypeModal = "-";
+    	$depositModal  = "-";
+    	$roomModal     = "-";
+
+    ?>
+
+
+
 	<?php foreach ($numFloor as $floor): ?>
 		<div class="row" style="padding : 0px 30px 0px 30px">
 		<?php echo "<h2> Floor ".$floor->Floor."</h2> "; ?>
@@ -35,6 +48,7 @@ use yii\widgets\LinkPager;
 	                 <p class="h4" align="center"><?= $room->Room_Id ?> </p>
 	                 <p class="h4" align="center"><?= $Status_detail ?> </p>
 	                 <button type="button" class="btn btn-info btn-responsive btn-xs center-block" data-toggle="modal" data-target="#myModal">Detail</button>
+	                 <?= Html::a('Detail', ['detail', 'Apart_Id' => $room->Apart_Id, 'Room_Id' => $room->Room_Id], ['class' => 'btn btn-primary']) ?>
 	            </div>
 	       	</div>    
 		     <?php   endif;   ?>
@@ -42,10 +56,13 @@ use yii\widgets\LinkPager;
 	    <?php endforeach; ?>
 	 	</div>
    	 <?php endforeach; //end for floor?> 
-
+   	 <?php foreach ($desRoom as $des ): ?>
+   	 	
+   	 	<?= $des->Status ?>
+   	 <?php endforeach; ?>
+   	 
 
 </div>
-
 
 
 
@@ -62,12 +79,22 @@ use yii\widgets\LinkPager;
         <h4 class="modal-title">ห้องที่ test</h4>
       </div>
       <div class="modal-body">
-        <p>ห้อง &nbsp A324</p> 
-        <p>ชื่อ ทดสอบ โชว์รายละเอียด</p>
-        <p>วันที่ 12/1/2560 </p>
-        <p>สถานะห้อง ว่าง/จอง/เช่า/คืนห้อง</p>
-        <p>ประเภทห้อง ทั่วไป/ร้านค้า </p>
-       	<p>เงินประกัน 2700 บาท </p>
+
+<?php
+	
+
+
+		if (!empty($query)) {
+    // do stuff
+			$roomModal = $query->name ;
+		}
+?>		
+        <p>ห้อง <?=	$roomModal     ; ?> </p> 
+        <p>ชื่อ <?=	$roomModal   ; ?></p>
+        <p>วันที่ <?=	$roomModal ; ?> </p>
+        <p>สถานะห้อง <?=	$roomModal  ; ?></p>
+        <p>ประเภทห้อง <?=	$roomModal  ; ?></p>
+       	<p>เงินประกัน <?=	$roomModal  ; ?></p>
        <p>	<button>จอง</button>	 <button>เช่า</button> <button>คืนห้องพัก</button> </p>
 
       </div>

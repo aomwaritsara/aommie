@@ -18,10 +18,7 @@ use Yii;
  * @property Rental[] $rentals
  * @property Rental[] $rentals0
  * @property Apartment $apart
- * @property Roomtype[] $roomtypes
- * @property Roomtype[] $roomtypes0
- * @property SetRoom[] $rooms
- * @property SetRoom[] $aparts
+ * @property Roomtype $room
  */
 class SetRoom extends \yii\db\ActiveRecord
 {
@@ -45,6 +42,7 @@ class SetRoom extends \yii\db\ActiveRecord
             [['Name'], 'string', 'max' => 30],
             [['Status'], 'string', 'max' => 1],
             [['Apart_Id'], 'exist', 'skipOnError' => true, 'targetClass' => Apartment::className(), 'targetAttribute' => ['Apart_Id' => 'Apart_Id']],
+            [['Room_Id'], 'exist', 'skipOnError' => true, 'targetClass' => Roomtype::className(), 'targetAttribute' => ['Room_Id' => 'Room_Id']],
         ];
     }
 
@@ -54,11 +52,11 @@ class SetRoom extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'Apart_Id' => 'Apart  ID',
-            'Room_Id' => 'Room  ID',
-            'Name' => 'Name',
-            'Floor' => 'Floor',
-            'Status' => 'Status',
+            'Apart_Id' => 'รหัสอพาร์ตเมนต์',
+            'Room_Id' => 'รหัสห้องพัก',
+            'Name' => 'ชื่อห้องพัก',
+            'Floor' => 'ชั้น',
+            'Status' => 'สถานะห้อง',
         ];
     }
 
@@ -105,32 +103,13 @@ class SetRoom extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getRoomtypes()
+    public function getRoom()
     {
-        return $this->hasMany(Roomtype::className(), ['Apart_Id' => 'Apart_Id']);
+        return $this->hasOne(Roomtype::className(), ['Room_Id' => 'Room_Id']);
+    }
+     public function getRoomtype()
+    {
+        return $this->hasOne(Roomtype::className(), ['Room_Id' => 'Room_Id']);
     }
 
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getRoomtypes0()
-    {
-        return $this->hasMany(Roomtype::className(), ['Room_Id' => 'Room_Id']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getRooms()
-    {
-        return $this->hasMany(SetRoom::className(), ['Room_Id' => 'Room_Id'])->viaTable('roomtype', ['Apart_Id' => 'Apart_Id']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getAparts()
-    {
-        return $this->hasMany(SetRoom::className(), ['Apart_Id' => 'Apart_Id'])->viaTable('roomtype', ['Room_Id' => 'Room_Id']);
-    }
 }

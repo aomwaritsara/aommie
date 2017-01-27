@@ -9,13 +9,13 @@ use Yii;
  *
  * @property integer $Apart_Id
  * @property string $Room_Id
- * @property string $Type
+ * @property string $Typess
  * @property integer $Price
  * @property integer $Eletricity
  * @property integer $Watersupply
  *
- * @property Room $apart
- * @property Room $room
+ * @property Room[] $rooms
+ * @property Apartment[] $aparts
  */
 class Roomtype extends \yii\db\ActiveRecord
 {
@@ -37,8 +37,6 @@ class Roomtype extends \yii\db\ActiveRecord
             [['Apart_Id', 'Price', 'Eletricity', 'Watersupply'], 'integer'],
             [['Room_Id'], 'string', 'max' => 10],
             [['Type'], 'string', 'max' => 20],
-            [['Apart_Id'], 'exist', 'skipOnError' => true, 'targetClass' => Room::className(), 'targetAttribute' => ['Apart_Id' => 'Apart_Id']],
-            [['Room_Id'], 'exist', 'skipOnError' => true, 'targetClass' => Room::className(), 'targetAttribute' => ['Room_Id' => 'Room_Id']],
         ];
     }
 
@@ -48,28 +46,28 @@ class Roomtype extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'Apart_Id' => 'Apart  ID',
-            'Room_Id' => 'Room  ID',
-            'Type' => 'Type',
-            'Price' => 'Price',
-            'Eletricity' => 'Eletricity',
-            'Watersupply' => 'Watersupply',
+            'Apart_Id' => 'รหัสอพาร์ตเมนต์',
+            'Room_Id' => 'รหัสห้องพัก',
+            'Type' => 'ประเภทห้อง',
+            'Price' => 'ราคา',
+            'Eletricity' => 'ค่าไฟ้า',
+            'Watersupply' => 'ค่าน้ำ',
         ];
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getApart()
+    public function getRooms()
     {
-        return $this->hasOne(Room::className(), ['Apart_Id' => 'Apart_Id']);
+        return $this->hasMany(Room::className(), ['Room_Id' => 'Room_Id']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getRoom()
+    public function getAparts()
     {
-        return $this->hasOne(Room::className(), ['Room_Id' => 'Room_Id']);
+        return $this->hasMany(Apartment::className(), ['Apart_Id' => 'Apart_Id'])->viaTable('room', ['Room_Id' => 'Room_Id']);
     }
 }

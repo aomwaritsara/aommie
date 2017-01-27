@@ -9,14 +9,12 @@ use yii\widgets\DetailView;
 $this->title = $model->Name;
 $this->params['breadcrumbs'][] = ['label' => 'Set Rooms', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
-
 ?>
 <div class="set-room-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-     
         <?= Html::a('Update', ['update', 'Apart_Id' => $model->Apart_Id, 'Room_Id' => $model->Room_Id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Delete', ['delete', 'Apart_Id' => $model->Apart_Id, 'Room_Id' => $model->Room_Id], [
             'class' => 'btn btn-danger',
@@ -35,8 +33,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'Name',
             'Floor',
             'Status',
+            'roomtype.Type',
+            
         ],
-
     ]) ?>
 
 </div>

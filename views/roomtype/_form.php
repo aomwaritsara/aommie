@@ -1,5 +1,5 @@
 <?php
-
+use app\models\Roomtype;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 

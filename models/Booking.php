@@ -13,6 +13,13 @@ use Yii;
  * @property string $Booking_Date
  * @property string $Status
  * @property string $Datestatus
+ *
+ * @property Room $apart
+ * @property Room $room
+ * @property Customer $cus
+ * @property Deposit[] $deposits
+ * @property Deposit[] $deposits0
+ * @property Deposit[] $deposits1
  */
 class Booking extends \yii\db\ActiveRecord
 {
@@ -36,6 +43,9 @@ class Booking extends \yii\db\ActiveRecord
             [['Room_Id'], 'string', 'max' => 10],
             [['Cus_Id'], 'string', 'max' => 13],
             [['Status'], 'string', 'max' => 1],
+            [['Apart_Id'], 'exist', 'skipOnError' => true, 'targetClass' => Room::className(), 'targetAttribute' => ['Apart_Id' => 'Apart_Id']],
+            [['Room_Id'], 'exist', 'skipOnError' => true, 'targetClass' => Room::className(), 'targetAttribute' => ['Room_Id' => 'Room_Id']],
+            [['Cus_Id'], 'exist', 'skipOnError' => true, 'targetClass' => Customer::className(), 'targetAttribute' => ['Cus_Id' => 'Cus_Id']],
         ];
     }
 
@@ -52,5 +62,57 @@ class Booking extends \yii\db\ActiveRecord
             'Status' => 'Status',
             'Datestatus' => 'Datestatus',
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getApart()
+    {
+        return $this->hasOne(Room::className(), ['Apart_Id' => 'Apart_Id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getRoom()
+    {
+        return $this->hasOne(Room::className(), ['Room_Id' => 'Room_Id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCus()
+    {
+        return $this->hasOne(Customer::className(), ['Cus_Id' => 'Cus_Id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getDeposits()
+    {
+        return $this->hasMany(Deposit::className(), ['Apart_Id' => 'Apart_Id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getDeposits0()
+    {
+        return $this->hasMany(Deposit::className(), ['Room_Id' => 'Room_Id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getDeposits1()
+    {
+        return $this->hasMany(Deposit::className(), ['Cus_Id' => 'Cus_Id']);
+    }
+     public function getCustomer()
+    {
+        return $this->hasOne(Customer::className(), ['Cus_Id' => 'Cus_Id']);
     }
 }

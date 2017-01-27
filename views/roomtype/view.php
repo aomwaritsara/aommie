@@ -9,7 +9,6 @@ use yii\widgets\DetailView;
 $this->title = $model->Apart_Id;
 $this->params['breadcrumbs'][] = ['label' => 'Roomtypes', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
-
 ?>
 <div class="roomtype-view">
 
@@ -35,9 +34,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'Price',
             'Eletricity',
             'Watersupply',
-            'room.Name',
-            'room.Status',
-            'room.Floor',
         ],
     ]) ?>
 
