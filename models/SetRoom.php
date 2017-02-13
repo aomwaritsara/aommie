@@ -3,7 +3,8 @@
 namespace app\models;
 
 use Yii;
-
+use app\models\Room;
+use app\models\RoomSearch;
 /**
  * This is the model class for table "roomtype".
  *
@@ -59,7 +60,7 @@ class SetRoom extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getRooms()
+    public function getRoom()
     {
         return $this->hasMany(Room::className(), ['Room_Id' => 'Room_Id']);
     }
@@ -69,14 +70,9 @@ class SetRoom extends \yii\db\ActiveRecord
      */
     public function getAparts()
     {
-        return $this->hasMany(Apartment::className(), ['Apart_Id' => 'Apart_Id'])->viaTable('room', ['Room_Id' => 'Room_Id']);
+        return $this->hasOne(Apartment::className(), ['Apart_Id' => 'Apart_Id'])->viaTable('room', ['Room_Id' => 'Room_Id']);
     }
 
-     public function getRoom()
-    {
-        return $this->hasOne(Room::className(), ['Room_Id' => 'Room_Id']);
-    }
-    
-    
-
+  
+   
 }

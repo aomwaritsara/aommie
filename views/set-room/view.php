@@ -38,7 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'room.Name',
             'room.Floor',
             'room.Status',
-        ],
+    ],
     ]) ?>
 
 </div>
