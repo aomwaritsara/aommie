@@ -1,12 +1,13 @@
 <?php
-
+use app\models\Room;
+use app\models\RoomSearch;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\SetRoom */
 
-$this->title = $model->Name;
+$this->title = $model->Room_Id;
 $this->params['breadcrumbs'][] = ['label' => 'Set Rooms', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -30,11 +31,13 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'Apart_Id',
             'Room_Id',
-            'Name',
-            'Floor',
-            'Status',
-            'roomtype.Type',
-            
+            'Type',
+            'Price',
+            'Eletricity',
+            'Watersupply',
+            'room.Name',
+            'room.Floor',
+            'room.Status',
         ],
     ]) ?>
 

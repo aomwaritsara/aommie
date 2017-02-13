@@ -1,7 +1,12 @@
 <?php
-use app\models\Roomtype;
+
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use app\models\Room;
+
+/* @var $this yii\web\View */
+/* @var $model app\models\SetRoom */
+/* @var $form yii\widgets\ActiveForm */
 
 /* @var $this yii\web\View */
 /* @var $model app\models\SetRoom */
@@ -16,25 +21,25 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'Room_Id')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model,  'Name')->textInput(['maxlength' => true]) ?> 
+    <?= $form->field($model, 'Type')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'Floor')->textInput() ?>
+    <?= $form->field($model, 'Price')->textInput() ?>
 
-    <?= $form->field($model, 'Status')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'Eletricity')->textInput() ?>
+
+    <?= $form->field($model, 'Watersupply')->textInput() ?>
 
 
- <?= $form->field($model2, 'Apart_Id')->textInput() ?>
+
+    <?= $form->field($model2, 'Apart_Id')->textInput() ?>
 
     <?= $form->field($model2, 'Room_Id')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model2, 'Type')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model2,  'Name')->textInput(['maxlength' => true]) ?> 
 
-    <?= $form->field($model2, 'Price')->textInput() ?>
+    <?= $form->field($model2, 'Floor')->textInput() ?>
 
-    <?= $form->field($model2, 'Eletricity')->textInput() ?>
-
-    <?= $form->field($model2, 'Watersupply')->textInput() ?>
-
+    <?= $form->field($model2, 'Status')->dropDownList(['1'=>'ว่าง','2'=>'ถูกจอง','3'=>'ถูกเช่า','4'=>'ไม่พร้อมใช้งาน'],['prompt'=>'กรุณาเลือกสถานะ']) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

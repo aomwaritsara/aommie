@@ -46,14 +46,14 @@ class FinancialApartment extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'Finan_Id' => 'Finan  ID',
-            'Apart_Id' => 'Apart  ID',
-            'Date' => 'Date',
-            'Destination' => 'Destination',
-            'Name' => 'Name',
-            'Amount' => 'Amount',
-            'Price' => 'Price',
-            'TotalPrice' => 'Total Price',
+            'Finan_Id' => 'รหัสบัญชีอพาร์ตเมนต์',
+            'Apart_Id' => 'รหัสอพาร์ตเมนต์',
+            'Date' => 'วันที่'   ,
+             'Destination' => 'กิจการที่ชำระเงินให้',
+            'Name' => 'รายการ',
+            'Amount' => 'จำนวน',
+            'Price' => 'ราคา',
+            'TotalPrice' => 'ราคารวม',
         ];
     }
 }

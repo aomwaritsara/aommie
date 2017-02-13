@@ -3,16 +3,14 @@
 namespace app\controllers;
 
 use Yii;
+
 use app\models\Room;
 use app\models\RoomSearch;
-use app\models\SetRoom;
-use app\models\SetRoomSearch;
 use app\models\Roomtype;
 use app\models\RoomtypeSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
 
 /**
  * SetRoomController implements the CRUD actions for SetRoom model.
@@ -59,6 +57,7 @@ class SetRoomController extends Controller
     {
         return $this->render('view', [
             'model' => $this->findModel($Apart_Id, $Room_Id),
+           
         ]);
     }
 
@@ -68,9 +67,9 @@ class SetRoomController extends Controller
      * @return mixed
      */
     public function actionCreate()
-    {
+     {
         $model = new SetRoom();
-        $model2 = new Roomtype();
+        $model2 = new Room();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()&&$model2->load(Yii::$app->request->post()) && $model2->save()) {
             return $this->redirect(['view', 'Apart_Id' => $model->Apart_Id, 'Room_Id' => $model->Room_Id]);
@@ -81,18 +80,20 @@ class SetRoomController extends Controller
             ]);
         }
     }
+    /*
 
-    /**
+
+  *
      * Updates an existing SetRoom model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $Apart_Id
      * @param string $Room_Id
      * @return mixed
      */
-    public function actionUpdate($Apart_Id, $Room_Id)
+public function actionUpdate($Apart_Id, $Room_Id)
     {
         $model = new SetRoom();
-         $model2 = new Roomtype();
+        $model2 = new Room();
 
         $model = $this->findModel($Apart_Id, $Room_Id);
       
@@ -106,6 +107,9 @@ class SetRoomController extends Controller
             ]);
         }
     }
+
+
+
 
     /**
      * Deletes an existing SetRoom model.
@@ -129,12 +133,15 @@ class SetRoomController extends Controller
      * @return SetRoom the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($Apart_Id, $Room_Id)
+  protected function findModel($Apart_Id, $Room_Id)
     {
        
-        //$model = SetRoom::findOne(['Apart_Id' => $Apart_Id, 'Room_Id' => $Room_Id]);
-        $model = Room::find()->joinWith('roomtype')->one();
-    if ($model !== null) {
+       // $model = SetRoom::findOne(['Apart_Id' => $Apart_Id, 'Room_Id' => $Room_Id]);
+        //join ผิด
+     // $model = SetRoom::find()->joinWith('room')->andWhere('SetRoom.Room_Id' == $Room_Id)->One();
+    //if ($model !== null) {
+            //return $model;
+        if (($model = SetRoom::findOne(['Apart_Id' => $Apart_Id, 'Room_Id' => $Room_Id])) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
@@ -142,3 +149,7 @@ class SetRoomController extends Controller
     }
     }
 }
+
+
+
+

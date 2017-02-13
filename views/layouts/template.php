@@ -37,6 +37,30 @@ AppAsset::register($this);
       <span class="logo-lg"><b>Apartment</b></span>
     </a>
 
+
+     <?php
+    /*NavBar::begin([
+        
+        'options' => [
+            'class' => 'navbar-inverse navbar-fixed-top',
+        ],
+    ]);
+    echo Nav::widget([
+        'options' => ['class' => 'navbar-nav navbar-right'],
+        'items' => [
+           
+            Yii::$app->user->isGuest ?
+['label' => 'Sign in', 'url' => ['/user/security/login']] :
+['label' => 'Account(' . Yii::$app->user->identity->username . ')', 'items'=>[
+   
+    ['label' => 'Logout', 'url' => ['/user/security/logout'],'linkOptions' => ['data-method' => 'post']],
+]],
+
+        ],
+    ]);
+    NavBar::end(); 
+*/   ?> 
+
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
       <!-- Sidebar toggle button-->
@@ -48,10 +72,10 @@ AppAsset::register($this);
 
     </nav>
   </header>
+     
   <div class="wrapper">
   <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
-
 
     <section class="sidebar" style="height: auto;">
       <!-- Sidebar user panel -->
@@ -167,6 +191,7 @@ AppAsset::register($this);
    
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+
         ]) ?>
         <?= $content ?> 
 

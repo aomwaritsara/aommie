@@ -5,20 +5,17 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "room".
+ * This is the model class for table "roomtype".
  *
  * @property integer $Apart_Id
  * @property string $Room_Id
- * @property string $Name
- * @property integer $Floor
- * @property string $Status
+ * @property string $Type
+ * @property integer $Price
+ * @property integer $Eletricity
+ * @property integer $Watersupply
  *
- * @property Booking[] $bookings
- * @property Booking[] $bookings0
- * @property Rental[] $rentals
- * @property Rental[] $rentals0
- * @property Apartment $apart
- * @property Roomtype $room
+ * @property Room[] $rooms
+ * @property Apartment[] $aparts
  */
 class SetRoom extends \yii\db\ActiveRecord
 {
@@ -27,7 +24,7 @@ class SetRoom extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'room';
+        return 'roomtype';
     }
 
     /**
@@ -36,13 +33,10 @@ class SetRoom extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['Apart_Id', 'Room_Id', 'Name', 'Floor', 'Status'], 'required'],
-            [['Apart_Id', 'Floor'], 'integer'],
+            [['Apart_Id', 'Room_Id', 'Type', 'Price', 'Eletricity', 'Watersupply'], 'required'],
+            [['Apart_Id', 'Price', 'Eletricity', 'Watersupply'], 'integer'],
             [['Room_Id'], 'string', 'max' => 10],
-            [['Name'], 'string', 'max' => 30],
-            [['Status'], 'string', 'max' => 1],
-            [['Apart_Id'], 'exist', 'skipOnError' => true, 'targetClass' => Apartment::className(), 'targetAttribute' => ['Apart_Id' => 'Apart_Id']],
-            [['Room_Id'], 'exist', 'skipOnError' => true, 'targetClass' => Roomtype::className(), 'targetAttribute' => ['Room_Id' => 'Room_Id']],
+            [['Type'], 'string', 'max' => 20],
         ];
     }
 
@@ -52,64 +46,37 @@ class SetRoom extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'Apart_Id' => 'รหัสอพาร์ตเมนต์',
-            'Room_Id' => 'รหัสห้องพัก',
-            'Name' => 'ชื่อห้องพัก',
-            'Floor' => 'ชั้น',
-            'Status' => 'สถานะห้อง',
+            'Apart_Id' => 'Apart  ID',
+            'Room_Id' => 'Room  ID',
+            'Type' => 'Type',
+            'Price' => 'Price',
+            'Eletricity' => 'Eletricity',
+            'Watersupply' => 'Watersupply',
+
         ];
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getBookings()
+    public function getRooms()
     {
-        return $this->hasMany(Booking::className(), ['Apart_Id' => 'Apart_Id']);
+        return $this->hasMany(Room::className(), ['Room_Id' => 'Room_Id']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getBookings0()
+    public function getAparts()
     {
-        return $this->hasMany(Booking::className(), ['Room_Id' => 'Room_Id']);
+        return $this->hasMany(Apartment::className(), ['Apart_Id' => 'Apart_Id'])->viaTable('room', ['Room_Id' => 'Room_Id']);
     }
 
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getRentals()
+     public function getRoom()
     {
-        return $this->hasMany(Rental::className(), ['Apart_Id' => 'Apart_Id']);
+        return $this->hasOne(Room::className(), ['Room_Id' => 'Room_Id']);
     }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getRentals0()
-    {
-        return $this->hasMany(Rental::className(), ['Room_Id' => 'Room_Id']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getApart()
-    {
-        return $this->hasOne(Apartment::className(), ['Apart_Id' => 'Apart_Id']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getRoom()
-    {
-        return $this->hasOne(Roomtype::className(), ['Room_Id' => 'Room_Id']);
-    }
-     public function getRoomtype()
-    {
-        return $this->hasOne(Roomtype::className(), ['Room_Id' => 'Room_Id']);
-    }
+    
+    
 
 }

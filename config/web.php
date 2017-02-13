@@ -7,7 +7,10 @@ $config = [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'layout'=>'template',
-    'defaultRoute' => 'show-room',
+    //'layout'=>'main',
+    //'layout'=>'templateAdmin',
+   'defaultRoute' => 'show-room',
+   //'defaultRoute' => 'site',
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
@@ -17,9 +20,13 @@ $config = [
             'class' => 'yii\caching\FileCache',
         ],
         'user' => [
-            'identityClass' => 'app\models\User',
+             'identityClass' => 'dektrium\user\models\User',
+
             'enableAutoLogin' => true,
         ],
+
+
+
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
@@ -49,7 +56,15 @@ $config = [
             ],
         ],
         */
-    ],
+    ],    
+ 'modules' => [
+'user' => [
+'class' => 'dektrium\user\Module',
+'enableConfirmation' => false,
+'cost' => 12,
+'admins' => ['admin']
+],
+],
     'params' => $params,
 ];
 

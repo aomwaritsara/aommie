@@ -29,12 +29,12 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'Finan_Id',
             //'Apart_Id',
-            'Date',
-            //'Destination',
+            //'Date',
+            'Destination',
             'Name',
             // 'Amount',
              //'Price',
-             'TotalPrice',
+            // 'TotalPrice',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
