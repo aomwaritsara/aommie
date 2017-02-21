@@ -11,7 +11,17 @@ $config = [
     //'layout'=>'templateAdmin',
    'defaultRoute' => 'show-room',
    //'defaultRoute' => 'site',
-    'components' => [
+   
+        'modules' => [
+    'user' => [
+        'class' => 'dektrium\user\Module',
+        'enableUnconfirmedLogin' => true,
+        'confirmWithin' => 21600,
+        'cost' => 12,
+        'admins' => ['admin']
+    ],
+],
+ 'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'cyo0aOpUF0tPXq1bjHshBkI8G2L5MCxg',
@@ -19,13 +29,7 @@ $config = [
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
-        'user' => [
-             'identityClass' => 'dektrium\user\models\User',
-
-            'enableAutoLogin' => true,
-        ],
-
-
+       
 
         'errorHandler' => [
             'errorAction' => 'site/error',

@@ -1,5 +1,7 @@
 <?php
 
+use app\models\Room;
+use app\models\RoomSearch;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -13,6 +15,8 @@ use yii\widgets\ActiveForm;
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
         'method' => 'get',
+
+        
     ]); ?>
 
     <?= $form->field($model, 'Apart_Id') ?>
@@ -24,6 +28,17 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'Price') ?>
 
     <?= $form->field($model, 'Eletricity') ?>
+
+
+     <?= $form->field($model2, 'Apart_Id') ?>
+
+    <?= $form->field($model2, 'Room_Id') ?>
+
+    <?= $form->field($model2,  'Name') ?> 
+
+    <?= $form->field($model2, 'Floor')?>
+
+    <?= $form->field($model2, 'Status') ?>
 
     <?php // echo $form->field($model, 'Watersupply') ?>
 

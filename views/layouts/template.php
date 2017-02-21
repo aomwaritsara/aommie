@@ -37,9 +37,8 @@ AppAsset::register($this);
       <span class="logo-lg"><b>Apartment</b></span>
     </a>
 
-
-     <?php
-    /*NavBar::begin([
+<?php
+    NavBar::begin([
         
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
@@ -48,19 +47,18 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-           
+            
             Yii::$app->user->isGuest ?
 ['label' => 'Sign in', 'url' => ['/user/security/login']] :
-['label' => 'Account(' . Yii::$app->user->identity->username . ')', 'items'=>[
-   
-    ['label' => 'Logout', 'url' => ['/user/security/logout'],'linkOptions' => ['data-method' => 'post']],
-]],
-
+['label' => 'Account(' . Yii::$app->user->identity->username . ')'],
+['label' => 'Register', 'url' => ['/user/registration/register'], 'visible' => Yii::$app->user->isGuest],
+['label' => 'Logout', 'url' => ['/user/security/logout'],'linkOptions' => ['data-method' => 'post']],
         ],
     ]);
     NavBar::end(); 
-*/   ?> 
+    ?>
 
+     
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
       <!-- Sidebar toggle button-->

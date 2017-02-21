@@ -33,17 +33,7 @@ class ShowRoomController extends \yii\web\Controller
         ]);
     }
 
-    public function actionDetail($Apart_Id, $Room_Id){
-        echo "eieieiieie"."   ". $Apart_Id ."  ". $Room_Id;
-
-        $query =Booking::find()->joinWith('customer')->one();
-
-          return $this->render('index', [
-            'query' => $query,
-       
-        ]);
-    }
-
+   
 
 
 

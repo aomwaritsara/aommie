@@ -56,11 +56,17 @@ class SetRoomController extends Controller
      */
     public function actionView($Apart_Id, $Room_Id)
     {
+       // $model = new SetRoom();
+      //  $model2 = new Room();
+
         $model = SetRoom::findOne($Apart_Id, $Room_Id);
-        $model2 = Room::findOne($Apart_Id, $Room_Id);
+       // $model2 = Room::findOne($Apart_Id, $Room_Id);
+
+
     
         return $this->render('view', [
             'model' => $this->findModel($Apart_Id, $Room_Id),
+            //'model2' => $this->findModel($Apart_Id, $Room_Id),
        ]);      
     }
 
@@ -97,10 +103,13 @@ class SetRoomController extends Controller
         $model2 = new Room();
 
         $model = $this->findModel($Apart_Id, $Room_Id);
-      
+
+     //$model2 = $this->findModel($Apart_Id, $Room_Id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()&&$model2->load(Yii::$app->request->post()) && $model2->save()) {
-            return $this->redirect(['view', 'Apart_Id' => $model->Apart_Id, 'Room_Id' => $model->Room_Id]);
+            return $this->redirect(['view', 'Apart_Id' => $model->Apart_Id, 'Room_Id' => $model->Room_Id]
+             
+                );
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -132,7 +141,7 @@ class SetRoomController extends Controller
      */
     protected function findModel($Apart_Id, $Room_Id)
     {
-        if (($model = SetRoom::findOne(['Apart_Id' => $Apart_Id, 'Room_Id' => $Room_Id])) !== null) {
+        if (($model = SetRoom::findOne(['Apart_Id' => $Apart_Id, 'Room_Id' => $Room_Id]))&&($model2 = Room::findOne(['Apart_Id' => $Apart_Id, 'Room_Id' => $Room_Id])) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
