@@ -37,7 +37,8 @@ AppAsset::register($this);
       <span class="logo-lg"><b>Apartment</b></span>
     </a>
 
-<?php
+ <?php 
+/*
     NavBar::begin([
         
         'options' => [
@@ -51,12 +52,12 @@ AppAsset::register($this);
             Yii::$app->user->isGuest ?
 ['label' => 'Sign in', 'url' => ['/user/security/login']] :
 ['label' => 'Account(' . Yii::$app->user->identity->username . ')'],
-['label' => 'Register', 'url' => ['/user/registration/register'], 'visible' => Yii::$app->user->isGuest],
+//['label' => 'Register', 'url' => ['/user/registration/register'], 'visible' => Yii::$app->user->isGuest],
 ['label' => 'Logout', 'url' => ['/user/security/logout'],'linkOptions' => ['data-method' => 'post']],
         ],
     ]);
-    NavBar::end(); 
-    ?>
+    NavBar::end();  */
+    ?> 
 
      
     <!-- Header Navbar: style can be found in header.less -->
@@ -103,7 +104,7 @@ AppAsset::register($this);
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?= Url::to(['booking/index']) ?>"><i class="fa fa-check-square"></i> การจองห้องพัก</a></li>
+            <li><a href="<?= Url::to(['reservations/index']) ?>"><i class="fa fa-check-square"></i> การจองห้องพัก</a></li>
             <li ><a href="<?= Url::to(['rental/index']) ?>"><i class="fa fa-check-square"></i> การเช่าห้องพัก</a></li>
             <li ><a href="<?= Url::to(['rental/index']) ?>"><i class="fa fa-check-square"></i> การคืนห้องพัก</a></li>
           </ul>
@@ -131,7 +132,7 @@ AppAsset::register($this);
         </li>
 
         <li>
-          <a href="<?= Url::to(['bill/index']) ?>">
+          <a href="<?= Url::to(['history/index']) ?>">
             <i class="fa  fa-file-o"></i> <span>ใบเสร็จชำระเงิน</span>
           </a>
         </li>

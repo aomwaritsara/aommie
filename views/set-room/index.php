@@ -1,5 +1,7 @@
 <?php
-
+use app\models\Room;
+use app\models\RoomSearch;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\grid\GridView;
 
@@ -26,21 +28,21 @@ $this->params['breadcrumbs'][] = $this->title;
 
            // 'Apart_Id',
             'Room_Id',
-            'Type',
+            //'Type',
             //'Price',
             //'Eletricity',
             // 'Watersupply',
 
-             /*   ['attribute'=>'Status',
+                ['attribute'=>'Type',
             'contentOptions' => ['class'=>'text-center'],
             'content'=>function($data){
-               $status =['1'=>"<label>ว่าง</label>",'2'=>"<label>ถูกจอง</label>",'3'=>"<label>ถูกเช่า</label>",'4'=>"<label>ไม่พร้อม</label>"];
-               return $status[$data->Status];
+               $Type=['A'=>"<label>ทั่วไป</label>",'B'=>"<label>ร้านค้า</label>"];
+               return $Type[$data->Type];
             },
            
-            'filter' =>Html::activeDropDownList($searchModel,'Status',['1'=>'ว่าง','2'=>'ถูกจอง','3'=>'ถูกเช่า', '4'=>'ไม่พร้อม'],['class'=>'form-control','prompt'=>'เลือกสถานะ']),
+            'filter' =>Html::activeDropDownList($searchModel,'Type',['A'=>'ทั่วไป','B'=>'ร้านค้า'],['class'=>'form-control','prompt'=>'เลือกสถานะ']),
  ],
-*/
+
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

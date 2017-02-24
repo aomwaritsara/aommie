@@ -20,6 +20,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'DateFrom')->textInput() ?>
 
+    <?= $form->field($model, 'Sor_Id')->textInput(['maxlength' => true]) ?>
+
     <?= $form->field($model, 'CurrentDate')->textInput() ?>
 
     <?= $form->field($model, 'Elec_Used')->textInput() ?>

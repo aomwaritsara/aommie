@@ -8,6 +8,10 @@ use app\models\BookingSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\base\Model;
+use yii\helpers\ArrayHelper;
+use yii\models\Customer;
+use app\models\Search;
 
 /**
  * BookingController implements the CRUD actions for Booking model.
@@ -66,12 +70,14 @@ class BookingController extends Controller
     public function actionCreate()
     {
         $model = new Booking();
+        $model2 = new Customer();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) && $model->save()&&$model2->load(Yii::$app->request->post()) && $model2->save()) {
             return $this->redirect(['view', 'Apart_Id' => $model->Apart_Id, 'Room_Id' => $model->Room_Id, 'Cus_Id' => $model->Cus_Id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
+                'model2' => $model2,
             ]);
         }
     }

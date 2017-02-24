@@ -8,8 +8,8 @@ $config = [
     'bootstrap' => ['log'],
     'layout'=>'template',
     //'layout'=>'main',
-    //'layout'=>'templateAdmin',
-   'defaultRoute' => 'show-room',
+   // 'layout'=>'templateAdmin',
+    'defaultRoute' => 'show-room',
    //'defaultRoute' => 'site',
    
         'modules' => [
@@ -61,14 +61,14 @@ $config = [
         ],
         */
     ],    
- 'modules' => [
-'user' => [
-'class' => 'dektrium\user\Module',
-'enableConfirmation' => false,
-'cost' => 12,
-'admins' => ['admin']
-],
-],
+//  'modules' => [
+// 'user' => [
+// 'class' => 'dektrium\user\Module',
+// 'enableConfirmation' => false,
+// 'cost' => 12,
+// 'admins' => ['admin']
+// ],
+// ],
     'params' => $params,
 ];
 

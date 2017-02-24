@@ -15,6 +15,10 @@ use Yii;
  * @property integer $NumRoom
  * @property integer $NumFloor
  * @property string $Status
+ *
+ * @property FinancialApartment[] $financialApartments
+ * @property Room[] $rooms
+ * @property Roomtype[] $rooms0
  */
 class Apartment extends \yii\db\ActiveRecord
 {
@@ -56,5 +60,29 @@ class Apartment extends \yii\db\ActiveRecord
             'NumFloor' => 'Num Floor',
             'Status' => 'Status',
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getFinancialApartments()
+    {
+        return $this->hasMany(FinancialApartment::className(), ['Apart_Id' => 'Apart_Id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getRooms()
+    {
+        return $this->hasMany(Room::className(), ['Apart_Id' => 'Apart_Id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getRooms0()
+    {
+        return $this->hasMany(Roomtype::className(), ['Room_Id' => 'Room_Id'])->viaTable('room', ['Apart_Id' => 'Apart_Id']);
     }
 }

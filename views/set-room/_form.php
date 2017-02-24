@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use app\models\Room;
-
+use yii\helpers\ArrayHelper;
 /* @var $this yii\web\View */
 /* @var $model app\models\SetRoom */
 /* @var $form yii\widgets\ActiveForm */
@@ -31,7 +31,7 @@ use app\models\Room;
 
 
 
-    <?= $form->field($model2, 'Apart_Id')->textInput() ?>
+    <?= $form->field($model2, 'Apart_Id')->textInput()  ?>
 
     <?= $form->field($model2, 'Room_Id')->textInput(['maxlength' => true]) ?>
 

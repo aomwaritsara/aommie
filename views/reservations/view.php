@@ -1,17 +1,16 @@
 <?php
-use app\models\Room;
-use app\models\RoomSearch;
+
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\SetRoom */
+/* @var $model app\models\Reservations */
 
-$this->title = $model->Room_Id;
-$this->params['breadcrumbs'][] = ['label' => 'Set Rooms', 'url' => ['index']];
+$this->title = $model->Name;
+$this->params['breadcrumbs'][] = ['label' => 'Reservations', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="set-room-view">
+<div class="reservations-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -27,19 +26,14 @@ $this->params['breadcrumbs'][] = $this->title;
     </p>
 
     <?= DetailView::widget([
-        'model' => $model,
+        'model' => $model2,
         'attributes' => [
             'Apart_Id',
             'Room_Id',
-            'Type',
-            'Price',
-            'Eletricity',
-            'Watersupply',
-            'room.Name',
-            'room.Floor',
-            'room.Status',
-    ],
+            'Name',
+            'Floor',
+            'Status',
+        ],
     ]) ?>
 
 </div>
-

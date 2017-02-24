@@ -75,14 +75,14 @@ AppAsset::register($this);
 
 
         <li class="treeview">
-          <a href="<?= Url::to(['customer/index']) ?>">
+          <a href="<?= Url::to(['apartment/index']) ?>">
             <i class="fa  fa-user"></i>
             <span>ข้อมูลอพาร์ตเมนต์</span>
          </a>
         </li>
 
         <li>
-          <a href="<?= Url::to(['history/index']) ?>">
+          <a href="<?= Url::to(['customer/index']) ?>">
             <i class="fa  fa-dashboard"></i> <span>จัดการสิทธิ์ผู้ประกอบการ</span>
           </a>
         </li>
