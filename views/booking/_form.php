@@ -18,8 +18,8 @@ use yii\helpers\ArrayHelper;
     <?= $form->field($model, 'Apart_Id')->textInput() ?>
 
     <?= $form->field($model, 'Room_Id')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'Cus_Id')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model2, 'Cus_Id')->textInput(['maxlength' => true]) ?>
+   
 
     <?= $form->field($model, 'Booking_Date')->textInput() ?>
 
@@ -28,7 +28,7 @@ use yii\helpers\ArrayHelper;
     <?= $form->field($model, 'Datestatus')->textInput() ?>
 
 
-    <?= $form->field($model2, 'Cus_Id')->textInput(['maxlength' => true]) ?>
+ <?= $form->field($model, 'Cus_Id')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model2, 'Fname')->textInput(['maxlength' => true]) ?>
 

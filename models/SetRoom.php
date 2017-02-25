@@ -60,10 +60,10 @@ class SetRoom extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getRoom()
-    {
-        return $this->hasMany(Room::className(), ['Room_Id' => 'Room_Id']);
-    }
+    // public function getRoom()
+    // {
+    //     return $this->hasMany(Room::className(), ['Room_Id' => 'Room_Id']);
+    // }
 
     /**
      * @return \yii\db\ActiveQuery
@@ -71,6 +71,10 @@ class SetRoom extends \yii\db\ActiveRecord
     public function getAparts()
     {
         return $this->hasOne(Apartment::className(), ['Apart_Id' => 'Apart_Id'])->viaTable('room', ['Room_Id' => 'Room_Id']);
+    }
+    public function getRoom()
+    {
+        return $this->hasOne(Room::className(), ['Room_Id' => 'Room_Id']);
     }
 
   
