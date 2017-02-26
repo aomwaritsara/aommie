@@ -36,7 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute'=>'จองห้องพัก',
                 'content'=>function($data){
-                return Html::a ('<i class="glyphicon glyphiconfile"></i>จองห้องพัก', Url::to (['booking/create']),['class'=>'btn btn-xs btn-primary']);
+                return Html::a ('<i class="glyphicon glyphiconfile"></i>จองห้องพัก', Url::to (['customer/create']),['class'=>'btn btn-xs btn-primary']);
             },
             'contentOptions'=>['class'=>'text center']
             ],

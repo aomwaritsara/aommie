@@ -106,7 +106,7 @@ AppAsset::register($this);
           <ul class="treeview-menu">
             <li><a href="<?= Url::to(['reservations/index']) ?>"><i class="fa fa-check-square"></i> การจองห้องพัก</a></li>
             <li ><a href="<?= Url::to(['rental/index']) ?>"><i class="fa fa-check-square"></i> การเช่าห้องพัก</a></li>
-            <li ><a href="<?= Url::to(['rental/index']) ?>"><i class="fa fa-check-square"></i> การคืนห้องพัก</a></li>
+            <li ><a href="<?= Url::to(['restore/index']) ?>"><i class="fa fa-check-square"></i> การคืนห้องพัก</a></li>
           </ul>
         </li>
 
@@ -127,12 +127,12 @@ AppAsset::register($this);
         
         <li>
           <a href="<?= Url::to(['payment/index']) ?>">
-            <i class="fa fa-calculator "></i> <span>ใบแจ้งหนี้รายเดือน</span>
+            <i class="fa fa-calculator "></i> <span>ใบวางบิล</span>
           </a>
         </li>
 
         <li>
-          <a href="<?= Url::to(['history/index']) ?>">
+          <a href="<?= Url::to(['bill/index']) ?>">
             <i class="fa  fa-file-o"></i> <span>ใบเสร็จชำระเงิน</span>
           </a>
         </li>

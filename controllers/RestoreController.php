@@ -3,18 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Booking;
-use app\models\BookingSearch;
+use app\models\Restore;
+use app\models\RestoreSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\base\Model;
 
-use yii\helpers\ArrayHelper;
 /**
- * BookingController implements the CRUD actions for Booking model.
+ * RestoreController implements the CRUD actions for Restore model.
  */
-class BookingController extends Controller
+class RestoreController extends Controller
 {
     /**
      * @inheritdoc
@@ -32,12 +30,12 @@ class BookingController extends Controller
     }
 
     /**
-     * Lists all Booking models.
+     * Lists all Restore models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new BookingSearch();
+        $searchModel = new RestoreSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -47,7 +45,7 @@ class BookingController extends Controller
     }
 
     /**
-     * Displays a single Booking model.
+     * Displays a single Restore model.
      * @param integer $Apart_Id
      * @param string $Room_Id
      * @param string $Cus_Id
@@ -61,27 +59,25 @@ class BookingController extends Controller
     }
 
     /**
-     * Creates a new Booking model.
+     * Creates a new Restore model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Booking();
-      
+        $model = new Restore();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save() ){
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'Apart_Id' => $model->Apart_Id, 'Room_Id' => $model->Room_Id, 'Cus_Id' => $model->Cus_Id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
-                
             ]);
         }
     }
 
     /**
-     * Updates an existing Booking model.
+     * Updates an existing Restore model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $Apart_Id
      * @param string $Room_Id
@@ -91,7 +87,6 @@ class BookingController extends Controller
     public function actionUpdate($Apart_Id, $Room_Id, $Cus_Id)
     {
         $model = $this->findModel($Apart_Id, $Room_Id, $Cus_Id);
-      
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'Apart_Id' => $model->Apart_Id, 'Room_Id' => $model->Room_Id, 'Cus_Id' => $model->Cus_Id]);
@@ -103,7 +98,7 @@ class BookingController extends Controller
     }
 
     /**
-     * Deletes an existing Booking model.
+     * Deletes an existing Restore model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $Apart_Id
      * @param string $Room_Id
@@ -118,17 +113,17 @@ class BookingController extends Controller
     }
 
     /**
-     * Finds the Booking model based on its primary key value.
+     * Finds the Restore model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $Apart_Id
      * @param string $Room_Id
      * @param string $Cus_Id
-     * @return Booking the loaded model
+     * @return Restore the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($Apart_Id, $Room_Id, $Cus_Id)
     {
-        if (($model = Booking::findOne(['Apart_Id' => $Apart_Id, 'Room_Id' => $Room_Id, 'Cus_Id' => $Cus_Id])) !== null) {
+        if (($model = Restore::findOne(['Apart_Id' => $Apart_Id, 'Room_Id' => $Room_Id, 'Cus_Id' => $Cus_Id])) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
