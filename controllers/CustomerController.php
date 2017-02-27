@@ -66,7 +66,7 @@ class CustomerController extends Controller
         $model = new Customer();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->Cus_Id]);
+            return $this->redirect(['booking/create', 'id' => $model->Cus_Id]);
         } else {
             return $this->render('create', [
                 'model' => $model,

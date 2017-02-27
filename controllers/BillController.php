@@ -112,6 +112,25 @@ class BillController extends Controller
         return $this->redirect(['index']);
     }
 
+    public function actionChange($Room_Id)
+    {
+        $bill = Bill::findone($Room_Id);
+        //$bill = $this->findModel($Apart_Id, $Room_Id, $Cus_Id);
+        
+        if($bill->PaymentStatus == '1')
+        {
+            $bill->PaymentStatus = '0';
+            $bill->save();
+            return $this->redirect(['index']);
+        }
+        else
+        {
+            $bill->PaymentStatus = '1';
+            $bill->save();
+            return $this->redirect(['index']);
+        }
+    }
+
     /**
      * Finds the Bill model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.

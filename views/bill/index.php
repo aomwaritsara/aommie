@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\BillSearch */
@@ -41,13 +41,20 @@ $this->params['breadcrumbs'][] = $this->title;
                 ['attribute'=>'สถานะการจ่ายเงิน',
             'contentOptions' => ['class'=>'text-center'],
             'content'=>function($data){
-                
+                    
             },
            
             'filter' =>Html::activeDropDownList($searchModel,'PaymentStatus',['0'=>'ยังไม่ได้จ่าย','1'=>'จ่ายแล้ว'],['class'=>'form-control','prompt'=>'เลือกสถานะ']),
 
 
              ],
+             [
+                'attribute'=>'เปลี่ยนสถานะ',
+                'content'=>function($data){
+                return Html::a ('<i class="glyphicon glyphiconfile"></i>เปลี่ยนสถานะ', Url::to (['change', 'Room_Id' => 324]),['class'=>'btn btn-xs btn-primary']);
+            },
+            'contentOptions'=>['class'=>'text center']
+            ],
 
 
 
