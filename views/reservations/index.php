@@ -32,7 +32,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'Room_Id',
             'Name',
             'Floor',
-            'Status',
+            //'Status',
+                 
             [
                 'attribute'=>'จองห้องพัก',
                 'content'=>function($data){

@@ -37,40 +37,28 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'Unit',
             'TotalAmount',
              //'PaymentStatus',
-
+              
                 ['attribute'=>'สถานะการจ่ายเงิน',
             'contentOptions' => ['class'=>'text-center'],
             'content'=>function($data){
-                    
+               $PaymentStatus=['0'=>"<label>ยังไม่ได้จ่าย</label>",'1'=>"<label>จ่ายแล้ว</label>"];
+               return $PaymentStatus[$data->PaymentStatus];
             },
+           
            
             'filter' =>Html::activeDropDownList($searchModel,'PaymentStatus',['0'=>'ยังไม่ได้จ่าย','1'=>'จ่ายแล้ว'],['class'=>'form-control','prompt'=>'เลือกสถานะ']),
 
 
              ],
              [
-                'attribute'=>'เปลี่ยนสถานะ',
-                'content'=>function($data){
-                return Html::a ('<i class="glyphicon glyphiconfile"></i>เปลี่ยนสถานะ', Url::to (['change', 'Room_Id' => 324]),['class'=>'btn btn-xs btn-primary']);
-            },
-            'contentOptions'=>['class'=>'text center']
+                
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '{change}',
+                'contentOptions' => ['class'=>'text center']
             ],
 
-
-
-// [
-//                 'attribute'=>'จองห้องพัก',
-//                 'content'=>function($data){
-//                 return Html::a ('<i class="glyphicon glyphiconfile"></i>จองห้องพัก', Url::to (['customer/create']),['class'=>'btn btn-xs btn-primary']);
-//             },
-//             'contentOptions'=>['class'=>'text center']
-//             ],
             
-             
-            
-
-
-            ['class' => 'yii\grid\ActionColumn'],
+           // ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
 </div>

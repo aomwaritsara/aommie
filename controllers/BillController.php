@@ -112,10 +112,9 @@ class BillController extends Controller
         return $this->redirect(['index']);
     }
 
-    public function actionChange($Room_Id)
+    public function actionChange($Apart_Id, $Room_Id, $Cus_Id)
     {
-        $bill = Bill::findone($Room_Id);
-        //$bill = $this->findModel($Apart_Id, $Room_Id, $Cus_Id);
+        $bill = $this->findModel($Apart_Id, $Room_Id, $Cus_Id);
         
         if($bill->PaymentStatus == '1')
         {
