@@ -54,10 +54,11 @@ class ReservationsController extends Controller
      */
     public function actionView($Apart_Id, $Room_Id)
     {
-        $model2 = Room::find()->where(['status' => 1])->all();
+       // $model = Room::find()->where(['status' => 1])->all();
+         $model = Reservations::findOne($Apart_Id, $Room_Id);
         return $this->render('view', [
-            //'model' => $this->findModel($Apart_Id, $Room_Id),
-            'model2'=>$model2,
+            'model' => $this->findModel($Apart_Id, $Room_Id),
+           // 'model'=>$model,
         ]);
     }
 
