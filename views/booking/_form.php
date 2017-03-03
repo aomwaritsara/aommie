@@ -5,7 +5,8 @@ use yii\widgets\ActiveForm;
 use yii\models\Customer;
 use app\models\CustomerSearch;
 use yii\helpers\ArrayHelper;
-
+use kartik\datetime\DateTimePicker;
+//use kartik\datetime\DateTimePicker;
 /* @var $this yii\web\View */
 /* @var $model app\models\Booking */
 /* @var $form yii\widgets\ActiveForm */
@@ -26,7 +27,12 @@ use yii\helpers\ArrayHelper;
 
     <?= $form->field($model, 'Status')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'Datestatus')->textInput() ?>
+    <?= $form->field($model, 'Datestatus')->widget(DateTimePicker::classname(), [
+    //'language' => 'ru',
+      'pluginOptions' => [
+        'format' => 'yyyy-mm-dd hh:ii:ss'
+    ]
+]) ?>
 
 
 
