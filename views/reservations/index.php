@@ -31,18 +31,27 @@ $this->params['breadcrumbs'][] = $this->title;
            // 'Apart_Id',
             'Room_Id',
             'Name',
-            'Floor',
+            //'Floor',
+             ['attribute'=>'Floor',
+            'contentOptions' => ['class'=>'text-center'],
+            'content'=>function($data){
+              
+            },
+           
+            'filter' =>Html::activeDropDownList($searchModel,'Floor',['1'=>'1','2'=>'2','3'=>'3'],['class'=>'form-control','prompt'=>'เลือกชั้น']),
+ ],
             //'Status',
                  
             [
                 'attribute'=>'จองห้องพัก',
+
                 'content'=>function($data){
                 return Html::a ('<i class="glyphicon glyphiconfile"></i>จองห้องพัก', Url::to (['customer/create']),['class'=>'btn btn-xs btn-primary']);
             },
             'contentOptions'=>['class'=>'text center']
             ],
             
-            ['class' => 'yii\grid\ActionColumn'],
+            //['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
 </div>

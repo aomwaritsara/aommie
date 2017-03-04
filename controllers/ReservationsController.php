@@ -70,12 +70,19 @@ class ReservationsController extends Controller
     public function actionCreate()
     {
         $model = new Reservations();
+        //$model2 = new Room();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())&& ) {
+           // $model2 ->Apart_Id=$Apart_Id;
+          //  $model2 ->Room_Id=$Room_Id;
+            //$model2->Status='1';
+             $model->cus_Id ='33333'
+           if($model->save()) //if ($model->save()&&$model2->save())
             return $this->redirect(['view', 'Apart_Id' => $model->Apart_Id, 'Room_Id' => $model->Room_Id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
+                // 'model2' => $model2,
             ]);
         }
     }

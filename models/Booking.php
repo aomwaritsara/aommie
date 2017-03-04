@@ -3,8 +3,6 @@
 namespace app\models;
 
 use Yii;
-use app\models\Customer;
-use app\models\CustomerSearch;
 
 /**
  * This is the model class for table "booking".
@@ -85,10 +83,10 @@ class Booking extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getCus()
-    {
-        return $this->hasOne(Customer::className(), ['Cus_Id' => 'Cus_Id']);
-    }
+    // public function getCus()
+    // {
+    //     return $this->hasOne(Customer::className(), ['Cus_Id' => 'Cus_Id']);
+    // }
 
     /**
      * @return \yii\db\ActiveQuery
@@ -112,9 +110,5 @@ class Booking extends \yii\db\ActiveRecord
     public function getDeposits1()
     {
         return $this->hasMany(Deposit::className(), ['Cus_Id' => 'Cus_Id']);
-    }
-     public function getCustomer()
-    {
-        return $this->hasOne(Customer::className(), ['Cus_Id' => 'Cus_Id']);
     }
 }

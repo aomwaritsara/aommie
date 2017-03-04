@@ -38,7 +38,7 @@ AppAsset::register($this);
     </a>
 
  <?php 
-/*
+
     NavBar::begin([
         
         'options' => [
@@ -56,7 +56,7 @@ AppAsset::register($this);
 ['label' => 'Logout', 'url' => ['/user/security/logout'],'linkOptions' => ['data-method' => 'post']],
         ],
     ]);
-    NavBar::end();  */
+    NavBar::end();  
     ?> 
 
      
