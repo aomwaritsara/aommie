@@ -43,6 +43,7 @@ class ReservationsController extends Controller
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            $searchModel = Room::find()->where(["Status" => 1])->all(),
         ]);
     }
 
@@ -54,7 +55,7 @@ class ReservationsController extends Controller
      */
     public function actionView($Apart_Id, $Room_Id)
     {
-       // $model = Room::find()->where(['status' => 1])->all();
+      
          $model = Reservations::findOne($Apart_Id, $Room_Id);
         return $this->render('view', [
             'model' => $this->findModel($Apart_Id, $Room_Id),
@@ -72,12 +73,9 @@ class ReservationsController extends Controller
         $model = new Reservations();
         //$model2 = new Room();
 
-        if ($model->load(Yii::$app->request->post())&& ) {
-           // $model2 ->Apart_Id=$Apart_Id;
-          //  $model2 ->Room_Id=$Room_Id;
-            //$model2->Status='1';
-             $model->cus_Id ='33333'
-           if($model->save()) //if ($model->save()&&$model2->save())
+        if ($model->load(Yii::$app->request->post())&&$model->save()) {
+           
+        
             return $this->redirect(['view', 'Apart_Id' => $model->Apart_Id, 'Room_Id' => $model->Room_Id]);
         } else {
             return $this->render('create', [

@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use Yii;
+use app\models\Room;
 use app\models\Booking;
 use app\models\BookingSearch;
 use yii\web\Controller;
@@ -68,9 +69,13 @@ class BookingController extends Controller
     public function actionCreate()
     {
         $model = new Booking();
-      
+        $model2 = new Room();
 
         if ($model->load(Yii::$app->request->post()) && $model->save() ){
+             $model2 = Room::find()->where(['Room_Id' => $model->Room_Id])->one();
+             // Yii::log('start calculating average revenue');
+             $model2->Status = $model->Status;
+             $model2->save();
             return $this->redirect(['view', 'Apart_Id' => $model->Apart_Id, 'Room_Id' => $model->Room_Id, 'Cus_Id' => $model->Cus_Id]);
         } else {
             return $this->render('create', [

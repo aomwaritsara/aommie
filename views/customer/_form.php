@@ -22,7 +22,7 @@ use kartik\datetime\DateTimePicker;
     <?= $form->field($model, 'Lname')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'Tel')->widget(\yii\widgets\MaskedInput::className(), [
-    'mask' => '99-99999999', ]) ?>
+    'mask' => '9999999999', ]) ?>
 
     <?= $form->field($model, 'Email')->textInput(['maxlength' => true]) ?>
 

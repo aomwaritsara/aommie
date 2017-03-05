@@ -20,11 +20,11 @@ use app\models\Room;
     <?= $form->field($model, 'Apart_Id')->dropDownList(ArrayHelper::map(Room::find()->distinct('Apart_Id')->where("Status='1'")->all(),'Apart_Id','Apart_Id')) ?>
 
     <?= $form->field($model, 'Room_Id')->dropDownList(ArrayHelper::map(Room::find()->where("Status='1'")->all(),'Room_Id','Room_Id')) ?>
-    
- <?= $form->field($model, 'Cus_Id')->widget(\yii\widgets\MaskedInput::className(), [
+
+    <?= $form->field($model, 'Cus_Id')->widget(\yii\widgets\MaskedInput::className(), [
     'mask' => '9999999999999', ]) ?>
 
-   
+    
     <?= $form->field($model, 'Booking_Date')->widget(DateTimePicker::classname(), [
     'language' => 'th',
         'readonly'=> true,
@@ -33,7 +33,8 @@ use app\models\Room;
     ]
 ]) ?> 
 
-    <?= $form->field($model, 'Status')->dropDownList(['ใช้งาน',],['prompt'=>''])  ?>
+    <?= $form->field($model, 'Status')->dropDownList([1=>'ยกเลิก',3=>'ใช้งาน'],['prompt'=>'เลือกสถานะ'])  ?>
+     
 
     <?= $form->field($model, 'Datestatus')->widget(DateTimePicker::classname(), [
     'language' => 'th',
