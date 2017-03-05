@@ -105,7 +105,7 @@ AppAsset::register($this);
           </a>
           <ul class="treeview-menu">
             <li><a href="<?= Url::to(['reservations/index']) ?>"><i class="fa fa-check-square"></i> การจองห้องพัก</a></li>
-            <li ><a href="<?= Url::to(['rental/index']) ?>"><i class="fa fa-check-square"></i> การเช่าห้องพัก</a></li>
+            <li ><a href="<?= Url::to(['rent/index']) ?>"><i class="fa fa-check-square"></i> การเช่าห้องพัก</a></li>
             <li ><a href="<?= Url::to(['restore/index']) ?>"><i class="fa fa-check-square"></i> การคืนห้องพัก</a></li>
           </ul>
         </li>
@@ -118,13 +118,7 @@ AppAsset::register($this);
          </a>
         </li>
 
-        <li>
-          <a href="<?= Url::to(['history/index']) ?>">
-            <i class="fa  fa-dashboard"></i> <span>บันทึกเลขมิเตอร์</span>
-          </a>
-        </li>
-
-        
+       
         <li>
           <a href="<?= Url::to(['payment/index']) ?>">
             <i class="fa fa-calculator "></i> <span>ใบวางบิล</span>

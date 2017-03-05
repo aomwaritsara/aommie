@@ -3,17 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Room;
-use app\models\Rental;
-use app\models\RentalSearch;
+use app\models\Rent;
+use app\models\RentSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * RentalController implements the CRUD actions for Rental model.
+ * RentController implements the CRUD actions for Rent model.
  */
-class RentalController extends Controller
+class RentController extends Controller
 {
     /**
      * @inheritdoc
@@ -31,14 +30,23 @@ class RentalController extends Controller
     }
 
     /**
-     * Lists all Rental models.
+     * Lists all Rent models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new RentalSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+ 
 
+
+        $searchModel = new RentSearch(['Status' => '3']);
+
+// $searchModel = new CotizacionSearch(
+//               [ 'idEjecutivo' => 1,
+//                'status' => 'DRAFT', ]
+//         );
+
+        
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
@@ -46,34 +54,29 @@ class RentalController extends Controller
     }
 
     /**
-     * Displays a single Rental model.
+     * Displays a single Rent model.
      * @param integer $Apart_Id
      * @param string $Room_Id
-     * @param string $Cus_Id
      * @return mixed
      */
-    public function actionView($Apart_Id, $Room_Id, $Cus_Id)
+    public function actionView($Apart_Id, $Room_Id)
     {
         return $this->render('view', [
-            'model' => $this->findModel($Apart_Id, $Room_Id, $Cus_Id),
+            'model' => $this->findModel($Apart_Id, $Room_Id),
         ]);
     }
 
     /**
-     * Creates a new Rental model.
+     * Creates a new Rent model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Rental();
-        $model2 =new Room();
-      if ($model->load(Yii::$app->request->post()) && $model->save()) {
-             $model2 = Room::find()->where(['Room_Id' => $model->Room_Id])->one();
-             // Yii::log('start calculating average revenue');
-             $model2->Status = $model->Status;
-             $model2->save();
-            return $this->redirect(['view', 'Apart_Id' => $model->Apart_Id, 'Room_Id' => $model->Room_Id, 'Cus_Id' => $model->Cus_Id]);
+        $model = new Rent();
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'Apart_Id' => $model->Apart_Id, 'Room_Id' => $model->Room_Id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -82,19 +85,18 @@ class RentalController extends Controller
     }
 
     /**
-     * Updates an existing Rental model.
+     * Updates an existing Rent model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $Apart_Id
      * @param string $Room_Id
-     * @param string $Cus_Id
      * @return mixed
      */
-    public function actionUpdate($Apart_Id, $Room_Id, $Cus_Id)
+    public function actionUpdate($Apart_Id, $Room_Id)
     {
-        $model = $this->findModel($Apart_Id, $Room_Id, $Cus_Id);
+        $model = $this->findModel($Apart_Id, $Room_Id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'Apart_Id' => $model->Apart_Id, 'Room_Id' => $model->Room_Id, 'Cus_Id' => $model->Cus_Id]);
+            return $this->redirect(['view', 'Apart_Id' => $model->Apart_Id, 'Room_Id' => $model->Room_Id]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -103,32 +105,30 @@ class RentalController extends Controller
     }
 
     /**
-     * Deletes an existing Rental model.
+     * Deletes an existing Rent model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $Apart_Id
      * @param string $Room_Id
-     * @param string $Cus_Id
      * @return mixed
      */
-    public function actionDelete($Apart_Id, $Room_Id, $Cus_Id)
+    public function actionDelete($Apart_Id, $Room_Id)
     {
-        $this->findModel($Apart_Id, $Room_Id, $Cus_Id)->delete();
+        $this->findModel($Apart_Id, $Room_Id)->delete();
 
         return $this->redirect(['index']);
     }
 
     /**
-     * Finds the Rental model based on its primary key value.
+     * Finds the Rent model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $Apart_Id
      * @param string $Room_Id
-     * @param string $Cus_Id
-     * @return Rental the loaded model
+     * @return Rent the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($Apart_Id, $Room_Id, $Cus_Id)
+    protected function findModel($Apart_Id, $Room_Id)
     {
-        if (($model = Rental::findOne(['Apart_Id' => $Apart_Id, 'Room_Id' => $Room_Id, 'Cus_Id' => $Cus_Id])) !== null) {
+        if (($model = Rent::findOne(['Apart_Id' => $Apart_Id, 'Room_Id' => $Room_Id])) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
