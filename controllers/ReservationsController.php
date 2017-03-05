@@ -37,15 +37,19 @@ class ReservationsController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new ReservationsSearch();
+        $searchModel = new ReservationsSearch(['Status' => '1']);
+        // $myModels = $search->search([$searchModel->formName()=>['att3'=>3]]);
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
+       
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
-            $searchModel = Room::find()->where(["Status" => 1])->all(),
+            
         ]);
+
     }
+
+
 
     /**
      * Displays a single Reservations model.

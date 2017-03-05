@@ -52,11 +52,11 @@ class Reservations extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'Apart_Id' => 'Apart  ID',
-            'Room_Id' => 'Room  ID',
-            'Name' => 'Name',
-            'Floor' => 'Floor',
-            'Status' => 'Status',
+            'Apart_Id' => 'รหัสอพาร์ตเมนต์',
+            'Room_Id' => 'รหัสห้องพัก',
+            'Name' => 'ชื่อห้องพัก',
+            'Floor' => 'ชั้น',
+            'Status' => 'สถานะ',
         ];
     }
 

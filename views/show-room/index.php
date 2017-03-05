@@ -15,7 +15,7 @@ use yii\widgets\LinkPager;
 
 <div class="box box-success">
     <div class="box-header with-border">
-        <h2>Room</h2> สถานะห้อง : &nbsp;<div class="ic" style="background-color:#87FF8D;">&nbsp; &nbsp; &nbsp; &nbsp;</div>  ว่าง &nbsp; &nbsp;
+        <h2>ห้องพัก</h2> สถานะห้อง : &nbsp;<div class="ic" style="background-color:#87FF8D;">&nbsp; &nbsp; &nbsp; &nbsp;</div>  ว่าง &nbsp; &nbsp;
             <div class="ic" style='background-color:#FF6961'>&nbsp; &nbsp; &nbsp; &nbsp;</div> ถูกเช่า  &nbsp; &nbsp;
             <div class="ic" style='background-color:#CCAACC'>&nbsp; &nbsp; &nbsp; &nbsp;</div> ถูกจอง &nbsp; &nbsp;
             <div class="ic" style='background-color:#FDFD96'>&nbsp; &nbsp; &nbsp; &nbsp;</div> ไม่พร้อม &nbsp; &nbsp;
@@ -25,7 +25,7 @@ use yii\widgets\LinkPager;
 
     <?php foreach ($numFloor as $floor): ?>
         <div class="row" style="padding : 0px 30px 0px 30px">
-        <?php echo "<h2> Floor ".$floor->Floor."</h2> "; ?>
+        <?php echo "<h2>ชั้น ".$floor->Floor."</h2> "; ?>
           <?php foreach ($detail as $room):  ?>
              <?php if ($room["Floor"] == $floor->Floor): ?>
                 <?php if($room["Status"] == 1):
@@ -46,7 +46,7 @@ use yii\widgets\LinkPager;
                      <p class="h4" align="center"><?= $room["Room_Id"] ?> </p>
                      <p class="h4" align="center"><?= $Status_detail ?> </p>
 
-                     <button type="button" class="btn btn-info btn-responsive btn-xs center-block" data-backdrop="static" data-toggle="modal" data-target='#myModal<?php echo $room["Room_Id"];?>'>Detail</button>
+                     <button type="button" class="btn btn-info btn-responsive btn-xs center-block" data-backdrop="static" data-toggle="modal" data-target='#myModal<?php echo $room["Room_Id"];?>'>รายละเอียด</button>
                 </div>
               <!--  <?php //  endif;   ?>-->
               <!--  <?php //endforeach; ?>-->

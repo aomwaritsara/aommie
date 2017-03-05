@@ -9,7 +9,7 @@ use yii\helpers\ArrayHelper;
 /* @var $this yii\web\View */
 /* @var $model app\models\Customer */
 
-$this->title = 'Create Customer';
+$this->title = 'เพิ่มข้อมูลส่วนตัวลูกค้า';
 $this->params['breadcrumbs'][] = ['label' => 'Customers', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

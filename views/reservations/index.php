@@ -11,7 +11,7 @@ use app\models\BookingSearch;
 /* @var $searchModel app\models\ReservationsSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Reservations';
+$this->title = 'การจองห้องพัก';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="reservations-index">
@@ -19,9 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <p>
-        <?= Html::a('Create Reservations', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -35,6 +33,8 @@ $this->params['breadcrumbs'][] = $this->title;
              ['attribute'=>'Floor',
             'contentOptions' => ['class'=>'text-center'],
             'content'=>function($data){
+                 $Floor=['1'=>"1",'2'=>"2",'3'=>"3"];
+               return $Floor[$data->Floor];
               
             },
            
@@ -46,10 +46,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute'=>'จองห้องพัก',
 
                 'content'=>function($data){
-                return Html::a ('<i class="glyphicon glyphiconfile"></i>จองห้องพัก', Url::to (['customer/create']),['class'=>'btn btn-xs btn-primary']);
+                return Html::a ('<i class="glyphicon glyphiconfile"></i>จองห้องพัก', Url::to (['booking/create']),['class'=>'btn btn-xs btn-primary']);
+
             },
             'contentOptions'=>['class'=>'text center']
             ],
+            
             
             //['class' => 'yii\grid\ActionColumn'],
         ],
