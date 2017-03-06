@@ -6,6 +6,7 @@ use yii\helpers\ArrayHelper;
 use yii\helpers\Url;
 use app\models\Booking;
 use app\models\BookingSearch;
+;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\ReservationsSearch */

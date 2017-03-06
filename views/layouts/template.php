@@ -114,7 +114,7 @@ AppAsset::register($this);
         <li class="treeview">
           <a href="<?= Url::to(['customer/index']) ?>">
             <i class="fa  fa-user"></i>
-            <span>ตรวจสอบผู้เข้าพัก</span>
+            <span>ข้อมูลส่วนตัวผู้เข้าพัก</span>
          </a>
         </li>
 
@@ -142,7 +142,7 @@ AppAsset::register($this);
           <ul class="treeview-menu">
             <li><a href="<?= Url::to(['staff/index']) ?>"><i class="fa fa-check-square"></i> แก้ไขข้อมูลผู้ประกอบการ</a></li>
             <li ><a href="<?= Url::to(['set-room/index']) ?>"><i class="fa fa-check-square"></i> ตั้งค่าอพาร์ตเมนต์</a></li>
-            <li ><a href="<?= Url::to(['roomtype/index']) ?>"><i class="fa fa-check-square"></i> ตั้งค่าอัตราค่าใช้จ่าย</a></li>
+            <li ><a href="<?= Url::to(['setservice/index']) ?>"><i class="fa fa-check-square"></i> ตั้งค่าอัตราค่าใช้จ่าย</a></li>
           </ul>
         </li>
 
