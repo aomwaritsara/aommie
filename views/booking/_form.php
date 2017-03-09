@@ -34,7 +34,7 @@ use app\models\Room;
     ]
 ]) ?> 
 
-    <?= $form->field($model, 'Status')->dropDownList([1=>'ยกเลิก',3=>'ใช้งาน'],['prompt'=>'เลือกสถานะ'])  ?>
+    <?= $form->field($model, 'Status')->dropDownList([3=>'ใช้งาน'],['prompt'=>''])  ?>
      
 
     <?= $form->field($model, 'Datestatus')->widget(DateTimePicker::classname(), [

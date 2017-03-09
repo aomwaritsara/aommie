@@ -122,6 +122,30 @@ class BookingController extends Controller
         return $this->redirect(['index']);
     }
 
+     public function actionChangeb($Apart_Id, $Room_Id, $Cus_Id)
+    {
+         $model2 = new Room();
+        $booking = $this->findModel($Apart_Id, $Room_Id, $Cus_Id);
+         $model2 = Room::find()->where(['Room_Id' => $booking->Room_Id])->one();
+        
+        if($booking->Status == '3')
+        {
+            $booking->Status = '2';
+            $booking->save();
+              $model2->Status = '1';
+             $model2->save();
+            return $this->redirect(['index']);
+        }
+        else
+        {
+            $booking->Status = '1';
+            $booking->save();
+            $model2->Status = $booking->Status;
+             $model2->save();
+            return $this->redirect(['index']);
+        }
+    }
+
     /**
      * Finds the Booking model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.

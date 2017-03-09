@@ -104,8 +104,8 @@ AppAsset::register($this);
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?= Url::to(['reservations/index']) ?>"><i class="fa fa-check-square"></i> การจองห้องพัก</a></li>
-            <li ><a href="<?= Url::to(['rent/index']) ?>"><i class="fa fa-check-square"></i> การเช่าห้องพัก</a></li>
+            <li><a href="<?= Url::to(['booking/index']) ?>"><i class="fa fa-check-square"></i> การจองห้องพัก</a></li>
+            <li ><a href="<?= Url::to(['rental/index']) ?>"><i class="fa fa-check-square"></i> การเช่าห้องพัก</a></li>
             <li ><a href="<?= Url::to(['restore/index']) ?>"><i class="fa fa-check-square"></i> การคืนห้องพัก</a></li>
           </ul>
         </li>

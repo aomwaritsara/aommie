@@ -182,7 +182,16 @@ class ActionColumn extends Column
                 return Html::a('<button class="btn btn-success">เปลี่ยนสถานะ</button>', $url, $options);
             };
         }
-        
+        if (!isset($this->buttons['changeb'])) {
+            $this->buttons['changeb'] = function ($url, $model, $key) {
+                $options = array_merge([
+                    'title' => Yii::t('yii', 'Changeb'),
+                    'aria-label' => Yii::t('yii', 'Changeb'),
+                    'data-pjax' => '0',
+                ], $this->buttonOptions);
+                return Html::a('<button class="btn btn-success">ยกเลิกการจอง</button>', $url, $options);
+            };
+        }
     }
 
     /**

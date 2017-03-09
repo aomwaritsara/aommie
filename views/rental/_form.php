@@ -42,7 +42,7 @@ use kartik\datetime\DateTimePicker;
 
     <?= $form->field($model, 'Deposit')->textInput() ?>
 
-    <?= $form->field($model, 'Status')->dropDownList([1=>'ยกเลิก',2=>'ใช้งาน'],['prompt'=>'เลือกสถานะ'])  ?>
+    <?= $form->field($model, 'Status')->dropDownList([2=>'ใช้งาน'],['prompt'=>''])  ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
