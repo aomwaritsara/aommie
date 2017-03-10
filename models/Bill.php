@@ -11,7 +11,7 @@ use Yii;
  * @property string $Room_Id
  * @property string $Cus_Id
  * @property string $DateFrom
- * @property string $Sor_Id
+ * @property string $Service_Id
  * @property string $CurrentDate
  * @property integer $Elec_Used
  * @property integer $Water_Used
@@ -23,7 +23,7 @@ use Yii;
  * @property Rental $apart
  * @property Rental $room
  * @property Rental $cus
- * @property Serviceofrental $sor
+ * @property Service $service
  * @property Rental $dateFrom
  */
 class Bill extends \yii\db\ActiveRecord
@@ -42,18 +42,18 @@ class Bill extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['Apart_Id', 'Room_Id', 'Cus_Id', 'DateFrom', 'Sor_Id', 'CurrentDate', 'Elec_Used', 'Water_Used', 'Cost', 'Unit', 'TotalAmount', 'PaymentStatus'], 'required'],
+            [['Apart_Id', 'Room_Id', 'Cus_Id', 'DateFrom', 'Service_Id', 'CurrentDate', 'Elec_Used', 'Water_Used', 'Cost', 'Unit', 'TotalAmount', 'PaymentStatus'], 'required'],
             [['Apart_Id', 'Elec_Used', 'Water_Used', 'Cost', 'TotalAmount'], 'integer'],
             [['DateFrom', 'CurrentDate'], 'safe'],
-            [['Room_Id', 'Sor_Id', 'Unit'], 'string', 'max' => 10],
+            [['Room_Id', 'Service_Id', 'Unit'], 'string', 'max' => 10],
             [['Cus_Id'], 'string', 'max' => 13],
             [['PaymentStatus'], 'string', 'max' => 1],
-            [['Sor_Id'], 'unique'],
+            [['Service_Id'], 'unique'],
             [['DateFrom'], 'unique'],
             [['Apart_Id'], 'exist', 'skipOnError' => true, 'targetClass' => Rental::className(), 'targetAttribute' => ['Apart_Id' => 'Apart_Id']],
             [['Room_Id'], 'exist', 'skipOnError' => true, 'targetClass' => Rental::className(), 'targetAttribute' => ['Room_Id' => 'Room_Id']],
             [['Cus_Id'], 'exist', 'skipOnError' => true, 'targetClass' => Rental::className(), 'targetAttribute' => ['Cus_Id' => 'Cus_Id']],
-            [['Sor_Id'], 'exist', 'skipOnError' => true, 'targetClass' => Serviceofrental::className(), 'targetAttribute' => ['Sor_Id' => 'Sor_Id']],
+            [['Service_Id'], 'exist', 'skipOnError' => true, 'targetClass' => Service::className(), 'targetAttribute' => ['Service_Id' => 'Service_Id']],
             [['DateFrom'], 'exist', 'skipOnError' => true, 'targetClass' => Rental::className(), 'targetAttribute' => ['DateFrom' => 'DateFrom']],
         ];
     }
@@ -68,7 +68,7 @@ class Bill extends \yii\db\ActiveRecord
             'Room_Id' => 'Room  ID',
             'Cus_Id' => 'Cus  ID',
             'DateFrom' => 'Date From',
-            'Sor_Id' => 'Sor  ID',
+            'Service_Id' => 'Service  ID',
             'CurrentDate' => 'Current Date',
             'Elec_Used' => 'Elec  Used',
             'Water_Used' => 'Water  Used',
@@ -106,9 +106,9 @@ class Bill extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getSor()
+    public function getService()
     {
-        return $this->hasOne(Serviceofrental::className(), ['Sor_Id' => 'Sor_Id']);
+        return $this->hasOne(Service::className(), ['Service_Id' => 'Service_Id']);
     }
 
     /**

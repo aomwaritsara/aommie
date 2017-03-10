@@ -71,7 +71,7 @@ class BookingController extends Controller
         $model = new Booking();
         $model2 = new Room();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save() ){
+        if ($model->load(Yii::$app->request->post()) &&$model->save() ){
              $model2 = Room::find()->where(['Room_Id' => $model->Room_Id])->one();
              // Yii::log('start calculating average revenue');
              $model2->Status = $model->Status;

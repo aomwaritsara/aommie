@@ -22,8 +22,11 @@ use yii\helpers\ArrayHelper;
 
     <?= $form->field($model, 'Room_Id')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'Type')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'Type')->dropDownList(['A'=>'ทั่วไป','B'=>'ร้านค้า'],['prompt'=>'เลือกประเภท'])  ?> 
+    
+  <?= $form->field($model2,  'Name')->textInput(['maxlength' => true]) ?> 
 
+    <?= $form->field($model2, 'Floor')->textInput() ?>
     <?= $form->field($model, 'Price')->textInput() ?>
 
     <?= $form->field($model, 'Eletricity')->textInput() ?>
@@ -32,13 +35,7 @@ use yii\helpers\ArrayHelper;
 
 
 
-    <?= $form->field($model2, 'Apart_Id')->textInput()  ?>
-
-    <?= $form->field($model2, 'Room_Id')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model2,  'Name')->textInput(['maxlength' => true]) ?> 
-
-    <?= $form->field($model2, 'Floor')->textInput() ?>
+  
 
     <?= $form->field($model2, 'Status')->dropDownList(['1'=>'ว่าง','2'=>'ถูกจอง','3'=>'ถูกเช่า','4'=>'ไม่พร้อมใช้งาน'],['prompt'=>'กรุณาเลือกสถานะ']) ?>
 

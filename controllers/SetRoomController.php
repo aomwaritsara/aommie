@@ -81,8 +81,14 @@ class SetRoomController extends Controller
         $model = new SetRoom();
         $model2 = new Room();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()&&$model2->load(Yii::$app->request->post()) && $model2->save()) {
-            
+        if ($model->load(Yii::$app->request->post()) ) {
+              $model->save();
+            // $model2 = SetRoom::find()->where(['Room_Id' => $model->Room_Id],['Apart_Id' => $model->Apart_Id])->one();
+              $model2->load(Yii::$app->request->post());
+              $model2->Apart_Id = $model->Apart_Id;
+             $model2->Room_Id = $model->Room_Id;
+           
+             $model2->save();
             return $this->redirect(['view', 'Apart_Id' => $model->Apart_Id, 'Room_Id' => $model->Room_Id]);
         } else {
             return $this->render('create', [

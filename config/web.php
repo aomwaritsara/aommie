@@ -11,6 +11,7 @@ $config = [
    // 'layout'=>'templateAdmin',
     'defaultRoute' => 'show-room',
    //'defaultRoute' => 'site',
+    'timeZone' => 'Asia/Bangkok',
    
         'modules' => [
     'user' => [

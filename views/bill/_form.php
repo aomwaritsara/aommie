@@ -20,7 +20,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'DateFrom')->textInput() ?>
 
-    <?= $form->field($model, 'Sor_Id')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'Service_Id')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'CurrentDate')->textInput() ?>
 

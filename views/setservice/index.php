@@ -26,7 +26,15 @@ $this->params['breadcrumbs'][] = $this->title;
 
             //'Apart_Id',
             'Room_Id',
-            'Type',
+             ['attribute'=>'Type',
+            'contentOptions' => ['class'=>'text-center'],
+            'content'=>function($data){
+               $Type=['A'=>"<label>ทั่วไป</label>",'B'=>"<label>ร้านค้า</label>"];
+               return $Type[$data->Type];
+            },
+           
+            'filter' =>Html::activeDropDownList($searchModel,'Type',['A'=>'ทั่วไป','B'=>'ร้านค้า'],['class'=>'form-control','prompt'=>'เลือกประเภท']),
+ ],
             //'Price',
            // 'Eletricity',
             // 'Watersupply',

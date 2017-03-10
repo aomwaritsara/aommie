@@ -26,24 +26,28 @@ use app\models\Room;
 
     <?= $form->field($model, 'Deposit')->textinput() ?>
     
-    <?= $form->field($model, 'Booking_Date')->widget(DateTimePicker::classname(), [
-    'language' => 'th',
-        'readonly'=> true,
+    <?= $form->field($model, 'Booking_Date')->textinput([ 
+      'readonly'=> true,
       'pluginOptions' => [
-        'format' => 'yyyy-mm-dd hh:ii:ss'
+      'language' => 'th',
+     'format' => 'yyyy-mm-dd hh:ii:ss',
+          //$model2->Status = $model->Status;
+      $model->Booking_Date = date('Y-m-d h:i:s')
     ]
-]) ?> 
+])  ?> 
 
     <?= $form->field($model, 'Status')->dropDownList([3=>'ใช้งาน'],['prompt'=>''])  ?>
      
 
-    <?= $form->field($model, 'Datestatus')->widget(DateTimePicker::classname(), [
-    'language' => 'th',
-         'readonly'=> true,
+    <?= $form->field($model, 'Datestatus')->textinput([ 
+      'readonly'=> true,
       'pluginOptions' => [
-        'format' => 'yyyy-mm-dd hh:ii:ss'
+      'language' => 'th',
+     'format' => 'yyyy-mm-dd hh:ii:ss',
+          //$model2->Status = $model->Status;
+      $model->Datestatus = date('Y-m-d h:i:s')
     ]
-]) ?>
+])  ?> 
 
 
  

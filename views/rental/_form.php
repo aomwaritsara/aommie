@@ -16,27 +16,37 @@ use kartik\datetime\DateTimePicker;
 
     <?= $form->field($model, 'Apart_Id')->dropDownList(ArrayHelper::map(Room::find()->distinct('Apart_Id')->where("Status='3'")->all(),'Apart_Id','Apart_Id')) ?>
 
-    <?= $form->field($model, 'Room_Id')->dropDownList(ArrayHelper::map(Room::find()->where("Status='3'")->all(),'Room_Id','Room_Id'),['prompt'=>'เลือกห้อง']) ?>
+    <?= $form->field($model, 'Room_Id')->dropDownList(ArrayHelper::map(Room::find()->where("Status='1'")->orWhere("Status='3'")->all(),'Room_Id','Room_Id'),['prompt'=>'เลือกห้อง']) ?>
 
     <?= $form->field($model, 'Cus_Id')->widget(\yii\widgets\MaskedInput::className(), [
     'mask' => '9999999999999', ]) ?>
 
 
-    <?= $form->field($model, 'DateFrom')->widget(DateTimePicker::classname(), [
-    'language' => 'th',
-        'readonly'=> true,
+    <?= $form->field($model, 'DateFrom')->textinput([ 
+      'readonly'=> true,
       'pluginOptions' => [
-        'format' => 'yyyy-mm-dd hh:ii:ss'
+      'language' => 'th',
+     'format' => 'yyyy-mm-dd hh:ii:ss',
+      $model->DateFrom = date('Y-m-d h:i:s')
     ]
-]) ?> 
+])  ?> 
 
-    <?= $form->field($model, 'DateTo')->widget(DateTimePicker::classname(), [
+    <?= $form->field($model, 'DateTo')->textinput([ 
+      //'readonly'=> true,
+      'pluginOptions' => [
+      'language' => 'th',
+     'format' => 'yyyy-mm-dd hh:ii:ss',
+      $model->DateTo = date('Y-m-d h:i:s')
+    ]
+])->widget(DateTimePicker::classname(), [
     'language' => 'th',
         'readonly'=> true,
       'pluginOptions' => [
         'format' => 'yyyy-mm-dd hh:ii:ss'
     ]
-]) ?> 
+])  ?> 
+
+
 
     <?= $form->field($model, 'NumCus')->textInput() ?>
 

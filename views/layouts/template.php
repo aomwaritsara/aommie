@@ -37,7 +37,7 @@ AppAsset::register($this);
       <span class="logo-lg"><b>Apartment</b></span>
     </a>
 
- <?php 
+ <!-- ?php 
 
     NavBar::begin([
         
@@ -57,7 +57,7 @@ AppAsset::register($this);
         ],
     ]);
     NavBar::end();  
-    ?> 
+    ?>  -->
 
      
     <!-- Header Navbar: style can be found in header.less -->

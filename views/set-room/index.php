@@ -40,7 +40,7 @@ $this->params['breadcrumbs'][] = $this->title;
                return $Type[$data->Type];
             },
            
-            'filter' =>Html::activeDropDownList($searchModel,'Type',['A'=>'ทั่วไป','B'=>'ร้านค้า'],['class'=>'form-control','prompt'=>'เลือกสถานะ']),
+            'filter' =>Html::activeDropDownList($searchModel,'Type',['A'=>'ทั่วไป','B'=>'ร้านค้า'],['class'=>'form-control','prompt'=>'เลือกประเภท']),
  ],
 
             ['class' => 'yii\grid\ActionColumn'],

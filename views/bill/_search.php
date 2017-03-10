@@ -23,7 +23,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'DateFrom') ?>
 
-    <?= $form->field($model, 'Sor_Id') ?>
+    <?= $form->field($model, 'Service_Id') ?>
 
     <?php // echo $form->field($model, 'CurrentDate') ?>
 

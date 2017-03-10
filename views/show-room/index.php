@@ -3,6 +3,7 @@ use app\models\Roomtype;
 use yii\helpers\Html;
 use yii\widgets\LinkPager;
 
+
 ?>
 
 <?php 
@@ -72,7 +73,8 @@ use yii\widgets\LinkPager;
                                         <p>ชั้น   :<?= $room["Floor"]   ; ?> </p> 
                                         <p>สถานะห้อง :<?= $room["Status"]; ?> </p> 
                                         <p>ประเภทห้อง :<?= $room["Type"]; ?> </p> 
-                                        <p>ราคา <?= $room["Price"]    ; ?> </p> 
+                                        <p>ราคา :<?= $room["Price"]    ; ?> </p> 
+                                        
                                         <!-- <p>ผู้จอง/ผู้เช่า <?//= "Cusname"    ; ?> </p> --> 
                                         <!-- <p>จำนวนผู้เข้าพัก <?//= "CusNumber"    ; ?> </p> --> 
                                         <!-- <p>เงินประกันห้อง <?//= "Money"   ; ?> </p>  -->

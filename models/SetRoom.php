@@ -47,12 +47,12 @@ class SetRoom extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'Apart_Id' => 'Apart  ID',
-            'Room_Id' => 'Room  ID',
-            'Type' => 'Type',
-            'Price' => 'Price',
-            'Eletricity' => 'Eletricity',
-            'Watersupply' => 'Watersupply',
+            'Apart_Id' => 'รหัสอพาร์ตเมนต์',
+            'Room_Id' => 'รหัสห้องพัก',
+            'Type' => 'ประเภท',
+            'Price' => 'ราคา',
+            'Eletricity' => 'อัตราค่าไฟฟ้า/ยูนิต',
+            'Watersupply' => 'อัตราค่าน้ำ/คน',
 
         ];
     }
@@ -77,6 +77,7 @@ class SetRoom extends \yii\db\ActiveRecord
         return $this->hasOne(Room::className(), ['Room_Id' => 'Room_Id']);
     }
 
+ 
   
    
 }
