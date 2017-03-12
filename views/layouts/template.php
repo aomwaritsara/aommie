@@ -13,7 +13,7 @@ use yii\helpers\Url;
 
 AppAsset::register($this);
 ?>
-<?php $this->beginPage() ?>
+<?php   $this->beginPage() ?>
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>">
 <head>
@@ -37,14 +37,14 @@ AppAsset::register($this);
       <span class="logo-lg"><b>Apartment</b></span>
     </a>
 
- <!-- ?php 
+ <?php 
 
-    NavBar::begin([
+     NavBar::begin([
         
         'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
+             'class' => 'navbar-inverse navbar-fixed-top',
         ],
-    ]);
+     ]);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
@@ -57,7 +57,7 @@ AppAsset::register($this);
         ],
     ]);
     NavBar::end();  
-    ?>  -->
+    ?> 
 
      
     <!-- Header Navbar: style can be found in header.less -->

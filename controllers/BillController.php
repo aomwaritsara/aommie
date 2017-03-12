@@ -111,8 +111,7 @@ class BillController extends Controller
 
         return $this->redirect(['index']);
     }
-
-    public function actionChange($Apart_Id, $Room_Id, $Cus_Id)
+public function actionChange($Apart_Id, $Room_Id, $Cus_Id)
     {
         $bill = $this->findModel($Apart_Id, $Room_Id, $Cus_Id);
         

@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\Room;
 use app\models\Booking;
+use app\models\Deposit;
 use app\models\BookingSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -70,12 +71,21 @@ class BookingController extends Controller
     {
         $model = new Booking();
         $model2 = new Room();
+        $model3 = new Deposit();
 
         if ($model->load(Yii::$app->request->post()) &&$model->save() ){
              $model2 = Room::find()->where(['Room_Id' => $model->Room_Id])->one();
              // Yii::log('start calculating average revenue');
              $model2->Status = $model->Status;
              $model2->save();
+            
+             $model3->Apart_Id = $model->Apart_Id;
+             $model3->Room_Id = $model->Room_Id;
+             $model3->Cus_Id = $model->Cus_Id;
+             $model3->Price = $model->Deposit;
+             $model3->Status = '1';
+             var_dump($model3);
+            $model3->save();
             return $this->redirect(['view', 'Apart_Id' => $model->Apart_Id, 'Room_Id' => $model->Room_Id, 'Cus_Id' => $model->Cus_Id]);
         } else {
             return $this->render('create', [

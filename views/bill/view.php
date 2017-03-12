@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'Room_Id',
             'Cus_Id',
             'DateFrom',
-            'Service_Id',
+            'SoR_Id',
             'CurrentDate',
             'Elec_Used',
             'Water_Used',

@@ -3,7 +3,6 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\helpers\Url;
-
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\BillSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -29,16 +28,15 @@ $this->params['breadcrumbs'][] = $this->title;
             'Room_Id',
             //'Cus_Id',
             //'DateFrom',
-       
+           // 'SoR_Id',
             // 'CurrentDate',
             // 'Elec_Used',
             // 'Water_Used',
             // 'Cost',
             // 'Unit',
-            'TotalAmount',
-             //'PaymentStatus',
-              
-                ['attribute'=>'สถานะการจ่ายเงิน',
+             'TotalAmount',
+            // 'PaymentStatus',
+             ['attribute'=>'สถานะการจ่ายเงิน',
             'contentOptions' => ['class'=>'text-center'],
             'content'=>function($data){
                $PaymentStatus=['0'=>"<label>ยังไม่ได้จ่าย</label>",'1'=>"<label>จ่ายแล้ว</label>"];
@@ -62,3 +60,5 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]); ?>
 </div>
+
+           
