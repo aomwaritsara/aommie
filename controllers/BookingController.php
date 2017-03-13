@@ -84,12 +84,13 @@ class BookingController extends Controller
              $model3->Cus_Id = $model->Cus_Id;
              $model3->Price = $model->Deposit;
              $model3->Status = '1';
-             var_dump($model3);
+            
             $model3->save();
             return $this->redirect(['view', 'Apart_Id' => $model->Apart_Id, 'Room_Id' => $model->Room_Id, 'Cus_Id' => $model->Cus_Id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
+                
                 
             ]);
         }
@@ -105,14 +106,33 @@ class BookingController extends Controller
      */
     public function actionUpdate($Apart_Id, $Room_Id, $Cus_Id)
     {
-        $model = $this->findModel($Apart_Id, $Room_Id, $Cus_Id);
-      
+        $model = new Booking();
+        $model2 = new Room();
+        $model3 = new Deposit();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        $model = $this->findModel($Apart_Id, $Room_Id, $Cus_Id);
+       // $model2 = $this->findModel($Apart_Id, $Room_Id);
+       // $model2 = $this->findModel($Apart_Id, $Room_Id);
+
+     if ($model->load(Yii::$app->request->post()) &&$model->save() ){
+           $model2 ->Room_Id= $model->Room_Id;
+             // Yii::log('start calculating average revenue');
+             $model2->Status = $model->Status;
+             $model2->save();
+            
+             $model3->Apart_Id = $model->Apart_Id;
+             $model3->Room_Id = $model->Room_Id;
+             $model3->Cus_Id = $model->Cus_Id;
+             $model3->Price = $model->Deposit;
+             $model3->Status = $model->Status;
+              $model3->save();
+
+           
             return $this->redirect(['view', 'Apart_Id' => $model->Apart_Id, 'Room_Id' => $model->Room_Id, 'Cus_Id' => $model->Cus_Id]);
         } else {
             return $this->render('update', [
                 'model' => $model,
+                'Room_Id'=>$Room_Id,
             ]);
         }
     }

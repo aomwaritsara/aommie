@@ -3,16 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Rent;
-use app\models\RentSearch;
+use app\models\Service;
+use app\models\ServiceSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * RentController implements the CRUD actions for Rent model.
+ * ServiceController implements the CRUD actions for Service model.
  */
-class RentController extends Controller
+class ServiceController extends Controller
 {
     /**
      * @inheritdoc
@@ -30,23 +30,14 @@ class RentController extends Controller
     }
 
     /**
-     * Lists all Rent models.
+     * Lists all Service models.
      * @return mixed
      */
     public function actionIndex()
     {
- 
-
-
-        $searchModel = new RentSearch(['Status' => '3']);
-
-// $searchModel = new CotizacionSearch(
-//               [ 'idEjecutivo' => 1,
-//                'status' => 'DRAFT', ]
-//         );
-
-        
+        $searchModel = new ServiceSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
@@ -54,29 +45,28 @@ class RentController extends Controller
     }
 
     /**
-     * Displays a single Rent model.
-     * @param integer $Apart_Id
-     * @param string $Room_Id
+     * Displays a single Service model.
+     * @param string $id
      * @return mixed
      */
-    public function actionView($Apart_Id, $Room_Id)
+    public function actionView($id)
     {
         return $this->render('view', [
-            'model' => $this->findModel($Apart_Id, $Room_Id),
+            'model' => $this->findModel($id),
         ]);
     }
 
     /**
-     * Creates a new Rent model.
+     * Creates a new Service model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Rent();
+        $model = new Service();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'Apart_Id' => $model->Apart_Id, 'Room_Id' => $model->Room_Id]);
+            return $this->redirect(['view', 'id' => $model->Service_Id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -85,18 +75,17 @@ class RentController extends Controller
     }
 
     /**
-     * Updates an existing Rent model.
+     * Updates an existing Service model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $Apart_Id
-     * @param string $Room_Id
+     * @param string $id
      * @return mixed
      */
-    public function actionUpdate($Apart_Id, $Room_Id)
+    public function actionUpdate($id)
     {
-        $model = $this->findModel($Apart_Id, $Room_Id);
+        $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'Apart_Id' => $model->Apart_Id, 'Room_Id' => $model->Room_Id]);
+            return $this->redirect(['view', 'id' => $model->Service_Id]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -105,30 +94,28 @@ class RentController extends Controller
     }
 
     /**
-     * Deletes an existing Rent model.
+     * Deletes an existing Service model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $Apart_Id
-     * @param string $Room_Id
+     * @param string $id
      * @return mixed
      */
-    public function actionDelete($Apart_Id, $Room_Id)
+    public function actionDelete($id)
     {
-        $this->findModel($Apart_Id, $Room_Id)->delete();
+        $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
     }
 
     /**
-     * Finds the Rent model based on its primary key value.
+     * Finds the Service model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $Apart_Id
-     * @param string $Room_Id
-     * @return Rent the loaded model
+     * @param string $id
+     * @return Service the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($Apart_Id, $Room_Id)
+    protected function findModel($id)
     {
-        if (($model = Rent::findOne(['Apart_Id' => $Apart_Id, 'Room_Id' => $Room_Id])) !== null) {
+        if (($model = Service::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

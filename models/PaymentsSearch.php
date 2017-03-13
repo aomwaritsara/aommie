@@ -5,12 +5,12 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Setservice;
+use app\models\Payments;
 
 /**
- * SetserviceSearch represents the model behind the search form about `app\models\Setservice`.
+ * PaymentsSearch represents the model behind the search form about `app\models\Payments`.
  */
-class SetserviceSearch extends Setservice
+class PaymentsSearch extends Payments
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class SetserviceSearch extends Setservice
     public function rules()
     {
         return [
-            [['Apart_Id', 'Price', 'Eletricity', 'Watersupply'], 'integer'],
-            [['Room_Id', 'Type'], 'safe'],
+            [['Apart_Id', 'Elec_Used', 'Water_Used', 'Cost', 'TotalAmount'], 'integer'],
+            [['Room_Id', 'Cus_Id', 'DateFrom', 'SoR_Id', 'CurrentDate', 'Unit', 'PaymentStatus'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class SetserviceSearch extends Setservice
      */
     public function search($params)
     {
-        $query = Setservice::find();
+        $query = Payments::find();
 
         // add conditions that should always apply here
 
@@ -60,13 +60,19 @@ class SetserviceSearch extends Setservice
         // grid filtering conditions
         $query->andFilterWhere([
             'Apart_Id' => $this->Apart_Id,
-            'Price' => $this->Price,
-            'Eletricity' => $this->Eletricity,
-            'Watersupply' => $this->Watersupply,
+            'DateFrom' => $this->DateFrom,
+            'CurrentDate' => $this->CurrentDate,
+            'Elec_Used' => $this->Elec_Used,
+            'Water_Used' => $this->Water_Used,
+            'Cost' => $this->Cost,
+            'TotalAmount' => $this->TotalAmount,
         ]);
 
         $query->andFilterWhere(['like', 'Room_Id', $this->Room_Id])
-            ->andFilterWhere(['like', 'Type', $this->Type]);
+            ->andFilterWhere(['like', 'Cus_Id', $this->Cus_Id])
+            ->andFilterWhere(['like', 'SoR_Id', $this->SoR_Id])
+            ->andFilterWhere(['like', 'Unit', $this->Unit])
+            ->andFilterWhere(['like', 'PaymentStatus', $this->PaymentStatus]);
 
         return $dataProvider;
     }

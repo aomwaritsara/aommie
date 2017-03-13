@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\helpers\Url;
-
+use yii\helpers\ArrayHelper;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\PaymentSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -27,9 +27,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
             //'Apart_Id',
             'Room_Id',
-          //  'Cus_Id',
-           // 'DateFrom',
-            //'Sor_Id',
+           // 'Cus_Id',
+            //'DateFrom',
+           //'SoR_Id',
             // 'CurrentDate',
             // 'Elec_Used',
             // 'Water_Used',
@@ -39,16 +39,16 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'PaymentStatus',
 
             [
-                'attribute'=>'บันทึก',
+                'attribute'=>'Action',
 
                 'content'=>function($data){
-                return Html::a ('<i class="glyphicon glyphiconfile"></i>บันทึก', Url::to (['booking/create']),['class'=>'btn btn-xs btn-primary']);
+                return Html::a ('<i class="glyphicon glyphiconfile"></i>เก็บเงิน', Url::to (['payment/create','Room_Id'=>$data->Room_Id]),['class'=>'btn btn-xs btn-primary']);
 
             },
             'contentOptions'=>['class'=>'text center']
             ],
 
-            ['class' => 'yii\grid\ActionColumn'],
+            //['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
 </div>

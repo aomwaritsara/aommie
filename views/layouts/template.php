@@ -142,7 +142,7 @@ AppAsset::register($this);
           <ul class="treeview-menu">
             <li><a href="<?= Url::to(['staff/index']) ?>"><i class="fa fa-check-square"></i> แก้ไขข้อมูลผู้ประกอบการ</a></li>
             <li ><a href="<?= Url::to(['set-room/index']) ?>"><i class="fa fa-check-square"></i> ตั้งค่าอพาร์ตเมนต์</a></li>
-            <li ><a href="<?= Url::to(['setservice/index']) ?>"><i class="fa fa-check-square"></i> ตั้งค่าอัตราค่าใช้จ่าย</a></li>
+            <li ><a href="<?= Url::to(['service/index']) ?>"><i class="fa fa-check-square"></i> ตั้งค่าอัตราค่าใช้จ่าย</a></li>
           </ul>
         </li>
 

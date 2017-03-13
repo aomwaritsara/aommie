@@ -45,7 +45,7 @@ class Service extends \yii\db\ActiveRecord
             'Service_Id' => 'รหัสบริการเสริม',
             'Name' => 'ชื่อบริการเสริม',
             'Price' => 'ราคา',
-            'Unit' => 'จำนวน',
+            'Unit' => 'หน่วย',
         ];
     }
 }

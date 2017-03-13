@@ -16,10 +16,22 @@ use kartik\datetime\DateTimePicker;
 
     <?= $form->field($model, 'Apart_Id')->dropDownList(ArrayHelper::map(Room::find()->distinct('Apart_Id')->where("Status='3'")->all(),'Apart_Id','Apart_Id')) ?>
 
-    <?= $form->field($model, 'Room_Id')->dropDownList(ArrayHelper::map(Room::find()->where("Status='1'")->orWhere("Status='3'")->all(),'Room_Id','Room_Id'),['prompt'=>'เลือกห้อง']) ?>
+<?php if ($isUpdated == 0): ?>
+   <?= $form->field($model, 'Room_Id')->dropDownList(ArrayHelper::map(Room::find()->where("Status='1'")->orWhere("Status='3'")->all(),'Room_Id','Room_Id'),['prompt'=>'เลือกห้อง']) ?>
+<?php   endif;   ?>
 
-    <?= $form->field($model, 'Cus_Id')->widget(\yii\widgets\MaskedInput::className(), [
+<?php if ($isUpdated == 1): ?>
+   <?= $form->field($model, 'Room_Id')->textinput(['readonly'=>true,'value'=>$model->Room_Id]) ?>
+<?php   endif;   ?>
+
+   <?php if ($isUpdated == 0): ?>
+   <?= $form->field($model, 'Cus_Id')->widget(\yii\widgets\MaskedInput::className(), [
     'mask' => '9999999999999', ]) ?>
+    <?php   endif;   ?>
+
+<?php if ($isUpdated == 1): ?>
+    <?= $form->field($model, 'Cus_Id')->textinput(['readonly'=>true,'value'=>$model->Cus_Id])?>
+    <?php   endif;   ?>
 
 
     <?= $form->field($model, 'DateFrom')->textinput([ 

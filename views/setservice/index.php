@@ -35,6 +35,8 @@ $this->params['breadcrumbs'][] = $this->title;
            
             'filter' =>Html::activeDropDownList($searchModel,'Type',['A'=>'ทั่วไป','B'=>'ร้านค้า'],['class'=>'form-control','prompt'=>'เลือกประเภท']),
  ],
+            'sevice.Name',
+             
             //'Price',
            // 'Eletricity',
             // 'Watersupply',
