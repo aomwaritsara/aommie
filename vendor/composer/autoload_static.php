@@ -18,13 +18,11 @@ class ComposerStaticInita65027638dbcb0fbc556cd4a962e5625
         'y' => 
         array (
             'yii\\swiftmailer\\' => 16,
-            'yii\\httpclient\\' => 15,
             'yii\\gii\\' => 8,
             'yii\\faker\\' => 10,
             'yii\\debug\\' => 10,
             'yii\\composer\\' => 13,
             'yii\\bootstrap\\' => 14,
-            'yii\\authclient\\' => 15,
             'yii\\' => 4,
         ),
         'p' => 
@@ -35,10 +33,6 @@ class ComposerStaticInita65027638dbcb0fbc556cd4a962e5625
         array (
             'kartik\\datetime\\' => 16,
             'kartik\\base\\' => 12,
-        ),
-        'd' => 
-        array (
-            'dektrium\\user\\' => 14,
         ),
         'c' => 
         array (
@@ -90,10 +84,6 @@ class ComposerStaticInita65027638dbcb0fbc556cd4a962e5625
         array (
             0 => __DIR__ . '/..' . '/yiisoft/yii2-swiftmailer',
         ),
-        'yii\\httpclient\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/yiisoft/yii2-httpclient',
-        ),
         'yii\\gii\\' => 
         array (
             0 => __DIR__ . '/..' . '/yiisoft/yii2-gii',
@@ -114,10 +104,6 @@ class ComposerStaticInita65027638dbcb0fbc556cd4a962e5625
         array (
             0 => __DIR__ . '/..' . '/yiisoft/yii2-bootstrap',
         ),
-        'yii\\authclient\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/yiisoft/yii2-authclient',
-        ),
         'yii\\' => 
         array (
             0 => __DIR__ . '/..' . '/yiisoft/yii2',
@@ -135,10 +121,6 @@ class ComposerStaticInita65027638dbcb0fbc556cd4a962e5625
         'kartik\\base\\' => 
         array (
             0 => __DIR__ . '/..' . '/kartik-v/yii2-krajee-base',
-        ),
-        'dektrium\\user\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/dektrium/yii2-user',
         ),
         'cebe\\markdown\\' => 
         array (
@@ -260,6 +242,10 @@ class ComposerStaticInita65027638dbcb0fbc556cd4a962e5625
         'File_Iterator' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Iterator.php',
         'File_Iterator_Facade' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Facade.php',
         'File_Iterator_Factory' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Factory.php',
+        'PHPUnit\\Framework\\Assert' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/Assert.php',
+        'PHPUnit\\Framework\\BaseTestListener' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/BaseTestListener.php',
+        'PHPUnit\\Framework\\TestCase' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/TestCase.php',
+        'PHPUnit\\Framework\\TestListener' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/TestListener.php',
         'PHPUnit_Exception' => __DIR__ . '/..' . '/phpunit/phpunit/src/Exception.php',
         'PHPUnit_Extensions_GroupTestSuite' => __DIR__ . '/..' . '/phpunit/phpunit/src/Extensions/GroupTestSuite.php',
         'PHPUnit_Extensions_PhptTestCase' => __DIR__ . '/..' . '/phpunit/phpunit/src/Extensions/PhptTestCase.php',
@@ -587,6 +573,7 @@ class ComposerStaticInita65027638dbcb0fbc556cd4a962e5625
         'PHP_Token_NEW' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_NS_C' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_NS_SEPARATOR' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
+        'PHP_Token_NULLSAFE_OBJECT_OPERATOR' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_NUM_STRING' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_OBJECT_CAST' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_OBJECT_OPERATOR' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',

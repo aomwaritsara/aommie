@@ -12,16 +12,7 @@ $config = [
     'defaultRoute' => 'show-room',
    //'defaultRoute' => 'site',
     'timeZone' => 'Asia/Bangkok',
-   
-        'modules' => [
-    'user' => [
-        'class' => 'dektrium\user\Module',
-        'enableUnconfirmedLogin' => true,
-        'confirmWithin' => 21600,
-        'cost' => 12,
-        'admins' => ['admin']
-    ],
-],
+
  'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
@@ -41,6 +32,11 @@ $config = [
             // 'useFileTransport' to false and configure a transport
             // for the mailer to send real emails.
             'useFileTransport' => true,
+        ],
+
+        'user' => [
+            'identityClass' => 'app\models\User',
+            'enableAutoLogin' => true,
         ],
 
         'log' => [

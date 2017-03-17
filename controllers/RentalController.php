@@ -73,7 +73,7 @@ class RentalController extends Controller
              // Yii::log('start calculating average revenue');
              $model2->Status = $model->Status;
              $model2->save();
-            return $this->redirect(['view', 'Apart_Id' => $model->Apart_Id, 'Room_Id' => $model->Room_Id, 'Cus_Id' => $model->Cus_Id]);
+            return $this->redirect(['printrent/index', 'Apart_Id' => $model->Apart_Id, 'Room_Id' => $model->Room_Id, 'Cus_Id' => $model->Cus_Id]);
         } else {
             return $this->render('create', [
                 'model' => $model,

@@ -38,7 +38,7 @@ AppAsset::register($this);
     </a>
 
  <?php 
-
+/*
      NavBar::begin([
         
         'options' => [
@@ -57,6 +57,7 @@ AppAsset::register($this);
         ],
     ]);
     NavBar::end();  
+    */
     ?> 
 
      
