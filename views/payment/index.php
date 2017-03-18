@@ -1,81 +1,54 @@
 <?php
+
 use yii\helpers\Html;
-use yii\widgets\LinkPager;
+use yii\grid\GridView;
+use yii\helpers\Url;
+use yii\helpers\ArrayHelper;
+/* @var $this yii\web\View */
+/* @var $searchModel app\models\PaymentSearch */
+/* @var $dataProvider yii\data\ActiveDataProvider */
+
+$this->title = 'Payments';
+$this->params['breadcrumbs'][] = $this->title;
 ?>
+<div class="payment-index">
 
-<form align=center>
-<div class="box box-success" align="center">
-	<div class="box-header with-border">
-      <p><h4>ใบวางบิล</p>
-      <p>อินเตอร์เรสสิเด้นท์</h4></p>
-      <p>เลขที่ A 0000388822   วันที่ 28/12/2559</p>
-      <p>ห้อง 325 ชื่อ มานะ ใจดี</p>
-      <p> ประจำเดือน มกราคม</p>
-       <table border="1" width="500" align="center">
-        
-        <tr bgcolor="skyblue">
-            <td colspan="3" >รายการ </td> <td>จำนวน</td><td>หน่วย</td> <td>ราคา</td>
-                                 
-        </tr>
-        
-     <tr>
-		 <td colspan="3">ค่าห้องพัก</td> <td>1</td><td>1</td> <td>2700</td>
-     </tr>
+    <h1><?= Html::encode($this->title) ?></h1>
+    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-      <tr>
-      	<td colspan="3">ค่าน้ำประปา</td> <td>2</td><td>100</td> <td>200</td>
-     </tr>
+    <p>
+        <?= Html::a('Create Payment', ['create'], ['class' => 'btn btn-success']) ?>
+    </p>
+    <?= GridView::widget([
+        'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
+        'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
 
-      <tr>
-     	<td colspan="3">ค่าไฟฟ้า</td> <td>10</td><td>7</td> <td>70</td>
-     </tr>
+            //'Apart_Id',
+            'Room_Id',
+           // 'Cus_Id',
+            //'DateFrom',
+           //'SoR_Id',
+            // 'CurrentDate',
+            // 'Elec_Used',
+            // 'Water_Used',
+            // 'Cost',
+            // 'Unit',
+            // 'TotalAmount',
+            // 'PaymentStatus',
 
-      <tr>
-        <td colspan="3">ค่าอินเทอร์เน็ต</td> <td>2</td><td>300</td> <td>600</td>
-     </tr>
-       
-    </table>
-    <p>รวม.......................................................................................... 3570 บาท</p>
-       <p>---------------------------------------------------------------------------------------------------------------------------------------------</p>
-    </div>
-	
- <p><h4>ใบวางบิล</p>
-      <p>อินเตอร์เรสสิเด้นท์</h4></p>
-      <p>เลขที่ A 0006688992  วันที่ 28/12/2559</p>
-      <p>ห้อง 326 ชื่อ มานี มีใจ</p>
-      <p> ประจำเดือน มกราคม</p>
-      <table border="1" width="500" align="center">
-        
-        <tr bgcolor="skyblue" >
-            <td >รายการ </td> <td>จำนวน</td><td>หน่วย</td> <td>ราคา</td>
-                                 
-        </tr>
-        
-     <tr>
-		 <td >ค่าห้องพัก</td> <td>1</td><td>1</td> <td>2700</td>
-     </tr>
+            [
+                'attribute'=>'Action',
 
-      <tr>
-      	<td >ค่าน้ำประปา</td> <td>2</td><td>100</td> <td>200</td>
-     </tr>
+                'content'=>function($data){
+                return Html::a ('<i class="glyphicon glyphiconfile"></i>เก็บเงิน', Url::to (['payment/create','Room_Id'=>$data->Room_Id]),['class'=>'btn btn-xs btn-primary']);
 
-      <tr>
-     	<td >ค่าไฟฟ้า</td> <td>20</td><td>7</td> <td>140</td>
-     </tr>
+            },
+            'contentOptions'=>['class'=>'text center']
+            ],
 
-      <tr>
-        <td >ค่าอินเทอร์เน็ต</td> <td>2</td><td>300</td> <td>600</td>
-     </tr>
-       
-    </table>
-    <p>รวม.......................................................................................... 3640 บาท</p>
-       <p>---------------------------------------------------------------------------------------------------------------------------------------------</p>
-<div > </div> <button >พิมพ์</button>
-
-
+            //['class' => 'yii\grid\ActionColumn'],
+        ],
+    ]); ?>
 </div>
-</form>
-
-
-
-

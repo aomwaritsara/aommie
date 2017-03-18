@@ -6,6 +6,7 @@ use yii\widgets\LinkPager;
 ?>
 <h1>ใบเสร็จชำระเงิน</h1>
 
+
 <form align=center>
 <div class="box box-success" align="center">
 	<div class="box-header with-border">
@@ -14,6 +15,7 @@ use yii\widgets\LinkPager;
       <p>เลขที่ A 0000388822   วันที่ 6/01/2560</p>
       <p>ห้อง 325 ชื่อ มานะ ใจดี</p>
       <p> ประจำเดือน มกราคม </p>
+ 
        <table border="1" width="500" align="center">
         
         <tr bgcolor="skyblue">

@@ -37,11 +37,12 @@ class Booking extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['Apart_Id', 'Room_Id', 'Cus_Id', 'Booking_Date', 'Status', 'Datestatus'], 'required'],
+            [['Apart_Id', 'Room_Id', 'Cus_Id','Deposit', 'Booking_Date', 'Status', 'Datestatus'], 'required'],
             [['Apart_Id'], 'integer'],
             [['Booking_Date', 'Datestatus'], 'safe'],
             [['Room_Id'], 'string', 'max' => 10],
             [['Cus_Id'], 'string', 'max' => 13],
+            [['Deposit'], 'integer'],
             [['Status'], 'string', 'max' => 1],
             [['Apart_Id'], 'exist', 'skipOnError' => true, 'targetClass' => Room::className(), 'targetAttribute' => ['Apart_Id' => 'Apart_Id']],
             [['Room_Id'], 'exist', 'skipOnError' => true, 'targetClass' => Room::className(), 'targetAttribute' => ['Room_Id' => 'Room_Id']],
@@ -55,12 +56,13 @@ class Booking extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'Apart_Id' => 'Apart  ID',
-            'Room_Id' => 'Room  ID',
-            'Cus_Id' => 'Cus  ID',
-            'Booking_Date' => 'Booking  Date',
-            'Status' => 'Status',
-            'Datestatus' => 'Datestatus',
+            'Apart_Id' => 'รหัสอพาร์ตเมนต์',
+            'Room_Id' => 'รหัสห้องพัก',
+            'Cus_Id' => 'รหัสประจำตัวประชาชน',
+            'Deposit' => 'เงินมัดจำ',
+            'Booking_Date' => 'วันที่จอง',
+            'Status' => 'สถานะการจอง ',
+            'Datestatus' => 'วันที่เปลี่ยนสถานะ',
         ];
     }
 
@@ -83,10 +85,10 @@ class Booking extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getCus()
-    {
-        return $this->hasOne(Customer::className(), ['Cus_Id' => 'Cus_Id']);
-    }
+    // public function getCus()
+    // {
+    //     return $this->hasOne(Customer::className(), ['Cus_Id' => 'Cus_Id']);
+    // }
 
     /**
      * @return \yii\db\ActiveQuery
@@ -110,9 +112,5 @@ class Booking extends \yii\db\ActiveRecord
     public function getDeposits1()
     {
         return $this->hasMany(Deposit::className(), ['Cus_Id' => 'Cus_Id']);
-    }
-     public function getCustomer()
-    {
-        return $this->hasOne(Customer::className(), ['Cus_Id' => 'Cus_Id']);
     }
 }

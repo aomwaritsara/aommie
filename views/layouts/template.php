@@ -13,7 +13,7 @@ use yii\helpers\Url;
 
 AppAsset::register($this);
 ?>
-<?php $this->beginPage() ?>
+<?php   $this->beginPage() ?>
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>">
 <head>
@@ -37,6 +37,30 @@ AppAsset::register($this);
       <span class="logo-lg"><b>Apartment</b></span>
     </a>
 
+ <?php 
+/*
+     NavBar::begin([
+        
+        'options' => [
+             'class' => 'navbar-inverse navbar-fixed-top',
+        ],
+     ]);
+    echo Nav::widget([
+        'options' => ['class' => 'navbar-nav navbar-right'],
+        'items' => [
+            
+            Yii::$app->user->isGuest ?
+['label' => 'Sign in', 'url' => ['/user/security/login']] :
+['label' => 'Account(' . Yii::$app->user->identity->username . ')'],
+//['label' => 'Register', 'url' => ['/user/registration/register'], 'visible' => Yii::$app->user->isGuest],
+['label' => 'Logout', 'url' => ['/user/security/logout'],'linkOptions' => ['data-method' => 'post']],
+        ],
+    ]);
+    NavBar::end();  
+    */
+    ?> 
+
+     
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
       <!-- Sidebar toggle button-->
@@ -48,10 +72,10 @@ AppAsset::register($this);
 
     </nav>
   </header>
+     
   <div class="wrapper">
   <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
-
 
     <section class="sidebar" style="height: auto;">
       <!-- Sidebar user panel -->
@@ -83,7 +107,7 @@ AppAsset::register($this);
           <ul class="treeview-menu">
             <li><a href="<?= Url::to(['booking/index']) ?>"><i class="fa fa-check-square"></i> การจองห้องพัก</a></li>
             <li ><a href="<?= Url::to(['rental/index']) ?>"><i class="fa fa-check-square"></i> การเช่าห้องพัก</a></li>
-            <li ><a href="<?= Url::to(['rental/index']) ?>"><i class="fa fa-check-square"></i> การคืนห้องพัก</a></li>
+            <li ><a href="<?= Url::to(['restore/index']) ?>"><i class="fa fa-check-square"></i> การคืนห้องพัก</a></li>
           </ul>
         </li>
 
@@ -91,20 +115,14 @@ AppAsset::register($this);
         <li class="treeview">
           <a href="<?= Url::to(['customer/index']) ?>">
             <i class="fa  fa-user"></i>
-            <span>ตรวจสอบผู้เข้าพัก</span>
+            <span>ข้อมูลส่วนตัวผู้เข้าพัก</span>
          </a>
         </li>
 
-        <li>
-          <a href="<?= Url::to(['history/index']) ?>">
-            <i class="fa  fa-dashboard"></i> <span>บันทึกเลขมิเตอร์</span>
-          </a>
-        </li>
-
-        
+       
         <li>
           <a href="<?= Url::to(['payment/index']) ?>">
-            <i class="fa fa-calculator "></i> <span>ใบแจ้งหนี้รายเดือน</span>
+            <i class="fa fa-calculator "></i> <span>ใบวางบิล</span>
           </a>
         </li>
 
@@ -125,7 +143,7 @@ AppAsset::register($this);
           <ul class="treeview-menu">
             <li><a href="<?= Url::to(['staff/index']) ?>"><i class="fa fa-check-square"></i> แก้ไขข้อมูลผู้ประกอบการ</a></li>
             <li ><a href="<?= Url::to(['set-room/index']) ?>"><i class="fa fa-check-square"></i> ตั้งค่าอพาร์ตเมนต์</a></li>
-            <li ><a href="<?= Url::to(['roomtype/index']) ?>"><i class="fa fa-check-square"></i> ตั้งค่าอัตราค่าใช้จ่าย</a></li>
+            <li ><a href="<?= Url::to(['service/index']) ?>"><i class="fa fa-check-square"></i> ตั้งค่าอัตราค่าใช้จ่าย</a></li>
           </ul>
         </li>
 
@@ -167,6 +185,7 @@ AppAsset::register($this);
    
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+
         ]) ?>
         <?= $content ?> 
 

@@ -18,8 +18,8 @@ class SetRoomSearch extends SetRoom
     public function rules()
     {
         return [
-            [['Apart_Id', 'Floor'], 'integer'],
-            [['Room_Id', 'Name', 'Status'], 'safe'],
+            [['Apart_Id', 'Price', 'Eletricity', 'Watersupply'], 'integer'],
+            [['Room_Id', 'Type'], 'safe'],
         ];
     }
 
@@ -60,12 +60,14 @@ class SetRoomSearch extends SetRoom
         // grid filtering conditions
         $query->andFilterWhere([
             'Apart_Id' => $this->Apart_Id,
-            'Floor' => $this->Floor,
-        ]);
+            'Price' => $this->Price,
+            'Eletricity' => $this->Eletricity,
+            'Watersupply' => $this->Watersupply,
+           // 'room.floor'$this->floor,      
+             ]);
 
         $query->andFilterWhere(['like', 'Room_Id', $this->Room_Id])
-            ->andFilterWhere(['like', 'Name', $this->Name])
-            ->andFilterWhere(['like', 'Status', $this->Status]);
+            ->andFilterWhere(['like', 'Type', $this->Type]);
 
         return $dataProvider;
     }

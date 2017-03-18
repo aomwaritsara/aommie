@@ -7,8 +7,13 @@ $config = [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'layout'=>'template',
+    //'layout'=>'main',
+   // 'layout'=>'templateAdmin',
     'defaultRoute' => 'show-room',
-    'components' => [
+   //'defaultRoute' => 'site',
+    'timeZone' => 'Asia/Bangkok',
+
+ 'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'cyo0aOpUF0tPXq1bjHshBkI8G2L5MCxg',
@@ -16,10 +21,8 @@ $config = [
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
-        'user' => [
-            'identityClass' => 'app\models\User',
-            'enableAutoLogin' => true,
-        ],
+       
+
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
@@ -29,6 +32,11 @@ $config = [
             // 'useFileTransport' to false and configure a transport
             // for the mailer to send real emails.
             'useFileTransport' => true,
+        ],
+
+        'user' => [
+            'identityClass' => 'app\models\User',
+            'enableAutoLogin' => true,
         ],
 
         'log' => [
@@ -49,7 +57,15 @@ $config = [
             ],
         ],
         */
-    ],
+    ],    
+//  'modules' => [
+// 'user' => [
+// 'class' => 'dektrium\user\Module',
+// 'enableConfirmation' => false,
+// 'cost' => 12,
+// 'admins' => ['admin']
+// ],
+// ],
     'params' => $params,
 ];
 

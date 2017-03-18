@@ -70,4 +70,8 @@ class Roomtype extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Apartment::className(), ['Apart_Id' => 'Apart_Id'])->viaTable('room', ['Room_Id' => 'Room_Id']);
     }
+
+    
+  
+    
 }

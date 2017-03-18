@@ -22,16 +22,21 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            //['class' => 'yii\grid\SerialColumn'],
+            ['class' => 'yii\grid\SerialColumn'],
 
-            //'Apart_Id',
+           // 'Apart_Id',
             'Room_Id',
             'Cus_Id',
-            'Booking_Date',
-            'Status',
+            //'Booking_Date',
+          // 'Status',
             // 'Datestatus',
 
-            ['class' => 'yii\grid\ActionColumn'],
+           [
+                
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '{view}{update}  {changeb}',
+                'contentOptions' => ['class'=>'text center']
+            ],
         ],
     ]); ?>
 </div>

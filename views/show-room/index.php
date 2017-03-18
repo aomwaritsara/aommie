@@ -1,12 +1,14 @@
 <?php
+use app\models\Roomtype;
 use yii\helpers\Html;
 use yii\widgets\LinkPager;
+
 use app\models\Room;
 use app\models;
+
 ?>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <div class="box box-success">
-
 
 	<div class="box-header with-border">
         <h2>Room</h2> สถานะห้อง : &nbsp<div class="ic" style="background-color:#87FF8D;">&nbsp &nbsp &nbsp &nbsp</div>  ว่าง &nbsp &nbsp
@@ -75,6 +77,7 @@ use app\models;
 <div id="myModal" class="modal fade" role="dialog">
 <div class="modal-dialog">
 
+
                                     <!-- Modal content input details -->
                                     <div class="modal-content">
 
@@ -107,8 +110,8 @@ use app\models;
                                     
   </div>
 
-</div>
 
+</div>
 
 <script>
 $(document).on("click", ".open-AddBookDialog", function () {

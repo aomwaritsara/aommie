@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Booking */
 
-$this->title = $model->Apart_Id;
+$this->title = $model->Room_Id;
 $this->params['breadcrumbs'][] = ['label' => 'Bookings', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

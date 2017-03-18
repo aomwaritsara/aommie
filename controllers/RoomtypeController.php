@@ -119,7 +119,7 @@ class RoomtypeController extends Controller
      */
     protected function findModel($Apart_Id, $Room_Id)
     {
-        if (($model = Roomtype::findOne(['Apart_Id' => $Apart_Id, 'Room_Id' => $Room_Id])) !== null) {
+        if (($model = Roomtype::find(['Apart_Id' => $Apart_Id, 'Room_Id' => $Room_Id])) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

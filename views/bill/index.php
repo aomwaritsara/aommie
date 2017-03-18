@@ -1,44 +1,64 @@
 <?php
+
 use yii\helpers\Html;
-use yii\widgets\LinkPager;
+use yii\grid\GridView;
 use yii\helpers\Url;
+
+/* @var $this yii\web\View */
+/* @var $searchModel app\models\BillSearch */
+/* @var $dataProvider yii\data\ActiveDataProvider */
+
+$this->title = 'Bills';
+$this->params['breadcrumbs'][] = $this->title;
 ?>
-<h4>ใบเสร็จชำระเงิน</h4>
-<form >
-<div class="box box-success" >
-	
-	<div class="box-header with-border">
+<div class="bill-index">
 
- <table align=center border="1" width="800">
-        
-        <tr bgcolor="red" >
-            <td  >ห้อง </td> <td>ชื่อ</td><td>ราคา</td><td>สถานะการจ่ายเงิน</td> 
-                                 
-        </tr>
-        
-     <tr>
-	<td>A211</td> <td>a b</td><td>3500</td><td><input type="checkbox" value="Red">จ่ายแล้ว <input type="checkbox" value="Red">ค้างจ่าย<br></td> 
-	  </tr>
+    <h1><?= Html::encode($this->title) ?></h1>
+    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-	  <tr>
-	  <td>A212</td> <td>c d</td><td>3900</td><td><input type="checkbox" value="Red">จ่ายแล้ว<input type="checkbox" value="Red">ค้างจ่าย<br></td> 
-	  </tr>
+    <p>
+        <?= Html::a('Create Bill', ['create'], ['class' => 'btn btn-success']) ?>
+    </p>
+    <?= GridView::widget([
+        'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
+        'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
 
-	  <tr>
-	  <td>A213</td> <td>e f</td><td>3800</td><td><input type="checkbox" value="Red">จ่ายแล้ว<input type="checkbox" value="Red">ค้างจ่าย<br></td> 
-	  </tr>
+            //'Apart_Id',
+            'Room_Id',
+            //'Cus_Id',
+            //'DateFrom',
+       
+            // 'CurrentDate',
+            // 'Elec_Used',
+            // 'Water_Used',
+            // 'Cost',
+            // 'Unit',
+            'TotalAmount',
+             //'PaymentStatus',
+              
+                ['attribute'=>'สถานะการจ่ายเงิน',
+            'contentOptions' => ['class'=>'text-center'],
+            'content'=>function($data){
+               $PaymentStatus=['0'=>"<label>ยังไม่ได้จ่าย</label>",'1'=>"<label>จ่ายแล้ว</label>"];
+               return $PaymentStatus[$data->PaymentStatus];
+            },
+           
+           
+            'filter' =>Html::activeDropDownList($searchModel,'PaymentStatus',['0'=>'ยังไม่ได้จ่าย','1'=>'จ่ายแล้ว'],['class'=>'form-control','prompt'=>'เลือกสถานะ']),
 
-  	<tr>
-  	<td>A214</td> <td>h i</td><td>3780</td><td><input type="checkbox" value="Red">จ่ายแล้ว<input type="checkbox" value="Red">ค้างจ่าย<br></td> 
-	  </tr>
 
-	  <tr>
-	  <td>A215</td> <td>j k</td><td>3550</td><td><input type="checkbox" value="Red">จ่ายแล้ว<input type="checkbox" value="Red">ค้างจ่าย<br></td> 
-	  </tr>
+             ],
+             [
+                
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '{change}',
+                'contentOptions' => ['class'=>'text center']
+            ],
 
-</table>
+            
+           // ['class' => 'yii\grid\ActionColumn'],
+        ],
+    ]); ?>
 </div>
-</div>
-
-</form>
-<a href="<?= Url::to(['printbill/index']) ?>"> <div align="right" ><button>พิมใบเสร็จชำระเงิน</button></div>

@@ -23,7 +23,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'Booking_Date') ?>
 
-    <?= $form->field($model, 'Status') ?>
+    <?= $form->field($model, 'Status'),('1'="ยกเลิก") ?>
 
     <?php // echo $form->field($model, 'Datestatus') ?>
 

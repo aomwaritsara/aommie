@@ -5,10 +5,12 @@ namespace app\controllers;
 use yii\web\Controller;
 use yii\data\Pagination;
 use app\models\Room;
+use app\models\RoomSearch;
+use app\models\Roomtype;
 use yii\db\Query;
 use app\models\Rental;
 use app\models\Booking;
-use app\models\Roomtype;
+
 
 class ShowRoomController extends \yii\web\Controller
 {
@@ -16,6 +18,7 @@ class ShowRoomController extends \yii\web\Controller
   
       public function actionIndex()
     {
+
          $query = new Query();
         // $rooms = $query->orderBy('Room_Id')->all();
         $rooms = $query
@@ -60,6 +63,8 @@ class ShowRoomController extends \yii\web\Controller
     //     ]);
     // }
 
+
+   
 
 
 

@@ -1,5 +1,7 @@
 <?php
-
+use app\models\Room;
+use app\models\RoomSearch;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\grid\GridView;
 
@@ -7,7 +9,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\SetRoomSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'ตั้งค่าอพาร์ตเมนต์';
+$this->title = 'Set Rooms';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="set-room-index">
@@ -16,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('เพิ่มการตั้งค่าอพาร์ตเมนต์', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Set Room', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -24,11 +26,22 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'Apart_Id',
+           // 'Apart_Id',
             'Room_Id',
-            'Name',
-            'Floor',
-            'Status',
+            //'Type',
+            //'Price',
+            //'Eletricity',
+            // 'Watersupply',
+
+                ['attribute'=>'Type',
+            'contentOptions' => ['class'=>'text-center'],
+            'content'=>function($data){
+               $Type=['A'=>"<label>ทั่วไป</label>",'B'=>"<label>ร้านค้า</label>"];
+               return $Type[$data->Type];
+            },
+           
+            'filter' =>Html::activeDropDownList($searchModel,'Type',['A'=>'ทั่วไป','B'=>'ร้านค้า'],['class'=>'form-control','prompt'=>'เลือกประเภท']),
+ ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
