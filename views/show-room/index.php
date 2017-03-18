@@ -48,10 +48,10 @@ use app\models;
 		  	 		  	$Status_detail = "ไม่พร้อม";
 		  	 		    $color_style = "style='background-color:#FDFD96';" ;
 		  	 		 endif;   ?>
-							<div class="col-xs-6 col-sm-4 col-md-2">
+							<div class="col-xs-8 col-sm-4 col-md-2 col-lg-1">
 									<div class="borderRoom" <?= $color_style ?> >
-												<p class="h4" align="center"><?= $room["Room_Id"] ?> </p>
-												<p class="h4" align="center"><?= $Status_detail ?> </p>																					
+												<p class="hna" align="center"><?= $room["Room_Id"] ?> </p>
+												<p class="hna" align="center"><?= $Status_detail ?> </p>																					
 												<button type="button" class="eiei btn btn-info btn-responsive btn-xs center-block open-AddBookDialog" 
 												data-id="<?= $room['Room_Id'] ?>"
 												data-rname = "<?= $room['Name'] ?>"
