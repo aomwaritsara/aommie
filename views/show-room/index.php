@@ -1,9 +1,13 @@
 <?php
 use yii\helpers\Html;
 use yii\widgets\LinkPager;
+use app\models\Room;
+use app\models;
 ?>
-
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <div class="box box-success">
+
+
 	<div class="box-header with-border">
         <h2>Room</h2> สถานะห้อง : &nbsp<div class="ic" style="background-color:#87FF8D;">&nbsp &nbsp &nbsp &nbsp</div>  ว่าง &nbsp &nbsp
         	<div class="ic" style='background-color:#FF6961'>&nbsp &nbsp &nbsp &nbsp</div> ถูกเช่า  &nbsp &nbsp
@@ -28,72 +32,109 @@ use yii\widgets\LinkPager;
 		<div class="row" style="padding : 0px 30px 0px 30px">
 		<?php echo "<h2> Floor ".$floor->Floor."</h2> "; ?>
 		  <?php foreach ($rooms as $room):  ?>
-		  	 <?php if ($room->Floor == $floor->Floor): ?>
-		  	 	<?php if($room->Status == 1):
+		  	 <?php if ($room["Floor"] == $floor->Floor): ?>
+		  	 	<?php if($room["Status"] == 1):
 		  	 			$Status_detail = "ว่าง";
 		  	 			$color_style = "style='background-color:#87FF8D';" ;
-		  	 		  elseif ($room->Status == 2):
+		  	 		  elseif ($room["Status"] == 2):
 		  	 		  	$Status_detail = "ถูกเช่า";
 		  	 		    $color_style = "style='background-color:#FF6961';" ;
-		  	 		  elseif ($room->Status == 3):
+		  	 		  elseif ($room["Status"] == 3):
 		  	 		  	$Status_detail = "ถูกจอง";
 		  	 		    $color_style = "style='background-color:#CCAACC';" ;
 		  	 		  else :
 		  	 		  	$Status_detail = "ไม่พร้อม";
 		  	 		    $color_style = "style='background-color:#FDFD96';" ;
 		  	 		 endif;   ?>
-		     <div class="col-xs-6 col-sm-4 col-md-2">
-	        	<div class="borderRoom" <?= $color_style ?> >
-	                 <p class="h4" align="center"><?= $room->Room_Id ?> </p>
-	                 <p class="h4" align="center"><?= $Status_detail ?> </p>
-	                 <button type="button" class="btn btn-info btn-responsive btn-xs center-block" data-toggle="modal" data-target="#myModal<?php echo $room->Room_Id;?>">Detail</button>
-	            </div>
-	          <!--  <?php //  endif;   ?>-->
-	          <!--  <?php //endforeach; ?>-->
-	       	  </div>
+							<div class="col-xs-6 col-sm-4 col-md-2">
+									<div class="borderRoom" <?= $color_style ?> >
+												<p class="h4" align="center"><?= $room["Room_Id"] ?> </p>
+												<p class="h4" align="center"><?= $Status_detail ?> </p>																					
+												<button type="button" class="eiei btn btn-info btn-responsive btn-xs center-block open-AddBookDialog" 
+												data-id="<?= $room['Room_Id'] ?>"
+												data-rname = "<?= $room['Name'] ?>"
+												data-floor = "<?= $room['Floor'] ?>"
+												data-stat = "<?= $Status_detail ?>"
+												data-rtype = "<?= $room['Type'] ?>"
+												data-price = "<?= $room['Price'] ?>"
+												data-cname = "<?= $room['Fname'] . ' ' .$room['Lname']  ?>"
+												data-numcus = "<?= $room['NumCus'] ?>"
+												data-depos = "<?= $room['Deposit'] ?>"
+												data-toggle="modal" data-target="#myModal">Detail</button>
+									</div>
+							</div>
+	       <?php   endif;   ?>		
+	    <?php endforeach; ?>							 
+	       	   </div>  <!--end Row -->
+		 
+	 <?php endforeach; //end for floor?> 
 
 
-<div id="myModal<?php echo $room->Room_Id;?>" class="modal fade" role="dialog">
-<div class="modal-dialog modal-lg">
 
-								    <!-- Modal content input details -->
-								    <div class="modal-content">
 
-								      <div class="modal-header">
-								      
-								      		
-								        <button type="button" class="close" data-dismiss="modal">&times;
-								        </button>
-								        <h4 class="modal-title">ห้องที่ test <?=	$room->Room_Id ; ?></h4>
-								      </div>
-								      <div class="modal-body">
+<div id="myModal" class="modal fade" role="dialog">
+<div class="modal-dialog">
 
-								        <p>ห้อง <?php $room->Room_Id     ; ?> </p> 
-							
-								       <p>	<button>จอง</button>	 <button>เช่า</button> <button>คืนห้องพัก</button> </p>
+                                    <!-- Modal content input details -->
+                                    <div class="modal-content">
 
-								      </div>
-								      <div class="modal-footer">
-								        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-								      </div>
-								    </div>
-								 
-								    
-								  </div>
+                                      <div class="modal-header">
+                                      
+                                            
+                                        <button type="button" class="close" data-dismiss="modal">&times;
+                                        </button>
+                                        <h4 class="modal-title">ห้อง 
+																					<span id="roomId"> - </span>
+																				</h4>
+                                      </div>
+                                  <div class="modal-body">
 
-								</div>
-		<?php   endif;   ?>						
-	    <?php endforeach; ?>
-	 	</div>
-   	 <?php endforeach; //end for floor?> 
+                                      <h5>ชื่อห้อง: <span id="roomName">-</span></h5>
+																			<h5>Floor: <span id="roomFloor">-</span></h5>
+																			<h5>Status: <span id="roomStatus">-</span></h5>
+																			<h5>Type: <span id="roomType">-</span></h5>
+																			<h5>Price: <span id="Price">-</span></h5>
+																			<h5>Customer Name: <span id="CName">-</span></h5>
+																			<h5>Num of Customer: <span id="Number">-</span></h5>					
+																			<h5>Deposit: <span id="Deposit">-</span></h5>								
 
-   	 
+                          </div>
+                           <div class="modal-footer">
+                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                       </div>
+                      </div>
+                                 
+                                    
+  </div>
 
 </div>
 
 
-
-
-
-<!-- Modal input eieieieieiei -->
+<script>
+$(document).on("click", ".open-AddBookDialog", function () {
+      var _roomId = $(this).data('id');
+			var _roomName = $(this).data('rname');
+			var _roomFloor = $(this).data('floor');
+			var _status = $(this).data('stat');
+			var _type = $(this).data('rtype');
+			var _price = $(this).data('price');
+			var _cName = $(this).data('cname');
+			var _numC = $(this).data('numcus');
+			var _depo = $(this).data('depos');
+		// alert('eieiei');
+      $(".modal-title #roomId").text(_roomId);
+			$(".modal-body #roomName").text(_roomName);
+			$(".modal-body #roomFloor").text(_roomFloor);
+			$(".modal-body #roomStatus").text(_status);
+			$(".modal-body #roomType").text(_type);
+			$(".modal-body #Price").text(_price);
+			$(".modal-body #CName").text(_cName);
+			$(".modal-body #Number").text(_numC);
+			$(".modal-body #Deposit").text(_depo);
+			
+     // As pointed out in comments, 
+     // it is superfluous to have to manually call the modal.
+     // $('#addBookDialog').modal('show');
+});
+</script>
 
