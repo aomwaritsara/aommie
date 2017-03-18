@@ -110,10 +110,12 @@ class SiteController extends Controller
 
         $model = new LoginForm();
 
-        // return $this->render('login', [
-        //     'model' => $model,
-        // ]);
-        return $this->redirect(['site/login']);
+         $this->layout = 'main';
+         return $this->redirect(['site/login']);
+       
+       // $this ->layout ='main';
+       //  return $this ->render('login');
+
     }
 
     /**

@@ -12,12 +12,15 @@ use app\assets\AppAsset;
 use yii\helpers\Url;
 
 use yii\web\Session;
-
+// $config = [
+// 'defaultRoute' => 'apartment',
+// ];
 $session = new Session;
 $session->open();
 
 AppAsset::register($this);
 ?>
+
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>">
@@ -36,7 +39,7 @@ AppAsset::register($this);
 <header class="main-header">
 
     <!-- Logo -->
-    <a href="<?= Url::to(['show-room/index']) ?>" class="logo">
+    <a href="#" class="logo">
            
       <!-- logo for regular state and mobile devices -->
       <span class="logo-lg"><b>Apartment</b></span>
