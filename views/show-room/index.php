@@ -40,7 +40,9 @@ use app\models;
 	<?php foreach ($numFloor as $floor): ?>
 		<div class="row" style="padding : 0px 30px 0px 30px">
 		<?php echo "<h2> Floor ".$floor->Floor."</h2> "; ?>
+			 <?php $c = 0; ?>
 		  <?php foreach ($rooms as $room):  ?>
+		  	 <?php $c++; ?>
 		  	 <?php if ($room["Floor"] == $floor->Floor): ?>
 		  	 	<?php if($room["Status"] == 1):
 		  	 			$Status_detail = "ว่าง";
@@ -57,9 +59,19 @@ use app\models;
 		  	 		 endif;   ?>
 							<div class="col-xs-8 col-sm-4 col-md-2 col-lg-1">
 									<div class="borderRoom" <?= $color_style ?> >
-												<p class="hna" align="center"><?= $room["Room_Id"] ?> </p>
-												<p class="hna" align="center"><?= $Status_detail ?> </p>																					
-												<button type="button" class="eiei btn btn-info btn-responsive btn-xs center-block open-AddBookDialog" 
+										<p class="hna" align="center"><?= $room["Room_Id"] ?> </p>
+										<p class="hna" align="center"><?= $Status_detail ?> </p>
+										<?php 
+											  if($room['Status'] == 3){
+											  		$Deposit = $room['DepositBooking'];
+											  		$room['Fname'] = $deposits[$c -1]["Fname"];
+											  		$room['Lname'] = $deposits[$c -1]["Lname"];
+											  }
+											  else
+											  		$Deposit = $room['Deposit'];
+
+										?>
+										<button type="button" class="eiei btn btn-info btn-responsive btn-xs center-block open-AddBookDialog" 
 												data-id="<?= $room['Room_Id'] ?>"
 												data-rname = "<?= $room['Name'] ?>"
 												data-floor = "<?= $room['Floor'] ?>"
@@ -68,16 +80,18 @@ use app\models;
 												data-price = "<?= $room['Price'] ?>"
 												data-cname = "<?= $room['Fname'] . ' ' .$room['Lname']  ?>"
 												data-numcus = "<?= $room['NumCus'] ?>"
-												data-depos = "<?= $room['Deposit'] ?>"
+												data-depos = "<?= $Deposit ?>"
+												
 												data-toggle="modal" data-target="#myModal">Detail</button>
 									</div>
 							</div>
-	       <?php   endif;   ?>		
+	       <?php   endif;   ?>	
+
+	      	
 	    <?php endforeach; ?>							 
 	       	   </div>  <!--end Row -->
 		 
 	 <?php endforeach; //end for floor?> 
-
 
 
 
@@ -131,6 +145,7 @@ $(document).on("click", ".open-AddBookDialog", function () {
 			var _cName = $(this).data('cname');
 			var _numC = $(this).data('numcus');
 			var _depo = $(this).data('depos');
+			
 		// alert('eieiei');
       $(".modal-title #roomId").text(_roomId);
 			$(".modal-body #roomName").text(_roomName);
@@ -141,6 +156,7 @@ $(document).on("click", ".open-AddBookDialog", function () {
 			$(".modal-body #CName").text(_cName);
 			$(".modal-body #Number").text(_numC);
 			$(".modal-body #Deposit").text(_depo);
+			
 			
      // As pointed out in comments, 
      // it is superfluous to have to manually call the modal.
