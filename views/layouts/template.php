@@ -7,9 +7,16 @@
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
+use yii\bootstrap\Dropdown;
+
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 use yii\helpers\Url;
+
+use yii\web\Session;
+
+$session = new Session;
+$session->open();
 
 AppAsset::register($this);
 ?>
@@ -36,6 +43,12 @@ AppAsset::register($this);
       <!-- logo for regular state and mobile devices -->
       <span class="logo-lg"><b>Apartment</b></span>
     </a>
+
+    
+    
+                
+                
+            
 
  <?php 
 /*
@@ -84,19 +97,24 @@ AppAsset::register($this);
           <img src="dist/img/user2155.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Aom Waritsara</p>
-          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+         <?php if (isset($session['member_name'])) { ?>
+          <p><?= $session['member_name']; ?></p>
+          <a href="<?= Url::to(['site/gologout'])?>"><i class="fa fa-circle text-success">logout</i> </a>
+
+         <?php }else{ ?>
+            
+          <a href="<?= Url::to(['/site/login'])?>">Login</a>
+            
+    <?php } ?>
         </div>
       </div>
-     
+    
     
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
         <li class="header">เมนูหลัก</li>
 
         
-
-
         <li class=" treeview">
           <a href="#">
             <i class="fa  fa-bed"></i> <span>การเข้าพัก</span>

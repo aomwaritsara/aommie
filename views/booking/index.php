@@ -28,13 +28,13 @@ $this->params['breadcrumbs'][] = $this->title;
             'Room_Id',
             'Cus_Id',
             //'Booking_Date',
-          // 'Status',
+          //'Status',
             // 'Datestatus',
 
            [
                 
                 'class' => 'yii\grid\ActionColumn',
-                'template' => '{view}{update}  {changeb}',
+                'template' => '{view}{update}{delete}  {changeb}',
                 'contentOptions' => ['class'=>'text center']
             ],
         ],

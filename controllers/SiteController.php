@@ -8,6 +8,7 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use yii\web\Session;
 
 class SiteController extends Controller
 {
@@ -70,13 +71,21 @@ class SiteController extends Controller
      */
     public function actionLogin()
     {
-        if (!Yii::$app->user->isGuest) {
+        //$this->layout = 'login-layout';
+
+        $session = new Session;
+        $session->open();
+
+        if (isset($session['member_name'])) {
             return $this->goHome();
         }
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
+            $session['member_name'] = $model->getName();
+            $session['staff_id'] = $model->getId();
+            $session['type'] = $model->getType();
+            return $this->goHome();
         }
         return $this->render('login', [
             'model' => $model,
@@ -88,11 +97,23 @@ class SiteController extends Controller
      *
      * @return string
      */
-    public function actionLogout()
+    public function actionGologout()
     {
-        Yii::$app->user->logout();
+        //$this->layout = 'site_main';
+        $session = new Session;
+        $session->open();
 
-        return $this->goHome();
+        unset($session['member_name']);
+        unset($session['staff_id']);
+
+        $session->close();
+
+        $model = new LoginForm();
+
+        // return $this->render('login', [
+        //     'model' => $model,
+        // ]);
+        return $this->redirect(['site/login']);
     }
 
     /**

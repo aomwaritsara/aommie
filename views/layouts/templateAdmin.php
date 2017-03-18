@@ -11,6 +11,11 @@ use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 use yii\helpers\Url;
 
+use yii\web\Session;
+
+$session = new Session;
+$session->open();
+
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
@@ -60,11 +65,17 @@ AppAsset::register($this);
           <img src="dist/img/user2155.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Aom Waritsara</p>
-          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+         <?php if (isset($session['member_name'])) { ?>
+          <p><?= $session['member_name']; ?></p>
+          <a href="<?= Url::to(['site/gologout'])?>"><i class="fa fa-circle text-success">logout</i> </a>
+
+         <?php }else{ ?>
+            
+          <a href="<?= Url::to(['/site/login'])?>">Login</a>
+            
+    <?php } ?>
         </div>
       </div>
-     
     
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">

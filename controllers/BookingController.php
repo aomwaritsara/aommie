@@ -11,6 +11,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\base\Model;
+use yii\db\Query;
 
 use yii\helpers\ArrayHelper;
 /**
@@ -120,12 +121,13 @@ class BookingController extends Controller
              $model2->Status = $model->Status;
              $model2->save();
             
-             $model3->Apart_Id = $model->Apart_Id;
-             $model3->Room_Id = $model->Room_Id;
-             $model3->Cus_Id = $model->Cus_Id;
-             $model3->Price = $model->Deposit;
-             $model3->Status = $model->Status;
-              $model3->save();
+             // $model3->Apart_Id = $model->Apart_Id;
+             // $model3->Room_Id = $model->Room_Id;
+             // $model3->Cus_Id = $model->Cus_Id;
+            //  $model3->load(Yii::$app->request->post())
+            // // $model3->Price = $model->Deposit;
+            //  $model3->Status = $model->Status;
+            //   $model3->save();
 
            
             return $this->redirect(['view', 'Apart_Id' => $model->Apart_Id, 'Room_Id' => $model->Room_Id, 'Cus_Id' => $model->Cus_Id]);
@@ -158,22 +160,31 @@ class BookingController extends Controller
         $booking = $this->findModel($Apart_Id, $Room_Id, $Cus_Id);
          $model2 = Room::find()->where(['Room_Id' => $booking->Room_Id])->one();
         
-        if($booking->Status == '3')
+        if($booking->Status == '3')//สถานะที่ส่งมาจากroomถ้าถูกจองห้อง
         {
-            $booking->Status = '2';
+            $booking->Status = '1';//เซตให้เป็น 1 เพื่อจะส่งไปRoom
             $booking->save();
+            (new Query)
+         ->createCommand()
+        ->delete('booking', ['Status' => '1'])
+        ->execute(); 
+               
               $model2->Status = '1';
              $model2->save();
             return $this->redirect(['index']);
         }
         else
         {
-            $booking->Status = '1';
-            $booking->save();
-            $model2->Status = $booking->Status;
-             $model2->save();
-            return $this->redirect(['index']);
+            // $booking->Status = '1';//ถ้ายกเลิก
+            // $booking->save();
+
+            // $model2->Status = $booking->Status;
+            //  $model2->save();
+         
+            // return $this->redirect(['index']);
         }
+       
+
     }
 
     /**

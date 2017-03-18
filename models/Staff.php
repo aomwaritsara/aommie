@@ -61,4 +61,56 @@ class Staff extends \yii\db\ActiveRecord
             'Type' => 'Type',
         ];
     }
+
+    public static function findByUsername($username)
+    {
+        $myuser = Staff::find()->all();
+        foreach ($myuser as $key => $value) {
+            if (strcasecmp($value['Username'], $username) === 0) {
+                return new static($value);
+            }
+        }
+
+        return null;
+    }
+
+    public function validatePassword($password)
+    {
+        return $this->Password === $password;
+    }
+
+    public static function getName($username)
+    {
+        $myuser = Staff::find()->all();
+        foreach ($myuser as $key => $value) {
+            if (strcasecmp($value['Username'], $username) === 0) {
+                return $value['Username'];
+            }
+        }
+
+        return null;
+    }
+    public static function getId($username)
+    {
+        $myuser = Staff::find()->all();
+        foreach ($myuser as $key => $value) {
+            if (strcasecmp($value['Username'], $username) === 0) {
+                return $value['Staff_Id'];
+            }
+        }
+        
+        return null;
+    }
+
+    public static function getType($username)
+    {
+        $myuser = Staff::find()->all();
+        foreach ($myuser as $key => $value) {
+            if (strcasecmp($value['Username'], $username) === 0) {
+                return $value['Type'];
+            }
+        }
+        
+        return null;
+    }
 }

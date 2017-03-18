@@ -13,7 +13,7 @@ use yii\base\Model;
  */
 class LoginForm extends Model
 {
-    public $email;
+    public $username;
     public $password;
     public $rememberMe = true;
 
@@ -26,8 +26,8 @@ class LoginForm extends Model
     public function rules()
     {
         return [
-            // email and password are both required
-            [['email', 'password'], 'required'],
+            // username and password are both required
+            [['username', 'password'], 'required'],
             // rememberMe must be a boolean value
             ['rememberMe', 'boolean'],
             // password is validated by validatePassword()
@@ -67,14 +67,14 @@ class LoginForm extends Model
     }
 
     /**
-     * Finds user by [[email]]
+     * Finds user by [[username]]
      *
      * @return User|null
      */
     public function getUser()
     {
         if ($this->_user === false) {
-            $this->_user = Member::findByEmail($this->email);
+            $this->_user = Staff::findByUsername($this->username);
         }
 
         return $this->_user;
@@ -82,15 +82,22 @@ class LoginForm extends Model
 
     public function getName()
     {
-        $user = Member::getEmail($this->email);
+        $user = Staff::getName($this->username);
         
         return $user;
     }
 
     public function getId()
     {
-        $user = Member::getId($this->email);
+        $user = Staff::getId($this->username);
         
         return $user;
+    }
+
+    public function getType()
+    {
+        $type = Staff::getType($this->username);
+
+        return $type;
     }
 }

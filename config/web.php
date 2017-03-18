@@ -7,8 +7,9 @@ $config = [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'layout'=>'template',
+    
     //'layout'=>'main',
-   // 'layout'=>'templateAdmin',
+   
     'defaultRoute' => 'show-room',
    //'defaultRoute' => 'site',
     'timeZone' => 'Asia/Bangkok',

@@ -10,6 +10,8 @@ use app\models\Roomtype;
 use yii\db\Query;
 use yii\models\Rental;
 use app\models\Booking;
+use yii\web\Session;
+
 
 
 class ShowRoomController extends \yii\web\Controller
@@ -18,6 +20,12 @@ class ShowRoomController extends \yii\web\Controller
   
       public function actionIndex()
     {
+        $session = new Session;
+        $session->open();
+
+        if ($session['type'] == '0') {
+           $this->layout = 'templateAdmin';
+        }
         $query = Room::find();
         $rooms = $query->orderBy('Room_Id')->all();
         $numFloor = $query->select('Floor')->distinct()->orderBy('Floor')->all();
