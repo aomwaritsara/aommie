@@ -106,7 +106,7 @@ public function actionUpdate($Apart_Id, $Room_Id)
         // $model2 = new Room();
 
         $model = $this->findModel($Apart_Id, $Room_Id);
-         $model2= $this->findModel2($model->Apart_Id,$model->Room_Id);
+        $model2= $this->findModel2($model->Apart_Id,$model->Room_Id);
 
     //       $model->load(Yii::$app->request->post()) &&
     // $modelUser->load(Yii::$app->request->post()) &&
@@ -117,7 +117,7 @@ public function actionUpdate($Apart_Id, $Room_Id)
     //     }
       
         if ($model->load(Yii::$app->request->post()) &&
-            $model2->load(Yii::$app->request->post()) &&  Model::validateMultiple([$model,$model2])
+            $model2->load(Yii::$app->request->post()) 
     )   {
                     if($model->save()){
           $model2->save();

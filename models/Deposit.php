@@ -7,10 +7,10 @@ use Yii;
 /**
  * This is the model class for table "deposit".
  *
- * @property integer $Apart_Id
+ * @property int $Apart_Id
  * @property string $Room_Id
  * @property string $Cus_Id
- * @property integer $Price
+ * @property int $Price
  * @property string $Status
  *
  * @property Booking $apart

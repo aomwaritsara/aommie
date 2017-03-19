@@ -8,7 +8,7 @@ use yii\data\ActiveDataProvider;
 use app\models\Booking;
 
 /**
- * BookingSearch represents the model behind the search form about `app\models\Booking`.
+ * BookingSearch represents the model behind the search form of `app\models\Booking`.
  */
 class BookingSearch extends Booking
 {
@@ -18,7 +18,7 @@ class BookingSearch extends Booking
     public function rules()
     {
         return [
-            [['Apart_Id'], 'integer'],
+            [['Apart_Id', 'Deposit'], 'integer'],
             [['Room_Id', 'Cus_Id', 'Booking_Date', 'Status', 'Datestatus'], 'safe'],
         ];
     }
@@ -60,6 +60,7 @@ class BookingSearch extends Booking
         // grid filtering conditions
         $query->andFilterWhere([
             'Apart_Id' => $this->Apart_Id,
+            'Deposit' => $this->Deposit,
             'Booking_Date' => $this->Booking_Date,
             'Datestatus' => $this->Datestatus,
         ]);

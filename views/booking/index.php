@@ -18,6 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?= Html::a('Create Booking', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
+
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -27,11 +28,12 @@ $this->params['breadcrumbs'][] = $this->title;
            // 'Apart_Id',
             'Room_Id',
             'Cus_Id',
-            //'Booking_Date',
-          //'Status',
+            'Deposit',
+           // 'Booking_Date',
+            // 'Status',
             // 'Datestatus',
 
-           [
+             [
                 
                 'class' => 'yii\grid\ActionColumn',
                 'template' => '{view}{update}{delete}  {changeb}',

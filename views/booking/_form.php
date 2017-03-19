@@ -7,7 +7,7 @@ use app\models\CustomerSearch;
 use yii\helpers\ArrayHelper;
 use kartik\datetime\DateTimePicker;
 use app\models\Room;
-//use kartik\datetime\DateTimePicker;
+
 /* @var $this yii\web\View */
 /* @var $model app\models\Booking */
 /* @var $form yii\widgets\ActiveForm */
@@ -15,7 +15,7 @@ use app\models\Room;
 
 <div class="booking-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+   <?php $form = ActiveForm::begin(); ?>
    
     
     <?= $form->field($model, 'Apart_Id')->dropDownList(ArrayHelper::map(Room::find()->distinct('Apart_Id')->where("Status='1'")->all(),'Apart_Id','Apart_Id')) ?>

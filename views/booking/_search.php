@@ -21,9 +21,11 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'Cus_Id') ?>
 
+    <?= $form->field($model, 'Deposit') ?>
+
     <?= $form->field($model, 'Booking_Date') ?>
 
-    <?= $form->field($model, 'Status'),('1'="ยกเลิก") ?>
+    <?php // echo $form->field($model, 'Status') ?>
 
     <?php // echo $form->field($model, 'Datestatus') ?>
 
