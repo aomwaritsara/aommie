@@ -8,7 +8,7 @@ use app\models\CustomerSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
+use yii\web\Session;
 /**
  * CustomerController implements the CRUD actions for Customer model.
  */
@@ -35,6 +35,12 @@ class CustomerController extends Controller
      */
     public function actionIndex()
     {
+        $session = new Session;
+        $session->open();
+
+        if ($session['type'] == '0') {
+           $this->layout = 'templateAdmin';
+        }
         $searchModel = new CustomerSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -51,6 +57,12 @@ class CustomerController extends Controller
      */
     public function actionView($id)
     {
+        $session = new Session;
+        $session->open();
+
+        if ($session['type'] == '0') {
+           $this->layout = 'templateAdmin';
+        }
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -63,6 +75,12 @@ class CustomerController extends Controller
      */
     public function actionCreate()
     {
+        $session = new Session;
+        $session->open();
+
+        if ($session['type'] == '0') {
+           $this->layout = 'templateAdmin';
+        }
         $model = new Customer();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -82,6 +100,12 @@ class CustomerController extends Controller
      */
     public function actionUpdate($id)
     {
+        $session = new Session;
+        $session->open();
+
+        if ($session['type'] == '0') {
+           $this->layout = 'templateAdmin';
+        }
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -101,6 +125,12 @@ class CustomerController extends Controller
      */
     public function actionDelete($id)
     {
+        $session = new Session;
+        $session->open();
+
+        if ($session['type'] == '0') {
+           $this->layout = 'templateAdmin';
+        }
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
@@ -115,6 +145,12 @@ class CustomerController extends Controller
      */
     protected function findModel($id)
     {
+        $session = new Session;
+        $session->open();
+
+        if ($session['type'] == '0') {
+           $this->layout = 'templateAdmin';
+        }
         if (($model = Customer::findOne($id)) !== null) {
             return $model;
         } else {

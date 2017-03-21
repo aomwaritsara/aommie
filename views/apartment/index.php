@@ -6,7 +6,10 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\ApartmentSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
+use yii\web\Session;
 
+$session = new Session;
+$session->open();
 $this->title = 'Apartments';
 $this->params['breadcrumbs'][] = $this->title;
 ?>

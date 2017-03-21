@@ -71,7 +71,7 @@ class SiteController extends Controller
      */
     public function actionLogin()
     {
-        //$this->layout = 'login-layout';
+        $this->layout = 'login-layout';
 
         $session = new Session;
         $session->open();

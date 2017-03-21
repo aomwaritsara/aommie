@@ -8,7 +8,7 @@ use app\models\ApartmentSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
+use yii\web\Session;
 /**
  * ApartmentController implements the CRUD actions for Apartment model.
  */
@@ -38,6 +38,12 @@ class ApartmentController extends Controller
         $searchModel = new ApartmentSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
+$session = new Session;
+        $session->open();
+
+        if ($session['type'] == '0') {
+           $this->layout = 'templateAdmin';
+        }
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
@@ -51,6 +57,12 @@ class ApartmentController extends Controller
      */
     public function actionView($id)
     {
+        $session = new Session;
+        $session->open();
+
+        if ($session['type'] == '0') {
+           $this->layout = 'templateAdmin';
+        }
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -63,6 +75,12 @@ class ApartmentController extends Controller
      */
     public function actionCreate()
     {
+        $session = new Session;
+        $session->open();
+
+        if ($session['type'] == '0') {
+           $this->layout = 'templateAdmin';
+        }
         $model = new Apartment();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -82,6 +100,12 @@ class ApartmentController extends Controller
      */
     public function actionUpdate($id)
     {
+        $session = new Session;
+        $session->open();
+
+        if ($session['type'] == '0') {
+           $this->layout = 'templateAdmin';
+        }
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -101,6 +125,12 @@ class ApartmentController extends Controller
      */
     public function actionDelete($id)
     {
+        $session = new Session;
+        $session->open();
+
+        if ($session['type'] == '0') {
+           $this->layout = 'templateAdmin';
+        }
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
@@ -115,6 +145,12 @@ class ApartmentController extends Controller
      */
     protected function findModel($id)
     {
+        $session = new Session;
+        $session->open();
+
+        if ($session['type'] == '0') {
+           $this->layout = 'templateAdmin';
+        }
         if (($model = Apartment::findOne($id)) !== null) {
             return $model;
         } else {

@@ -4,7 +4,10 @@ use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Apartment */
+use yii\web\Session;
 
+$session = new Session;
+$session->open();
 $this->title = 'Update Apartment: ' . $model->Name;
 $this->params['breadcrumbs'][] = ['label' => 'Apartments', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->Name, 'url' => ['view', 'id' => $model->Apart_Id]];

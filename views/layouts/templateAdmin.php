@@ -10,11 +10,11 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 use yii\helpers\Url;
-
-use yii\web\Session;
 // $config = [
 // 'defaultRoute' => 'apartment',
 // ];
+use yii\web\Session;
+
 $session = new Session;
 $session->open();
 

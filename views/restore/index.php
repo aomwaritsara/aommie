@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
            // 'DateTo',
             // 'NumCus',
             // 'Deposit',
-             'Status',
+            //'Status',
              [
                 'attribute'=>'คืนห้องพัก',
                 'content'=>function($data){
@@ -41,7 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'contentOptions'=>['class'=>'text center']
             ],
 
-            ['class' => 'yii\grid\ActionColumn'],
+           // ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
 </div>

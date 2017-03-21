@@ -14,12 +14,20 @@ use app\assets\AppAsset;
 use yii\helpers\Url;
 
 use yii\web\Session;
-
+$config = [
+'layout'=>'template',
+'defaultRoute' => 'show-room'
+// $this ->layout ='show-room';
+];
 $session = new Session;
 $session->open();
 
+// if ($session==null){
+  
+// }
 AppAsset::register($this);
 ?>
+
 <?php   $this->beginPage() ?>
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>">

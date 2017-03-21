@@ -5,7 +5,10 @@ use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Apartment */
+use yii\web\Session;
 
+$session = new Session;
+$session->open();
 $this->title = 'Create Apartment';
 $this->params['breadcrumbs'][] = ['label' => 'Apartments', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
