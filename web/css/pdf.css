@@ -1,0 +1,19 @@
+/*
+* @Author: aomwaritsara
+* @Date:   2017-03-21 22:10:35
+* @Last Modified by:   aomwaritsara
+* @Last Modified time: 2017-03-21 22:10:55
+*/
+body{
+    font-family: "Garuda";
+    font-size: 10pt;
+}
+
+.table_bordered{
+    border: 1px solid #000;
+    margin-bottom: 10px;
+}
+.table_bordered td{
+    border:0.5px solid #000;
+    padding: 3px;
+}
