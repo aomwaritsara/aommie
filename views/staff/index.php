@@ -18,6 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="box-header with-border  " >
         <h4>จัดการข้อมูลผู้ประกอบการ</h4>
     <div class="box-tools pull-right">
+    
                 <?= Html::a('<span class = "fa fa-plus"></span>เพิ่มข้อมูลผู้ประกอบการ', ['create'], ['class' => 'btn btn-block btn-primary ']) ?>
           
     </div>

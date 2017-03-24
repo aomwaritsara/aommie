@@ -15,7 +15,7 @@ class PrintrentController extends \yii\web\Controller
     public function actionIndex($Apart_Id ,$Room_Id ,$Cus_Id)
     {    
       $model =$this -> findModel($Apart_Id ,$Room_Id ,$Cus_Id);
-       $model2 =$this -> findModel2($Cus_Id);
+        $model2 =$this -> findModel2($Cus_Id);
 
      $pdf = new Pdf([
             'mode' => Pdf::MODE_UTF8,
@@ -27,7 +27,7 @@ class PrintrentController extends \yii\web\Controller
             // // stream to browser inline
              'destination' => Pdf::DEST_BROWSER,
             // your html content input
-            'content' => $this->renderPartial('index',['model'=>$model,'model2' => $model2,]),
+            'content' => $this->renderPartial('index',['model'=>$model,'model2'=>$model2]),
             // format content from your own css file if needed or use the
             // enhanced bootstrap css built by Krajee for mPDF formatting
              'cssFile' => '@vendor/kartik-v/yii2-mpdf/assets/kv-mpdf-bootstrap.min.css',
@@ -48,6 +48,8 @@ class PrintrentController extends \yii\web\Controller
     
         // return the pdf output as per the destination setting
         return $pdf->render();
+
+       
     }
        protected function findModel($Apart_Id, $Room_Id, $Cus_Id)
     {
@@ -60,6 +62,14 @@ class PrintrentController extends \yii\web\Controller
      protected function findModel2($Cus_Id)
     {
         if (($model = Customer::findOne([ 'Cus_Id' => $Cus_Id])) !== null) {
+            return $model;
+        } else {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+    }
+    protected function findModel3($Apart_Id, $Room_Id, $Cus_Id)
+    {
+    if (($model = Rental::find('Apart_Id','Room_Id','Cus_Id')->where("Status='2'")->all())!== null){
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

@@ -6,16 +6,14 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\FinancialApartment */
 
-$this->title = 'Create Financial Apartment';
+$this->title = 'เพิ่มข้อมูลค่าใช้จ่ายกิจการ';
 $this->params['breadcrumbs'][] = ['label' => 'Financial Apartments', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="financial-apartment-create">
-<div class="financial-apartment-index">
-
-   <div class="box box-info box-solid">
+<div class="box box-info box-solid">
             <div class="box-header with-border">
-    <h4>ค่าใช้จ่ายกิจการ</h4>
+    <h4>เพิ่มข้อมูลค่าใช้จ่ายกิจการ</h4>
     <div class="box-tools pull-right">
                 
                

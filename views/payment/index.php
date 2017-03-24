@@ -3,22 +3,28 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\helpers\Url;
-use yii\helpers\ArrayHelper;
+
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\PaymentSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Payments';
+$this->title = 'ใบวางบิล';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="payment-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <div class="box box-info box-solid">
+            <div class="box-header with-border">
+    <h4>ใบวางบิล</h4>
+    <div class="box-tools pull-right">
+                <?= Html::a('<span class = "fa fa-plus"></span>พิมพ์ใบวางบิล', ['print-payment/index'], ['class' => 'btn btn-block btn-primary ']) ?>
+               
+              </div>
+              <!-- /.box-tools -->
+            </div>
 
-    <p>
-       <!--  <?= Html::a('Create Payment', ['create'], ['class' => 'btn btn-success']) ?> -->
-    </p>
+    
+  
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -27,28 +33,25 @@ $this->params['breadcrumbs'][] = $this->title;
 
             //'Apart_Id',
             'Room_Id',
-           // 'Cus_Id',
+            'Cus_Id',
             //'DateFrom',
-           //'SoR_Id',
-            // 'CurrentDate',
-            // 'Elec_Used',
-            // 'Water_Used',
-            // 'Cost',
-            // 'Unit',
-            // 'TotalAmount',
-            // 'PaymentStatus',
-
-            [
+            //'DateTo',
+            // 'NumCus',
+            // 'Deposit',
+            // 'Status',
+[
                 'attribute'=>'Action',
 
                 'content'=>function($data){
-                return Html::a ('<i class="glyphicon glyphiconfile"></i>เก็บเงิน', Url::to (['payment/create','Room_Id'=>$data->Room_Id]),['class'=>'btn btn-xs btn-primary']);
+                return Html::a ('<i class="glyphicon glyphiconfile"></i>เก็บเงิน', Url::to (['payment/create','Apart_Id'=>$data->Apart_Id,'Room_Id'=>$data->Room_Id,'Cus_Id'=>$data->Cus_Id]),['class'=>'btn btn-xs btn-primary']);
 
             },
             'contentOptions'=>['class'=>'text center']
             ],
 
-            //['class' => 'yii\grid\ActionColumn'],
+           // ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
 </div>
+
+        

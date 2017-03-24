@@ -47,7 +47,8 @@ class ShowRoomController extends \yii\web\Controller
                  ->leftJoin('roomtype', 'roomtype.Room_Id = room.Room_Id')               
                  ->leftJoin('rental', 'rental.Room_Id = roomtype.Room_Id AND rental.Apart_Id = roomtype.Apart_Id')                                        
                  ->leftJoin('customer', 'customer.Cus_Id = rental.Cus_Id')    
-                  ->leftJoin('booking', 'booking.Room_Id = room.Room_Id')                  
+                  ->leftJoin('booking', 'booking.Room_Id = room.Room_Id') 
+                  ->orderBy('room.Room_Id')                 
                  ->createCommand()                                                      
                  ->queryAll();
 

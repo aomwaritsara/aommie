@@ -96,7 +96,7 @@ AppAsset::register($this);
         </li>
 
         <li>
-          <a href="<?= Url::to(['customer/index']) ?>">
+          <a href="<?= Url::to(['staff/index']) ?>">
             <i class="fa  fa-dashboard"></i> <span>จัดการสิทธิ์ผู้ประกอบการ</span>
           </a>
         </li>

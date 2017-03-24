@@ -23,21 +23,13 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'DateFrom') ?>
 
-    <?= $form->field($model, 'SoR_Id') ?>
+    <?= $form->field($model, 'DateTo') ?>
 
-    <?php // echo $form->field($model, 'CurrentDate') ?>
+    <?php // echo $form->field($model, 'NumCus') ?>
 
-    <?php // echo $form->field($model, 'Elec_Used') ?>
+    <?php // echo $form->field($model, 'Deposit') ?>
 
-    <?php // echo $form->field($model, 'Water_Used') ?>
-
-    <?php // echo $form->field($model, 'Cost') ?>
-
-    <?php // echo $form->field($model, 'Unit') ?>
-
-    <?php // echo $form->field($model, 'TotalAmount') ?>
-
-    <?php // echo $form->field($model, 'PaymentStatus') ?>
+    <?php // echo $form->field($model, 'Status') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

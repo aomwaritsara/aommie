@@ -14,13 +14,10 @@ use app\assets\AppAsset;
 use yii\helpers\Url;
 
 use yii\web\Session;
-$config = [
-'layout'=>'template',
-'defaultRoute' => 'show-room'
-// $this ->layout ='show-room';
-];
+
 $session = new Session;
 $session->open();
+
 
 // if ($session==null){
   
@@ -53,33 +50,11 @@ AppAsset::register($this);
     </a>
 
     
-    
-                
-                
+               
+             
             
 
- <?php 
-/*
-     NavBar::begin([
-        
-        'options' => [
-             'class' => 'navbar-inverse navbar-fixed-top',
-        ],
-     ]);
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => [
-            
-            Yii::$app->user->isGuest ?
-['label' => 'Sign in', 'url' => ['/user/security/login']] :
-['label' => 'Account(' . Yii::$app->user->identity->username . ')'],
-//['label' => 'Register', 'url' => ['/user/registration/register'], 'visible' => Yii::$app->user->isGuest],
-['label' => 'Logout', 'url' => ['/user/security/logout'],'linkOptions' => ['data-method' => 'post']],
-        ],
-    ]);
-    NavBar::end();  
-    */
-    ?> 
+
 
      
     <!-- Header Navbar: style can be found in header.less -->
@@ -167,7 +142,7 @@ AppAsset::register($this);
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?= Url::to(['staff/index']) ?>"><i class="fa fa-check-square"></i> แก้ไขข้อมูลผู้ประกอบการ</a></li>
+            <!-- <li><a href="<?= Url::to(['staff/index']) ?>"><i class="fa fa-check-square"></i> แก้ไขข้อมูลผู้ประกอบการ</a></li> -->
             <li ><a href="<?= Url::to(['set-room/index']) ?>"><i class="fa fa-check-square"></i> ตั้งค่าอพาร์ตเมนต์</a></li>
             <li ><a href="<?= Url::to(['service/index']) ?>"><i class="fa fa-check-square"></i> ตั้งค่าอัตราค่าใช้จ่าย</a></li>
           </ul>
@@ -190,7 +165,7 @@ AppAsset::register($this);
           </a>
           <ul class="treeview-menu">
             <li><a href="pages/charts/chartjs.html"><i class="fa fa-check-square"></i> รายงานการเช่าห้องพัก</a></li>
-            <li><a href="pages/charts/morris.html"><i class="fa fa-check-square"></i> รายงานการคืนห้องพัก</a></li>
+            <li><a href="<?= Url::to(['restore-report/index']) ?>"><i  class="fa fa-check-square"></i> รายงานการคืนห้องพัก</a></li>
             <li><a href="pages/charts/flot.html"><i class="fa fa-check-square"></i> รายงานการรับเงินเฉพาะค่าห้อง</a></li>
             <li><a href="pages/charts/inline.html"><i class="fa fa-check-square"></i> รายงานการรับเงินรวม</a></li>
             <li><a href="pages/charts/inline.html"><i class="fa fa-check-square"></i> รายงานรายรับ – รายจ่าย</a></li>

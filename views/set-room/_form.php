@@ -18,7 +18,7 @@ use yii\helpers\ArrayHelper;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'Apart_Id')->textInput() ?>
+    <?= $form->field($model, 'Apart_Id')->textInput(['readonly'=> true,'value'=>'1']) ?>
 
     <?= $form->field($model, 'Room_Id')->textInput(['maxlength' => true]) ?>
 
@@ -26,12 +26,12 @@ use yii\helpers\ArrayHelper;
     
   <?= $form->field($model2,  'Name')->textInput(['maxlength' => true]) ?> 
 
-    <?= $form->field($model2, 'Floor')->textInput() ?>
-    <?= $form->field($model, 'Price')->textInput() ?>
+    <?= $form->field($model2, 'Floor')->textInput(['readonly'=> true,'value'=>'3']) ?>
+    <?= $form->field($model, 'Price')->textInput(['readonly'=> true,'value'=>'2700']) ?>
 
-    <?= $form->field($model, 'Eletricity')->textInput() ?>
+    <?= $form->field($model, 'Eletricity')->textInput(['readonly'=> true,'value'=>'7']) ?>
 
-    <?= $form->field($model, 'Watersupply')->textInput() ?>
+    <?= $form->field($model, 'Watersupply')->textInput(['readonly'=> true,'value'=>'100']) ?>
 
 
 

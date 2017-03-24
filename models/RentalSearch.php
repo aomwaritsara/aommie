@@ -68,7 +68,7 @@ class RentalSearch extends Rental
 
         $query->andFilterWhere(['like', 'Room_Id', $this->Room_Id])
             ->andFilterWhere(['like', 'Cus_Id', $this->Cus_Id])
-            ->andFilterWhere(['like', 'Status', $this->Status]);
+            ->andFilterWhere(['like', 'Status', $this->Status='2']);
 
         return $dataProvider;
     }

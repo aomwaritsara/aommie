@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\FinancialApartmentSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Financial Apartments';
+$this->title = 'ค่าใช้จ่ายกิจการ';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="financial-apartment-index">
@@ -34,7 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'Name',
             // 'Amount',
              //'Price',
-            // 'TotalPrice',
+            'TotalPrice',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

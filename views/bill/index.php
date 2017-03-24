@@ -12,13 +12,15 @@ $this->title = 'Bills';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="bill-index">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
-    <p>
-        <!-- <?= Html::a('Create Bill', ['create'], ['class' => 'btn btn-success']) ?> -->
-    </p>
+<div class="box box-info box-solid">
+            <div class="box-header with-border">
+    <h4>ใบเสร็จชำระเงิน</h4>
+    <div class="box-tools pull-right">
+                <?= Html::a('<span class = "fa fa-plus"></span>พิมพ์ใบเสร็จชำระเงิน', ['create'], ['class' => 'btn btn-block btn-primary ']) ?>
+               
+              </div>
+              <!-- /.box-tools -->
+            </div>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,

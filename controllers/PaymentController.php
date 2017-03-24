@@ -8,6 +8,8 @@ use app\models\PaymentSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\helpers\ArrayHelper;
+use app\models\History;
 
 /**
  * PaymentController implements the CRUD actions for Payment model.
@@ -63,15 +65,33 @@ class PaymentController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
+    public function actionCreate($Apart_Id, $Room_Id, $Cus_Id)
     {
         $model = new Payment();
+        $model2 = new History();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+         if ($model->load(Yii::$app->request->post()) ) {
+              $model->save();
+            $model2 = History::find()->where(['Apart_Id' => $model->Apart_Id,'Room_Id' => $model->Room_Id,'Cus_Id' => $model->Cus_Id])->one();
+             // Yii::log('start calculating average revenue');
+
+
+             $model2->load(Yii::$app->request->post());
+              $model2->Apart_Id = $model->Apart_Id;
+              $model2->Room_Id = $model->Room_Id;
+              $model2->Cus_Id = $model->Cus_Id;
+             //  $model2->SoR_Id = '5';
+             // $model2->Elec_Used = '7';
+             // $model2->Water_Used = $model->NumCus;
+             $model2->save();
+            
+            
+           
             return $this->redirect(['view', 'Apart_Id' => $model->Apart_Id, 'Room_Id' => $model->Room_Id, 'Cus_Id' => $model->Cus_Id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
+                'model2' => $model2
             ]);
         }
     }

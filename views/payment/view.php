@@ -32,14 +32,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'Room_Id',
             'Cus_Id',
             'DateFrom',
-            'SoR_Id',
-            'CurrentDate',
-            'Elec_Used',
-            'Water_Used',
-            'Cost',
-            'Unit',
-            'TotalAmount',
-            'PaymentStatus',
+            'DateTo',
+            'NumCus',
+            'Deposit',
+            'Status',
         ],
     ]) ?>
 

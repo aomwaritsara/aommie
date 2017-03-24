@@ -165,7 +165,7 @@ protected function findModel3($Apart_Id,$Room_Id)
     {
          $model2 = new Room();
         $booking = $this->findModel($Apart_Id, $Room_Id, $Cus_Id);
-         $model2 = Room::find()->where(['Room_Id' => $booking->Room_Id])->one();
+         $model2 = Room::find()->where(['Apart_Id' => $booking->Apart_Id,'Room_Id' => $booking->Room_Id])->one();
         
         if($booking->Status == '3')//สถานะที่ส่งมาจากroomถ้าถูกจองห้อง
         {

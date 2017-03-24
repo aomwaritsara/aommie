@@ -11,6 +11,8 @@ use Yii;
 use yii\helpers\Html;
 use yii\helpers\Url;
 
+
+
 /**
  * ActionColumn is a column for the [[GridView]] widget that displays buttons for viewing and manipulating the items.
  *
@@ -192,6 +194,16 @@ class ActionColumn extends Column
                     'data-pjax' => '0',
                 ], $this->buttonOptions);
                 return Html::a('<button class="btn btn-success">ยกเลิกการจอง</button>', $url, $options);
+            };
+        }
+        if (!isset($this->buttons['changer'])) {
+            $this->buttons['changer'] = function ($url, $model, $key) {
+                $options = array_merge([
+                    'title' => Yii::t('yii', 'Changer'),
+                    'aria-label' => Yii::t('yii', 'Changer'),
+                    'data-pjax' => '0',
+                ], $this->buttonOptions);
+                return Html::a('<button class="btn btn-primary">คืนห้องพัก</button>',  $url, $options);
             };
         }
     }

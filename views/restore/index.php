@@ -8,17 +8,20 @@ use yii\helpers\Url;
 /* @var $searchModel app\models\RestoreSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Restores';
+$this->title = 'การคืนห้องพัก';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="restore-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+   <div class="box box-info box-solid">
+            <div class="box-header with-border">
+    <h4>การคืนห้องพัก</h4>
+    <div class="box-tools pull-right">
+              
+              </div>
+              <!-- /.box-tools -->
+            </div>
 
-    <p>
-        <?= Html::a('Create Restore', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -27,20 +30,27 @@ $this->params['breadcrumbs'][] = $this->title;
 
             //'Apart_Id',
             'Room_Id',
-            //'Cus_Id',
+            'Cus_Id',
             //'DateFrom',
            // 'DateTo',
             // 'NumCus',
             // 'Deposit',
-            //'Status',
-             [
-                'attribute'=>'คืนห้องพัก',
-                'content'=>function($data){
-                return Html::a ('<i class="glyphicon glyphiconfile"></i>คืนห้องพัก', Url::to (['printbill/index']),['class'=>'btn btn-xs btn-primary']);
-            },
-            'contentOptions'=>['class'=>'text center']
+          //  'Status',
+            //  [
+            //     'attribute'=>'คืนห้องพัก',
+            //     'content'=>function($data){
+            //     return Html::a ('<i class="glyphicon glyphiconfile"></i>คืนห้องพัก', Url::to (['printbill/index']),['class'=>'btn btn-xs btn-primary']);
+            // },
+            // //'contentOptions'=>['class'=>'text center']
+            // ],
+            [
+                
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '{changer}',
+                'contentOptions' => ['class'=>'text center']
             ],
 
+            
            // ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

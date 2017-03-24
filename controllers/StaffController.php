@@ -8,7 +8,7 @@ use app\models\StaffSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
+use yii\web\Session;
 /**
  * StaffController implements the CRUD actions for Staff model.
  */
@@ -35,8 +35,15 @@ class StaffController extends Controller
      */
     public function actionIndex()
     {
+
         $searchModel = new StaffSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+$session = new Session;
+        $session->open();
+          if ($session['type'] == '0') {
+           $this->layout = 'templateAdmin';
+        }
 
         return $this->render('index', [
             'searchModel' => $searchModel,
@@ -51,6 +58,11 @@ class StaffController extends Controller
      */
     public function actionView($id)
     {
+        $session = new Session;
+        $session->open();
+          if ($session['type'] == '0') {
+           $this->layout = 'templateAdmin';
+        }
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -63,6 +75,11 @@ class StaffController extends Controller
      */
     public function actionCreate()
     {
+        $session = new Session;
+        $session->open();
+          if ($session['type'] == '0') {
+           $this->layout = 'templateAdmin';
+        }
         $model = new Staff();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -82,6 +99,11 @@ class StaffController extends Controller
      */
     public function actionUpdate($id)
     {
+        $session = new Session;
+        $session->open();
+          if ($session['type'] == '0') {
+           $this->layout = 'templateAdmin';
+        }
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -101,6 +123,11 @@ class StaffController extends Controller
      */
     public function actionDelete($id)
     {
+             $session = new Session;
+        $session->open();
+          if ($session['type'] == '0') {
+           $this->layout = 'templateAdmin';
+        }
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
@@ -115,6 +142,12 @@ class StaffController extends Controller
      */
     protected function findModel($id)
     {
+         $session = new Session;
+        $session->open();
+          if ($session['type'] == '0') {
+           $this->layout = 'templateAdmin';
+        }
+
         if (($model = Staff::findOne($id)) !== null) {
             return $model;
         } else {

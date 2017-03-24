@@ -5,7 +5,6 @@
 </head>
 <body>
 
-
 <p ><h2 align="center">ใบลงทะเบียนผู้เข้าพัก</h2></p>
       <p><h4 align="center">Register Form</h4></p>
        <p></p>
@@ -13,13 +12,13 @@
        <p></p>
          <p></p>
        <p></p>
-      <p align="center">ชื่อ <?= $model2->Fname?>  นามสกุล <?= $model2->Lname?> </p>
+      <p align="center">ชื่อ <?= $model2->Fname?>  นามสกุล <?= $model2->Lname?> </p> 
       <p align="center">บัตรประจำตัว/บัตรข้าราชการ/หนังสือเดินทางเลขที่</p> 
       <p align="center"> <?= $model->Cus_Id?> </p>
-      <p align="center"> เบอร์โทรศัพท์ <?= $model2->Tel?></p>
-       <p align="center">อีเมล์ <?= $model2->Email?></p>
+       <p align="center"> เบอร์โทรศัพท์ <?= $model2->Tel?></p> 
+       <p align="center">อีเมล์ <?= $model2->Email?></p> 
       <p align="center">ที่อยู่ปัจุบัน/ที่อยู่ที่ทำงาน/สถานศึกษา (ถ้ามี)</p>
-          <p align="center">   <?= $model2->Address?>   <p>
+          <p align="center">   <?= $model2->Address?>   <p> 
        <p> <p>
        <p></p>
        <p></p>
@@ -46,5 +45,7 @@
        <p align="right" >ลายมือชื่อ</p>
        <p align="right">--------------------------------------------------------------------</p>
        <p align="right">------/------/-----------------</p>
+       
+ 
 </body>
 </html>

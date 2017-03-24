@@ -8,7 +8,7 @@ use yii\data\ActiveDataProvider;
 use app\models\Payment;
 
 /**
- * PaymentSearch represents the model behind the search form about `app\models\Payment`.
+ * PaymentSearch represents the model behind the search form of `app\models\Payment`.
  */
 class PaymentSearch extends Payment
 {
@@ -18,8 +18,8 @@ class PaymentSearch extends Payment
     public function rules()
     {
         return [
-            [['Apart_Id', 'Elec_Used', 'Water_Used', 'Cost', 'TotalAmount'], 'integer'],
-            [['Room_Id', 'Cus_Id', 'DateFrom', 'SoR_Id', 'CurrentDate', 'Unit', 'PaymentStatus'], 'safe'],
+            [['Apart_Id', 'NumCus', 'Deposit'], 'integer'],
+            [['Room_Id', 'Cus_Id', 'DateFrom', 'DateTo', 'Status'], 'safe'],
         ];
     }
 
@@ -61,18 +61,14 @@ class PaymentSearch extends Payment
         $query->andFilterWhere([
             'Apart_Id' => $this->Apart_Id,
             'DateFrom' => $this->DateFrom,
-            'CurrentDate' => $this->CurrentDate,
-            'Elec_Used' => $this->Elec_Used,
-            'Water_Used' => $this->Water_Used,
-            'Cost' => $this->Cost,
-            'TotalAmount' => $this->TotalAmount,
+            'DateTo' => $this->DateTo,
+            'NumCus' => $this->NumCus,
+            'Deposit' => $this->Deposit,
         ]);
 
         $query->andFilterWhere(['like', 'Room_Id', $this->Room_Id])
             ->andFilterWhere(['like', 'Cus_Id', $this->Cus_Id])
-            ->andFilterWhere(['like', 'SoR_Id', $this->SoR_Id])
-            ->andFilterWhere(['like', 'Unit', $this->Unit])
-            ->andFilterWhere(['like', 'PaymentStatus', $this->PaymentStatus]);
+            ->andFilterWhere(['like', 'Status', $this->Status]);
 
         return $dataProvider;
     }

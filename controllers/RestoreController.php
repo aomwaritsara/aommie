@@ -8,7 +8,7 @@ use app\models\RestoreSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
+use app\models\Room;
 /**
  * RestoreController implements the CRUD actions for Restore model.
  */
@@ -129,4 +129,27 @@ class RestoreController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+    public function actionChanger($Apart_Id, $Room_Id, $Cus_Id)
+    {
+        //$model2 = new Room();
+        $restore= $this->findModel($Apart_Id, $Room_Id, $Cus_Id);
+        
+        if($restore->Status == '2')
+        {
+            $restore->Status = '1';
+              $restore->save();
+              $model2 = Room::find()->where(['Apart_Id' => $restore->Apart_Id,'Room_Id' => $restore->Room_Id])->one();
+              $model2->Status = '1';
+              $model2->save();
+          
+            return $this->redirect(['printbill/index']);
+        }
+        // else
+        // {
+        //     $bill->PaymentStatus = '1';
+        //     $bill->save();
+        //     return $this->redirect(['index']);
+        // }
+    }
+
 }

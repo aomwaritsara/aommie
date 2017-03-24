@@ -100,17 +100,18 @@ class SiteController extends Controller
     public function actionGologout()
     {
         //$this->layout = 'site_main';
+        $this->layout = 'login-layout';
         $session = new Session;
         $session->open();
 
-        unset($session['member_name']);
-        unset($session['staff_id']);
+         unset($session['member_name']);
+         unset($session['staff_id']);
 
-        $session->close();
+       // $session->close();
 
         $model = new LoginForm();
 
-         $this->layout = 'main';
+         //$this->layout = 'main';
          return $this->redirect(['site/login']);
        
        // $this ->layout ='main';

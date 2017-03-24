@@ -5,13 +5,21 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\SetRoom */
 
-$this->title = 'Update Set Room: ' . $model->Apart_Id;
+$this->title = 'แก้ไขการตั้งค่าอพาร์ตเมนต์: ' . $model->Room_Id;
 $this->params['breadcrumbs'][] = ['label' => 'Set Rooms', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->Apart_Id, 'url' => ['view', 'Apart_Id' => $model->Apart_Id, 'Room_Id' => $model->Room_Id]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="set-room-update">
-
+<div class="box box-info box-solid">
+            <div class="box-header with-border">
+    <h4>การตั้งค่าอพาร์ตเมนต์</h4>
+    <div class="box-tools pull-right">
+                
+               
+              </div>
+              <!-- /.box-tools -->
+            </div>
     <h1><?= Html::encode($this->title) ?></h1>
 
       <?= $this->render('_form', [

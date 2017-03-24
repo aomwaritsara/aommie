@@ -6,12 +6,19 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\FinancialApartment */
 
-$this->title = $model->Name;
+$this->title = 'ค่าใช้จ่ายกิจการ';
 $this->params['breadcrumbs'][] = ['label' => 'Financial Apartments', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="financial-apartment-view">
-
+ <div class="box box-info box-solid">
+            <div class="box-header with-border">
+    <h4>ค่าใช้จ่ายกิจการ</h4>
+    <div class="box-tools pull-right">
+                
+              </div>
+              <!-- /.box-tools -->
+            </div>
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
