@@ -62,20 +62,48 @@ class SiteController extends Controller
      * @return string
      */
     public function actionIndex()
+    // {
+    //     $session = new Session;
+    //     $session->open();
+    //    // $this->layout = 'login-layout';
+
+    //     if ($session['type'] == '0') {
+    //        $this->layout = 'templateAdmin';
+    //     }
+
+    //     if ($session['type'] == '1') {
+    //        $this->layout = 'template';
+    //     }
+
+    //     return $this->render('index');
+    // }
     {
+        $this->layout = 'login-layout';
+
         $session = new Session;
         $session->open();
-        $this->layout = 'template';
 
-        if ($session['type'] == '0') {
-           $this->layout = 'templateAdmin';
+        if (isset($session['member_name'])) {
+            return $this->goHome();
         }
 
-        if ($session['type'] == '1') {
-           $this->layout = 'template';
+        $model = new LoginForm();
+        if ($model->load(Yii::$app->request->post()) && $model->login()) {
+            $session['member_name'] = $model->getName();
+            $session['staff_id'] = $model->getId();
+            $session['type'] = $model->getType();
+            
+            if ($session['type'] == '1') {
+                  return $this->redirect(['show-room/index']);
+       
+            }
+            else if ($session['type'] == '0') {
+                return $this->redirect(['apartment/index']);
+            }
         }
-
-        return $this->render('index');
+        return $this->render('login', [
+            'model' => $model,
+        ]);
     }
 
     /**

@@ -1,7 +1,8 @@
 <?php
 
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
+//use yii\widgets\ActiveForm;
+use yii\bootstrap\ActiveForm;
 use yii\models\Customer;
 use app\models\CustomerSearch;
 use yii\helpers\ArrayHelper;
@@ -15,7 +16,7 @@ use app\models\Room;
 
 <div class="booking-form">
 
-   <?php $form = ActiveForm::begin(); ?>
+   <?php $form = ActiveForm::begin(['layout' => 'horizontal']); ?>
    
     
     <?= $form->field($model, 'Apart_Id')->dropDownList(ArrayHelper::map(Room::find()->distinct('Apart_Id')->where("Status='1'")->all(),'Apart_Id','Apart_Id')) ?>
@@ -86,7 +87,7 @@ use app\models\Room;
 
 
  
-    <div class="form-group">
+    <div class="form-group" align="center">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 

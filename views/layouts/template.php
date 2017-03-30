@@ -49,14 +49,7 @@ AppAsset::register($this);
       <span class="logo-lg"><b>Apartment</b></span>
     </a>
 
-    
-               
-                    
-
-
-
-     
-    <!-- Header Navbar: style can be found in header.less -->
+        <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
       <!-- Sidebar toggle button-->
       <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
@@ -81,9 +74,9 @@ AppAsset::register($this);
         <div class="pull-left info">
          <?php if (isset($session['member_name'])) { ?>
           <p><?= $session['member_name']; ?></p>
-         <a href="<?= Url::to(['site/profile'])?>"><i class="fa fa-circle text-success">Profile</i> </a>
-            <a href="<?= Url::to(['site/password'])?>"><i class="fa fa-circle text-success">Password</i> </a>
-          <a href="<?= Url::to(['site/gologout'])?>"><i class="fa fa-circle text-success">logout</i> </a>
+         <a href="<?= Url::to(['site/profile'])?>"><i class="fa fa-circle text-primary">Profile</i> </a>
+            <a href="<?= Url::to(['site/password'])?>"><i class="fa fa-circle text-warning">EditPassword</i> </a>
+          <p><a href="<?= Url::to(['site/gologout'])?>"><i class="fa fa-circle text-danger">logout</i> </a></p>
 
          <?php }else{ ?>
             

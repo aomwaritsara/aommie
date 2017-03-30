@@ -13,7 +13,7 @@ $config = [
   // 'defaultRoute' => 'login-layout',
     
     //'defaultRoute' => 'show-room',
-   'defaultRoute' => 'site',
+   //'defaultRoute' => 'login',
     'timeZone' => 'Asia/Bangkok',
 
  'components' => [

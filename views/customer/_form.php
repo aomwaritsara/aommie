@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
+use yii\bootstrap\ActiveForm;
 use yii\helpers\Url;
 use yii\helpers\ArrayHelper;
 use kartik\datetime\DateTimePicker;
@@ -12,7 +12,7 @@ use kartik\datetime\DateTimePicker;
 
 <div class="customer-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['layout' => 'horizontal']); ?>
 
    <?= $form->field($model, 'Cus_Id')->widget(\yii\widgets\MaskedInput::className(), [
     'mask' => '9999999999999', ]) ?>
@@ -28,8 +28,8 @@ use kartik\datetime\DateTimePicker;
 
     <?= $form->field($model, 'Address')->textarea(['rows' => 6]) ?>
 
-    <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary'])?>
+    <div class="form-group" align="center">
+        <?= Html::submitButton($model->isNewRecord ? 'บันทึก' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary'])?>
     </div>
 
     <?php ActiveForm::end(); ?>

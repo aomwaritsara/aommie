@@ -69,20 +69,9 @@ AppAsset::register($this);
         <div class="pull-left info">
          <?php if (isset($session['member_name'])) { ?>
           <p><?= $session['member_name']; ?></p>
-           <!-- <li>
-    <a href="" data-toggle="dropdown" class="dropdown-toggle"><?= $session['member_name']; ?><b class="caret"></b></a>
-                            <?php
-                            echo Dropdown::widget([
-                                'items' => [
-                                    ['label' => 'Profile', 'url' => ['site/profile']],
-                                    ['label' => 'Password', 'url' => 'password'],
-                                    ['label' => 'Logout', 'url' => 'gologout'],
-                                ],
-                            ]);
-                        ?>
-                         </li> -->
-        <a href="<?= Url::to(['site/profile'])?>"><i class="fa fa-circle text-success">Profile</i> </a>
-          <a href="<?= Url::to(['site/gologout'])?>"><i class="fa fa-circle text-success">logout</i> </a>
+     
+        <p><a href="<?= Url::to(['site/profile'])?>"><i class="fa fa-circle text-info">Profile</i> </a></p>
+        <p>  <a href="<?= Url::to(['site/gologout'])?>"><i class="fa fa-circle text-danger">logout</i> </a></p>
 
          <?php }else{ ?>
             

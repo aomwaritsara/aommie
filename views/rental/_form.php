@@ -1,7 +1,7 @@
 <?php
 use app\models\Room;
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
+use yii\bootstrap\ActiveForm;
 use yii\helpers\ArrayHelper;
 use kartik\datetime\DateTimePicker;
 
@@ -12,7 +12,7 @@ use kartik\datetime\DateTimePicker;
 
 <div class="rental-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['layout' => 'horizontal']); ?>
 
     <?= $form->field($model, 'Apart_Id')->textinput(['readonly'=>true,'value'=>'1']) ?>
 
@@ -66,8 +66,8 @@ use kartik\datetime\DateTimePicker;
 
     <?= $form->field($model, 'Status')->dropDownList([2=>'ใช้งาน'],['prompt'=>''])  ?>
 
-    <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+    <div class="form-group" align="center">
+        <?= Html::submitButton($model->isNewRecord ? 'บันทึก' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

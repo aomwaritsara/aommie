@@ -148,6 +148,7 @@ class ActionColumn extends Column
                     'title' => Yii::t('yii', 'View'),
                     'aria-label' => Yii::t('yii', 'View'),
                     'data-pjax' => '0',
+                     'class'=>"btn btn-success btn-xs",
                 ], $this->buttonOptions);
                 return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', $url, $options);
             };
@@ -158,6 +159,7 @@ class ActionColumn extends Column
                     'title' => Yii::t('yii', 'Update'),
                     'aria-label' => Yii::t('yii', 'Update'),
                     'data-pjax' => '0',
+                     'class'=>"btn btn-primary btn-xs",
                 ], $this->buttonOptions);
                 return Html::a('<span class="glyphicon glyphicon-pencil"></span>', $url, $options);
             };
@@ -167,9 +169,10 @@ class ActionColumn extends Column
                 $options = array_merge([
                     'title' => Yii::t('yii', 'Delete'),
                     'aria-label' => Yii::t('yii', 'Delete'),
-                    'data-confirm' => Yii::t('yii', 'Are you sure you want to delete this item?'),
+                    'data-confirm' => Yii::t('yii', 'ยืนยันการลบ?'),
                     'data-method' => 'post',
                     'data-pjax' => '0',
+                    'class'=>"btn btn-danger btn-xs",
                 ], $this->buttonOptions);
                 return Html::a('<span class="glyphicon glyphicon-trash"></span>', $url, $options);
             };
@@ -182,8 +185,9 @@ class ActionColumn extends Column
                     'title' => Yii::t('yii', 'Change'),
                     'aria-label' => Yii::t('yii', 'Change'),
                     'data-pjax' => '0',
+
                 ], $this->buttonOptions);
-                return Html::a('<button class="btn btn-success">เปลี่ยนสถานะ</button>', $url, $options);
+                return Html::a('<button class="btn btn-primary">เปลี่ยนสถานะ</button>', $url, $options);
             };
         }
         if (!isset($this->buttons['changeb'])) {
@@ -191,9 +195,11 @@ class ActionColumn extends Column
                 $options = array_merge([
                     'title' => Yii::t('yii', 'Changeb'),
                     'aria-label' => Yii::t('yii', 'Changeb'),
+                      'data-confirm' => Yii::t('yii', 'ยืนยันยกเลิกการจอง?'),
                     'data-pjax' => '0',
+                    'class'=>"btn btn-warning btn-xs",
                 ], $this->buttonOptions);
-                return Html::a('<button class="btn btn-success">ยกเลิกการจอง</button>', $url, $options);
+                return Html::a('<span class="glyphicon glyphicon-remove"></span>', $url, $options);
             };
         }
         if (!isset($this->buttons['changer'])) {
