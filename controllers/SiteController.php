@@ -205,7 +205,7 @@ class SiteController extends Controller
                 $model->Password = md5($model->Password);
                 
                 $model->save();
-                return $this->redirect(['booking/index']);
+                return $this->redirect(['show-room/index']);
             }
         }
 
