@@ -51,8 +51,7 @@ AppAsset::register($this);
 
     
                
-             
-            
+                    
 
 
 
@@ -82,6 +81,8 @@ AppAsset::register($this);
         <div class="pull-left info">
          <?php if (isset($session['member_name'])) { ?>
           <p><?= $session['member_name']; ?></p>
+         <a href="<?= Url::to(['site/profile'])?>"><i class="fa fa-circle text-success">Profile</i> </a>
+            <a href="<?= Url::to(['site/password'])?>"><i class="fa fa-circle text-success">Password</i> </a>
           <a href="<?= Url::to(['site/gologout'])?>"><i class="fa fa-circle text-success">logout</i> </a>
 
          <?php }else{ ?>

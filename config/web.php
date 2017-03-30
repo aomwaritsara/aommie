@@ -7,13 +7,13 @@ $config = [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'layout'=>'template',
- // 'layout'=>'login-layout',
+    //'layout'=>'login-layout',
 
    
   // 'defaultRoute' => 'login-layout',
     
-    'defaultRoute' => 'show-room',
-   //'defaultRoute' => 'site',
+    //'defaultRoute' => 'show-room',
+   'defaultRoute' => 'site',
     'timeZone' => 'Asia/Bangkok',
 
  'components' => [

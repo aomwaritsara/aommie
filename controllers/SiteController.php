@@ -9,6 +9,8 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 use yii\web\Session;
+use app\models\Staff;
+use app\models\FormPassword;
 
 class SiteController extends Controller
 {
@@ -61,6 +63,18 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        $session = new Session;
+        $session->open();
+        $this->layout = 'template';
+
+        if ($session['type'] == '0') {
+           $this->layout = 'templateAdmin';
+        }
+
+        if ($session['type'] == '1') {
+           $this->layout = 'template';
+        }
+
         return $this->render('index');
     }
 
@@ -85,7 +99,14 @@ class SiteController extends Controller
             $session['member_name'] = $model->getName();
             $session['staff_id'] = $model->getId();
             $session['type'] = $model->getType();
-            return $this->goHome();
+            
+            if ($session['type'] == '1') {
+                  return $this->redirect(['show-room/index']);
+       
+            }
+            else if ($session['type'] == '0') {
+                return $this->redirect(['apartment/index']);
+            }
         }
         return $this->render('login', [
             'model' => $model,
@@ -106,6 +127,7 @@ class SiteController extends Controller
 
          unset($session['member_name']);
          unset($session['staff_id']);
+         unset($session['type']);
 
        // $session->close();
 
@@ -116,6 +138,50 @@ class SiteController extends Controller
        
        // $this ->layout ='main';
        //  return $this ->render('login');
+
+    }
+
+    public function actionProfile()
+    {
+        $session = new Session;
+        $session->open();
+        if ($session['type'] == '0') {
+           $this->layout = 'templateAdmin';
+        }
+
+        $model = Staff::findone($session['staff_id']);
+
+        return $this->render('profile', ['model' => $model]);
+
+    }
+
+    public function actionPassword()
+    {
+        $session = new Session;
+        $session->open();
+        if ($session['type'] == '0') {
+           $this->layout = 'templateAdmin';
+        }
+
+        $model = Staff::findone($session['staff_id']);
+        $current = new FormPassword();
+
+        $currentPassword = $model->Password;
+
+        if (Yii::$app->request->isPost) {
+            
+            $model->load(Yii::$app->request->post());
+            $current->load(Yii::$app->request->post());
+            if(md5($current->password) == $currentPassword)
+            {
+                $model->Password = md5($model->Password);
+                
+                $model->save();
+                return $this->redirect(['booking/index']);
+            }
+        }
+
+        return $this->render('password', ['model' => $model, 'current' => $current]);
 
     }
 

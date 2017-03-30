@@ -24,6 +24,7 @@ class ShowRoomController extends \yii\web\Controller
          $session = new Session;
         $session->open();
 
+
         if ($session['type'] == '0') {
            $this->layout = 'templateAdmin';
         }

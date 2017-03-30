@@ -11,7 +11,9 @@ use yii\web\Session;
 $session = new Session;
 $session->open();
 
+AppAsset::register($this);
 
-
-	echo $content;
  ?>
+
+
+<?php echo $content; ?>

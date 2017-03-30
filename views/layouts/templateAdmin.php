@@ -10,9 +10,8 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 use yii\helpers\Url;
-// $config = [
-// 'defaultRoute' => 'apartment',
-// ];
+
+use yii\bootstrap\Dropdown;
 use yii\web\Session;
 
 $session = new Session;
@@ -70,6 +69,19 @@ AppAsset::register($this);
         <div class="pull-left info">
          <?php if (isset($session['member_name'])) { ?>
           <p><?= $session['member_name']; ?></p>
+           <!-- <li>
+    <a href="" data-toggle="dropdown" class="dropdown-toggle"><?= $session['member_name']; ?><b class="caret"></b></a>
+                            <?php
+                            echo Dropdown::widget([
+                                'items' => [
+                                    ['label' => 'Profile', 'url' => ['site/profile']],
+                                    ['label' => 'Password', 'url' => 'password'],
+                                    ['label' => 'Logout', 'url' => 'gologout'],
+                                ],
+                            ]);
+                        ?>
+                         </li> -->
+        <a href="<?= Url::to(['site/profile'])?>"><i class="fa fa-circle text-success">Profile</i> </a>
           <a href="<?= Url::to(['site/gologout'])?>"><i class="fa fa-circle text-success">logout</i> </a>
 
          <?php }else{ ?>
@@ -79,16 +91,16 @@ AppAsset::register($this);
     <?php } ?>
         </div>
       </div>
-    
+      <li>
+      </li>
+      <li>
+      </li>
+   
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
         <li class="header">เมนูหลัก</li>
 
-        
-
-
-
-        <li class="treeview">
+              <li class="treeview">
           <a href="<?= Url::to(['apartment/index']) ?>">
             <i class="fa  fa-user"></i>
             <span>ข้อมูลอพาร์ตเมนต์</span>
@@ -101,9 +113,12 @@ AppAsset::register($this);
           </a>
         </li>
 
+       
+
         
         
       </ul>
+     
     </section>
     <!-- /.sidebar -->
   </aside>
@@ -126,3 +141,6 @@ AppAsset::register($this);
 </html>
 <?php $this->endPage() ?>
 </div>
+<script type="text/javascript">
+    $('.dropdown-toggle').dropdown();
+</script>

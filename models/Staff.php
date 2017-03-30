@@ -33,10 +33,10 @@ class Staff extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['Staff_Id', 'Username', 'Password', 'Name', 'Tel', 'Email', 'Address', 'Status', 'Type'], 'required'],
+            [['Staff_Id', 'Username', 'Name', 'Tel', 'Email', 'Address', 'Status', 'Type'], 'required'],
             [['Address'], 'string'],
             [['Staff_Id'], 'string', 'max' => 13],
-            [['Username', 'Password'], 'string', 'max' => 20],
+            [['Username', 'Password'], 'string'],
             [['Name'], 'string', 'max' => 40],
             [['Tel'], 'string', 'max' => 10],
             [['Email'], 'string', 'max' => 50],
