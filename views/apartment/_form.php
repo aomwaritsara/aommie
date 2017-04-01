@@ -17,7 +17,7 @@ $session->open();
       <?php $form = ActiveForm::begin(['layout' => 'horizontal']); ?>
 
     <?= $form->field($model, 'Apart_Id')->textInput() ?>
-
+    <?= $form->field($model, 'Staff_Id')->textInput(['maxlength' => true]) ?>
     <?= $form->field($model, 'Name')->textarea(['rows' => 6]) ?>
 
     <?= $form->field($model, 'Address')->textarea(['rows' => 6]) ?>

@@ -62,7 +62,7 @@ class Apartment extends \yii\db\ActiveRecord
             'Name' => 'ชื่อ',
             'Address' => 'ที่อยู่',
             'Tel' => 'เบอร์โทรศัพท์',
-            'Email' => 'อี-เมล์',
+            'Email' => 'อีเมล์',
             'NumRoom' => 'จำนวนห้อง',
             'NumFloor' => 'จำนวนชั้น',
             'Status' => 'สถานะ',

@@ -5,12 +5,12 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Apartment;
+use app\models\Restore;
 
 /**
- * ApartmentSearch represents the model behind the search form about `app\models\Apartment`.
+ * ReRestoreStoreSearch represents the model behind the search form of `app\models\Restore`.
  */
-class ApartmentSearch extends Apartment
+class ReRestoreStoreSearch extends Restore
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class ApartmentSearch extends Apartment
     public function rules()
     {
         return [
-            [['Apart_Id', 'NumRoom', 'NumFloor'], 'integer'],
-            [['Name', 'Address', 'Tel', 'Email', 'Status','Staff_Id'], 'safe'],
+            [['Apart_Id', 'NumCus', 'Deposit'], 'integer'],
+            [['Room_Id', 'Cus_Id', 'DateFrom', 'DateTo', 'Status'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class ApartmentSearch extends Apartment
      */
     public function search($params)
     {
-        $query = Apartment::find();
+        $query = Restore::find();
 
         // add conditions that should always apply here
 
@@ -60,16 +60,15 @@ class ApartmentSearch extends Apartment
         // grid filtering conditions
         $query->andFilterWhere([
             'Apart_Id' => $this->Apart_Id,
-            'NumRoom' => $this->NumRoom,
-            'NumFloor' => $this->NumFloor,
+            'DateFrom' => $this->DateFrom,
+            'DateTo' => $this->DateTo,
+            'NumCus' => $this->NumCus,
+            'Deposit' => $this->Deposit,
         ]);
 
-        $query->andFilterWhere(['like', 'Name', $this->Name])
-       ->andFilterWhere(['like', 'Staff_Id', $this->Staff_Id])
-            ->andFilterWhere(['like', 'Address', $this->Address])
-            ->andFilterWhere(['like', 'Tel', $this->Tel])
-            ->andFilterWhere(['like', 'Email', $this->Email])
-            ->andFilterWhere(['like', 'Status', $this->Status]);
+        $query->andFilterWhere(['like', 'Room_Id', $this->Room_Id])
+            ->andFilterWhere(['like', 'Cus_Id', $this->Cus_Id])
+            ->andFilterWhere(['like', 'Status', $this->Status='1']);
 
         return $dataProvider;
     }

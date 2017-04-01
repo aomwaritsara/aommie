@@ -180,18 +180,19 @@ protected function findModel3($Apart_Id,$Room_Id)
                
               $model2->Status = '1';
              $model2->save();
-            return $this->redirect(['index']);
+           
         }
-        else
-        {
-            // $booking->Status = '1';//ถ้ายกเลิก
-            // $booking->save();
+         return $this->redirect(['index']);
+        // else
+        // // {
+        // //     // $booking->Status = '1';//ถ้ายกเลิก
+        // //     // $booking->save();
 
-            // $model2->Status = $booking->Status;
-            //  $model2->save();
+        // //     // $model2->Status = $booking->Status;
+        // //     //  $model2->save();
          
-            // return $this->redirect(['index']);
-        }
+        // //     // return $this->redirect(['index']);
+        // // }
        
 
     }

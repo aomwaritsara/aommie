@@ -50,15 +50,15 @@ class Staff extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'Staff_Id' => 'Staff  ID',
+            'Staff_Id' => 'รหัสประจำตัว',
             'Username' => 'Username',
             'Password' => 'Password',
-            'Name' => 'Name',
-            'Tel' => 'Tel',
-            'Email' => 'Email',
-            'Address' => 'Address',
-            'Status' => 'Status',
-            'Type' => 'Type',
+            'Name' => 'ชื่อ',
+            'Tel' => 'เบอร์โทรศัพท์',
+            'Email' => 'อีเมล์',
+            'Address' => 'ที่อยู่',
+            'Status' => 'สถานะ',
+            'Type' => 'ประเภทผู้ใช้งาน',
         ];
     }
 

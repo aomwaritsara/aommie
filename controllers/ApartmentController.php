@@ -135,7 +135,7 @@ $session = new Session;
 
         return $this->redirect(['index']);
     }
-     public function actionCencel($Apart_Id, $Room_Id, $Cus_Id)
+     public function actionCencel($id)
     {
          $session = new Session;
         $session->open();
@@ -144,17 +144,23 @@ $session = new Session;
            $this->layout = 'templateAdmin';
         }
 
-        $Apartment = $this->findModel($Apart_Id, $Room_Id, $Cus_Id);
+        $Apartment = $this->findModel($id);
        
         
         if($Apartment->Status == '1')//สถานะที่ส่งมาจากroomถ้าถูกจองห้อง
         {
             $Apartment->Status = '0';//เซตให้เป็น 1 เพื่อจะส่งไปRoom
             $Apartment->save();
-            return $this->redirect(['index']);
-        }
-              
-
+            
+        }  //return $this->redirect(['index']);
+         
+        elseif ($Apartment->Status == '0')//สถานะที่ส่งมาจากroomถ้าถูกจองห้อง
+        {
+            $Apartment->Status = '1';//เซตให้เป็น 1 เพื่อจะส่งไปRoom
+            $Apartment->save();
+            
+        }  return $this->redirect(['index']);
+    //    
     }
 
     /**

@@ -26,10 +26,10 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= Html::a('Update', ['update', 'id' => $model->Apart_Id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->Apart_Id], [
-            'class' => 'btn btn-danger',
+     <?= Html::a('Cencel', ['cencel', 'id' => $model->Apart_Id], [
+            'class' => 'btn btn-warning',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => 'ยกเลิก?',
                 'method' => 'post',
             ],
         ]) ?>
@@ -39,6 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'Apart_Id',
+            'Staff_Id',
             'Name:ntext',
             'Address:ntext',
             'Tel',

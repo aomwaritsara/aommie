@@ -132,6 +132,33 @@ $session = new Session;
 
         return $this->redirect(['index']);
     }
+    public function actionCencel($id)
+    {
+         $session = new Session;
+        $session->open();
+
+        if ($session['type'] == '0') {
+           $this->layout = 'templateAdmin';
+        }
+
+        $Staff = $this->findModel($id);
+       
+        
+        if($Staff->Status == '1')//สถานะที่ส่งมาจากroomถ้าถูกจองห้อง
+        {
+            $Staff->Status = '0';//เซตให้เป็น 1 เพื่อจะส่งไปRoom
+            $Staff->save();
+            
+        }  //return $this->redirect(['index']);
+         
+        elseif ($Staff->Status == '0')//สถานะที่ส่งมาจากroomถ้าถูกจองห้อง
+        {
+            $Staff->Status = '1';//เซตให้เป็น 1 เพื่อจะส่งไปRoom
+            $Staff->save();
+            
+        }  return $this->redirect(['index']);
+    //    
+    }
 
     /**
      * Finds the Staff model based on its primary key value.

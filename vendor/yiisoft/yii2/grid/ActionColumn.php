@@ -183,7 +183,7 @@ class ActionColumn extends Column
                 $options = array_merge([
                     'title' => Yii::t('yii', 'Cencel'),
                     'aria-label' => Yii::t('yii', 'Cencel'),
-                      'data-confirm' => Yii::t('yii', 'ระงับการใช้งาน?'),
+                      'data-confirm' => Yii::t('yii', 'ยกเลิก?'),
                     'data-pjax' => '0',
                     'class'=>"btn btn-warning btn-xs",
                 ], $this->buttonOptions);

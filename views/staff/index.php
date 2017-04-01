@@ -7,14 +7,14 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\StaffSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Staff';
+$this->title = 'ข้อมูลผู้ดูแล';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="staff-index">
 
     <div class="box box-info box-solid  ">
     <div class="box-header with-border  " >
-        <h4>จัดการข้อมูลผู้ประกอบการ</h4>
+        <h4>จัดการข้อมูลผู้ดูแล</h4>
     <div class="box-tools pull-right">
     
                 <?= Html::a('<span class = "fa fa-plus"></span>เพิ่มข้อมูลผู้ประกอบการ', ['create'], ['class' => 'btn btn-block btn-primary ']) ?>
@@ -57,7 +57,12 @@ $this->params['breadcrumbs'][] = $this->title;
             'filter' =>Html::activeDropDownList($searchModel,'Type',['1'=>'ผู้ดูแลอพาร์ตเมนต์','0'=>'ผู้ดูแลระบบ'],['class'=>'form-control','prompt'=>'เลือกประเภท']),
  ],
 
-            ['class' => 'yii\grid\ActionColumn'],
+             [
+                
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '{view} {update} {cencel}',
+               // 'contentOptions' => ['class'=>'text center']
+            ],
         ],
     ]); ?>
 </div>
