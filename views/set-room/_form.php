@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
+use yii\bootstrap\ActiveForm;
 use app\models\Room;
 use app\models\RoomSearch;
 use yii\helpers\ArrayHelper;
@@ -16,7 +16,7 @@ use yii\helpers\ArrayHelper;
 
 <div class="set-room-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['layout' => 'horizontal']); ?>
 
     <?= $form->field($model, 'Apart_Id')->textInput(['readonly'=> true,'value'=>'1']) ?>
 
@@ -39,8 +39,8 @@ use yii\helpers\ArrayHelper;
 
     <?= $form->field($model2, 'Status')->dropDownList(['1'=>'ว่าง','2'=>'ถูกจอง','3'=>'ถูกเช่า','4'=>'ไม่พร้อมใช้งาน'],['prompt'=>'กรุณาเลือกสถานะ']) ?>
 
-    <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+    <div class="form-group" align="center">
+        <?= Html::submitButton($model->isNewRecord ? 'บันทึก' : 'บันทึก', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

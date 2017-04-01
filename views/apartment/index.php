@@ -10,7 +10,7 @@ use yii\web\Session;
 
 $session = new Session;
 $session->open();
-$this->title = 'Apartments';
+$this->title = 'ข้อมูลอพาร์ตเมนต์';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="apartment-index">
@@ -32,14 +32,28 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'Apart_Id',
             'Name:ntext',
-            'Address:ntext',
-            'Tel',
+            //'Address:ntext',
+            //'Tel',
             'Email:email',
             // 'NumRoom',
             // 'NumFloor',
             // 'Status',
+                      ['attribute'=>'Status',
+            'contentOptions' => ['class'=>'text-center'],
+            'content'=>function($data){
+               $Status=['1'=>"<label>ใช้งาน</label>",'0'=>"<label>ระงับการใช้งาน</label>"];
+               return $Status[$data->Status];
+            },
+           
+            'filter' =>Html::activeDropDownList($searchModel,'Status',['1'=>'ใช้งาน','0'=>'ระงับการใช้งาน'],['class'=>'form-control','prompt'=>'เลือกสถานะ']),
+ ],
 
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '{view}{update}{cencel}',
+               // 'contentOptions' => ['class'=>'text center']
+            ],
         ],
     ]); ?>
 </div>

@@ -18,9 +18,6 @@ use Yii;
  * @property Room $apart
  * @property Room $room
  * @property Customer $cus
- * @property Deposit[] $deposits
- * @property Deposit[] $deposits0
- * @property Deposit[] $deposits1
  */
 class Booking extends \yii\db\ActiveRecord
 {
@@ -55,7 +52,7 @@ class Booking extends \yii\db\ActiveRecord
      */
     public function attributeLabels()
     {
-        return [
+       return [
             'Apart_Id' => 'รหัสอพาร์ตเมนต์',
             'Room_Id' => 'รหัสห้องพัก',
             'Cus_Id' => 'รหัสประจำตัวประชาชน',
@@ -88,29 +85,5 @@ class Booking extends \yii\db\ActiveRecord
     public function getCus()
     {
         return $this->hasOne(Customer::className(), ['Cus_Id' => 'Cus_Id']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getDeposits()
-    {
-        return $this->hasMany(Deposit::className(), ['Apart_Id' => 'Apart_Id']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getDeposits0()
-    {
-        return $this->hasMany(Deposit::className(), ['Room_Id' => 'Room_Id']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getDeposits1()
-    {
-        return $this->hasMany(Deposit::className(), ['Cus_Id' => 'Cus_Id']);
     }
 }

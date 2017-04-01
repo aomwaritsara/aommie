@@ -177,7 +177,19 @@ class ActionColumn extends Column
                 return Html::a('<span class="glyphicon glyphicon-trash"></span>', $url, $options);
             };
         }
-        
+
+        if (!isset($this->buttons['cencel'])) {
+            $this->buttons['cencel'] = function ($url, $model, $key) {
+                $options = array_merge([
+                    'title' => Yii::t('yii', 'Cencel'),
+                    'aria-label' => Yii::t('yii', 'Cencel'),
+                      'data-confirm' => Yii::t('yii', 'ระงับการใช้งาน?'),
+                    'data-pjax' => '0',
+                    'class'=>"btn btn-warning btn-xs",
+                ], $this->buttonOptions);
+                return Html::a('<span class="glyphicon glyphicon-remove"></span>', $url, $options);
+            };
+        }
         
          if (!isset($this->buttons['change'])) {
             $this->buttons['change'] = function ($url, $model, $key) {

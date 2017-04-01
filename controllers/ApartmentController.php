@@ -135,6 +135,37 @@ $session = new Session;
 
         return $this->redirect(['index']);
     }
+     public function actionCencel($Apart_Id, $Room_Id, $Cus_Id)
+    {
+         $session = new Session;
+        $session->open();
+
+        if ($session['type'] == '0') {
+           $this->layout = 'templateAdmin';
+        }
+
+        $Apartment = $this->findModel($Apart_Id, $Room_Id, $Cus_Id);
+       
+        
+        if($Apartment->Status == '1')//สถานะที่ส่งมาจากroomถ้าถูกจองห้อง
+        {
+            $Apartment->Status = '0';//เซตให้เป็น 1 เพื่อจะส่งไปRoom
+            $Apartment->save();
+            return $this->redirect(['index']);
+        }
+              
+
+    }
+
+    /**
+     * Finds the Booking model based on its primary key value.
+     * If the model is not found, a 404 HTTP exception will be thrown.
+     * @param integer $Apart_Id
+     * @param string $Room_Id
+     * @param string $Cus_Id
+     * @return Booking the loaded model
+     * @throws NotFoundHttpException if the model cannot be found
+     */
 
     /**
      * Finds the Apartment model based on its primary key value.

@@ -10,12 +10,9 @@ use Yii;
  * @property int $Apart_Id
  * @property string $Room_Id
  * @property string $Cus_Id
+ * @property string $Date
  * @property int $Price
  * @property string $Status
- *
- * @property Booking $apart
- * @property Booking $room
- * @property Booking $cus
  */
 class Deposit extends \yii\db\ActiveRecord
 {
@@ -33,14 +30,12 @@ class Deposit extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['Apart_Id', 'Room_Id', 'Cus_Id', 'Price', 'Status'], 'required'],
+            [['Apart_Id', 'Room_Id', 'Cus_Id', 'Date', 'Price', 'Status'], 'required'],
             [['Apart_Id', 'Price'], 'integer'],
+            [['Date'], 'safe'],
             [['Room_Id'], 'string', 'max' => 10],
             [['Cus_Id'], 'string', 'max' => 13],
             [['Status'], 'string', 'max' => 1],
-            [['Apart_Id'], 'exist', 'skipOnError' => true, 'targetClass' => Booking::className(), 'targetAttribute' => ['Apart_Id' => 'Apart_Id']],
-            [['Room_Id'], 'exist', 'skipOnError' => true, 'targetClass' => Booking::className(), 'targetAttribute' => ['Room_Id' => 'Room_Id']],
-            [['Cus_Id'], 'exist', 'skipOnError' => true, 'targetClass' => Booking::className(), 'targetAttribute' => ['Cus_Id' => 'Cus_Id']],
         ];
     }
 
@@ -53,32 +48,9 @@ class Deposit extends \yii\db\ActiveRecord
             'Apart_Id' => 'Apart  ID',
             'Room_Id' => 'Room  ID',
             'Cus_Id' => 'Cus  ID',
+            'Date' => 'Date',
             'Price' => 'Price',
             'Status' => 'Status',
         ];
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getApart()
-    {
-        return $this->hasOne(Booking::className(), ['Apart_Id' => 'Apart_Id']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getRoom()
-    {
-        return $this->hasOne(Booking::className(), ['Room_Id' => 'Room_Id']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getCus()
-    {
-        return $this->hasOne(Booking::className(), ['Cus_Id' => 'Cus_Id']);
     }
 }

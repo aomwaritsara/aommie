@@ -75,7 +75,7 @@ class BookingController extends Controller
         $model3 = new Deposit();
 
         if ($model->load(Yii::$app->request->post()) &&$model->save() ){
-             $model2 = Room::find()->where(['Room_Id' => $model->Room_Id])->one();
+             $model2 = Room::find()->where(['Apart_Id' => $model->Apart_Id,'Room_Id' => $model->Room_Id])->one();
              // Yii::log('start calculating average revenue');
              $model2->Status = $model->Status;
              $model2->save();
@@ -83,6 +83,7 @@ class BookingController extends Controller
              $model3->Apart_Id = $model->Apart_Id;
              $model3->Room_Id = $model->Room_Id;
              $model3->Cus_Id = $model->Cus_Id;
+             $model3->Date = $model->Booking_Date;
              $model3->Price = $model->Deposit;
              $model3->Status = '1';
             
