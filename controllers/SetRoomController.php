@@ -12,6 +12,9 @@ use app\models\RoomtypeSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\models\Apartment;
+use app\models\ApartmentSearch;
+
 
 /**
  * SetRoomController implements the CRUD actions for SetRoom model.
@@ -71,6 +74,7 @@ class SetRoomController extends Controller
      {
         $model = new SetRoom();
         $model2 = new Room();
+     
 
          
         if ($model->load(Yii::$app->request->post()) ) {
@@ -81,12 +85,14 @@ class SetRoomController extends Controller
              $model2->Room_Id = $model->Room_Id;
            
              $model2->save();
-            
+              
                      return $this->redirect(['view', 'Apart_Id' => $model->Apart_Id, 'Room_Id' => $model->Room_Id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
                 'model2' => $model2,
+                
+
             ]);
         }
     }
@@ -116,13 +122,11 @@ public function actionUpdate($Apart_Id, $Room_Id)
     //       $model->save();
     //     }
       
-        if ($model->load(Yii::$app->request->post()) &&
-            $model2->load(Yii::$app->request->post()) 
+        if ($model->load(Yii::$app->request->post()) && $model2->load(Yii::$app->request->post()) 
     )   {
-                    if($model->save()){
-          $model2->save();
-        }
-
+            $model->save();
+            $model2->save();
+        
             return $this->redirect(['view', 'Apart_Id' => $model->Apart_Id, 'Room_Id' => $model->Room_Id]);
         } else {
             return $this->render('update', [
@@ -132,14 +136,17 @@ public function actionUpdate($Apart_Id, $Room_Id)
         }
     }
 
-protected function findModel2($Apart_Id,$Room_Id)
-{
-    if (($model = Room::findOne($Apart_Id,$Room_Id)) !== null) {
-        return $model;
-    } else {
-        throw new NotFoundHttpException('The requested page does not exist.');
+
+ protected function findModel2($Apart_Id, $Room_Id)
+    {
+         
+         if (($model = Room::findOne(['Apart_Id' => $Apart_Id, 'Room_Id' => $Room_Id])) !== null) {
+            return $model;
+        } else {
+            throw new NotFoundHttpException('The requested page does not exist.');
+
     }
-}
+    }
 
 
 

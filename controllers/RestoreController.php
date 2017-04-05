@@ -9,6 +9,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use app\models\Room;
+use kartik\datetime\DateTimePicker;
 /**
  * RestoreController implements the CRUD actions for Restore model.
  */
@@ -133,23 +134,31 @@ class RestoreController extends Controller
     {
         //$model2 = new Room();
         $restore= $this->findModel($Apart_Id, $Room_Id, $Cus_Id);
+
         
         if($restore->Status == '2')
         {
-            $restore->Status = '1';
+            $restore->DateTo = date('Y-m-d h:i:s');
+             $restore->Status = '1';
               $restore->save();
               $model2 = Room::find()->where(['Apart_Id' => $restore->Apart_Id,'Room_Id' => $restore->Room_Id])->one();
+             $model2->Apart_Id=$restore->Apart_Id;
+             $model2->Room_Id=$restore->Room_Id;
               $model2->Status = '1';
               $model2->save();
           
             return $this->redirect(['printbill/index']);
         }
-        // else
-        // {
-        //     $bill->PaymentStatus = '1';
-        //     $bill->save();
-        //     return $this->redirect(['index']);
-        // }
+         else
+        {
+             $restore->Status = '2';
+              $restore->save();
+              $model2 = Room::find()->where(['Apart_Id' => $restore->Apart_Id,'Room_Id' => $restore->Room_Id])->one();
+              $model2->Status = '2';
+              $model2->save();
+          
+            return $this->redirect(['printbill/index']);
+        }
     }
 
 }

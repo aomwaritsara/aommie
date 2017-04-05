@@ -40,8 +40,13 @@ $this->params['breadcrumbs'][] = $this->title;
             'Cus_Id',
             'Deposit',
             'Booking_Date',
-            'Status',
-            'Datestatus',
+           //'Status',
+             [
+             'attribute' => 'Status',
+             'format'=>'raw',
+             'value'=>$model->Status ? 'จองห้องพัก' : 'ยกเลิก'
+        ],
+          //  'Datestatus',
         ],
     ]) ?>
 

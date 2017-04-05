@@ -13,6 +13,9 @@ use yii\filters\VerbFilter;
 use yii\base\Model;
 use yii\db\Query;
 use yii\helpers\ArrayHelper;
+use yii\web\Session;
+use app\models\Apartment;
+use kartik\datetime\DateTimePicker;
 /**
  * BookingController implements the CRUD actions for Booking model.
  */
@@ -70,13 +73,26 @@ class BookingController extends Controller
      */
      public function actionCreate()
     {
+        $session = new Session;
+        $session->open();
+
         $model = new Booking();
         $model2 = new Room();
         $model3 = new Deposit();
 
-        if ($model->load(Yii::$app->request->post()) &&$model->save() ){
+        $apartment = Apartment::find()->where(['Staff_Id' => $session['staff_id']])->one();
+
+   
+    // $getApart = Apartment::findOne($model2->Apart_Id);
+        if ($model->load(Yii::$app->request->post())  ){
+            $model->Apart_Id = $apartment->Apart_Id;
+              $model->Datestatus =date('Y-m-d h:i:s');
+              $model->Status = '3';
+              $model->save();
              $model2 = Room::find()->where(['Apart_Id' => $model->Apart_Id,'Room_Id' => $model->Room_Id])->one();
-             // Yii::log('start calculating average revenue');
+             
+            // $getApart = Apartment::findOne($model2->Apart_Id);//เอาApartid ส่งไป_form
+              
              $model2->Status = $model->Status;
              $model2->save();
             
@@ -92,7 +108,8 @@ class BookingController extends Controller
         } else {
             return $this->render('create', [
                 'model' => $model,
-                
+                'apartment' => $apartment,
+                 
                 
             ]);
         }
@@ -108,12 +125,20 @@ class BookingController extends Controller
      */
     public function actionUpdate($Apart_Id, $Room_Id, $Cus_Id)
     {
+        $session = new Session;
+        $session->open();
+
+  $apartment = Apartment::find()->where(['Staff_Id' => $session['staff_id']])->one();
+
+  
         $model = $this->findModel($Apart_Id, $Room_Id, $Cus_Id);
         $model3= $this->findModel3($model->Apart_Id,$model->Room_Id,$model->Cus_Id);
 
 
-       if ($model->load(Yii::$app->request->post()) &&$model->save() ){
-        
+       if ($model->load(Yii::$app->request->post())  ){
+          $model->Apart_Id = $apartment->Apart_Id;
+          $model->Datestatus =date('Y-m-d h:i:s');
+              $model->save();
         $model3 = Deposit::find()->where(['Room_Id' => $model->Room_Id])->one();
         $model3->Price = $model->Deposit;
           $model3->save();
@@ -124,6 +149,8 @@ class BookingController extends Controller
             return $this->render('update', [
                 'model' => $model,
                 'model3' => $model3,
+                'apartment' => $apartment,
+
             ]);
         }
     }
@@ -172,6 +199,7 @@ protected function findModel3($Apart_Id,$Room_Id)
         if($booking->Status == '3')//สถานะที่ส่งมาจากroomถ้าถูกจองห้อง
         {
             $booking->Status = '1';//เซตให้เป็น 1 เพื่อจะส่งไปRoom
+             $booking->Datestatus =date('Y-m-d h:i:s');
             $booking->save();
             (new Query)
          ->createCommand()

@@ -8,7 +8,8 @@ use app\models\FinancialApartmentSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
+use app\models\Apartment;
+use yii\web\session;
 /**
  * FinancialApartmentController implements the CRUD actions for FinancialApartment model.
  */
@@ -64,13 +65,27 @@ class FinancialApartmentController extends Controller
      */
     public function actionCreate()
     {
+          $session = new Session;
+        $session->open();
         $model = new FinancialApartment();
+          $Finan= FinancialApartment::find()->all();
+        $apartment = Apartment::find()->where(['Staff_Id' => $session['staff_id']])->one();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
+        if ($model->load(Yii::$app->request->post()) ) {
+             $model->Apart_Id = $apartment->Apart_Id;
+             $a=$model->Amount;
+             $p=$model->Price;
+             $sum=$a*$p;
+             $model->TotalPrice=$sum;
+              $model->save();
+
             return $this->redirect(['view', 'Finan_Id' => $model->Finan_Id, 'Apart_Id' => $model->Apart_Id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
+                 'Finan' => $Finan,
+                 'apartment' => $apartment,
             ]);
         }
     }
@@ -84,13 +99,27 @@ class FinancialApartmentController extends Controller
      */
     public function actionUpdate($Finan_Id, $Apart_Id)
     {
+             $session = new Session;
+        $session->open();
+            $model = new FinancialApartment();
+          $Finan= FinancialApartment::find()->all();
         $model = $this->findModel($Finan_Id, $Apart_Id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'Finan_Id' => $model->Finan_Id, 'Apart_Id' => $model->Apart_Id]);
+          $apartment = Apartment::find()->where(['Staff_Id' => $session['staff_id']])->one();
+           
+        if ($model->load(Yii::$app->request->post()) ) {
+             $model->Apart_Id = $apartment->Apart_Id;
+              $a=$model->Amount;
+             $p=$model->Price;
+             $sum=$a*$p;
+             $model->TotalPrice=$sum;
+             $model->save();
+return $this->redirect(['view', 'Finan_Id' => $model->Finan_Id, 'Apart_Id' => $model->Apart_Id]);
         } else {
             return $this->render('update', [
                 'model' => $model,
+                 'Finan' => $Finan,
+                 'apartment' => $apartment,
             ]);
         }
     }

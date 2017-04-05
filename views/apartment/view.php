@@ -46,7 +46,13 @@ $this->params['breadcrumbs'][] = $this->title;
             'Email:email',
             'NumRoom',
             'NumFloor',
-            'Status',
+           // 'Status',
+            [
+             'attribute' => 'Status',
+             'format'=>'raw',
+             'value'=>$model->Status ? 'ใช้งาน' : 'ระงับการใช้งาน'
+        ],
+
         ],
     ]) ?>
 

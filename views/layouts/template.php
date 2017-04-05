@@ -92,6 +92,12 @@ AppAsset::register($this);
         <li class="header">เมนูหลัก</li>
 
         
+        <li class="treeview">
+          <a href="<?= Url::to(['customer/index']) ?>">
+            <i class="fa  fa-user"></i>
+            <span>ข้อมูลส่วนตัวผู้เข้าพัก</span>
+         </a>
+        </li>
         <li class=" treeview">
           <a href="#">
             <i class="fa  fa-bed"></i> <span>การเข้าพัก</span>
@@ -107,12 +113,6 @@ AppAsset::register($this);
         </li>
 
 
-        <li class="treeview">
-          <a href="<?= Url::to(['customer/index']) ?>">
-            <i class="fa  fa-user"></i>
-            <span>ข้อมูลส่วนตัวผู้เข้าพัก</span>
-         </a>
-        </li>
 
        
         <li>

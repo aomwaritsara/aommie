@@ -65,7 +65,7 @@ class Apartment extends \yii\db\ActiveRecord
             'Email' => 'อีเมล์',
             'NumRoom' => 'จำนวนห้อง',
             'NumFloor' => 'จำนวนชั้น',
-            'Status' => 'สถานะ',
+            'Status' => 'สถานะ ',
         ];
     }
 

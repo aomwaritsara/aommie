@@ -8,7 +8,7 @@ use app\models\CustomerSearch;
 use yii\helpers\ArrayHelper;
 use kartik\datetime\DateTimePicker;
 use app\models\Room;
-
+use yii\web\Session;
 /* @var $this yii\web\View */
 /* @var $model app\models\Booking */
 /* @var $form yii\widgets\ActiveForm */
@@ -17,9 +17,12 @@ use app\models\Room;
 <div class="booking-form">
 
    <?php $form = ActiveForm::begin(['layout' => 'horizontal']); ?>
-   
-    
-    <?= $form->field($model, 'Apart_Id')->dropDownList(ArrayHelper::map(Room::find()->distinct('Apart_Id')->where("Status='1'")->all(),'Apart_Id','Apart_Id')) ?>
+   <?php
+    $session = new Session;
+        $session->open(); 
+
+        ?>
+    <?= $form->field($apartment, 'Apart_Id')->textinput(['readonly'=> true])?>
 
  <!--  <?dropDownList(ArrayHelper::map(Room::find()->distinct('Apart_Id')->where("Status='1'")->all(),'Apart_Id','Apart_Id')) ?> -->
     
@@ -37,8 +40,8 @@ use app\models\Room;
    <?php   endif;   ?>
 
     <?php if ($isUpdated == 0): ?> 
-    <?= $form->field($model, 'Cus_Id')->widget(\yii\widgets\MaskedInput::className(), [
-    'mask' => '9999999999999', ]) ?>
+    <?= $form->field($model, 'Cus_Id')->textinput(['maxlength' => true,'value'=>$model->Cus_Id]) ?>
+  
     <?php   endif;   ?>
 
     <?= $form->field($model, 'Deposit')->textinput() ?>
@@ -52,38 +55,24 @@ use app\models\Room;
      'format' => 'yyyy-mm-dd hh:ii:ss',
       $model->Booking_Date = date('Y-m-d h:i:s')
     ]
-])->widget(DateTimePicker::classname(), [
-    'language' => 'th',
-        'readonly'=> true,
-      'pluginOptions' => [
-        'format' => 'yyyy-mm-dd hh:ii:ss'
-    ]
-])  ?> 
+]) ?> 
 <?php   endif;   ?>
 
   <?php if ($isUpdated == 1): ?> 
    <?=  $form->field($model, 'Booking_Date')->textinput(['readonly'=> true,'value'=>$model->Booking_Date]) ?>
    <?php   endif;   ?>
 
-    <?= $form->field($model, 'Status')->dropDownList([3=>'ใช้งาน',1=>'ยกเลิก'])  ?>
+    
      
 
-    <?= $form->field($model, 'Datestatus')->textinput([ 
+<!--     <?= $form->field($model, 'Datestatus')->textinput([ 
       'readonly'=> true,
       'pluginOptions' => [
       'language' => 'th',
      'format' => 'yyyy-mm-dd hh:ii:ss',
       $model->Datestatus = date('Y-m-d h:i:s')
     ]
-])->widget(DateTimePicker::classname(), [
-    'language' => 'th',
-        'readonly'=> true,
-      'pluginOptions' => [
-        'format' => 'yyyy-mm-dd hh:ii:ss'
-    ]
-])  ?> 
-
-
+])  ?>  -->
 
 
  

@@ -3,11 +3,15 @@
 namespace app\controllers;
 
 use Yii;
+use app\models\Rental;
 use app\models\Restore;
 use app\models\ReRestoreStoreSearch;
 use yii\web\Controller;
+use yii\web\Session;
+use yii\db\Query;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\models\Customer;
 
 /**
  * ReRestoreController implements the CRUD actions for Restore model.
@@ -38,12 +42,40 @@ class ReRestoreController extends Controller
         $searchModel = new ReRestoreStoreSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
+       $monthday = Restore::find()->groupBy(['month(DateTo)'])->all();
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'monthday'=> $monthday,
         ]);
     }
+public function actionReport($month) // $date = Y-m-d // payment_date = Y-m-d H-m-s.mm
+    {
+        //$this->layout = 'siteadmin_main';
+        $session = new Session;
+        $session->open();
 
+        // if (!isset($session['user_name'])) {
+        //     return $this->redirect('login');
+        // }
+        
+        //SELECT * FROM selling_transaction INNER JOIN member ON selling_transaction.m_id = member.m_id INNER JOIN payment on selling_transaction.t_id = payment.t_id INNER JOIN selling_detail ON selling_transaction.t_id = selling_detail.t_id WHERE payment.payment_date LIKE '%2017-03-13%'
+        $query = new Query;
+        $query  ->select('*')  
+                ->from('rental')
+                // ->innerJoin('member', 'selling_transaction.m_id = member.m_id')
+                // ->innerJoin('payment', 'selling_transaction.t_id = payment.t_id')
+                // ->innerJoin('selling_detail', 'selling_transaction.t_id = selling_detail.t_id')
+                ->where("DateTo LIKE '%$month%' AND Status = '1'")
+                ->orderBy(['DateTo' => SORT_ASC]);
+
+        $command = $query->createCommand();
+        $data = $command->queryAll();
+        $model = $data;
+         
+
+        return $this->render('report', ['month' => $month, 'model' =>$model]);
+    }
     /**
      * Displays a single Restore model.
      * @param integer $Apart_Id

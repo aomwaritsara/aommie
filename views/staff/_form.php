@@ -26,9 +26,10 @@ use yii\bootstrap\ActiveForm;
 
     <?= $form->field($model, 'Address')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'Status')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'Status')->textInput(['maxlength' => true]) ->dropDownList([1=>'ใช้งาน',0=>'ระงับการใช้งาน'])  ?>
 
-    <?= $form->field($model, 'Type')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'Type')->textInput(['maxlength' => true]) ->dropDownList([1=>'ผู้ดูแลอพาร์ตเมนต์',0=>'ผู้ดูแลระบบ'])  ?>
+
 
     <div class="form-group" align="center">
         <?= Html::submitButton($model->isNewRecord ? 'บันทึก' : 'บันทึก', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

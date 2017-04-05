@@ -64,12 +64,16 @@ class ServiceController extends Controller
     public function actionCreate()
     {
         $model = new Service();
+        $Service= Service::find()->all();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->Service_Id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
+                'Service'=>$Service,
+
+
             ]);
         }
     }

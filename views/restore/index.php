@@ -35,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
            // 'DateTo',
             // 'NumCus',
             // 'Deposit',
-          //  'Status',
+           // 'Status',
             //  [
             //     'attribute'=>'คืนห้องพัก',
             //     'content'=>function($data){

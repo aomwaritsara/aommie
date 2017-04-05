@@ -38,6 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //'Price',
             //'Eletricity',
             // 'Watersupply',
+        
 
                 ['attribute'=>'Type',
             'contentOptions' => ['class'=>'text-center'],

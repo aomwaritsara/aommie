@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\ReRestoreStoreSearch */
@@ -12,44 +13,72 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="restore-index">
 
+            <div class="box-header with-border">
+ 
+  
+              <!-- /.box-tools -->
+            </div>
+       
     <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
-    
-     <div class="row clearfix">
-                                <div class="col-sm-6">
-                                
-<select class="form-control show-tick" name="Selectdate">
-                                        <option value>-- เลือก --</option>
-                                        <option value="1">มกราคม</option>
-                                        <!-- <option value="-1 week">สินค้าจมที่ไม่ได้เบิกมากกว่า 1 สัปดาห์</option> -->
-                                        <option value="2">กุมภาพันธุ์</option>
-                                        <option value="3">มีนาคม</option>
-                                        <option value="4">เมษายน</option>
-                                    </select>
-                                    <div class="col-sm-10">
-                                <button type="submit"  class="btn btn-danger select-modal" name="Search" >คกลง</button>
-                                </div>
-                        </div>
-                        </div>        
-
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-       'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            //'Apart_Id',
-            'Room_Id',
-            'Cus_Id',
-           // 'DateFrom',
-            'DateTo',
-            // 'NumCus',
-            // 'Deposit',
-            // 'Status',
+<table class="table table-bordered table-hover table-responsive" width="100%" >
+                    <?php 
+                        $i='1';
 
 
-          //  ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
-</div>
+                            $headTable = 
+                            "<tr bgcolor=#87FF8D>
+                                <td align='center' style='font-weight: bold'>ลำดับที่</td>
+                                <td align='center' style='font-weight: bold'> รายงานการคืนห้องพักประจำเดือน </td>
+                            </tr>";
+                            echo $headTable;
+                            foreach ($monthday as $key => $value) {
+                                $phpdate = strtotime($value->DateTo);
+                                $mysqldate = date( 'm', $phpdate );
+                                switch ($mysqldate) {
+                                    case '01':
+                                        $month = 'มกราคม';
+                                        break;
+                                    case '02':
+                                        $month = 'กุมภาพันธ์';
+                                        break;
+                                    case '03':
+                                        $month = 'มีนาคม';
+                                        break;
+                                    case '04':
+                                        $month = 'เมษายน';
+                                        break;
+                                    case '05':
+                                        $month = 'พฤษภาคม';
+                                        break;
+                                    case '06':
+                                        $month = 'มิถุนายน';
+                                        break;
+                                    case '07':
+                                        $month = 'กรกฎาคม';
+                                        break;
+                                    case '08':
+                                        $month = 'สิงหาคม';
+                                        break;
+                                    case '09':
+                                        $month = 'กันยายน';
+                                        break;
+                                    case '10':
+                                        $month = 'ตุลาคม';
+                                        break;
+                                    case '11':
+                                        $month = 'พฤศจิกายน';
+                                        break;
+                                    case '12':
+                                        $month = 'ธันวาคม';
+                                        break;
+                                }
+                                if ($value->DateTo != NULL) {
+                                    echo "<tr>";
+                                    echo "<td width='10%'align='center'>".$i."</td>";
+                                    $session["month"] = $month;
+                                    echo "<td align='center'><a href=".Url::to(['report', 'month' => $mysqldate]).">รายงานประจำเดือน ".$month."</a></td>";
+                                    echo "</tr>";
+                                    $i++;
+                                }   
+                            
+                        }

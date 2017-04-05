@@ -11,7 +11,7 @@ use yii\db\Query;
 use app\models\Rental;
 use app\models\Booking;
 use yii\web\Session;
-
+use yii\helpers\VarDumper;
 
 
 class ShowRoomController extends \yii\web\Controller
@@ -30,6 +30,7 @@ class ShowRoomController extends \yii\web\Controller
         }
          $query = new Query();
          $query2 = new Query();
+      
         // $rooms = $query->orderBy('Room_Id')->all();
         $rooms = $query
          ->select([  'room.Room_Id'
@@ -38,7 +39,8 @@ class ShowRoomController extends \yii\web\Controller
                             , 'room.Floor AS Floor'
                             , 'roomtype.type AS Type'
                             , 'roomtype.Price AS Price'
-                            , 'rental.NumCus AS NumCus'                                                            
+                            , 'rental.NumCus AS NumCus' 
+                            , 'rental.Status AS Sta'                                                          
                             , 'customer.Fname AS Fname'
                             , 'customer.Lname AS Lname' 
                             , 'rental.Deposit AS Deposit'
@@ -47,12 +49,15 @@ class ShowRoomController extends \yii\web\Controller
                  ->from('room')         
                  ->leftJoin('roomtype', 'roomtype.Room_Id = room.Room_Id')               
                  ->leftJoin('rental', 'rental.Room_Id = roomtype.Room_Id AND rental.Apart_Id = roomtype.Apart_Id')                                        
-                 ->leftJoin('customer', 'customer.Cus_Id = rental.Cus_Id')    
-                  ->leftJoin('booking', 'booking.Room_Id = room.Room_Id') 
-                  ->orderBy('room.Room_Id')                 
+                 ->leftJoin('customer', 'customer.Cus_Id = rental.Cus_Id') 
+                 ->leftJoin('booking', 'booking.Room_Id = room.Room_Id') 
+                 ->where('rental.Status=2') 
+                ->orWhere('rental.Status IS  NULL') 
+                ->orderBy('Room_Id')
                  ->createCommand()                                                      
                  ->queryAll();
 
+       
         $deposits = $query2
                 ->select([  'customer.Fname AS Fname'
                             ,'customer.Lname AS Lname'
@@ -70,10 +75,14 @@ class ShowRoomController extends \yii\web\Controller
         //$desRoom = "eieieiei";
         // $desRoom = Room::find()->JoinWith('rentals')->JoinWith('roomtype')->joinWith('bookings')->one();
        // echo $desRoom->rentals->Cus_Id;
+
+         // $rentalstatus=Rental::find()->where('Status'=='2')->all(); 
+      //var_dump  ($rentalstatus);
         return $this->render('index', [
             'rooms' => $rooms,
             'numFloor' => $numFloor,
-            'deposits' => $deposits
+            'deposits' => $deposits,
+          //  'rentalstatus'=>$rentalstatus,
             // 'desRoom' => $desRoom
         ]);
     }

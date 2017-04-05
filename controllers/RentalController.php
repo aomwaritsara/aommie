@@ -71,15 +71,20 @@ class RentalController extends Controller
     {
         $model = new Rental();
         $model2 =new Room();
-        $model3 =new Booking();
-        
-      if ($model->load(Yii::$app->request->post()) && $model->save()) {
-             $model2 = Room::find()->where(['Room_Id' => $model->Room_Id])->one();
+       // $model3 =new Booking();
+
+         
+      if ($model->load(Yii::$app->request->post())  ) {
+        $model->save();
+            $model2 = Room::find()->where(['Apart_Id' => $model->Apart_Id,'Room_Id' => $model->Room_Id])->one();
              // Yii::log('start calculating average revenue');
              $model2->Status = $model->Status;
              $model2->save();
             //ลบ model bookking ++++ 
-             $model3 = Booking::find()->where(['Room_Id' => $model->Room_Id])->one();
+             if($model3 = Booking::find()->where(['Apart_Id' => $model->Apart_Id,'Room_Id' => $model->Room_Id,'Cus_Id' => $model->Cus_Id])->one()){
+             // $model->Deposit=$model3->Deposit;
+            // $model3->save();
+                if( $model3->Status ='3'){
              $model3->Status ='0';
              $model3->save();
                 (new Query)
@@ -87,7 +92,8 @@ class RentalController extends Controller
         ->delete('booking', ['Status' => '0'])
         ->execute(); 
                 $model3->save();
-
+            }
+}
             $this->redirect(['printrent/index', 'Apart_Id' => $model->Apart_Id, 'Room_Id' => $model->Room_Id, 'Cus_Id' => $model->Cus_Id]);
         } else {
             return $this->render('create', [

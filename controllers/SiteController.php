@@ -10,6 +10,7 @@ use app\models\LoginForm;
 use app\models\ContactForm;
 use yii\web\Session;
 use app\models\Staff;
+use app\models\Apartment;
 use app\models\FormPassword;
 
 class SiteController extends Controller
@@ -91,14 +92,19 @@ class SiteController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             $session['member_name'] = $model->getName();
             $session['staff_id'] = $model->getId();
+            $session['status'] = $model->getStatus();
             $session['type'] = $model->getType();
+
             
-            if ($session['type'] == '1') {
-                  return $this->redirect(['show-room/index']);
+            
+            if (($session['type'] == '1')&&($session['status']=='1')) {
+                  $apartment = Apartment::find()->where(['Staff_Id' => $session['staff_id']])->one();
+            $session['Apartment_id'] = $apartment->Apart_Id;
+            return $this->redirect(['show-room/index']);
        
             }
-            else if ($session['type'] == '0') {
-                return $this->redirect(['apartment/index']);
+            else if (($session['type'] == '0')&&($session['status']=='1') ) {
+                return $this->redirect(['staff/index']);
             }
         }
         return $this->render('login', [
@@ -118,6 +124,7 @@ class SiteController extends Controller
         $session = new Session;
         $session->open();
 
+
         if (isset($session['member_name'])) {
             return $this->goHome();
         }
@@ -127,13 +134,18 @@ class SiteController extends Controller
             $session['member_name'] = $model->getName();
             $session['staff_id'] = $model->getId();
             $session['type'] = $model->getType();
+            $session['status'] = $model->getStatus();
+
             
-            if ($session['type'] == '1') {
+            if(($session['type'] == '1')&&($session['status']=='1'))  {
+
+            $apartment = Apartment::find()->where(['Staff_Id' => $session['staff_id']])->one();
+            $session['Apartment_id'] = $apartment->Apart_Id;
                   return $this->redirect(['show-room/index']);
        
             }
-            else if ($session['type'] == '0') {
-                return $this->redirect(['apartment/index']);
+            else if  (($session['type'] == '0')&&($session['status']=='1') ) {
+                return $this->redirect(['staff/index']);
             }
         }
         return $this->render('login', [
@@ -157,7 +169,7 @@ class SiteController extends Controller
          unset($session['staff_id']);
          unset($session['type']);
 
-       // $session->close();
+       $session->close();
 
         $model = new LoginForm();
 

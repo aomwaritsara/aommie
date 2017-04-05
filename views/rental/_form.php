@@ -25,8 +25,7 @@ use kartik\datetime\DateTimePicker;
 <?php   endif;   ?>
 
    <?php if ($isUpdated == 0): ?>
-   <?= $form->field($model, 'Cus_Id')->widget(\yii\widgets\MaskedInput::className(), [
-    'mask' => '9999999999999', ]) ?>
+   <?= $form->field($model, 'Cus_Id')->textinput(['maxlength' => true])?>
     <?php   endif;   ?>
 
 <?php if ($isUpdated == 1): ?>
@@ -62,9 +61,12 @@ use kartik\datetime\DateTimePicker;
 
     <?= $form->field($model, 'NumCus')->textInput() ?>
 
+   <!--  <?if($model3 = Booking::find()->where(['Apart_Id' => $model->Apart_Id,'Room_Id' => $model->Room_Id,'Cus_Id' => $model->Cus_Id])->one()){
+             $model->Deposit=$model3->Deposit; ?>
+ -->
     <?= $form->field($model, 'Deposit')->textInput() ?>
 
-    <?= $form->field($model, 'Status')->dropDownList([2=>'ใช้งาน'],['prompt'=>''])  ?>
+    <?= $form->field($model, 'Status')->dropDownList([2=>'ใช้งาน'])  ?>
 
     <div class="form-group" align="center">
         <?= Html::submitButton($model->isNewRecord ? 'บันทึก' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

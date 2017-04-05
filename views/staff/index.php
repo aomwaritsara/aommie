@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
            // ['class' => 'yii\grid\SerialColumn'],
 
             //'Staff_Id',
-            'Username',
+            //'Username',
             //'Password',
             'Name',
             //'Tel',
@@ -60,7 +60,7 @@ $this->params['breadcrumbs'][] = $this->title;
              [
                 
                 'class' => 'yii\grid\ActionColumn',
-                'template' => '{view} {update} {cencel}',
+                'template' => '{view} {update} {cencel} {delete}',
                // 'contentOptions' => ['class'=>'text center']
             ],
         ],

@@ -113,4 +113,15 @@ class Staff extends \yii\db\ActiveRecord
         
         return null;
     }
+    public static function getStatus($username)
+    {
+        $myuser = Staff::find()->all();
+        foreach ($myuser as $key => $value) {
+            if (strcasecmp($value['Username'], $username) === 0) {
+                return $value['Status'];
+            }
+        }
+        
+        return null;
+    }
 }

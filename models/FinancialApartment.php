@@ -33,8 +33,9 @@ class FinancialApartment extends \yii\db\ActiveRecord
     {
         return [
             [['Finan_Id', 'Apart_Id', 'Date', 'Destination', 'Name', 'Amount', 'Price', 'TotalPrice'], 'required'],
-            [['Finan_Id', 'Apart_Id', 'Amount', 'Price'], 'integer'],
+            [['Apart_Id', 'Amount', 'Price'], 'integer'],
             [['Date'], 'safe'],
+            [['Finan_Id'], 'string', 'max' => 5],
             [['TotalPrice'], 'number'],
             [['Destination', 'Name'], 'string', 'max' => 50],
         ];

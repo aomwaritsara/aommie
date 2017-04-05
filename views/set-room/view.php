@@ -4,6 +4,7 @@ use app\models\RoomSearch;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
+
 /* @var $this yii\web\View */
 /* @var $model app\models\SetRoom */
 
@@ -36,18 +37,34 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= DetailView::widget([
         'model' => $model,
-        'attributes' => [
+            'attributes' => [
             'Apart_Id',
             'Room_Id',
-            'Type',
+            //'Type',
+            [
+             'attribute' => 'Type',
+             'format'=>'raw',
+             'value'=>'Type'? 'ทั่วไป' : 'ร้านค้า'
+            // 'value'=>'room.Status' ? 'จอง' : 'ไม่พร้อมใช้งาน'
+        ],
             'Price',
             'Eletricity',
             'Watersupply',
             'room.Name',
             'room.Floor',
-            'room.Status',
+            //'room.Status',
+             [
+             'attribute' => 'room.Status',
+             'format'=>'raw',
+             'value'=>'room.Status'? 'ใช้งาน' : 'เช่า'
+            // 'value'=>'room.Status' ? 'จอง' : 'ไม่พร้อมใช้งาน'
+        ],
+
+        
+
     ],
     ]) ?>
 
 </div>
 
+ 

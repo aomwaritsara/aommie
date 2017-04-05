@@ -80,6 +80,12 @@ class LoginForm extends Model
         return $this->_user;
     }
 
+   public function getStatus()
+    {
+        $status = Staff::getStatus($this->username);
+
+        return $status;
+    }
     public function getName()
     {
         $user = Staff::getName($this->username);

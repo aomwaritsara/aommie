@@ -82,12 +82,14 @@ $session = new Session;
            $this->layout = 'templateAdmin';
         }
         $model = new Apartment();
+        $Apa= Apartment::find()->all();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->Apart_Id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
+                'Apa' => $Apa,
             ]);
         }
     }
@@ -107,12 +109,16 @@ $session = new Session;
            $this->layout = 'templateAdmin';
         }
         $model = $this->findModel($id);
+        
+        $model1 = new Apartment();
+        $Apa= Apartment::find()->all();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->Apart_Id]);
         } else {
             return $this->render('update', [
                 'model' => $model,
+                'Apa' => $Apa,
             ]);
         }
     }

@@ -38,7 +38,7 @@ AppAsset::register($this);
 <header class="main-header">
 
     <!-- Logo -->
-    <a href="#" class="logo">
+    <a href="<?= Url::to(['staff/index']) ?>" class="logo">
            
       <!-- logo for regular state and mobile devices -->
       <span class="logo-lg"><b>Apartment</b></span>
@@ -89,19 +89,17 @@ AppAsset::register($this);
       <ul class="sidebar-menu">
         <li class="header">เมนูหลัก</li>
 
-              <li class="treeview">
+          <li>
+          <a href="<?= Url::to(['staff/index']) ?>">
+            <i class="fa  fa-dashboard"></i> <span>จัดการสิทธิ์ผู้ประกอบการ</span>
+          </a>
+        </li>
+<li class="treeview">
           <a href="<?= Url::to(['apartment/index']) ?>">
             <i class="fa  fa-user"></i>
             <span>ข้อมูลอพาร์ตเมนต์</span>
          </a>
         </li>
-
-        <li>
-          <a href="<?= Url::to(['staff/index']) ?>">
-            <i class="fa  fa-dashboard"></i> <span>จัดการสิทธิ์ผู้ประกอบการ</span>
-          </a>
-        </li>
-
        
 
         

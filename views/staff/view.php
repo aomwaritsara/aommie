@@ -42,8 +42,20 @@ $this->params['breadcrumbs'][] = $this->title;
             'Tel',
             'Email:email',
             'Address:ntext',
-            'Status',
-            'Type',
+            // 'Status',
+            // 'Type',
+             [
+             'attribute' => 'Status',
+             'format'=>'raw',
+             'value'=>$model->Status ? 'ใช้งาน' : 'ระงับการใช้งาน'
+            ],
+
+            [
+             'attribute' => 'Type',
+             'format'=>'raw',
+             'value'=>$model->Type? 'ผู้ดูแลระบบ' : 'ผู้ดูแลอพาร์ตเมนต์'
+            ],
+
         ],
     ]) ?>
 

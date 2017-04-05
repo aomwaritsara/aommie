@@ -18,8 +18,8 @@ class FinancialApartmentSearch extends FinancialApartment
     public function rules()
     {
         return [
-            [['Finan_Id', 'Apart_Id', 'Amount', 'Price'], 'integer'],
-            [['Date', 'Destination', 'Name'], 'safe'],
+            [['Apart_Id', 'Amount', 'Price'], 'integer'],
+            [['Date', 'Destination', 'Name','Finan_Id' ], 'safe'],
             [['TotalPrice'], 'number'],
         ];
     }
@@ -60,7 +60,7 @@ class FinancialApartmentSearch extends FinancialApartment
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'Finan_Id' => $this->Finan_Id,
+           
             'Apart_Id' => $this->Apart_Id,
             'Date' => $this->Date,
             'Amount' => $this->Amount,
@@ -68,7 +68,8 @@ class FinancialApartmentSearch extends FinancialApartment
             'TotalPrice' => $this->TotalPrice,
         ]);
 
-        $query->andFilterWhere(['like', 'Destination', $this->Destination])
+        $query->andFilterWhere(['like', 'Finan_Id', $this->Finan_Id])
+        ->andFilterWhere(['like', 'Destination', $this->Destination])
             ->andFilterWhere(['like', 'Name', $this->Name]);
 
         return $dataProvider;

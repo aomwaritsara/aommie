@@ -33,9 +33,13 @@ $this->params['breadcrumbs'][] = $this->title;
             //'DateTo',
             // 'NumCus',
             // 'Deposit',
-            // 'Status',
-
-            ['class' => 'yii\grid\ActionColumn'],
+             //'Status',
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '{view} {update} ',
+               // 'contentOptions' => ['class'=>'text center']
+            ],
+            //['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
 </div>
