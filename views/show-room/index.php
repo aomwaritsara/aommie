@@ -18,7 +18,7 @@ use app\models;
 <div class="box box-success">
 
 	<div class="box-header with-border">
-        <h2>Room</h2> สถานะห้อง : &nbsp<div class="ic" style="background-color:#87FF8D;">&nbsp &nbsp &nbsp &nbsp</div>  ว่าง &nbsp &nbsp
+        <h2>ห้องพัก</h2> สถานะห้อง : &nbsp<div class="ic" style="background-color:#87FF8D;">&nbsp &nbsp &nbsp &nbsp</div>  ว่าง &nbsp &nbsp
         	<div class="ic" style='background-color:#FF6961'>&nbsp &nbsp &nbsp &nbsp</div> ถูกเช่า  &nbsp &nbsp
         	<div class="ic" style='background-color:#CCAACC'>&nbsp &nbsp &nbsp &nbsp</div> ถูกจอง &nbsp &nbsp
         	<div class="ic" style='background-color:#FDFD96'>&nbsp &nbsp &nbsp &nbsp</div> ไม่พร้อม &nbsp &nbsp
@@ -36,13 +36,14 @@ use app\models;
 
     ?>
 
-
 	<?php foreach ($numFloor as $floor): ?>
 		<div class="row" style="padding : 0px 30px 0px 30px">
-		<?php echo "<h2> Floor ".$floor->Floor."</h2> "; ?>
+		<?php echo "<h2> ชั้น ".$floor->Floor."</h2> "; ?>
 			 <?php $c = 0; ?>
 		  <?php foreach ($rooms as $room):  ?>
 		  	 <?php $c++; ?>
+
+
 		  	 <?php if ($room["Floor"] == $floor->Floor): ?>
 		  	 	<?php if($room["Status"] == 1):
 		  	 			$Status_detail = "ว่าง";
@@ -59,6 +60,7 @@ use app\models;
 		  	 		 endif;   ?>
 							<div class="col-xs-8 col-sm-4 col-md-2 col-lg-1">
 									<div class="borderRoom" <?= $color_style ?> >
+
 										<p class="hna" align="center"><?= $room["Room_Id"] ?> </p>
 										<p class="hna" align="center"><?= $Status_detail ?> </p>
 										<?php 
@@ -71,6 +73,7 @@ use app\models;
 											  		$Deposit = $room['Deposit'];
 
 										?>
+										
 										<button type="button" class="eiei btn btn-info btn-responsive btn-xs center-block open-AddBookDialog" 
 												data-id="<?= $room['Room_Id'] ?>"
 												data-rname = "<?= $room['Name'] ?>"
@@ -113,21 +116,21 @@ use app\models;
                                       </div>
                                   <div class="modal-body">
 
-                                      <h5>ชื่อห้อง: <span id="roomName">-</span></h5>
-									 <h5>Floor: <span id="roomFloor">-</span></h5>
-									<h5>Status: <span id="roomStatus">-</span></h5>
-									<h5>Type: <span id="roomType">-</span></h5>
-									<h5>Price: <span id="Price">-</span></h5>
-									<h5>Customer Name: <span id="CName">-</span></h5>
-								<h5>Num of Customer: <span id="Number">-</span></h5>					
-									<h5>Deposit: <span id="Deposit">-</span></h5>								
+                                      <h5>ชื่อห้อง : <span id="roomName">-</span></h5>
+									 <h5>ชั้น : <span id="roomFloor">-</span></h5>
+									<h5>สถานะ : <span id="roomStatus">-</span></h5>
+									<h5>ประเภทห้อง A=ทั่วไป B=ร้านค้า : <span id="roomType">-</span></h5>
+									<h5>ราคา : <span id="Price">-</span></h5>
+									<h5>ชื่อผู้เข้าพัก : <span id="CName">-</span></h5>
+								<h5>จำนวนผู้เข้าพัก : <span id="Number">-</span></h5>					
+									<h5>เงินประกัน : <span id="Deposit">-</span></h5>								
 
                           </div>
                            <div class="modal-footer">
                               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                        </div>
                       </div>
-                                 
+                             
                                     
   </div>
 

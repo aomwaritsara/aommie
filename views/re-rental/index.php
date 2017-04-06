@@ -5,14 +5,15 @@ use yii\grid\GridView;
 use yii\helpers\Url;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\ReRestoreStoreSearch */
+/* @var $searchModel app\models\ReRentalSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'รายงานการคืนห้องพัก';
+$this->title = 'รายงานการเช่าห้องพัก';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="restore-index">
+<div class="rental-index">
 
+   
             <div class="box-header with-border">
  
   
@@ -26,9 +27,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
                             $headTable = 
-                            "<tr bgcolor=#87FF8D>
+                            "<tr bgcolor=#CCAACC>
                                 <td align='center' style='font-weight: bold'>ลำดับที่</td>
-                                <td align='center' style='font-weight: bold'> รายงานการคืนห้องพักประจำเดือน </td>
+                                <td align='center' style='font-weight: bold'> รายงานการเช่าห้องพักประจำเดือน </td>
                             </tr>";
                             echo $headTable;
                             foreach ($monthday as $key => $value) {
@@ -83,3 +84,4 @@ $this->params['breadcrumbs'][] = $this->title;
                             
                         }
                     
+

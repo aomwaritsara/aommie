@@ -45,20 +45,20 @@ $this->params['breadcrumbs'][] = $this->title;
              'attribute' => 'Type',
              'format'=>'raw',
              'value'=>'Type'? 'ทั่วไป' : 'ร้านค้า'
-            // 'value'=>'room.Status' ? 'จอง' : 'ไม่พร้อมใช้งาน'
+           
         ],
             'Price',
             'Eletricity',
             'Watersupply',
             'room.Name',
             'room.Floor',
-            //'room.Status',
-             [
-             'attribute' => 'room.Status',
-             'format'=>'raw',
-             'value'=>'room.Status'? 'ใช้งาน' : 'เช่า'
-            // 'value'=>'room.Status' ? 'จอง' : 'ไม่พร้อมใช้งาน'
-        ],
+            'room.Status',
+        //      [
+        //      'attribute' => 'room.Status',
+        //      'format'=>'raw',
+        //      'value'=> 'room.Status'==1 ? :'ว่าง'if('room.Status'==2 )? :'เช่า'
+        //     // 'value'=>'room.Status' ? 'จอง' : 'ไม่พร้อมใช้งาน'
+        // ],
 
         
 

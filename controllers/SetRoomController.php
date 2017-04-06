@@ -75,7 +75,7 @@ class SetRoomController extends Controller
         $model = new SetRoom();
         $model2 = new Room();
      
-
+            //$Apartment=Apartment::find()->all();
          
         if ($model->load(Yii::$app->request->post()) ) {
               $model->save();
@@ -91,6 +91,7 @@ class SetRoomController extends Controller
             return $this->render('create', [
                 'model' => $model,
                 'model2' => $model2,
+              // 'Apartment'=> $Apartment,
                 
 
             ]);

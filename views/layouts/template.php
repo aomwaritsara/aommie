@@ -158,11 +158,11 @@ AppAsset::register($this);
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="pages/charts/chartjs.html"><i class="fa fa-check-square"></i> รายงานการเช่าห้องพัก</a></li>
+            <li><a href="<?= Url::to(['re-rental/index']) ?>"><i class="fa fa-check-square"></i> รายงานการเช่าห้องพัก</a></li>
             <li><a href="<?= Url::to(['re-restore/index']) ?>"><i  class="fa fa-check-square"></i> รายงานการคืนห้องพัก</a></li>
-            <li><a href="pages/charts/flot.html"><i class="fa fa-check-square"></i> รายงานการรับเงินเฉพาะค่าห้อง</a></li>
-            <li><a href="pages/charts/inline.html"><i class="fa fa-check-square"></i> รายงานการรับเงินรวม</a></li>
-            <li><a href="pages/charts/inline.html"><i class="fa fa-check-square"></i> รายงานรายรับ – รายจ่าย</a></li>
+            <li><a href="<?= Url::to(['re-income/index']) ?>"><i class="fa fa-check-square"></i> รายงานรายรับรวม</a></li>
+            <li><a href="<?= Url::to(['re-expense/index']) ?>"><i class="fa fa-check-square"></i> รายงานรายจ่ายรวม</a></li>
+            <li><a href="<?= Url::to(['re-incomeoutcome/index']) ?>"><i class="fa fa-check-square"></i> รายงานรายรับ – รายจ่าย</a></li>
          </ul>
         </li>
         

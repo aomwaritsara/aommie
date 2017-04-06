@@ -135,7 +135,33 @@ class CustomerController extends Controller
 
         return $this->redirect(['index']);
     }
+   public function actionCencel($id)
+    {
+         $session = new Session;
+        $session->open();
 
+        if ($session['type'] == '0') {
+           $this->layout = 'templateAdmin';
+        }
+
+        $Apartment = $this->findModel($id);
+       
+        
+        if($Apartment->Status == '1')//สถานะที่ส่งมาจากroomถ้าถูกจองห้อง
+        {
+            $Apartment->Status = '0';//เซตให้เป็น 1 เพื่อจะส่งไปRoom
+            $Apartment->save();
+            
+        }  //return $this->redirect(['index']);
+         
+        elseif ($Apartment->Status == '0')//สถานะที่ส่งมาจากroomถ้าถูกจองห้อง
+        {
+            $Apartment->Status = '1';//เซตให้เป็น 1 เพื่อจะส่งไปRoom
+            $Apartment->save();
+            
+        }  return $this->redirect(['index']);
+    //    
+    }
     /**
      * Finds the Customer model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.

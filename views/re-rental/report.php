@@ -5,13 +5,13 @@ use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 use yii\web\view;
 use yii\web\Session;
-use app\models\Restore;
-use app\models\RestoreSearch;
+use app\models\Rental;
+use app\models\RentalSearch;
 
 $session = new Session;
 $session->open();
 
-$this->title = 'รายงานการคืนห้องพัก';
+$this->title = 'รายงานการเช่าห้องพัก';
 
 ?>
 
@@ -42,19 +42,20 @@ $this->title = 'รายงานการคืนห้องพัก';
     
 ?>
 <a href="javascript:history.go(-1)"><button class="btn">กลับ</button></a>
-<center><h3><b><p>รายงานการคืนห้องพักประจำเดือน <?= $session["month"]; ?></p></b></h3></center>
+<center><h3><b><p>รายงานการเช่าห้องพักประจำเดือน <?= $session["month"]; ?></p></b></h3></center>
  
 
 
 <?php 
     echo 
     "<table class='table table-bordered table-hover table-responsive' width='100%'  >
-        <tr bgcolor=#87FF8D>
+        <tr bgcolor=#CCAACC>
             <td width='6%' align='center' style='font-weight: bold'>ลำดับที่</td>
             <td align='center' style='font-weight: bold'>รหัสห้องพัก</td>
             <td align='center' style='font-weight: bold'>รหัสผู้เช่า</td>
-            <td align='center' style='font-weight: bold'>วันที่ออก</td>
-           
+            <td align='center' style='font-weight: bold'>วันที่เข้า</td>
+           <td align='center' style='font-weight: bold'>วันที่ออก</td>
+           <td align='center' style='font-weight: bold'>สถานะ 1:คืนห้องพัก 2:เช่าห้องพัก</td>
         </tr>";
 ?>
 
@@ -68,7 +69,9 @@ $this->title = 'รายงานการคืนห้องพัก';
             <td align='center'>".$sequence."</td>
             <td align='center' style='vertical-align:middle'>".$value["Room_Id"]."</td>
             <td align='center' style='vertical-align:middle'>".$value["Cus_Id"]."</td>
-            <td align='center' style='vertical-align:middle'>".$value["DateTo"]."</td>
+            <td align='center' style='vertical-align:middle'>".$value["DateFrom"]."</td>
+             <td align='center' style='vertical-align:middle'>".$value["DateTo"]."</td>
+             <td align='center' style='vertical-align:middle'>".$value["Status"]."</td>
         </tr>
     ";
 
