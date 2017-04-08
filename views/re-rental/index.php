@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             </tr>";
                             echo $headTable;
                             foreach ($monthday as $key => $value) {
-                                $phpdate = strtotime($value->DateTo);
+                                $phpdate = strtotime($value->DateFrom);
                                 $mysqldate = date( 'm', $phpdate );
                                 switch ($mysqldate) {
                                     case '01':

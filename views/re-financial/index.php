@@ -2,18 +2,18 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+
 use yii\helpers\Url;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\ReRestoreStoreSearch */
+/* @var $searchModel app\models\ReFinancialSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'รายงานการคืนห้องพัก';
+$this->title = 'Re Financials';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="restore-index">
-
-            <div class="box-header with-border">
+<div class="re-financial-index">
+ <div class="box-header with-border">
  
   
               <!-- /.box-tools -->
@@ -28,11 +28,11 @@ $this->params['breadcrumbs'][] = $this->title;
                             $headTable = 
                             "<tr bgcolor=#87FF8D>
                                 <td align='center' style='font-weight: bold'>ลำดับที่</td>
-                                <td align='center' style='font-weight: bold'> รายงานการคืนห้องพักประจำเดือน </td>
+                                <td align='center' style='font-weight: bold'> รายงานรายจ่ายประจำเดือน </td>
                             </tr>";
                             echo $headTable;
                             foreach ($monthday as $key => $value) {
-                                $phpdate = strtotime($value->DateTo);
+                                $phpdate = strtotime($value->Date);
                                 $mysqldate = date( 'm', $phpdate );
                                 switch ($mysqldate) {
                                     case '01':
@@ -73,7 +73,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                         break;
                                 }
                                 
-                                if ($value->DateTo != NULL) {
+                                if ($value->Date != NULL) {
                                     echo "<tr>";
                                     echo "<td width='10%'align='center'>".$i."</td>";
                                     $session["month"] = $month;

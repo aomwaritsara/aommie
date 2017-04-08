@@ -16,8 +16,12 @@ use yii\helpers\ArrayHelper;
 use yii\web\Session;
 use app\models\Apartment;
 use kartik\datetime\DateTimePicker;
+use app\models\Customer;
 /**
  * BookingController implements the CRUD actions for Booking model.
+
+
+ //เพิ่มbooking date ทุก action
  */
 class BookingController extends Controller
 {
@@ -59,10 +63,10 @@ class BookingController extends Controller
      * @param string $Cus_Id
      * @return mixed
      */
-    public function actionView($Apart_Id, $Room_Id, $Cus_Id)
+    public function actionView($Apart_Id, $Room_Id, $Cus_Id,$Booking_Date)
     {
         return $this->render('view', [
-            'model' => $this->findModel($Apart_Id, $Room_Id, $Cus_Id),
+            'model' => $this->findModel($Apart_Id, $Room_Id, $Cus_Id,$Booking_Date),
         ]);
     }
 
@@ -79,37 +83,52 @@ class BookingController extends Controller
         $model = new Booking();
         $model2 = new Room();
         $model3 = new Deposit();
+        $Cus = new Customer();
 
         $apartment = Apartment::find()->where(['Staff_Id' => $session['staff_id']])->one();
+       
+      // $Cus =Customer::find()->All();
+ // var_dump($Cus) ;
+ 
+    // $getApart = Apartment::findOne($model2->Apart_Id); '5555555555555'
+      if ($model->load(Yii::$app->request->post())  ){
+            // $booking ='5555555555555';
+            // echo $model->Cus_Id;
+             if (Customer::find()->where(['Cus_Id' => $model->Cus_Id])->one()){
+          
+                $model->Apart_Id = $apartment->Apart_Id;
+                  $model->Datestatus =date('Y-m-d h:i:s');
+                  $model->Status = '3';
+                     $model->save();
 
-   
-    // $getApart = Apartment::findOne($model2->Apart_Id);
-        if ($model->load(Yii::$app->request->post())  ){
-            $model->Apart_Id = $apartment->Apart_Id;
-              $model->Datestatus =date('Y-m-d h:i:s');
-              $model->Status = '3';
-              $model->save();
-             $model2 = Room::find()->where(['Apart_Id' => $model->Apart_Id,'Room_Id' => $model->Room_Id])->one();
-             
-            // $getApart = Apartment::findOne($model2->Apart_Id);//เอาApartid ส่งไป_form
-              
-             $model2->Status = $model->Status;
-             $model2->save();
+                 $model2 = Room::find()->where(['Apart_Id' => $model->Apart_Id,'Room_Id' => $model->Room_Id])->one();
+                 
+                // $getApart = Apartment::findOne($model2->Apart_Id);//เอาApartid ส่งไป_form
+               
+                 $model2->Status = $model->Status;
+                 $model2->save();
+                
+                 $model3->Apart_Id = $model->Apart_Id;
+                 $model3->Room_Id = $model->Room_Id;
+                 $model3->Cus_Id = $model->Cus_Id;
+                 $model3->Date = $model->Booking_Date;
+                 $model3->Price = $model->Deposit;
+                 $model3->Status = '1';
+                
+                $model3->save(); 
+
+                // echo "yes";
+                       return $this->redirect(['view', 'Apart_Id' => $model->Apart_Id, 'Room_Id' => $model->Room_Id, 'Cus_Id' => $model->Cus_Id]);
+            }
+            else return "รหัสประจำตัวไม่ถูกต้อง กรุณากรอกใหม่อีกครั้ง";
+      
+      }
             
-             $model3->Apart_Id = $model->Apart_Id;
-             $model3->Room_Id = $model->Room_Id;
-             $model3->Cus_Id = $model->Cus_Id;
-             $model3->Date = $model->Booking_Date;
-             $model3->Price = $model->Deposit;
-             $model3->Status = '1';
-            
-            $model3->save();
-            return $this->redirect(['view', 'Apart_Id' => $model->Apart_Id, 'Room_Id' => $model->Room_Id, 'Cus_Id' => $model->Cus_Id]);
-        } else {
+ else {
             return $this->render('create', [
                 'model' => $model,
                 'apartment' => $apartment,
-                 
+                 //'Cus'  =>  $Cus,
                 
             ]);
         }
@@ -234,9 +253,9 @@ protected function findModel3($Apart_Id,$Room_Id)
      * @return Booking the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($Apart_Id, $Room_Id, $Cus_Id)
+    protected function findModel($Apart_Id, $Room_Id, $Cus_Id,$Booking_Date)
     {
-        if (($model = Booking::findOne(['Apart_Id' => $Apart_Id, 'Room_Id' => $Room_Id, 'Cus_Id' => $Cus_Id])) !== null) {
+        if (($model = Booking::findOne(['Apart_Id' => $Apart_Id, 'Room_Id' => $Room_Id, 'Cus_Id' => $Cus_Id, 'Booking_Date' => $Booking_Date])) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

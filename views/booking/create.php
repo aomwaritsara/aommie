@@ -25,6 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= $this->render('_form', [
         'model' => $model,
         'apartment' => $apartment,
+           // 'Cus'  =>  $Cus,
         // 'getApart'=>$getApart,
         
    'isUpdated' => 0,

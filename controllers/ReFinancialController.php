@@ -3,8 +3,8 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Rental;
-use app\models\ReRentalSearch;
+use app\models\ReFinancial;
+use app\models\ReFinancialSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -12,9 +12,9 @@ use yii\web\Session;
 use yii\db\Query;
 
 /**
- * ReRentalController implements the CRUD actions for Rental model.
+ * ReFinancialController implements the CRUD actions for ReFinancial model.
  */
-class ReRentalController extends Controller
+class ReFinancialController extends Controller
 {
     /**
      * @inheritdoc
@@ -32,22 +32,29 @@ class ReRentalController extends Controller
     }
 
     /**
-     * Lists all Rental models.
+     * Lists all ReFinancial models.
      * @return mixed
      */
-   public function actionIndex()
+    public function actionIndex()
     {
-        $searchModel = new ReRentalSearch();
+          $searchModel = new ReFinancialSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-       $monthday = Rental::find()->groupBy(['month(DateFrom)'])->all();
+       $monthday = ReFinancial::find()->groupBy(['month(Date)'])->all();
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
             'monthday'=> $monthday,
         ]);
     }
-public function actionReport($month) // $date = Y-m-d // payment_date = Y-m-d H-m-s.mm
+
+    /**
+     * Displays a single ReFinancial model.
+     * @param string $Finan_Id
+     * @param integer $Apart_Id
+     * @return mixed
+     */
+    public function actionReport($month) // $date = Y-m-d // payment_date = Y-m-d H-m-s.mm
     {
         //$this->layout = 'siteadmin_main';
         $session = new Session;
@@ -60,12 +67,12 @@ public function actionReport($month) // $date = Y-m-d // payment_date = Y-m-d H-
         //SELECT * FROM selling_transaction INNER JOIN member ON selling_transaction.m_id = member.m_id INNER JOIN payment on selling_transaction.t_id = payment.t_id INNER JOIN selling_detail ON selling_transaction.t_id = selling_detail.t_id WHERE payment.payment_date LIKE '%2017-03-13%'
         $query = new Query;
         $query  ->select('*')  
-                ->from('rental')
+                ->from('financial_apartment')
                 // ->innerJoin('member', 'selling_transaction.m_id = member.m_id')
                 // ->innerJoin('payment', 'selling_transaction.t_id = payment.t_id')
                 // ->innerJoin('selling_detail', 'selling_transaction.t_id = selling_detail.t_id')
-                ->where("DateFrom LIKE '%$month%' ")
-                ->orderBy(['DateFrom' => SORT_ASC]);
+                ->where("Date LIKE '%$month%' ")
+                ->orderBy(['Date' => SORT_ASC]);
 
         $command = $query->createCommand();
         $data = $command->queryAll();
@@ -74,31 +81,25 @@ public function actionReport($month) // $date = Y-m-d // payment_date = Y-m-d H-
 
         return $this->render('report', ['month' => $month, 'model' =>$model]);
     }
-    /**
-     * Displays a single Restore model.
-     * @param integer $Apart_Id
-     * @param string $Room_Id
-     * @param string $Cus_Id
-     * @return mixed
-     */
-    public function actionView($Apart_Id, $Room_Id, $Cus_Id, $DateFrom)
+
+    public function actionView($Finan_Id, $Apart_Id)
     {
         return $this->render('view', [
-            'model' => $this->findModel($Apart_Id, $Room_Id, $Cus_Id, $DateFrom),
+            'model' => $this->findModel($Finan_Id, $Apart_Id),
         ]);
     }
 
     /**
-     * Creates a new Rental model.
+     * Creates a new ReFinancial model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Rental();
+        $model = new ReFinancial();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'Apart_Id' => $model->Apart_Id, 'Room_Id' => $model->Room_Id, 'Cus_Id' => $model->Cus_Id, 'DateFrom' => $model->DateFrom]);
+            return $this->redirect(['view', 'Finan_Id' => $model->Finan_Id, 'Apart_Id' => $model->Apart_Id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -107,20 +108,18 @@ public function actionReport($month) // $date = Y-m-d // payment_date = Y-m-d H-
     }
 
     /**
-     * Updates an existing Rental model.
+     * Updates an existing ReFinancial model.
      * If update is successful, the browser will be redirected to the 'view' page.
+     * @param string $Finan_Id
      * @param integer $Apart_Id
-     * @param string $Room_Id
-     * @param string $Cus_Id
-     * @param string $DateFrom
      * @return mixed
      */
-    public function actionUpdate($Apart_Id, $Room_Id, $Cus_Id, $DateFrom)
+    public function actionUpdate($Finan_Id, $Apart_Id)
     {
-        $model = $this->findModel($Apart_Id, $Room_Id, $Cus_Id, $DateFrom);
+        $model = $this->findModel($Finan_Id, $Apart_Id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'Apart_Id' => $model->Apart_Id, 'Room_Id' => $model->Room_Id, 'Cus_Id' => $model->Cus_Id, 'DateFrom' => $model->DateFrom]);
+            return $this->redirect(['view', 'Finan_Id' => $model->Finan_Id, 'Apart_Id' => $model->Apart_Id]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -129,34 +128,30 @@ public function actionReport($month) // $date = Y-m-d // payment_date = Y-m-d H-
     }
 
     /**
-     * Deletes an existing Rental model.
+     * Deletes an existing ReFinancial model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
+     * @param string $Finan_Id
      * @param integer $Apart_Id
-     * @param string $Room_Id
-     * @param string $Cus_Id
-     * @param string $DateFrom
      * @return mixed
      */
-    public function actionDelete($Apart_Id, $Room_Id, $Cus_Id, $DateFrom)
+    public function actionDelete($Finan_Id, $Apart_Id)
     {
-        $this->findModel($Apart_Id, $Room_Id, $Cus_Id, $DateFrom)->delete();
+        $this->findModel($Finan_Id, $Apart_Id)->delete();
 
         return $this->redirect(['index']);
     }
 
     /**
-     * Finds the Rental model based on its primary key value.
+     * Finds the ReFinancial model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
+     * @param string $Finan_Id
      * @param integer $Apart_Id
-     * @param string $Room_Id
-     * @param string $Cus_Id
-     * @param string $DateFrom
-     * @return Rental the loaded model
+     * @return ReFinancial the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($Apart_Id, $Room_Id, $Cus_Id, $DateFrom)
+    protected function findModel($Finan_Id, $Apart_Id)
     {
-        if (($model = Rental::findOne(['Apart_Id' => $Apart_Id, 'Room_Id' => $Room_Id, 'Cus_Id' => $Cus_Id, 'DateFrom' => $DateFrom])) !== null) {
+        if (($model = ReFinancial::findOne(['Finan_Id' => $Finan_Id, 'Apart_Id' => $Apart_Id])) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

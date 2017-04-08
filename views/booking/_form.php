@@ -39,6 +39,7 @@ use yii\web\Session;
    <?=  $form->field($model, 'Cus_Id')->textinput(['readonly'=> true,'value'=>$model->Cus_Id]) ?>
    <?php   endif;   ?>
 
+
     <?php if ($isUpdated == 0): ?> 
     <?= $form->field($model, 'Cus_Id')->textinput(['maxlength' => true,'value'=>$model->Cus_Id]) ?>
   

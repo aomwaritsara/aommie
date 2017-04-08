@@ -10,6 +10,7 @@ use kartik\datetime\DateTimePicker;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
+
 <div class="rental-form">
 
     <?php $form = ActiveForm::begin(['layout' => 'horizontal']); ?>
@@ -31,6 +32,7 @@ use kartik\datetime\DateTimePicker;
 <?php if ($isUpdated == 1): ?>
     <?= $form->field($model, 'Cus_Id')->textinput(['readonly'=>true,'value'=>$model->Cus_Id])?>
     <?php   endif;   ?>
+
 
 
     <?= $form->field($model, 'DateFrom')->textinput([ 
@@ -59,7 +61,7 @@ use kartik\datetime\DateTimePicker;
 
 
 
-    <?= $form->field($model, 'NumCus')->textInput() ?>
+    <?= $form->field($model, 'NumCus')->textInput(['type' => 'number','min'=>"1",]) ?>
 
    <!--  <?if($model3 = Booking::find()->where(['Apart_Id' => $model->Apart_Id,'Room_Id' => $model->Room_Id,'Cus_Id' => $model->Cus_Id])->one()){
              $model->Deposit=$model3->Deposit; ?>

@@ -75,26 +75,40 @@ class RentalController extends Controller
 
          
       if ($model->load(Yii::$app->request->post())  ) {
-        $model->save();
-            $model2 = Room::find()->where(['Apart_Id' => $model->Apart_Id,'Room_Id' => $model->Room_Id])->one();
-             // Yii::log('start calculating average revenue');
-             $model2->Status = $model->Status;
-             $model2->save();
-            //ลบ model bookking ++++ 
-             if($model3 = Booking::find()->where(['Apart_Id' => $model->Apart_Id,'Room_Id' => $model->Room_Id,'Cus_Id' => $model->Cus_Id])->one()){
-             // $model->Deposit=$model3->Deposit;
-            // $model3->save();
-                if( $model3->Status ='3'){
-             $model3->Status ='0';
-             $model3->save();
-                (new Query)
-         ->createCommand()
-        ->delete('booking', ['Status' => '0'])
-        ->execute(); 
-                $model3->save();
-            }
-}
-            $this->redirect(['printrent/index', 'Apart_Id' => $model->Apart_Id, 'Room_Id' => $model->Room_Id, 'Cus_Id' => $model->Cus_Id]);
+        if (Booking::find()->where(['Cus_Id' => $model->Cus_Id])->one()) {
+            //if (Booking::find()->where(['Deposit' => $model->Deposit])->one()) {
+                    $model->save();
+                    $model2 = Room::find()->where(['Apart_Id' => $model->Apart_Id,'Room_Id' => $model->Room_Id])->one();
+                     // Yii::log('start calculating average revenue');
+                     $model2->Status = $model->Status;
+                     $model2->save();
+                    //ลบ model bookking ++++ 
+                     if($model3 = Booking::find()->where(['Apart_Id' => $model->Apart_Id,'Room_Id' => $model->Room_Id,'Cus_Id' => $model->Cus_Id])->one()){
+                     // $model->Deposit=$model3->Deposit;
+                    // $model3->save();
+                        if( $model3->Status ='3'){
+                     $model3->Status ='0';
+                     $model3->save();
+                        (new Query)
+                 ->createCommand()
+                ->delete('booking', ['Status' => '0'])
+                ->execute(); 
+                        $model3->save();
+                    }
+                }
+              //  echo "yes";
+                     $this->redirect(['printrent/index', 'Apart_Id' => $model->Apart_Id, 'Room_Id' => $model->Room_Id, 'Cus_Id' => $model->Cus_Id]);
+           // }
+            // else
+            // {
+            //     echo "money";
+            // }
+        }
+        else
+        {
+            echo "รหัสประจำตัวประชาชนไม่ถูกต้อง กรุณาตรวจสอบอีกครั้ง";
+        }
+        
         } else {
             return $this->render('create', [
                 'model' => $model,

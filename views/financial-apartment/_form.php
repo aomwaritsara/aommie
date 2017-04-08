@@ -60,15 +60,22 @@ if($model->Finan_Id == null){ //if insert
      'format' => 'yyyy-mm-dd hh:ii:ss',
       $model->Date = date('Y-m-d h:i:s')
     ]
-])?>
+])->widget(DateTimePicker::classname(), [
+    'language' => 'th',
+        'readonly'=> true,
+      'pluginOptions' => [
+        'format' => 'yyyy-mm-dd hh:ii:ss'
+    ]
+]) 
+?>
 
     <?= $form->field($model, 'Destination')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'Name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'Amount')->textInput() ?>
+    <?= $form->field($model, 'Amount')->textInput(['type' => 'number','min'=>"1",]) ?>
 
-    <?= $form->field($model, 'Price')->textInput() ?>
+    <?= $form->field($model, 'Price')->textInput(['type' => 'number','min'=>"1",]) ?>
 
     
  <div class="form-group" align="center">
