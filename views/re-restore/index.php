@@ -3,11 +3,13 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\helpers\Url;
+use yii\web\Session;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\ReRestoreStoreSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
-
+ $session = new Session;
+        $session->open();
 $this->title = 'รายงานการคืนห้องพัก';
 $this->params['breadcrumbs'][] = $this->title;
 ?>

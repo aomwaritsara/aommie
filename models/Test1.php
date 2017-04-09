@@ -28,7 +28,7 @@ class Test1 extends \yii\db\ActiveRecord
         return [
             [['id', 'amout'], 'required'],
             [['amout'], 'integer'],
-            [['id'], 'validateIdCard'],
+            //[['id'], 'validateIdCard'],
         ];
     }
 

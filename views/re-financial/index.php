@@ -2,14 +2,17 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-
+use yii\web\Session;
 use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\ReFinancialSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Re Financials';
+$session = new Session;
+$session->open();
+
+$this->title = 'รายงานรายจ่ายรวม';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="re-financial-index">

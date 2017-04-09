@@ -12,6 +12,7 @@ $session->open();
 use app\models\Room;
 use app\models;
 
+$this->title = 'ตรวจสอบห้องพัก';
 
 ?>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>

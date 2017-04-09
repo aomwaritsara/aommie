@@ -39,6 +39,9 @@ class ReRestoreController extends Controller
      */
     public function actionIndex()
     {
+        $session = new Session;
+        $session->open();
+        
         $searchModel = new ReRestoreStoreSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -66,7 +69,8 @@ public function actionReport($month) // $date = Y-m-d // payment_date = Y-m-d H-
                 // ->innerJoin('member', 'selling_transaction.m_id = member.m_id')
                 // ->innerJoin('payment', 'selling_transaction.t_id = payment.t_id')
                 // ->innerJoin('selling_detail', 'selling_transaction.t_id = selling_detail.t_id')
-                ->where("DateTo LIKE '%$month%' AND Status = '1'")
+               // ->where("DateTo LIKE '%$month%' AND Status = '1'")
+                 ->where(['MONTH(DateTo)' => $month,'Status' => '1'])
                 ->orderBy(['DateTo' => SORT_ASC]);
 
         $command = $query->createCommand();

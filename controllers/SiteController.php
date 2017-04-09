@@ -98,9 +98,9 @@ class SiteController extends Controller
             
             
             if (($session['type'] == '1')&&($session['status']=='1')) {
-                  $apartment = Apartment::find()->where(['Staff_Id' => $session['staff_id']])->one();
-            $session['Apartment_id'] = $apartment->Apart_Id;
-            return $this->redirect(['show-room/index']);
+                $apartment = Apartment::find()->where(['Staff_Id' => $session['staff_id']])->one();
+                $session['Apartment_id'] = $apartment->Apart_Id;
+                return $this->redirect(['show-room/index']);
        
             }
             else if (($session['type'] == '0')&&($session['status']=='1') ) {

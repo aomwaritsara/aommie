@@ -19,7 +19,10 @@ use app\models\ApartmentSearch;
 //=== ดัก ห้องห้ามเกิน Apart->Numroom 
 //=== ดัก ชั้นห้ามเกินApart->NumFloor
 ?>
- 
+<?php 
+    
+    $listApartment = ArrayHelper::map($FloorNumber, 'Floor', 'Floor'); 
+?> 
    
 <div class="set-room-form">
 
@@ -34,7 +37,7 @@ use app\models\ApartmentSearch;
   <?= $form->field($model2,  'Name')->textInput(['maxlength' => true]) ?> 
 
 
-    <?= $form->field($model2, 'Floor')->dropDownList(ArrayHelper::map(Room::find()->distinct('Floor')->where("Floor<'4'")->all(),'Floor','Floor')) ?> 
+    <?= $form->field($model2, 'Floor')->dropDownList($listApartment) ?> 
     
    
     <?= $form->field($model, 'Price')->textInput(['readonly'=> true,'value'=>'2700']) ?>

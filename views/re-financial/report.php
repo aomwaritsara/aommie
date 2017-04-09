@@ -5,8 +5,6 @@ use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 use yii\web\view;
 use yii\web\Session;
-use app\models\Restore;
-use app\models\RestoreSearch;
 
 $session = new Session;
 $session->open();
@@ -43,47 +41,52 @@ $this->title = 'รายงานรายจ่ายรวม';
 ?>
 <a href="javascript:history.go(-1)"><button class="btn">กลับ</button></a>
 <center><h3><b><p>รายงานรายจ่ายประจำเดือน <?= $session["month"]; ?></p></b></h3></center>
- 
-
 
 <?php 
     echo 
-    "<table class='table table-bordered table-hover table-responsive' width='100%'  >
+    "<table class='table table-bordered table-hover table-responsive' width='100%'>
         <tr bgcolor=#87FF8D>
             <td width='6%' align='center' style='font-weight: bold'>ลำดับที่</td>
             <td align='center' style='font-weight: bold'>รหัสบัญชีอพาร์ตเมนต์</td>
             <td align='center' style='font-weight: bold'>วันที่</td>
             <td align='center' style='font-weight: bold'>กิจการที่ชำาระให้</td>
             <td align='center' style='font-weight: bold'>รายการ</td>
-             <td align='center' style='font-weight: bold'>ราคา</td>index.php 
+             <td align='center' style='font-weight: bold'>ราคา</td>  
              <td align='center' style='font-weight: bold'>จำนวน</td>
               <td align='center' style='font-weight: bold'>ราคารวม</td>
         </tr>";
 ?>
 
 
-
+<?php $sum=0; ?>
 <?php foreach ($model as $key => $value) : ?>
 	<?php 
-	$sequence++;
-	$data = "
-        <tr>
-            <td align='center'>".$sequence."</td>
-            <td align='center' style='vertical-align:middle'>".$value["Finan_Id"]."</td>
-            <td align='center' style='vertical-align:middle'>".$value["Date"]."</td>
-            <td align='center' style='vertical-align:middle'>".$value["Destination"]."</td>
-            <td align='center' style='vertical-align:middle'>".$value["Name"]."</td>
-            <td align='center' style='vertical-align:middle'>".$value["Amount"]."</td>
-            <td align='center' style='vertical-align:middle'>".$value["Price"]."</td>
-            <td align='center' style='vertical-align:middle'>".$value["TotalPrice"]."</td>
-           
-        </tr>
-    ";
+    	$sequence++;
+    	$data = "
+            <tr>
+                <td align='center'>".$sequence."</td>
+                <td align='center' style='vertical-align:middle'>".$value["Finan_Id"]."</td>
+                <td align='center' style='vertical-align:middle'>".$value["Date"]."</td>
+                <td align='center' style='vertical-align:middle'>".$value["Destination"]."</td>
+                <td align='center' style='vertical-align:middle'>".$value["Name"]."</td>
+                <td align='center' style='vertical-align:middle'>".$value["Amount"]."</td>
+                <td align='center' style='vertical-align:middle'>".$value["Price"]."</td>
+                <td align='center' style='vertical-align:middle'>".$value["TotalPrice"]."</td>
+               
+            </tr>
+        ";
 
-    echo $data;
+        echo $data;
+
+        $sum = $sum+$value["TotalPrice"];
 
 	?>
 
 <?php endforeach; ?>
+    <tr bgcolor=#FDFD96>
+        <td colspan="6" ></td>
+        <td align='center' style='vertical-align:middle'>รวม</td>
+        <td align='center' style='vertical-align:middle'><?= $sum;?></td>
+    </tr>
 
 </table>

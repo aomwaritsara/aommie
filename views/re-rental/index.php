@@ -3,11 +3,13 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\helpers\Url;
+use yii\web\Session;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\ReRentalSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
-
+ $session = new Session;
+        $session->open();
 $this->title = 'รายงานการเช่าห้องพัก';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -73,7 +75,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                         $month = 'ธันวาคม';
                                         break;
                                 }
-                                if ($value->DateTo != NULL) {
+                                if ($value->DateFrom != NULL) {
                                     echo "<tr>";
                                     echo "<td width='10%'align='center'>".$i."</td>";
                                     $session["month"] = $month;

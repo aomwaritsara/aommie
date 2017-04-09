@@ -37,10 +37,14 @@ class ReRentalController extends Controller
      */
    public function actionIndex()
     {
+         $session = new Session;
+        $session->open();
+        
         $searchModel = new ReRentalSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        //$monthday = Rental::find()->all();
 
-       $monthday = Rental::find()->groupBy(['month(DateFrom)'])->all();
+        $monthday = Rental::find()->groupBy(['month(DateFrom)'])->all();
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
@@ -64,7 +68,7 @@ public function actionReport($month) // $date = Y-m-d // payment_date = Y-m-d H-
                 // ->innerJoin('member', 'selling_transaction.m_id = member.m_id')
                 // ->innerJoin('payment', 'selling_transaction.t_id = payment.t_id')
                 // ->innerJoin('selling_detail', 'selling_transaction.t_id = selling_detail.t_id')
-                ->where("DateFrom LIKE '%$month%' ")
+                ->where(['MONTH(DateFrom)' => $month])
                 ->orderBy(['DateFrom' => SORT_ASC]);
 
         $command = $query->createCommand();

@@ -37,6 +37,9 @@ class ReFinancialController extends Controller
      */
     public function actionIndex()
     {
+        $session = new Session;
+        $session->open();
+
           $searchModel = new ReFinancialSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -63,7 +66,7 @@ class ReFinancialController extends Controller
         // if (!isset($session['user_name'])) {
         //     return $this->redirect('login');
         // }
-        
+        //echo $month;
         //SELECT * FROM selling_transaction INNER JOIN member ON selling_transaction.m_id = member.m_id INNER JOIN payment on selling_transaction.t_id = payment.t_id INNER JOIN selling_detail ON selling_transaction.t_id = selling_detail.t_id WHERE payment.payment_date LIKE '%2017-03-13%'
         $query = new Query;
         $query  ->select('*')  
@@ -71,13 +74,14 @@ class ReFinancialController extends Controller
                 // ->innerJoin('member', 'selling_transaction.m_id = member.m_id')
                 // ->innerJoin('payment', 'selling_transaction.t_id = payment.t_id')
                 // ->innerJoin('selling_detail', 'selling_transaction.t_id = selling_detail.t_id')
-                ->where("Date LIKE '%$month%' ")
+                ->where(['MONTH(Date)' => $month])
                 ->orderBy(['Date' => SORT_ASC]);
 
         $command = $query->createCommand();
         $data = $command->queryAll();
         $model = $data;
-         
+        
+        //print_r($model);
 
         return $this->render('report', ['month' => $month, 'model' =>$model]);
     }

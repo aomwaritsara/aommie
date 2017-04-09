@@ -27,7 +27,7 @@ use yii\widgets\MaskedInput;
 ])
 ?>
     <?= $form->field($model, 'id')->widget(MaskedInput::className(),[
-                'mask'=>'9-9999-99999-99-9'
+                'mask'=>'9999999999999'
             ])?>
 
     <?= $form->field($model, 'amout')->textInput() ?>

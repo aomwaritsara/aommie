@@ -10,6 +10,13 @@ $this->title = 'เพิ่มข้อมูลตั้งค่าอพา�
 $this->params['breadcrumbs'][] = ['label' => 'Set Rooms', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+
+<?php
+  $i=0;
+  foreach ($numRoom as $key => $value) {
+    $i++;
+  }
+?>
 <div class="set-room-create">
 <div class="box box-info box-solid">
             <div class="box-header with-border">
@@ -22,11 +29,22 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
     <h1><?= Html::encode($this->title) ?></h1>
 
-   <?= $this->render('_form', [
-        'model' => $model,
-        'model2' => $model2,
-       
-    ]) ?>
+    <?php
+      $num = $apartment->NumRoom; 
+      if ($i < $num) {
+        echo $this->render('_form', [
+            'model' => $model,
+            'model2' => $model2,
+            'FloorNumber'=> $FloorNumber,
+           
+        ]);
+      }
+      else
+      {
+        echo "ห้องพักเต็มจำนวนที่ระบุไว้ในข้อมูลอพาร์ตเมนต์";
+      }
+
+     ?>
 
 
 </div>

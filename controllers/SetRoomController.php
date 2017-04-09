@@ -10,8 +10,10 @@ use app\models\RoomSearch;
 use app\models\Roomtype;
 use app\models\RoomtypeSearch;
 use yii\web\Controller;
+use yii\web\Session;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\helpers\ArrayHelper;
 use app\models\Apartment;
 use app\models\ApartmentSearch;
 
@@ -72,10 +74,17 @@ class SetRoomController extends Controller
      */
     public function actionCreate()
      {
+        $session = new Session();
+        $session->open();
+
         $model = new SetRoom();
         $model2 = new Room();
-     
-            //$Apartment=Apartment::find()->all();
+
+
+        $numRoom = Room::find()->where(['Apart_Id' => $session['Apartment_id']])->all();
+        $apartment = Apartment::findone($session['Apartment_id']);
+        $maxNumFloor = $apartment->NumFloor;
+        $FloorNumber = Room::find()->distinct('Floor')->where("Floor <= '$maxNumFloor'")->all();
          
         if ($model->load(Yii::$app->request->post()) ) {
               $model->save();
@@ -91,7 +100,9 @@ class SetRoomController extends Controller
             return $this->render('create', [
                 'model' => $model,
                 'model2' => $model2,
-              // 'Apartment'=> $Apartment,
+                'FloorNumber'=> $FloorNumber,
+                'apartment' => $apartment,
+                'numRoom' => $numRoom,
                 
 
             ]);

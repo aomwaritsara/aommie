@@ -77,25 +77,26 @@ class Test1Controller extends Controller
     // }
 
     public function actionCreate()
-{
-$model = new Test1();
+    {
+        $model = new Test1();
 
-$request = Yii::$app->getRequest();
+        $request = Yii::$app->getRequest();
         if ($request->isPost && $request->post('ajax') !== null) {
             $model ->load(Yii::$app->request->post());
             Yii::$app->response->format = Response::FORMAT_JSON;
             $result = ActiveForm::validate($model );
             return $result;
         }
-if($model ->load(Yii::$app->request->post()))
-{
-    //ประมวลผลข้อมูลที่นี่ เช่น $person->save();
-    $model->save();
-}
-return $this->render('create', [
-    'model ' => $model ,
-]);
-}
+        if($model ->load(Yii::$app->request->post()))
+        {
+            //ประมวลผลข้อมูลที่นี่ เช่น $person->save();
+            $model->save();
+            return $this->redirect(['view', 'id' => $model->id]);
+        }
+        return $this->render('create', [
+            'model' => $model ,
+        ]);
+    }
 
     /**
      * Updates an existing Test1 model.
