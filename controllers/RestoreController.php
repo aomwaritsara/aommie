@@ -5,12 +5,13 @@ namespace app\controllers;
 use Yii;
 use app\models\Restore;
 use app\models\RestoreSearch;
-use app\models\Rental;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\models\Rental;
 use app\models\Room;
 use kartik\mpdf\Pdf;
+
 /**
  * RestoreController implements the CRUD actions for Restore model.
  */
@@ -51,73 +52,13 @@ class RestoreController extends Controller
      * @param integer $Apart_Id
      * @param string $Room_Id
      * @param string $Cus_Id
+     * @param string $StartDate
      * @return mixed
      */
-    public function actionView($Apart_Id, $Room_Id, $Cus_Id)
-    {
-        return $this->render('view', [
-            'model' => $this->findModel($Apart_Id, $Room_Id, $Cus_Id),
-        ]);
-    }
-
-    /**
-     * Creates a new Restore model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
-     */
-    public function actionCreate()
-    {
-        $model = new Restore();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'Apart_Id' => $model->Apart_Id, 'Room_Id' => $model->Room_Id, 'Cus_Id' => $model->Cus_Id]);
-        } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
-        }
-    }
-
-    /**
-     * Updates an existing Restore model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $Apart_Id
-     * @param string $Room_Id
-     * @param string $Cus_Id
-     * @return mixed
-     */
-    public function actionUpdate($Apart_Id, $Room_Id, $Cus_Id)
-    {
-        $model = $this->findModel($Apart_Id, $Room_Id, $Cus_Id);
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'Apart_Id' => $model->Apart_Id, 'Room_Id' => $model->Room_Id, 'Cus_Id' => $model->Cus_Id]);
-        } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
-        }
-    }
-
-    /**
-     * Deletes an existing Restore model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $Apart_Id
-     * @param string $Room_Id
-     * @param string $Cus_Id
-     * @return mixed
-     */
-    public function actionDelete($Apart_Id, $Room_Id, $Cus_Id)
-    {
-        $this->findModel($Apart_Id, $Room_Id, $Cus_Id)->delete();
-
-        return $this->redirect(['index']);
-    }
-
-    public function actionChanger($Apart_Id, $Room_Id, $Cus_Id)
+    public function actionChanger($Apart_Id, $Room_Id, $Cus_Id, $StartDate)
     {
         //$model2 = new Room();
-        $restore= $this->findModel($Apart_Id, $Room_Id, $Cus_Id);
+        $restore= $this->findModel($Apart_Id, $Room_Id, $Cus_Id,$StartDate);
         
         if($restore->Status == '2')
         {
@@ -140,9 +81,9 @@ class RestoreController extends Controller
         }
     }
 
-    public function actionPrintRestore($Apart_Id, $Room_Id, $Cus_Id)
+    public function actionPrintRestore($Apart_Id, $Room_Id, $Cus_Id, $StartDate)
     {
-        $model = Rental::find()->where(['Apart_Id' => $Apart_Id, 'Room_Id' => $Room_Id, 'Cus_Id' => $Cus_Id])->all();
+        $model = Restore::find()->where(['Apart_Id' => $Apart_Id, 'Room_Id' => $Room_Id, 'Cus_Id' => $Cus_Id,'StartDate' => $StartDate])->all();
 
         /*foreach ($model as $check =>$value) {
                 $rental = History::find('Elec_Used')->where(['Apart_Id' => $value->Apart_Id])->andWhere(['Apart_Id' => $value->Apart_Id])->andWhere(['Cus_Id' => $value->Cus_Id])->one();
@@ -196,14 +137,85 @@ class RestoreController extends Controller
      * @return Restore the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($Apart_Id, $Room_Id, $Cus_Id)
+    public function actionView($Apart_Id, $Room_Id, $Cus_Id, $StartDate)
     {
-        if (($model = Restore::findOne(['Apart_Id' => $Apart_Id, 'Room_Id' => $Room_Id, 'Cus_Id' => $Cus_Id])) !== null) {
+        return $this->render('view', [
+            'model' => $this->findModel($Apart_Id, $Room_Id, $Cus_Id, $StartDate),
+        ]);
+    }
+
+    /**
+     * Creates a new Restore model.
+     * If creation is successful, the browser will be redirected to the 'view' page.
+     * @return mixed
+     */
+    public function actionCreate()
+    {
+        $model = new Restore();
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'Apart_Id' => $model->Apart_Id, 'Room_Id' => $model->Room_Id, 'Cus_Id' => $model->Cus_Id, 'StartDate' => $model->StartDate]);
+        } else {
+            return $this->render('create', [
+                'model' => $model,
+            ]);
+        }
+    }
+
+    /**
+     * Updates an existing Restore model.
+     * If update is successful, the browser will be redirected to the 'view' page.
+     * @param integer $Apart_Id
+     * @param string $Room_Id
+     * @param string $Cus_Id
+     * @param string $StartDate
+     * @return mixed
+     */
+    public function actionUpdate($Apart_Id, $Room_Id, $Cus_Id, $StartDate)
+    {
+        $model = $this->findModel($Apart_Id, $Room_Id, $Cus_Id, $StartDate);
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'Apart_Id' => $model->Apart_Id, 'Room_Id' => $model->Room_Id, 'Cus_Id' => $model->Cus_Id, 'StartDate' => $model->StartDate]);
+        } else {
+            return $this->render('update', [
+                'model' => $model,
+            ]);
+        }
+    }
+
+    /**
+     * Deletes an existing Restore model.
+     * If deletion is successful, the browser will be redirected to the 'index' page.
+     * @param integer $Apart_Id
+     * @param string $Room_Id
+     * @param string $Cus_Id
+     * @param string $StartDate
+     * @return mixed
+     */
+    public function actionDelete($Apart_Id, $Room_Id, $Cus_Id, $StartDate)
+    {
+        $this->findModel($Apart_Id, $Room_Id, $Cus_Id, $StartDate)->delete();
+
+        return $this->redirect(['index']);
+    }
+
+    /**
+     * Finds the Restore model based on its primary key value.
+     * If the model is not found, a 404 HTTP exception will be thrown.
+     * @param integer $Apart_Id
+     * @param string $Room_Id
+     * @param string $Cus_Id
+     * @param string $StartDate
+     * @return Restore the loaded model
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    protected function findModel($Apart_Id, $Room_Id, $Cus_Id, $StartDate)
+    {
+        if (($model = Restore::findOne(['Apart_Id' => $Apart_Id, 'Room_Id' => $Room_Id, 'Cus_Id' => $Cus_Id, 'StartDate' => $StartDate])) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
-    
-
 }

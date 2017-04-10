@@ -2,20 +2,21 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-use yii\helpers\Url;
 use yii\web\Session;
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\ReRestoreStoreSearch */
+/* @var $searchModel app\models\ReFinancialSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
- $session = new Session;
-        $session->open();
-$this->title = 'รายงานการคืนห้องพัก';
+
+$session = new Session;
+$session->open();
+
+$this->title = 'รายงานรายจ่ายรวม';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="restore-index">
-
-            <div class="box-header with-border">
+<div class="re-income-index">
+ <div class="box-header with-border">
  
   
               <!-- /.box-tools -->
@@ -30,11 +31,11 @@ $this->params['breadcrumbs'][] = $this->title;
                             $headTable = 
                             "<tr bgcolor=#87FF8D>
                                 <td align='center' style='font-weight: bold'>ลำดับที่</td>
-                                <td align='center' style='font-weight: bold'> รายงานการคืนห้องพักประจำเดือน </td>
+                                <td align='center' style='font-weight: bold'> รายงานรายรับประจำเดือน </td>
                             </tr>";
                             echo $headTable;
                             foreach ($monthday as $key => $value) {
-                                $phpdate = strtotime($value->DateFrom);
+                                $phpdate = strtotime($value->CheckDate);
                                 $mysqldate = date( 'm', $phpdate );
                                 switch ($mysqldate) {
                                     case '01':
@@ -75,7 +76,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                         break;
                                 }
                                 
-                                if ($value->DateFrom != NULL) {
+                                if ($value->CheckDate != NULL) {
                                     echo "<tr>";
                                     echo "<td width='10%'align='center'>".$i."</td>";
                                     $session["month"] = $month;

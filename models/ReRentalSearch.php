@@ -19,7 +19,7 @@ class ReRentalSearch extends Rental
     {
         return [
             [['Apart_Id', 'NumCus', 'Deposit'], 'integer'],
-            [['Room_Id', 'Cus_Id', 'DateFrom', 'DateTo', 'Status'], 'safe'],
+            [['Room_Id', 'Cus_Id', 'StartDate','DateFrom', 'DateTo', 'Status'], 'safe'],
         ];
     }
 
@@ -60,6 +60,7 @@ class ReRentalSearch extends Rental
         // grid filtering conditions
         $query->andFilterWhere([
             'Apart_Id' => $this->Apart_Id,
+            'StartDate' => $this->StartDate,
             'DateFrom' => $this->DateFrom,
             'DateTo' => $this->DateTo,
             'NumCus' => $this->NumCus,

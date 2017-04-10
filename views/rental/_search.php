@@ -21,6 +21,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'Cus_Id') ?>
 
+    <?= $form->field($model, 'StartDate') ?>
+
     <?= $form->field($model, 'DateFrom') ?>
 
     <?= $form->field($model, 'DateTo') ?>

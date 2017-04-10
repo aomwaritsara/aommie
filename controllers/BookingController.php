@@ -97,7 +97,7 @@ class BookingController extends Controller
              if (Customer::find()->where(['Cus_Id' => $model->Cus_Id])->one()){
           
                 $model->Apart_Id = $apartment->Apart_Id;
-                  $model->Datestatus =date('Y-m-d h:i:s');
+                  $model->Datestatus =date('Y-m-d H:i:s');
                   $model->Status = '3';
                      $model->save();
 
@@ -108,17 +108,17 @@ class BookingController extends Controller
                  $model2->Status = $model->Status;
                  $model2->save();
                 
-                 $model3->Apart_Id = $model->Apart_Id;
-                 $model3->Room_Id = $model->Room_Id;
-                 $model3->Cus_Id = $model->Cus_Id;
-                 $model3->Date = $model->Booking_Date;
-                 $model3->Price = $model->Deposit;
-                 $model3->Status = '1';
+                 // $model3->Apart_Id = $model->Apart_Id;
+                 // $model3->Room_Id = $model->Room_Id;
+                 // $model3->Cus_Id = $model->Cus_Id;
+                 // $model3->Date = $model->Booking_Date;
+                 // $model3->Price = $model->Deposit;
+                 // $model3->Status = '1';
                 
-                $model3->save(); 
+                //$model3->save(); 
 
                 // echo "yes";
-                       return $this->redirect(['view', 'Apart_Id' => $model->Apart_Id, 'Room_Id' => $model->Room_Id, 'Cus_Id' => $model->Cus_Id]);
+                       return $this->redirect(['view', 'Apart_Id' => $model->Apart_Id, 'Room_Id' => $model->Room_Id, 'Cus_Id' => $model->Cus_Id,'Booking_Date' => $model->Booking_Date]);
             }
             else return "รหัสประจำตัวไม่ถูกต้อง กรุณากรอกใหม่อีกครั้ง";
       
@@ -142,7 +142,7 @@ class BookingController extends Controller
      * @param string $Cus_Id
      * @return mixed
      */
-    public function actionUpdate($Apart_Id, $Room_Id, $Cus_Id)
+    public function actionUpdate($Apart_Id, $Room_Id, $Cus_Id,$Booking_Date)
     {
         $session = new Session;
         $session->open();
@@ -150,7 +150,7 @@ class BookingController extends Controller
   $apartment = Apartment::find()->where(['Staff_Id' => $session['staff_id']])->one();
 
   
-        $model = $this->findModel($Apart_Id, $Room_Id, $Cus_Id);
+        $model = $this->findModel($Apart_Id, $Room_Id, $Cus_Id,$Booking_Date);
         $model3= $this->findModel3($model->Apart_Id,$model->Room_Id,$model->Cus_Id);
 
 
@@ -202,21 +202,33 @@ protected function findModel3($Apart_Id,$Room_Id)
      * @param string $Cus_Id
      * @return mixed
      */
-    public function actionDelete($Apart_Id, $Room_Id, $Cus_Id)
+    public function actionDelete($Apart_Id, $Room_Id, $Cus_Id,$Booking_Date)
     {
         $this->findModel($Apart_Id, $Room_Id, $Cus_Id)->delete();
 
         return $this->redirect(['index']);
     }
 
-    public function actionChangeb($Apart_Id, $Room_Id, $Cus_Id)
+    public function actionChangeb($Apart_Id, $Room_Id, $Cus_Id,$Booking_Date)
     {
          $model2 = new Room();
-        $booking = $this->findModel($Apart_Id, $Room_Id, $Cus_Id);
+         $model3 = new Deposit();
+        $booking = $this->findModel($Apart_Id, $Room_Id, $Cus_Id,$Booking_Date);
          $model2 = Room::find()->where(['Apart_Id' => $booking->Apart_Id,'Room_Id' => $booking->Room_Id])->one();
         
         if($booking->Status == '3')//สถานะที่ส่งมาจากroomถ้าถูกจองห้อง
         {
+
+             $model3->Apart_Id = $booking->Apart_Id;
+                 $model3->Room_Id = $booking->Room_Id;
+                 $model3->Cus_Id = $booking->Cus_Id;
+                 $model3->Date = $booking->Booking_Date;
+                 $model3->Price = $booking->Deposit;
+                 $model3->Status = '1';
+                
+                $model3->save(); 
+
+
             $booking->Status = '1';//เซตให้เป็น 1 เพื่อจะส่งไปRoom
              $booking->Datestatus =date('Y-m-d h:i:s');
             $booking->save();

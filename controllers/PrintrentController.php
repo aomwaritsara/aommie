@@ -16,6 +16,7 @@ class PrintrentController extends \yii\web\Controller
     {    
       $model =$this -> findModel($Apart_Id ,$Room_Id ,$Cus_Id);
         $model2 =$this -> findModel2($Cus_Id);
+        $Date = date('Y:m:d');
 
      $pdf = new Pdf([
             'mode' => Pdf::MODE_UTF8,
@@ -25,7 +26,8 @@ class PrintrentController extends \yii\web\Controller
             // portrait orientation
              'orientation' => Pdf::ORIENT_PORTRAIT,
             // // stream to browser inline
-             'destination' => Pdf::DEST_BROWSER,
+             'destination' => Pdf::DEST_DOWNLOAD,
+              'filename' => 'สัญาญาเช่าห้องที่ '.$Room_Id .'วันที่'.$Date,
             // your html content input
             'content' => $this->renderPartial('index',['model'=>$model,'model2'=>$model2]),
             // format content from your own css file if needed or use the

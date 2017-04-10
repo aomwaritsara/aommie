@@ -160,7 +160,7 @@ AppAsset::register($this);
           <ul class="treeview-menu">
             <li><a href="<?= Url::to(['re-rental/index']) ?>"><i class="fa fa-check-square"></i> รายงานการเช่าห้องพัก</a></li>
             <li><a href="<?= Url::to(['re-restore/index']) ?>"><i  class="fa fa-check-square"></i> รายงานการคืนห้องพัก</a></li>
-            <li><a href="<?= Url::to(['test1/index']) ?>"><i class="fa fa-check-square"></i> รายงานรายรับรวม</a></li>
+            <li><a href="<?= Url::to(['re-income/index']) ?>"><i class="fa fa-check-square"></i> รายงานรายรับรวม</a></li>
             <li><a href="<?= Url::to(['re-financial/index']) ?>"><i class="fa fa-check-square"></i> รายงานรายจ่ายรวม</a></li>
             <li><a href="<?= Url::to(['re-incomeoutcome/index']) ?>"><i class="fa fa-check-square"></i> รายงานรายรับ – รายจ่าย</a></li>
          </ul>

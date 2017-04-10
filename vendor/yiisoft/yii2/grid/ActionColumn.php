@@ -221,7 +221,7 @@ class ActionColumn extends Column
                     'aria-label' => Yii::t('yii', 'Changer'),
                     'data-pjax' => '0',
                 ], $this->buttonOptions);
-                return Html::a('<button class="btn btn-primary">คืนห้องพัก</button>',  $url, $options);
+                return Html::a('<button class="btn btn-primary">ยืนยันการคืน</button>',  $url, $options);
             };
         }
          if (!isset($this->buttons['print-restore'])) {
@@ -230,9 +230,9 @@ class ActionColumn extends Column
                     'title' => Yii::t('yii', 'print-restore'),
                     'aria-label' => Yii::t('yii', 'print-restore'),
                     'data-pjax' => '0',
-                    'target' =>'_blank',
+                   'target' =>'_blank',
                 ], $this->buttonOptions);
-                return Html::a('<button class="btn btn-primary">พิมพ์ใบเสร็จ</button>',  $url, $options);
+                return Html::a('<button class="btn btn-success">พิมพ์ใบเสร็จ</button>',  $url, $options);
             };
         }
     }

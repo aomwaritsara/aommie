@@ -5,12 +5,12 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Restore;
+use app\models\History;
 
 /**
- * ReRestoreStoreSearch represents the model behind the search form of `app\models\Restore`.
+ * ReIncomeSearch represents the model behind the search form of `app\models\History`.
  */
-class ReRestoreStoreSearch extends Restore
+class ReIncomeSearch extends History
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class ReRestoreStoreSearch extends Restore
     public function rules()
     {
         return [
-            [['Apart_Id', 'NumCus', 'Deposit'], 'integer'],
-            [['Room_Id', 'Cus_Id', 'StartDate','DateFrom', 'DateTo', 'Status'], 'safe'],
+            [['Apart_Id', 'Elec_Used', 'Water_Used', 'Cost', 'TotalPrice'], 'integer'],
+            [['Room_Id', 'Cus_Id', 'DateFrom', 'SoR_Id', 'CheckDate', 'PaymentStatus'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class ReRestoreStoreSearch extends Restore
      */
     public function search($params)
     {
-        $query = Restore::find();
+        $query = History::find();
 
         // add conditions that should always apply here
 
@@ -60,16 +60,18 @@ class ReRestoreStoreSearch extends Restore
         // grid filtering conditions
         $query->andFilterWhere([
             'Apart_Id' => $this->Apart_Id,
-            'StartDate' => $this->StartDate,
             'DateFrom' => $this->DateFrom,
-            'DateTo' => $this->DateTo,
-            'NumCus' => $this->NumCus,
-            'Deposit' => $this->Deposit,
+            'CheckDate' => $this->CheckDate,
+            'Elec_Used' => $this->Elec_Used,
+            'Water_Used' => $this->Water_Used,
+            'Cost' => $this->Cost,
+            'TotalPrice' => $this->TotalPrice,
         ]);
 
         $query->andFilterWhere(['like', 'Room_Id', $this->Room_Id])
             ->andFilterWhere(['like', 'Cus_Id', $this->Cus_Id])
-            ->andFilterWhere(['like', 'Status', $this->Status='1']);
+            ->andFilterWhere(['like', 'SoR_Id', $this->SoR_Id])
+            ->andFilterWhere(['like', 'PaymentStatus', $this->PaymentStatus]);
 
         return $dataProvider;
     }

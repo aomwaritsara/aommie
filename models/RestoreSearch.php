@@ -8,7 +8,7 @@ use yii\data\ActiveDataProvider;
 use app\models\Restore;
 
 /**
- * RestoreSearch represents the model behind the search form about `app\models\Restore`.
+ * RestoreSearch represents the model behind the search form of `app\models\Restore`.
  */
 class RestoreSearch extends Restore
 {
@@ -19,7 +19,7 @@ class RestoreSearch extends Restore
     {
         return [
             [['Apart_Id', 'NumCus', 'Deposit'], 'integer'],
-            [['Room_Id', 'Cus_Id', 'DateFrom', 'DateTo', 'Status'], 'safe'],
+            [['Room_Id', 'Cus_Id', 'StartDate', 'DateFrom', 'DateTo', 'Status'], 'safe'],
         ];
     }
 
@@ -60,6 +60,7 @@ class RestoreSearch extends Restore
         // grid filtering conditions
         $query->andFilterWhere([
             'Apart_Id' => $this->Apart_Id,
+            'StartDate' => $this->StartDate,
             'DateFrom' => $this->DateFrom,
             'DateTo' => $this->DateTo,
             'NumCus' => $this->NumCus,
@@ -69,8 +70,7 @@ class RestoreSearch extends Restore
         $query->andFilterWhere(['like', 'Room_Id', $this->Room_Id])
             ->andFilterWhere(['like', 'Cus_Id', $this->Cus_Id])
             ->andFilterWhere(['like', 'Status', $this->Status]);
-
-        $query->orderBy(['Status' => SORT_DESC, 'DateTo' => SORT_DESC]);
+         $query->orderBy(['Status' => SORT_DESC, 'DateTo' => SORT_DESC]);
 
         return $dataProvider;
     }

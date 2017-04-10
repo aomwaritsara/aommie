@@ -65,17 +65,17 @@ class Bill extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'Apart_Id' => 'Apart  ID',
-            'Room_Id' => 'Room  ID',
-            'Cus_Id' => 'Cus  ID',
-            'DateFrom' => 'Date From',
-            'SoR_Id' => 'So R  ID',
-            'CheckDate' => 'Check Date',
-            'Elec_Used' => 'Elec  Used',
-            'Water_Used' => 'Water  Used',
-            'Cost' => 'Cost',
-            'TotalPrice' => 'Total Price',
-            'PaymentStatus' => 'Payment Status',
+            'Apart_Id' => 'รหัสอพาร์ตเมนต์',
+            'Room_Id' => 'รหัสห้องพัก',
+            'Cus_Id' => 'รหัสประจำตัวประชาชน',
+             'DateFrom' => 'วันที่เช่า',
+            'SoR_Id' => 'รหัสบริการเสริมของห้องพัก',
+            'CheckDate' => 'วันที่ปัจจุบัน',
+            'Elec_Used' => 'ค่าไฟฟ้า',
+            'Water_Used' => 'ค่าน้ำ',
+            'Cost' => 'ราคา',
+            'TotalPrice' => 'ราคารวม',
+            'PaymentStatus' => 'สถานะการชำระเงิน',
         ];
     }
 

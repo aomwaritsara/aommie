@@ -44,7 +44,7 @@ class ReRentalController extends Controller
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         //$monthday = Rental::find()->all();
 
-        $monthday = Rental::find()->groupBy(['month(DateFrom)'])->all();
+        $monthday = Rental::find()->groupBy(['month(StartDate)'])->all();
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
@@ -68,8 +68,8 @@ public function actionReport($month) // $date = Y-m-d // payment_date = Y-m-d H-
                 // ->innerJoin('member', 'selling_transaction.m_id = member.m_id')
                 // ->innerJoin('payment', 'selling_transaction.t_id = payment.t_id')
                 // ->innerJoin('selling_detail', 'selling_transaction.t_id = selling_detail.t_id')
-                ->where(['MONTH(DateFrom)' => $month])
-                ->orderBy(['DateFrom' => SORT_ASC]);
+                ->where(['MONTH(StartDate)' => $month])
+                ->orderBy(['StartDate' => SORT_ASC]);
 
         $command = $query->createCommand();
         $data = $command->queryAll();
@@ -85,10 +85,10 @@ public function actionReport($month) // $date = Y-m-d // payment_date = Y-m-d H-
      * @param string $Cus_Id
      * @return mixed
      */
-    public function actionView($Apart_Id, $Room_Id, $Cus_Id, $DateFrom)
+    public function actionView($Apart_Id, $Room_Id, $Cus_Id, $StartDate)
     {
         return $this->render('view', [
-            'model' => $this->findModel($Apart_Id, $Room_Id, $Cus_Id, $DateFrom),
+            'model' => $this->findModel($Apart_Id, $Room_Id, $Cus_Id,$StartDate),
         ]);
     }
 
@@ -102,7 +102,7 @@ public function actionReport($month) // $date = Y-m-d // payment_date = Y-m-d H-
         $model = new Rental();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'Apart_Id' => $model->Apart_Id, 'Room_Id' => $model->Room_Id, 'Cus_Id' => $model->Cus_Id, 'DateFrom' => $model->DateFrom]);
+            return $this->redirect(['view', 'Apart_Id' => $model->Apart_Id, 'Room_Id' => $model->Room_Id, 'Cus_Id' => $model->Cus_Id, '$StartDate' => $model->$StartDate]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -119,12 +119,12 @@ public function actionReport($month) // $date = Y-m-d // payment_date = Y-m-d H-
      * @param string $DateFrom
      * @return mixed
      */
-    public function actionUpdate($Apart_Id, $Room_Id, $Cus_Id, $DateFrom)
+    public function actionUpdate($Apart_Id, $Room_Id, $Cus_Id, $StartDate)
     {
-        $model = $this->findModel($Apart_Id, $Room_Id, $Cus_Id, $DateFrom);
+        $model = $this->findModel($Apart_Id, $Room_Id, $Cus_Id, $StartDate);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'Apart_Id' => $model->Apart_Id, 'Room_Id' => $model->Room_Id, 'Cus_Id' => $model->Cus_Id, 'DateFrom' => $model->DateFrom]);
+            return $this->redirect(['view', 'Apart_Id' => $model->Apart_Id, 'Room_Id' => $model->Room_Id, 'Cus_Id' => $model->Cus_Id, 'DateFrom' => $model->$StartDate]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -141,9 +141,9 @@ public function actionReport($month) // $date = Y-m-d // payment_date = Y-m-d H-
      * @param string $DateFrom
      * @return mixed
      */
-    public function actionDelete($Apart_Id, $Room_Id, $Cus_Id, $DateFrom)
+    public function actionDelete($Apart_Id, $Room_Id, $Cus_Id, $StartDate)
     {
-        $this->findModel($Apart_Id, $Room_Id, $Cus_Id, $DateFrom)->delete();
+        $this->findModel($Apart_Id, $Room_Id, $Cus_Id, $StartDate)->delete();
 
         return $this->redirect(['index']);
     }
@@ -158,9 +158,9 @@ public function actionReport($month) // $date = Y-m-d // payment_date = Y-m-d H-
      * @return Rental the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($Apart_Id, $Room_Id, $Cus_Id, $DateFrom)
+    protected function findModel($Apart_Id, $Room_Id, $Cus_Id, $StartDate)
     {
-        if (($model = Rental::findOne(['Apart_Id' => $Apart_Id, 'Room_Id' => $Room_Id, 'Cus_Id' => $Cus_Id, 'DateFrom' => $DateFrom])) !== null) {
+        if (($model = Rental::findOne(['Apart_Id' => $Apart_Id, 'Room_Id' => $Room_Id, 'Cus_Id' => $Cus_Id, '$StartDate' => $StartDate])) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

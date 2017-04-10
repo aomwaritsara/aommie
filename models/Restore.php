@@ -7,19 +7,19 @@ use Yii;
 /**
  * This is the model class for table "rental".
  *
- * @property integer $Apart_Id
- * @property string $Room_Id
- * @property string $Cus_Id
- * @property string $DateFrom
- * @property string $DateTo
- * @property integer $NumCus
- * @property integer $Deposit
- * @property string $Status
+ * @property int $Apart_Id รหัสอพาร์ตเมนต์
+ * @property string $Room_Id รหัสห้องพัก
+ * @property string $Cus_Id รหัสประจำตัวประชาชน
+ * @property string $StartDate
+ * @property string $DateFrom วันที่เริ่มเช่า
+ * @property string $DateTo วันที่สิ้นสุดการเช่า
+ * @property int $NumCus จำนวนผู้เข้าพัก
+ * @property int $Deposit จำนวนเงินประกันห้อง
+ * @property string $Status สถานะการเช่า
  *
  * @property History[] $histories
  * @property History[] $histories0
  * @property History[] $histories1
- * @property History $history
  * @property Room $apart
  * @property Room $room
  * @property Customer $cus
@@ -42,13 +42,14 @@ class Restore extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['Apart_Id', 'Room_Id', 'Cus_Id', 'DateFrom', 'NumCus', 'Deposit', 'Status'], 'required'],
+            [['Apart_Id', 'Room_Id', 'Cus_Id', 'StartDate', 'DateFrom', 'NumCus', 'Deposit', 'Status'], 'required'],
             [['Apart_Id', 'NumCus', 'Deposit'], 'integer'],
-            [['DateFrom', 'DateTo'], 'safe'],
+            [['StartDate', 'DateFrom', 'DateTo'], 'safe'],
             [['Room_Id'], 'string', 'max' => 10],
             [['Cus_Id'], 'string', 'max' => 13],
             [['Status'], 'string', 'max' => 1],
             [['DateFrom'], 'unique'],
+            [['StartDate'], 'unique'],
             [['Apart_Id'], 'exist', 'skipOnError' => true, 'targetClass' => Room::className(), 'targetAttribute' => ['Apart_Id' => 'Apart_Id']],
             [['Room_Id'], 'exist', 'skipOnError' => true, 'targetClass' => Room::className(), 'targetAttribute' => ['Room_Id' => 'Room_Id']],
             [['Cus_Id'], 'exist', 'skipOnError' => true, 'targetClass' => Customer::className(), 'targetAttribute' => ['Cus_Id' => 'Cus_Id']],
@@ -61,14 +62,15 @@ class Restore extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'Apart_Id' => 'Apart  ID',
-            'Room_Id' => 'Room  ID',
-            'Cus_Id' => 'Cus  ID',
-            'DateFrom' => 'Date From',
-            'DateTo' => 'Date To',
-            'NumCus' => 'Num Cus',
-            'Deposit' => 'Deposit',
-            'Status' => 'Status',
+            'Apart_Id' => 'รหัสอพาร์ตเมนต์',
+            'Room_Id' => 'รหัสห้องพัก',
+            'Cus_Id' => 'รหัสประจำตัวประชาชน',
+            'StartDate' => 'วันที่เริ่มเช่า',
+            'DateFrom' => 'วันที่เริ่มเก็บเงิน',
+            'DateTo' => 'วันที่สิ้นสุดการเช่า',
+            'NumCus' => 'จำนวนผู้เข้าพัก',
+            'Deposit' => 'เงินประกัน',
+            'Status' => 'สถานะ',
         ];
     }
 
@@ -94,14 +96,6 @@ class Restore extends \yii\db\ActiveRecord
     public function getHistories1()
     {
         return $this->hasMany(History::className(), ['Cus_Id' => 'Cus_Id']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getHistory()
-    {
-        return $this->hasOne(History::className(), ['DateFrom' => 'DateFrom']);
     }
 
     /**

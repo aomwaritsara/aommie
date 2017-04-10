@@ -29,6 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //'Apart_Id',
             'Room_Id',
             'Cus_Id',
+            //'StartDate',
             //'DateFrom',
             //'DateTo',
             // 'NumCus',

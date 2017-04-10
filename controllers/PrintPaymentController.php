@@ -19,7 +19,7 @@ class PrintPaymentController extends \yii\web\Controller
     {
     	
 		$model = Rental::find()->where(['Status' => '2'])->all();
-
+        $Date = date('Y:m');
 		/*foreach ($model as $check =>$value) {
             $rental = History::find('Elec_Used')->where(['Apart_Id' => $value->Apart_Id])->andWhere(['Apart_Id' => $value->Apart_Id])->andWhere(['Cus_Id' => $value->Cus_Id])->one();
 		}*/
@@ -37,7 +37,9 @@ class PrintPaymentController extends \yii\web\Controller
             // portrait orientation
             'orientation' => Pdf::ORIENT_PORTRAIT,
             // // stream to browser inline
-            'destination' => Pdf::DEST_BROWSER,
+            //'destination' => Pdf::DEST_BROWSER,
+                'destination' => Pdf::DEST_DOWNLOAD,
+              'filename' => 'ใบวางบิล' .$Date,
             // your html content input
             'content' => $content,
             // format content from your own css file if needed or use the
@@ -50,7 +52,7 @@ class PrintPaymentController extends \yii\web\Controller
             //'cssInline' => '.bd{border:1.5px solid; text-align: center;} .ar{text-align:right} .imgbd{border:1px solid}',
 
             // set mPDF properties on the fly
-            'options' => ['title' => 'สัญาญาเช่าห้องที่'],
+            'options' => ['title' => 'ใบวางบิล'],
             // call mPDF methods on the fly
             'methods' => [
                 //'SetHeader'=>[''],

@@ -24,8 +24,7 @@ use yii\web\Session;
         ?>
     <?= $form->field($apartment, 'Apart_Id')->textinput(['readonly'=> true])?>
 
- <!--  <?dropDownList(ArrayHelper::map(Room::find()->distinct('Apart_Id')->where("Status='1'")->all(),'Apart_Id','Apart_Id')) ?> -->
-    
+    <?php //0 = insert 1=update?>
 
    <?php if ($isUpdated == 0): ?>
      <?= $form->field($model, 'Room_Id')->dropDownList(ArrayHelper::map(Room::find()->where("Status='1'")->all(),'Room_Id','Room_Id'),['prompt'=>'เลือกห้อง'])?>

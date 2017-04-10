@@ -54,7 +54,7 @@ $this->title = 'รายงานการเช่าห้องพัก';
             <td align='center' style='font-weight: bold'>รหัสห้องพัก</td>
             <td align='center' style='font-weight: bold'>รหัสผู้เช่า</td>
             <td align='center' style='font-weight: bold'>วันที่เข้า</td>
-           <td align='center' style='font-weight: bold'>วันที่ออก</td>
+          <td align='center' style='font-weight: bold'>วันที่เออก</td>
            <td align='center' style='font-weight: bold'>สถานะ 1:คืนห้องพัก 2:เช่าห้องพัก</td>
         </tr>";
 ?>
@@ -69,8 +69,8 @@ $this->title = 'รายงานการเช่าห้องพัก';
             <td align='center'>".$sequence."</td>
             <td align='center' style='vertical-align:middle'>".$value["Room_Id"]."</td>
             <td align='center' style='vertical-align:middle'>".$value["Cus_Id"]."</td>
+            <td align='center' style='vertical-align:middle'>".$value["StartDate"]."</td>
             <td align='center' style='vertical-align:middle'>".$value["DateFrom"]."</td>
-             <td align='center' style='vertical-align:middle'>".$value["DateTo"]."</td>
              <td align='center' style='vertical-align:middle'>".$value["Status"]."</td>
         </tr>
     ";
