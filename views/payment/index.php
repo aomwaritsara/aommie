@@ -11,6 +11,14 @@ use yii\helpers\Url;
 $this->title = 'ใบวางบิล';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+<html>
+<head>
+<style>
+a:visited {
+    color: yellow;
+}
+</style>
+</head>
 <div class="payment-index">
 
     <div class="box box-info box-solid">
@@ -39,17 +47,24 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'NumCus',
             // 'Deposit',
             // 'Status',
+       
 [
                 'attribute'=>'Action',
 
                 'content'=>function($data){
-                return Html::a ('<i class="glyphicon glyphiconfile"></i>เก็บเงิน', Url::to (['payment/create','Apart_Id'=>$data->Apart_Id,'Room_Id'=>$data->Room_Id,'Cus_Id'=>$data->Cus_Id]),['class'=>'btn btn-xs btn-primary']);
+                return Html::a ('<i class="glyphicon glyphiconfile"></i>เก็บเงิน', Url::to (['payment/create','Apart_Id'=>$data->Apart_Id,'Room_Id'=>$data->Room_Id,'Cus_Id'=>$data->Cus_Id]),['class'=>'btn btn-md btn-primary']);
 
             },
             'contentOptions'=>['class'=>'text center']
             ],
 
-           // ['class' => 'yii\grid\ActionColumn'],
+            [
+                
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '{view}',
+               // 'contentOptions' => ['class'=>'text center']
+            ],
+           //['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
 </div>

@@ -36,6 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             echo $headTable;
                             foreach ($monthday as $key => $value) {
                                 $phpdate = strtotime($value->Date);
+                                 $mysqlyear = date( 'Y', $phpdate );
                                 $mysqldate = date( 'm', $phpdate );
                                 switch ($mysqldate) {
                                     case '01':
@@ -79,11 +80,13 @@ $this->params['breadcrumbs'][] = $this->title;
                                 if ($value->Date != NULL) {
                                     echo "<tr>";
                                     echo "<td width='10%'align='center'>".$i."</td>";
-                                    $session["month"] = $month;
-                                    echo "<td align='center'><a href=".Url::to(['report', 'month' => $mysqldate]).">รายงานประจำเดือน ".$month."</a></td>";
-                                    echo "</tr>";
-                                    $i++;
-                                }   
+                                   $namemonth = $month;
+                                        echo "<td align='center'><a href=".Url::to(['report', 'namemonth' => $namemonth, 'month' => $mysqldate,'year' => $mysqlyear]).">รายงานประจำเดือน ".$month.$mysqlyear."</a></td>";
+                                        echo "</tr>";
+                                        $i++;
+                                    }   
+                                
+                                
                             
                         }
                     

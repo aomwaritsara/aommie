@@ -42,7 +42,7 @@ $this->title = 'รายงานการเช่าห้องพัก';
     
 ?>
 <a href="javascript:history.go(-1)"><button class="btn">กลับ</button></a>
-<center><h3><b><p>รายงานการเช่าห้องพักประจำเดือน <?= $session["month"]; ?></p></b></h3></center>
+<center><h3><b><p>รายงานการเช่าห้องพักประจำเดือน <?= $namemonth; ?>ปี<?= $year; ?></p></b></h3></center>
  
 
 
@@ -54,17 +54,23 @@ $this->title = 'รายงานการเช่าห้องพัก';
             <td align='center' style='font-weight: bold'>รหัสห้องพัก</td>
             <td align='center' style='font-weight: bold'>รหัสผู้เช่า</td>
             <td align='center' style='font-weight: bold'>วันที่เข้า</td>
-          <td align='center' style='font-weight: bold'>วันที่เออก</td>
+          <td align='center' style='font-weight: bold'>วันที่ออก</td>
            <td align='center' style='font-weight: bold'>สถานะ 1:คืนห้องพัก 2:เช่าห้องพัก</td>
         </tr>";
 ?>
 
 
-
 <?php foreach ($model as $key => $value) : ?>
-	<?php 
-	$sequence++;
-	$data = "
+    <?php 
+        $phpdate = strtotime($value->StartDate);
+        $mysqlyear = date( 'Y', $phpdate ); 
+        $mysqldate = date( 'm', $phpdate );
+    ?>
+    
+    <?php if(($mysqlyear==$year)&&($mysqldate==$month)): ?>
+        <?php 
+                $sequence++;
+                $data = "
         <tr>
             <td align='center'>".$sequence."</td>
             <td align='center' style='vertical-align:middle'>".$value["Room_Id"]."</td>
@@ -79,6 +85,7 @@ $this->title = 'รายงานการเช่าห้องพัก';
 
 	?>
 
-<?php endforeach; ?>
+   <?php endif ?>
+<?php endforeach ?>
 
 </table>

@@ -10,6 +10,8 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\Session;
 use yii\db\Query;
+use app\models\Deposit;
+
 /**
  * ReIncomeController implements the CRUD actions for History model.
  */
@@ -39,14 +41,14 @@ class ReIncomeController extends Controller
         $searchModel = new ReIncomeSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        $monthday = History::find()->groupBy(['month(CheckDate)'])->all();
+        $monthday = History::find()->groupBy(['month(CheckDate)','year(CheckDate)'])->orderBy(['year(CheckDate)'=>SORT_DESC,'month(CheckDate)'=>SORT_DESC])->all();
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
               'monthday'=> $monthday,
         ]);
     }
-     public function actionReport($month) // $date = Y-m-d // payment_date = Y-m-d H-m-s.mm
+     public function actionReport($month,$year,$namemonth) // $date = Y-m-d // payment_date = Y-m-d H-m-s.mm
     {
         //$this->layout = 'siteadmin_main';
         $session = new Session;
@@ -57,22 +59,29 @@ class ReIncomeController extends Controller
         // }
         //echo $month;
         //SELECT * FROM selling_transaction INNER JOIN member ON selling_transaction.m_id = member.m_id INNER JOIN payment on selling_transaction.t_id = payment.t_id INNER JOIN selling_detail ON selling_transaction.t_id = selling_detail.t_id WHERE payment.payment_date LIKE '%2017-03-13%'
-        $query = new Query;
-        $query  ->select('*')  
-                ->from('history')
-                // ->innerJoin('member', 'selling_transaction.m_id = member.m_id')
-                // ->innerJoin('payment', 'selling_transaction.t_id = payment.t_id')
-                // ->innerJoin('selling_detail', 'selling_transaction.t_id = selling_detail.t_id')
-                ->where(['MONTH(CheckDate)' => $month])
-                ->orderBy(['CheckDate' => SORT_ASC]);
-
-        $command = $query->createCommand();
-        $data = $command->queryAll();
-        $model = $data;
         
+        //12-04-2017 edit
+        // $query = new Query;
+        // $query  ->select('*')  
+        //         ->from('history')
+        //         // ->innerJoin('member', 'selling_transaction.m_id = member.m_id')
+        //         // ->innerJoin('payment', 'selling_transaction.t_id = payment.t_id')
+        //         // ->innerJoin('selling_detail', 'selling_transaction.t_id = selling_detail.t_id')
+        //         ->where(['MONTH(CheckDate)' => $month])
+        //         ->orderBy(['CheckDate' => SORT_ASC]);
+
+
+
+        // $command = $query->createCommand();
+        // $data = $command->queryAll();
+        // $model = $data;
+        //12-04-2017 end edit
+
+        $model_history = History::find()->all(); 
+        $model_deposit =Deposit::find()->all();        
         //print_r($model);
 
-        return $this->render('report', ['month' => $month, 'model' =>$model]);
+        return $this->render('report', ['month' => $month,'year' => $year,'namemonth' =>$namemonth, 'model_history' =>$model_history, 'model_deposit' =>$model_deposit]);
     }
 
  

@@ -68,12 +68,12 @@ use kartik\datetime\DateTimePicker;
 
 
 
-    <?= $form->field($model, 'NumCus')->textInput(['type' => 'number','min'=>"1",]) ?>
+    <?= $form->field($model, 'NumCus')->textInput(['type' => 'number','min'=>"1"]) ?>
 
    <!--  <?if($model3 = Booking::find()->where(['Apart_Id' => $model->Apart_Id,'Room_Id' => $model->Room_Id,'Cus_Id' => $model->Cus_Id])->one()){
              $model->Deposit=$model3->Deposit; ?>
  -->
-    <?= $form->field($model, 'Deposit')->textInput() ?>
+    <?= $form->field($model, 'Deposit')->textInput(['type' => 'number','min'=>"0"]) ?>
 
     <?= $form->field($model, 'Status')->dropDownList([2=>'ใช้งาน'])  ?>
 

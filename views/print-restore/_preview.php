@@ -210,7 +210,7 @@ use app\models\Serviceofrental;
 			<td></td>
 			<td></td>
 			<td></td>
-			<td><?= "+ ".$value->Deposit ?></td>
+			<td><?= "+ vvv".$value->Deposit ?></td>
 			<td>บาท</td>
 		</tr>
 

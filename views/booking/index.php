@@ -10,6 +10,7 @@ use yii\grid\GridView;
 $this->title = 'จองห้องพัก';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+
 <div class="booking-index">
 <div class="box box-info box-solid">
             <div class="box-header with-border">
@@ -43,4 +44,5 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ],
     ]); ?>
+    
 </div>

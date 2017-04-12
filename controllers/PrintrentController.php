@@ -27,7 +27,7 @@ class PrintrentController extends \yii\web\Controller
              'orientation' => Pdf::ORIENT_PORTRAIT,
             // // stream to browser inline
              'destination' => Pdf::DEST_DOWNLOAD,
-              'filename' => 'สัญาญาเช่าห้องที่ '.$Room_Id .'วันที่'.$Date,
+              'filename' => 'สัญญาเช่าห้องที่ '.$Room_Id .'วันที่'.$Date,
             // your html content input
             'content' => $this->renderPartial('index',['model'=>$model,'model2'=>$model2]),
             // format content from your own css file if needed or use the

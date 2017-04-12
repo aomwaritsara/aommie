@@ -87,12 +87,14 @@ class ServiceController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+           $Service= Service::find()->all();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->Service_Id]);
         } else {
             return $this->render('update', [
                 'model' => $model,
+                'Service'=>$Service,
             ]);
         }
     }

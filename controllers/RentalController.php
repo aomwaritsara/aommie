@@ -77,6 +77,7 @@ class RentalController extends Controller
          
       if ($model->load(Yii::$app->request->post())  ) {
         if (Booking::find()->where(['Apart_Id' => $model->Apart_Id,'Room_Id' => $model->Room_Id,'Cus_Id' => $model->Cus_Id])->one()) {
+            
             if (Booking::find()->where(['Deposit' => $model->Deposit])->one()) {
                     $model->save();
                     $model2 = Room::find()->where(['Apart_Id' => $model->Apart_Id,'Room_Id' => $model->Room_Id])->one();
@@ -92,13 +93,13 @@ class RentalController extends Controller
              
                         //
                         if( $model3->Status ='3'){
-                                $model4->Apart_Id = $model3->Apart_Id;
-                 $model4->Room_Id = $model3->Room_Id;
-                 $model4->Cus_Id = $model3->Cus_Id;
-                 $model4->Date = $model3->Booking_Date;
-                 $model4->Price = $model3->Deposit;
-                 $model4->Status = '1';
-                 $model4->save();
+                 //                $model4->Apart_Id = $model3->Apart_Id;
+                 // $model4->Room_Id = $model3->Room_Id;
+                 // $model4->Cus_Id = $model3->Cus_Id;
+                 // $model4->Date = $model3->Booking_Date;
+                 // $model4->Price = $model3->Deposit;
+                 // $model4->Status = '1';
+                 // $model4->save();
                      $model3->Status ='0';
                      $model3->save();
                         (new Query)

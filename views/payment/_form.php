@@ -23,6 +23,11 @@ $session->open();
 <div class="payment-form">
 
     <?php $form = ActiveForm::begin(); ?>
+   <?php 
+
+$session = new Session;
+$session->open();
+?> 
 
     <?= $form->field($getApartment, 'Apart_Id')->textInput(['readonly' => true]); ?>
     <?= $form->field($getRoom, 'Room_Id')->textInput(['readonly' => true]) ?>

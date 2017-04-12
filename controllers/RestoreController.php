@@ -97,7 +97,6 @@ class RestoreController extends Controller
 
         $pdf = new Pdf([
                 'mode' => Pdf::MODE_UTF8,
-
                 // A4 paper format
                 'format' => Pdf::FORMAT_A4,
                 // portrait orientation

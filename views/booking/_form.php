@@ -44,7 +44,7 @@ use yii\web\Session;
   
     <?php   endif;   ?>
 
-    <?= $form->field($model, 'Deposit')->textinput() ?>
+    <?= $form->field($model, 'Deposit')->textinput(['type' => 'number','min'=>"0"]) ?>
     
 
      <?php if ($isUpdated == 0): ?>

@@ -60,9 +60,16 @@ $this->title = 'รายงานรายจ่ายรวม';
 
 <?php $sum=0; ?>
 <?php foreach ($model as $key => $value) : ?>
-	<?php 
-    	$sequence++;
-    	$data = "
+    <?php 
+        $phpdate = strtotime($value->Date);
+        $mysqlyear = date( 'Y', $phpdate ); 
+        $mysqldate = date( 'm', $phpdate );
+    ?>
+    
+    <?php if(($mysqlyear==$year)&&($mysqldate==$month)): ?>
+        <?php 
+                $sequence++;
+                $data = "
             <tr>
                 <td align='center'>".$sequence."</td>
                 <td align='center' style='vertical-align:middle'>".$value["Finan_Id"]."</td>
@@ -75,13 +82,14 @@ $this->title = 'รายงานรายจ่ายรวม';
                
             </tr>
         ";
+        
 
         echo $data;
 
         $sum = $sum+$value["TotalPrice"];
 
 	?>
-
+   <?php endif ?>
 <?php endforeach; ?>
     <tr bgcolor=#FDFD96>
         <td colspan="6" ></td>

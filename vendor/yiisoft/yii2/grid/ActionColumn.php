@@ -214,8 +214,8 @@ class ActionColumn extends Column
                 return Html::a('<span class="glyphicon glyphicon-remove"></span>', $url, $options);
             };
         }
-        if (!isset($this->buttons['changer'])) {
-            $this->buttons['changer'] = function ($url, $model, $key) {
+        if (!isset($this->buttons['changer'])) { 
+   $this->buttons['changer'] = function ($url, $model, $key) {
                 $options = array_merge([
                     'title' => Yii::t('yii', 'Changer'),
                     'aria-label' => Yii::t('yii', 'Changer'),

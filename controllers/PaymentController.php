@@ -87,7 +87,7 @@ class PaymentController extends Controller
 
 
 
-        if(Yii::$app->request->isPost) {
+        if(Yii::$app->request->isPost){
             
             $model->load(Yii::$app->request->post());
 
@@ -285,7 +285,7 @@ class PaymentController extends Controller
             $model->TotalPrice = $total_price;
  
             
-            if ($model->save(false)) {
+            if ($model->save()) {
                 return $this->redirect(['view', 'Apart_Id' => $model->Apart_Id, 'Room_Id' => $model->Room_Id, 'Cus_Id' => $model->Cus_Id]);
             }
 
@@ -312,13 +312,22 @@ class PaymentController extends Controller
      */
     public function actionUpdate($Apart_Id, $Room_Id, $Cus_Id)
     {
-        $model = $this->findModel($Apart_Id, $Room_Id, $Cus_Id);
+
+         $session = new Session;
+        $session->open();
+        //  $getApartment = Apartment::find()->where(['Staff_Id' => $session['staff_id']])->one();
+         $model = $this->findModel($Apart_Id, $Room_Id, $Cus_Id);
+        //  $getRoom = Roomtype::find()->where(['Apart_Id' => $Apart_Id, 'Room_Id' => $Room_Id])->one();
+        // $getCus = Customer::findone($getRental->Cus_Id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'Apart_Id' => $model->Apart_Id, 'Room_Id' => $model->Room_Id, 'Cus_Id' => $model->Cus_Id]);
         } else {
             return $this->render('update', [
                 'model' => $model,
+            //     'getApartment' => $getApartment,
+            //     'getRoom' => $getRoom,
+            // 'getCus' => $getCus,
             ]);
         }
     }

@@ -8,7 +8,7 @@ use yii\helpers\Url;
 /* @var $searchModel app\models\PaymentSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Bills';
+$this->title = 'ใบเสร็จชำระเงิน';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="bill-index">
@@ -34,7 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'Cus_Id',
             'DateFrom',
             // 'SoR_Id',
-            'CheckDate',
+            //'CheckDate',
             // 'Elec_Used',
             // 'Water_Used',
             // 'Cost',

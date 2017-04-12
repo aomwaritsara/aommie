@@ -210,7 +210,23 @@ use app\models\Serviceofrental;
 			<td></td>
 			<td></td>
 			<td></td>
-			<td><?= "+ ".$value->Deposit ?></td>
+			<?php
+				$month6 = $getMonth + 6;
+				$value->StartDate = date('m');
+				$startDate = $value->StartDate;
+			?>
+			<td>
+				<?php 
+					if ($startDate <= $month6) {
+						$value->Deposit = 0;
+						echo $value->Deposit;
+					}
+					else
+					{
+						echo "+ ".$value->Deposit;
+					}
+				 ?>
+			</td>
 			<td>บาท</td>
 		</tr>
 

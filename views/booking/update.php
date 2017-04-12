@@ -7,7 +7,7 @@ use yii\helpers\Html;
 
 $this->title = 'แก้ไขการจองห้องพัก: ' . $model->Room_Id;
 $this->params['breadcrumbs'][] = ['label' => 'Bookings', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->Apart_Id, 'url' => ['view', 'Apart_Id' => $model->Apart_Id, 'Room_Id' => $model->Room_Id, 'Cus_Id' => $model->Cus_Id]];
+$this->params['breadcrumbs'][] = ['label' => $model->Apart_Id, 'url' => ['view', 'Apart_Id' => $model->Apart_Id, 'Room_Id' => $model->Room_Id, 'Cus_Id' => $model->Cus_Id,'Booking_Date' => $model->Booking_Date]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="booking-update">
@@ -23,7 +23,6 @@ $this->params['breadcrumbs'][] = 'Update';
 
     <?= $this->render('_form', [
         'model' => $model,
-        'model3'=> $model3,
         'apartment' => $apartment,
         'isUpdated' => 1,
     ]) ?>

@@ -68,6 +68,8 @@ class FinancialApartmentSearch extends FinancialApartment
             'TotalPrice' => $this->TotalPrice,
         ]);
 
+         $query ->orderBy(['Finan_Id' => SORT_DESC ]);
+
         $query->andFilterWhere(['like', 'Finan_Id', $this->Finan_Id])
         ->andFilterWhere(['like', 'Destination', $this->Destination])
             ->andFilterWhere(['like', 'Name', $this->Name]);

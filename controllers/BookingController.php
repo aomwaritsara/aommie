@@ -151,29 +151,28 @@ class BookingController extends Controller
 
   
         $model = $this->findModel($Apart_Id, $Room_Id, $Cus_Id,$Booking_Date);
-        $model3= $this->findModel3($model->Apart_Id,$model->Room_Id,$model->Cus_Id);
+       // $model3= $this->findModel3($model->Apart_Id,$model->Room_Id,$model->Cus_Id);
 
 
-       if ($model->load(Yii::$app->request->post())  ){
-          $model->Apart_Id = $apartment->Apart_Id;
-          $model->Datestatus =date('Y-m-d h:i:s');
-              $model->save();
-        $model3 = Deposit::find()->where(['Room_Id' => $model->Room_Id])->one();
-        $model3->Price = $model->Deposit;
-          $model3->save();
-        
-
-            return $this->redirect(['view', 'Apart_Id' => $model->Apart_Id, 'Room_Id' => $model->Room_Id, 'Cus_Id' => $model->Cus_Id]);
+      if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'Apart_Id' => $model->Apart_Id, 'Room_Id' => $model->Room_Id, 'Cus_Id' => $model->Cus_Id,'$Booking_Date' => $model->$Booking_Date]);
         } else {
             return $this->render('update', [
                 'model' => $model,
-                'model3' => $model3,
                 'apartment' => $apartment,
-
+               // 'model' =>  $model3,
             ]);
         }
     }
-           
+        //         $model = $this->findModel($Apart_Id, $Room_Id, $Cus_Id,$StartDate);
+
+        // if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        //     return $this->redirect(['view', 'Apart_Id' => $model->Apart_Id, 'Room_Id' => $model->Room_Id, 'Cus_Id' => $model->Cus_Id,'StartDate' => $model->StartDate]);
+        // } else {
+        //     return $this->render('update', [
+        //         'model' => $model,
+        //     ]);
+        // }
      
     protected function findModel2($Apart_Id,$Room_Id)
 {
@@ -183,9 +182,9 @@ class BookingController extends Controller
         throw new NotFoundHttpException('The requested page does not exist.');
     }
 }
-protected function findModel3($Apart_Id,$Room_Id)
+protected function findModel3($Apart_Id,$Room_Id,$Cus_Id)
 {
-    if (($model = Deposit::findOne(['Apart_Id' => $Apart_Id, 'Room_Id' => $Room_Id])) !== null)
+    if (($model = Deposit::findOne(['Apart_Id' => $Apart_Id, 'Room_Id' => $Room_Id,'Cus_Id' => $Cus_Id])) !== null)
     {
         return $model;
     } else {

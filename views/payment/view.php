@@ -2,11 +2,14 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+// use app\models\History;
+// use app\models\HistorySearch;
+
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Payment */
 
-$this->title = $model->Apart_Id;
+$this->title = $model->Room_Id;
 $this->params['breadcrumbs'][] = ['label' => 'Payments', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -37,14 +40,15 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'Apart_Id',
+          //  'Apart_Id',
             'Room_Id',
             'Cus_Id',
-            'DateFrom',
-            'DateTo',
+           // 'DateFrom',
+          //  'DateTo',
             'NumCus',
-            'Deposit',
+          //  'Deposit',
             'Status',
+           /// 'History.elec_used',
         ],
     ]) ?>
 

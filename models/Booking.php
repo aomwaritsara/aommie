@@ -51,9 +51,9 @@ class Booking extends \yii\db\ActiveRecord
      * @inheritdoc
      */
     public function attributeLabels()
-       {
-       return [
-            'Apart_Id' => 'รหัสอพาร์ตเมนต์',
+    {
+        return [
+           'Apart_Id' => 'รหัสอพาร์ตเมนต์',
             'Room_Id' => 'รหัสห้องพัก',
             'Cus_Id' => 'รหัสประจำตัวประชาชน',
             'Deposit' => 'เงินมัดจำ',
@@ -62,7 +62,6 @@ class Booking extends \yii\db\ActiveRecord
             'Datestatus' => 'วันที่เปลี่ยนสถานะ',
         ];
     }
-
 
     /**
      * @return \yii\db\ActiveQuery

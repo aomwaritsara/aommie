@@ -10,6 +10,13 @@ $this->params['breadcrumbs'][] = ['label' => 'Set Rooms', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->Apart_Id, 'url' => ['view', 'Apart_Id' => $model->Apart_Id, 'Room_Id' => $model->Room_Id]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
+
+<?php
+  $i=0;
+  foreach ($numRoom as $key => $value) {
+    $i++;
+  }
+?>
 <div class="set-room-update">
 <div class="box box-info box-solid">
             <div class="box-header with-border">
@@ -25,6 +32,8 @@ $this->params['breadcrumbs'][] = 'Update';
       <?= $this->render('_form', [
         'model' => $model,
         'model2' =>$model2,
+        'FloorNumber'=> $FloorNumber,
+           
     ]) ?>
 
 </div>

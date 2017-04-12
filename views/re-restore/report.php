@@ -61,9 +61,16 @@ $this->title = 'รายงานการคืนห้องพัก';
 
 
 <?php foreach ($model as $key => $value) : ?>
-	<?php 
-	$sequence++;
-	$data = "
+    <?php 
+        $phpdate = strtotime($value->StartDate);
+        $mysqlyear = date( 'Y', $phpdate ); 
+        $mysqldate = date( 'm', $phpdate );
+    ?>
+    
+    <?php if(($mysqlyear==$year)&&($mysqldate==$month)): ?>
+        <?php 
+                $sequence++;
+                $data = "
         <tr>
             <td align='center'>".$sequence."</td>
             <td align='center' style='vertical-align:middle'>".$value["Room_Id"]."</td>
@@ -75,7 +82,7 @@ $this->title = 'รายงานการคืนห้องพัก';
     echo $data;
 
 	?>
-
-<?php endforeach; ?>
+   <?php endif ?>
+<?php endforeach ?>
 
 </table>

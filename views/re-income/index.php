@@ -12,7 +12,7 @@ use yii\helpers\Url;
 $session = new Session;
 $session->open();
 
-$this->title = 'รายงานรายจ่ายรวม';
+$this->title = 'รายงานรายรับรวม';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="re-income-index">
@@ -36,54 +36,58 @@ $this->params['breadcrumbs'][] = $this->title;
                             echo $headTable;
                             foreach ($monthday as $key => $value) {
                                 $phpdate = strtotime($value->CheckDate);
-                                $mysqldate = date( 'm', $phpdate );
-                                switch ($mysqldate) {
-                                    case '01':
-                                        $month = 'มกราคม';
-                                        break;
-                                    case '02':
-                                        $month = 'กุมภาพันธ์';
-                                        break;
-                                    case '03':
-                                        $month = 'มีนาคม';
-                                        break;
-                                    case '04':
-                                        $month = 'เมษายน';
-                                        break;
-                                    case '05':
-                                        $month = 'พฤษภาคม';
-                                        break;
-                                    case '06':
-                                        $month = 'มิถุนายน';
-                                        break;
-                                    case '07':
-                                        $month = 'กรกฎาคม';
-                                        break;
-                                    case '08':
-                                        $month = 'สิงหาคม';
-                                        break;
-                                    case '09':
-                                        $month = 'กันยายน';
-                                        break;
-                                    case '10':
-                                        $month = 'ตุลาคม';
-                                        break;
-                                    case '11':
-                                        $month = 'พฤศจิกายน';
-                                        break;
-                                    case '12':
-                                        $month = 'ธันวาคม';
-                                        break;
-                                }
+                                $mysqlyear = date( 'Y', $phpdate );
+                                // echo $mysqlyear;
+                                    $mysqldate = date( 'm', $phpdate );
+                                    switch ($mysqldate) {
+                                        case '01':
+                                            $month = 'มกราคม';
+                                            break;
+                                        case '02':
+                                            $month = 'กุมภาพันธ์';
+                                            break;
+                                        case '03':
+                                            $month = 'มีนาคม';
+                                            break;
+                                        case '04':
+                                            $month = 'เมษายน';
+                                            break;
+                                        case '05':
+                                            $month = 'พฤษภาคม';
+                                            break;
+                                        case '06':
+                                            $month = 'มิถุนายน';
+                                            break;
+                                        case '07':
+                                            $month = 'กรกฎาคม';
+                                            break;
+                                        case '08':
+                                            $month = 'สิงหาคม';
+                                            break;
+                                        case '09':
+                                            $month = 'กันยายน';
+                                            break;
+                                        case '10':
+                                            $month = 'ตุลาคม';
+                                            break;
+                                        case '11':
+                                            $month = 'พฤศจิกายน';
+                                            break;
+                                        case '12':
+                                            $month = 'ธันวาคม';
+                                            break;
+                                    }
+                                    
+                                    if ($value->CheckDate != NULL) {
+                                        echo "<tr>";
+                                        echo "<td width='10%'align='center'>".$i."</td>";
+                                        $namemonth = $month;
+                                        echo "<td align='center'><a href=".Url::to(['report', 'namemonth' => $namemonth, 'month' => $mysqldate,'year' => $mysqlyear]).">รายงานประจำเดือน ".$month.$mysqlyear."</a></td>";
+                                        echo "</tr>";
+                                        $i++;
+                                    }   
                                 
-                                if ($value->CheckDate != NULL) {
-                                    echo "<tr>";
-                                    echo "<td width='10%'align='center'>".$i."</td>";
-                                    $session["month"] = $month;
-                                    echo "<td align='center'><a href=".Url::to(['report', 'month' => $mysqldate]).">รายงานประจำเดือน ".$month."</a></td>";
-                                    echo "</tr>";
-                                    $i++;
-                                }   
+                                
                             
                         }
                     

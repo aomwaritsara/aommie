@@ -122,9 +122,17 @@ public function actionUpdate($Apart_Id, $Room_Id)
     {
         // $model = new SetRoom();
         // $model2 = new Room();
+          $session = new Session();
+        $session->open();
 
         $model = $this->findModel($Apart_Id, $Room_Id);
         $model2= $this->findModel2($model->Apart_Id,$model->Room_Id);
+
+        $numRoom = Room::find()->where(['Apart_Id' => $session['Apartment_id']])->all();
+        $apartment = Apartment::findone($session['Apartment_id']);
+        $maxNumFloor = $apartment->NumFloor;
+        $FloorNumber = Room::find()->distinct('Floor')->where("Floor <= '$maxNumFloor'")->all();
+         
 
     //       $model->load(Yii::$app->request->post()) &&
     // $modelUser->load(Yii::$app->request->post()) &&
@@ -144,6 +152,9 @@ public function actionUpdate($Apart_Id, $Room_Id)
             return $this->render('update', [
                 'model' => $model,
                  'model2' => $model2,
+                 'FloorNumber'=> $FloorNumber,
+                'apartment' => $apartment,
+                'numRoom' => $numRoom,
             ]);
         }
     }
