@@ -1,6 +1,6 @@
 <?php
-use app\models\Room;
-use app\models\RoomSearch;
+// use app\models\Room;
+// use app\models\RoomSearch;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 

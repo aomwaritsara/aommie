@@ -64,8 +64,17 @@ class PaymentController extends Controller
     public function actionView($Apart_Id, $Room_Id, $Cus_Id)
     {
         return $this->render('view', [
-            'model' => $this->findModel($Apart_Id, $Room_Id, $Cus_Id),
+            'model' => $this->findModel2($Apart_Id, $Room_Id, $Cus_Id),
         ]);
+    }
+
+     protected function findModel2($Apart_Id, $Room_Id, $Cus_Id)
+    {
+        if (($model = History::findOne(['Apart_Id' => $Apart_Id, 'Room_Id' => $Room_Id, 'Cus_Id' => $Cus_Id])) !== null) {
+            return $model;
+        } else {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
     }
 
     /**
@@ -316,7 +325,7 @@ class PaymentController extends Controller
          $session = new Session;
         $session->open();
         //  $getApartment = Apartment::find()->where(['Staff_Id' => $session['staff_id']])->one();
-         $model = $this->findModel($Apart_Id, $Room_Id, $Cus_Id);
+         $model = $this->findModel2($Apart_Id, $Room_Id, $Cus_Id);
         //  $getRoom = Roomtype::find()->where(['Apart_Id' => $Apart_Id, 'Room_Id' => $Room_Id])->one();
         // $getCus = Customer::findone($getRental->Cus_Id);
 
@@ -325,9 +334,9 @@ class PaymentController extends Controller
         } else {
             return $this->render('update', [
                 'model' => $model,
-            //     'getApartment' => $getApartment,
-            //     'getRoom' => $getRoom,
-            // 'getCus' => $getCus,
+             'getApartment' => $getApartment,
+             //   'getRoom' => $getRoom,
+             // 'getCus' => $getCus,
             ]);
         }
     }
@@ -364,4 +373,5 @@ class PaymentController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+   
 }

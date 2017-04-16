@@ -68,7 +68,7 @@ class History extends \yii\db\ActiveRecord
             'Apart_Id' => 'รหัสอพาร์ตเมนต์',
             'Room_Id' => 'รหัสห้องพัก',
             'Cus_Id' => 'รหัสประจำตัวประชาชน',
-            'DateFrom' => 'วันที่เช่า',
+            'DateFrom' => 'วันที่เก็บค่าเช่าเช่า',
             'SoR_Id' => 'รหัสบริการเสริมของห้องพัก',
             'CheckDate' => 'วันที่ปัจจุบัน',
             'Elec_Used' => 'ค่าไฟฟ้า',

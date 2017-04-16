@@ -155,7 +155,7 @@ $this->title = 'รายงานรายรับรวม';
             <?php
                 $sumIn = $sumIn+$sum_income;
                 $sumOut = $sumOut+$sum_outcome;
-                $sum =  $sumIn+$sumOut;
+                $sum =  $sumIn-$sumOut;
 
         	?>
     <?php endif ?>

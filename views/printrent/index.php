@@ -15,24 +15,23 @@
   <table width="500" align="center" bgcolor="White" >
         
         <tr bgcolor="White">
-            <td colspan="2" >ชื่อ <?= $model2->Fname?></td> <td>นามสกุล <?= $model2->Lname?></td>
-                                 
+            <td colspan="1" >ชื่อ-นามสกุล </td> <td><?= $model2->Fname."  ".$model2->Lname?></td>               
         </tr>
         
      <tr>
-     <td colspan="2">บัตรประจำตัว</td> <td><?= $model->Cus_Id?></td>
+     <td colspan="1">รหัสประจำตัว</td> <td><?= $model->Cus_Id?></td>
      </tr>
 
       <tr>
-        <td colspan="2">เบอร์โทรศัพท์</td> <td><?= $model2->Tel?></td>
+        <td colspan="1">เบอร์โทรศัพท์</td> <td><?= $model2->Tel?></td>
      </tr>
 
       <tr>
-      <td colspan="2">อีเมล์ </td> <td><?= $model2->Email?></td>
+      <td colspan="1">อีเมล์ </td> <td><?= $model2->Email?></td>
      </tr>
 
       <tr>
-        <td colspan="2">ที่อยู่ปัจุบัน/ที่อยู่ที่ทำงาน/สถานศึกษา (ถ้ามี)</td> <td> <?= $model2->Address?> </td>
+        <td colspan="1">ที่อยู่ปัจุบัน/ที่อยู่ที่ทำงาน/สถานศึกษา (ถ้ามี)</td> <td> <?= $model2->Address?> </td>
      </tr>
       <tr>
       <td colspan="3"> </td> <td></td>

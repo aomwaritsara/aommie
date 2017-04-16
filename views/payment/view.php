@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use yii\helpers\Url;
 // use app\models\History;
 // use app\models\HistorySearch;
 
@@ -9,7 +10,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Payment */
 
-$this->title = $model->Room_Id;
+$this->title = 'ห้อง :'. $model->Room_Id;
 $this->params['breadcrumbs'][] = ['label' => 'Payments', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -25,6 +26,8 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
 
     <h1><?= Html::encode($this->title) ?></h1>
+   
+<!-- 
 
     <p>
         <?= Html::a('Update', ['update', 'Apart_Id' => $model->Apart_Id, 'Room_Id' => $model->Room_Id, 'Cus_Id' => $model->Cus_Id], ['class' => 'btn btn-primary']) ?>
@@ -35,21 +38,28 @@ $this->params['breadcrumbs'][] = $this->title;
                 'method' => 'post',
             ],
         ]) ?>
-    </p>
+    </p> -->
 
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-          //  'Apart_Id',
+            'Apart_Id',
             'Room_Id',
             'Cus_Id',
            // 'DateFrom',
           //  'DateTo',
-            'NumCus',
+           // 'NumCus',
           //  'Deposit',
-            'Status',
-           /// 'History.elec_used',
+            //'Status',
+            'CheckDate',
+            'Elec_Used',
+            'Water_Used',
+            'Cost',
+            'TotalPrice',
+            'PaymentStatus',
         ],
     ]) ?>
+
+     <p align="center"><a href="<?= Url::to(['payment/index']) ?>"<button class="btn">กลับ</button></a></p>
 
 </div>

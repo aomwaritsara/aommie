@@ -14,7 +14,7 @@ class PrintRestoreController extends \yii\web\Controller
 {
     public function actionIndex()
     {
-      echo "string";
+      //echo "string";
     // $model = Rental::find()->where(['Status' => '2'])->all();
 
     //  $Date = date('Y:m:d');

@@ -61,7 +61,7 @@ a:visited {
             [
                 
                 'class' => 'yii\grid\ActionColumn',
-                'template' => '{view}',
+                'template' => '{view} ',
                // 'contentOptions' => ['class'=>'text center']
             ],
            //['class' => 'yii\grid\ActionColumn'],

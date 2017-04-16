@@ -69,7 +69,7 @@ class PaymentSearch extends Payment
         $query->andFilterWhere(['like', 'Room_Id', $this->Room_Id])
             ->andFilterWhere(['like', 'Cus_Id', $this->Cus_Id])
             ->andFilterWhere(['like', 'Status', $this->Status='2']);
-        $query->orderBy(['DateFrom' => SORT_DESC]);
+        $query->orderBy(['Room_Id' => SORT_ASC]);
 
         return $dataProvider;
     }

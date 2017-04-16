@@ -66,7 +66,7 @@ use app\models\Serviceofrental;
 
 	<h4 align = "center" style="font-size: 16pt">
 		ใบเสร็จรับเงิน <br>
-		อินเตอร์เรสซิเด้นซ์<br>
+		อินเตอร์เรสเรสสิเด้นท์<br>
 	</h4>
 
 	<p style="font-size: 14pt">
