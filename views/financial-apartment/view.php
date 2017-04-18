@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+Yii::$app->formatter->locale = 'Asia-BKK';
 
 /* @var $this yii\web\View */
 /* @var $model app\models\FinancialApartment */
@@ -37,12 +38,12 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'Finan_Id',
             'Apart_Id',
-            'Date',
+            'Date:date',
             'Destination',
             'Name',
-            'Amount',
-            'Price',
-            'TotalPrice',
+            'Amount:decimal',
+            'Price:decimal',
+            'TotalPrice:decimal',
         ],
     ]) ?>
 

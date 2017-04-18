@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,7 +43,6 @@
       <td colspan="3"> </td> <td></td>
      </tr>
     </table>
-
 
 <!-- 
       <p align="Left"  colspan="3"><h3>ชื่อ <?= $model2->Fname?>  นามสกุล <?= $model2->Lname?></h3> </p> 

@@ -73,7 +73,14 @@ class RentalController extends Controller
         $model = new Rental();
         $model2 =new Room();
        $model4 =new Deposit();
-
+       
+     $request = Yii::$app->getRequest();
+        if ($request->isPost && $request->post('ajax') !== null) {
+            $model ->load(Yii::$app->request->post());
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            $result = ActiveForm::validate($model );
+            return $result;
+        }
          
       if ($model->load(Yii::$app->request->post())  ) {
         if (Booking::find()->where(['Apart_Id' => $model->Apart_Id,'Room_Id' => $model->Room_Id,'Cus_Id' => $model->Cus_Id])->one()) {

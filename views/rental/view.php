@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
-
+Yii::$app->formatter->locale = 'Asia-BKK';
 /* @var $this yii\web\View */
 /* @var $model app\models\Rental */
 
@@ -33,10 +33,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'Room_Id',
             'Cus_Id',
             //'DateFrom',
-            'StartDate',
+            'StartDate:date',
             //'DateTo',
             'NumCus',
-            'Deposit',
+            'Deposit:decimal',
             //'Status',
              [
              'attribute' => 'Status',

@@ -5,7 +5,7 @@ use yii\widgets\DetailView;
 use yii\helpers\Url;
 // use app\models\History;
 // use app\models\HistorySearch;
-
+Yii::$app->formatter->locale = 'Asia-BKK';
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Payment */
@@ -51,7 +51,7 @@ $this->params['breadcrumbs'][] = $this->title;
            // 'NumCus',
           //  'Deposit',
             //'Status',
-            'CheckDate',
+            'CheckDate:date',
             'Elec_Used',
             'Water_Used',
             'Cost',

@@ -9,6 +9,7 @@ use yii\helpers\ArrayHelper;
 use kartik\datetime\DateTimePicker;
 use app\models\Room;
 use yii\web\Session;
+use yii\widgets\MaskedInput;
 /* @var $this yii\web\View */
 /* @var $model app\models\Booking */
 /* @var $form yii\widgets\ActiveForm */
@@ -16,7 +17,7 @@ use yii\web\Session;
 
 <div class="_form-member-form">
 
-   <?php $form = ActiveForm::begin(['layout' => 'horizontal']); ?>
+
    <?php
     $session = new Session;
         $session->open(); 
@@ -40,7 +41,9 @@ use yii\web\Session;
 
 
     <?php if ($isUpdated == 0): ?> 
-    <?= $form->field($model, 'Cus_Id')->textinput(['maxlength' => true,'value'=>$model->Cus_Id]) ?>
+    <?= $form->field($model, 'Cus_Id')->widget(MaskedInput::className(),[
+                'mask'=>'9999999999999'
+            ])?>
   
     <?php   endif;   ?>
 

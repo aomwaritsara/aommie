@@ -8,19 +8,29 @@ use kartik\datetime\DateTimePicker;
 /* @var $this yii\web\View */
 /* @var $model app\models\Customer */
 /* @var $form yii\widgets\ActiveForm */
+
+use yii\widgets\MaskedInput;
+
 ?>
 
 <div class="customer-form">
+  <?php $form = ActiveForm::begin(['layout' => 'horizontal']); ?>
 
-    <?php $form = ActiveForm::begin(['layout' => 'horizontal']); ?>
 
-   <?= $form->field($model, 'Cus_Id')->textInput(['maxlength' => true]) ?>
+
+   
+
+   <?= $form->field($model, 'Cus_Id')->widget(MaskedInput::className(),[
+                'mask'=>'9999999999999'
+            ])?>
 
     <?= $form->field($model, 'Fname')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'Lname')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'Tel')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'Tel')->widget(MaskedInput::className(),[
+                'mask'=>'9999999999'
+            ])?>
 
     <?= $form->field($model, 'Email')->textInput(['maxlength' => true]) ?>
 

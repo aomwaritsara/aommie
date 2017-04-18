@@ -42,7 +42,7 @@ $this->title = 'รายงานการคืนห้องพัก';
     
 ?>
 <a href="javascript:history.go(-1)"><button class="btn">กลับ</button></a>
-<center><h3><b><p>รายงานการคืนห้องพักประจำเดือน <?= $session["month"]; ?></p></b></h3></center>
+<center><h3><b><p>รายงานการคืนห้องพักประจำเดือน <?= $namemonth; ?>ปี<?= $year; ?></p></b></h3></center>
  
 
 
@@ -69,6 +69,7 @@ $this->title = 'รายงานการคืนห้องพัก';
     
     <?php if(($mysqlyear==$year)&&($mysqldate==$month)): ?>
         <?php 
+        
                 $sequence++;
                 $data = "
         <tr>

@@ -67,6 +67,14 @@ class CustomerController extends Controller
     {
        
         $model = new Customer();
+        
+        // $request = Yii::$app->getRequest();
+        // if ($request->isPost && $request->post('ajax') !== null) {
+        //     $model ->load(Yii::$app->request->post());
+        //     Yii::$app->response->format = Response::FORMAT_JSON;
+        //     $result = ActiveForm::validate($model );
+        //     return $result;
+        // }
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->Cus_Id]);

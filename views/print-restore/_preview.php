@@ -220,7 +220,7 @@ use app\models\Serviceofrental;
 		<tr>
 			<td colspan="4"></td>
 			<td>รวมเป็นเงิน</td>
-			<td><?= $restore_Cost ?></td>
+			<td><?= number_format("$restore_Cost") ?></td>
 			<td>บาท</td>
 		</tr>
 	</table>

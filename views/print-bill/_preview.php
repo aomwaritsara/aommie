@@ -74,9 +74,10 @@ use app\models\Serviceofrental;
 	เลขห้อง <?= $value->Room_Id ?> <br>
 	ได้รับเงินจาก <?= $getCus->Fname." ".$getCus->Lname ?> <br>
 	ประจำเดือน <?= $month ?> <br>
-	จำนวนเงินทั้งสิ้น <?= $value->TotalPrice ?> บาท <br>
+	จำนวนเงินทั้งสิ้น <?= number_format("$value->TotalPrice") ?> บาท <br>
 	</p>
 
+        
 	<p>
 		ลงชื่อ  ___________________________________  เจ้าหน้าที่
 	</p>

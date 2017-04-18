@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\ArrayHelper;
 use kartik\datetime\DateTimePicker;
-
+use yii\widgets\MaskedInput;
 /* @var $this yii\web\View */
 /* @var $model app\models\Rental */
 /* @var $form yii\widgets\ActiveForm */
@@ -13,7 +13,7 @@ use kartik\datetime\DateTimePicker;
 
 <div class="rental-form">
 
-    <?php $form = ActiveForm::begin(['layout' => 'horizontal']); ?>
+
 
     <?= $form->field($model, 'Apart_Id')->textinput(['readonly'=>true,'value'=>'1']) ?>
 
@@ -26,7 +26,10 @@ use kartik\datetime\DateTimePicker;
 <?php   endif;   ?>
 
    <?php if ($isUpdated == 0): ?>
-   <?= $form->field($model, 'Cus_Id')->textinput(['maxlength' => true])?>
+   <?= $form->field($model, 'Cus_Id')->widget(MaskedInput::className(),[
+                'mask'=>'9999999999999'
+            ])?>
+  
     <?php   endif;   ?>
 
 <?php if ($isUpdated == 1): ?>

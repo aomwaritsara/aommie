@@ -96,7 +96,7 @@ use app\models\Serviceofrental;
 			<td>บาท</td>
 			<td></td>
 			<td></td>
-			<td><?= $getRoomType->Price; ?></td>
+			<td><?= number_format("$getRoomType->Price"); ?></td>
 			<td>บาท</td>
 		</tr>
 		<tr>
@@ -108,7 +108,7 @@ use app\models\Serviceofrental;
 			?>
 			<td><?= $nuew ?></td>
 			<td><?= $getRoomType->Eletricity ?></td>
-			<td><?= $getHistory->Elec_Used ?></td>
+			<td><?= number_format("$getHistory->Elec_Used")?></td>
 			<td>บาท</td>
 		</tr>
 		<tr>
@@ -117,7 +117,7 @@ use app\models\Serviceofrental;
 			<td>ห้อง</td>
 			<td><?= $value->NumCus; ?></td>
 			<td>100</td>
-			<td><?= $getHistory->Water_Used ?></td>
+			<td><?= number_format("$getHistory->Water_Used") ?></td>
 			<td>บาท</td>
 		</tr>
 		<tr>
@@ -134,7 +134,7 @@ use app\models\Serviceofrental;
 					foreach ($SR as $key => $sr_value) {
 						if ($sr_value->Service_Id == "SV1") {
 							$service = Service::findone($sr_value->Service_Id);
-							echo $service->Price;
+							echo number_format("$service->Price");
 						}	
 					}
 				}
@@ -156,7 +156,7 @@ use app\models\Serviceofrental;
 					foreach ($SR as $key => $sr_value) {
 						if ($sr_value->Service_Id == "SV2") {
 							$service = Service::findone($sr_value->Service_Id);
-							echo $service->Price;
+							echo number_format("$service->Price");
 						}		
 					}
 				}
@@ -178,7 +178,7 @@ use app\models\Serviceofrental;
 					foreach ($SR as $key => $sr_value) {
 						if ($sr_value->Service_Id == "SV3") {
 							$service = Service::findone($sr_value->Service_Id);
-							echo $service->Price;
+							echo number_format("$service->Price");
 						}		
 					}
 				}
@@ -219,11 +219,11 @@ use app\models\Serviceofrental;
 				<?php 
 					if ($startDate <= $month6) {
 						$value->Deposit = 0;
-						echo $value->Deposit;
+						echo number_format("$value->Deposit");
 					}
 					else
 					{
-						echo "+ ".$value->Deposit;
+						echo "+ ".number_format("$value->Deposit");
 					}
 				 ?>
 			</td>
@@ -236,12 +236,13 @@ use app\models\Serviceofrental;
 		<tr>
 			<td colspan="4"></td>
 			<td>รวมเป็นเงิน</td>
-			<td><?= $restore_Cost ?></td>
+			<td><?= number_format("$restore_Cost") ?></td>
 			<td>บาท</td>
 		</tr>
 	</table>
 	<p>
-	จำนวนเงินทั้งสิ้น <?= $restore_Cost ?> บาท <br>
+
+	จำนวนเงินทั้งสิ้น <?= number_format("$restore_Cost")  ?> บาท <br>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	ลงชื่อ  ___________________________________  เจ้าหน้าที่
 	</p>

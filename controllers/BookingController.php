@@ -17,6 +17,7 @@ use yii\web\Session;
 use app\models\Apartment;
 use kartik\datetime\DateTimePicker;
 use app\models\Customer;
+
 /**
  * BookingController implements the CRUD actions for Booking model.
 
@@ -91,6 +92,14 @@ class BookingController extends Controller
  // var_dump($Cus) ;
  
     // $getApart = Apartment::findOne($model2->Apart_Id); '5555555555555'
+        //  $request = Yii::$app->getRequest();
+        // if ($request->isPost && $request->post('ajax') !== null) {
+        //     $model ->load(Yii::$app->request->post());
+        //     Yii::$app->response->format = Response::FORMAT_JSON;
+        //     $result = ActiveForm::validate($model );
+        //     return $result;
+        // }
+
       if ($model->load(Yii::$app->request->post())  ){
             // $booking ='5555555555555';
             // echo $model->Cus_Id;
