@@ -23,13 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= Html::a('Update', ['update', 'Apart_Id' => $model->Apart_Id, 'Room_Id' => $model->Room_Id, 'Cus_Id' => $model->Cus_Id,'StartDate' => $model->StartDate], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'Apart_Id' => $model->Apart_Id, 'Room_Id' => $model->Room_Id, 'Cus_Id' => $model->Cus_Id,'StartDate' => $model->StartDate], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
+       
     </p>
 
     <?= DetailView::widget([
@@ -38,9 +32,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'Apart_Id',
             'Room_Id',
             'Cus_Id',
-            'DateFrom',
+            //'DateFrom',
             'StartDate',
-            'DateTo',
+            //'DateTo',
             'NumCus',
             'Deposit',
             //'Status',

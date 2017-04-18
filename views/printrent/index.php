@@ -13,11 +13,13 @@
          <p></p>
        <p></p>
   <table width="500" align="center" bgcolor="White" >
-        
+         <tr>
+     <td colspan="1">ห้องพักเลขที่ </td> <td><?= $model->Room_Id?></td>
+     </tr>
         <tr bgcolor="White">
             <td colspan="1" >ชื่อ-นามสกุล </td> <td><?= $model2->Fname."  ".$model2->Lname?></td>               
         </tr>
-        
+     
      <tr>
      <td colspan="1">รหัสประจำตัว</td> <td><?= $model->Cus_Id?></td>
      </tr>

@@ -147,32 +147,27 @@ class BookingController extends Controller
         $session = new Session;
         $session->open();
 
-  $apartment = Apartment::find()->where(['Staff_Id' => $session['staff_id']])->one();
+   $apartment = Apartment::find()->where(['Staff_Id' => $session['staff_id']])->one();
 
   
-        $model = $this->findModel($Apart_Id, $Room_Id, $Cus_Id,$Booking_Date);
-       // $model3= $this->findModel3($model->Apart_Id,$model->Room_Id,$model->Cus_Id);
+        $model = Booking::findOne(['Apart_Id' => $Apart_Id, 'Room_Id' => $Room_Id, 'Cus_Id' => $Cus_Id, 'Booking_Date' => $Booking_Date]);
+       
 
 
-      if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'Apart_Id' => $model->Apart_Id, 'Room_Id' => $model->Room_Id, 'Cus_Id' => $model->Cus_Id,'$Booking_Date' => $model->$Booking_Date]);
+      if ($model->load(Yii::$app->request->post()) ) {
+       
+          $model->save();
+            return $this->redirect(['view', 'Apart_Id' => $model->Apart_Id, 'Room_Id' => $model->Room_Id, 'Cus_Id' => $model->Cus_Id,'Booking_Date' => $model->Booking_Date]);
         } else {
             return $this->render('update', [
                 'model' => $model,
                 'apartment' => $apartment,
-               // 'model' =>  $model3,
+               
             ]);
         }
     }
-        //         $model = $this->findModel($Apart_Id, $Room_Id, $Cus_Id,$StartDate);
 
-        // if ($model->load(Yii::$app->request->post()) && $model->save()) {
-        //     return $this->redirect(['view', 'Apart_Id' => $model->Apart_Id, 'Room_Id' => $model->Room_Id, 'Cus_Id' => $model->Cus_Id,'StartDate' => $model->StartDate]);
-        // } else {
-        //     return $this->render('update', [
-        //         'model' => $model,
-        //     ]);
-        // }
+ 
      
     protected function findModel2($Apart_Id,$Room_Id)
 {

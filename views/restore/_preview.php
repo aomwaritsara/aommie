@@ -70,7 +70,7 @@ use app\models\Serviceofrental;
 
 	<h4 align = "center" style="font-size: 16pt">
 		ใบเสร็จการคืนห้องพัก
-		อินเตอร์เรสซิเด้นซ์<br>
+		อินเตอร์เรสสิเด้นท์<br>
 		ประจำเดือน <?= $month; ?>
 	</h4>
 

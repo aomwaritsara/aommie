@@ -7,15 +7,15 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\ServiceSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'ตั้งค่าบริการเสริม';
+$this->title = 'ตั้งค่าอัตราค่าใช่จ่าย';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="service-index">
 <div class="box box-info box-solid">
             <div class="box-header with-border">
-    <h4>ตั้งค่าบริการเสริม</h4>
+    <h4>ตั้งค่าอัตราค่าใช้จ่าย</h4>
     <div class="box-tools pull-right">
-                <?= Html::a('<span class = "fa fa-plus"></span>เพิ่มข้อมูลตั้งค่าบริการเสริม', ['create'], ['class' => 'btn btn-block btn-primary ']) ?>
+              <!--   <?= Html::a('<span class = "fa fa-plus"></span>เพิ่มข้อมูลตั้งค่าอัตราค่าใช้จ่าย', ['create'], ['class' => 'btn btn-block btn-primary ']) ?> -->
                
               </div>
               <!-- /.box-tools -->

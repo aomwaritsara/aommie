@@ -54,11 +54,11 @@ if($model->Service_Id == null){ //if insert
 
     <?= $form->field($model, 'Service_Id')->textInput(['maxlength' => true,'readonly'=> true]) ?>
 
-    <?= $form->field($model, 'Name')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'Name')->textinput(['readonly'=> true]) ?>
 
     <?= $form->field($model, 'Price')->textInput() ?>
 
-    <?= $form->field($model, 'Unit')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'Unit')->textInput(['maxlength' => true,'readonly'=> true]) ?>
 
     <div class="form-group" align="center">
         <?= Html::submitButton($model->isNewRecord ? 'บันทึก' : 'บันทึก', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

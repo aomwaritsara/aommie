@@ -53,7 +53,7 @@ use yii\web\Session;
       'pluginOptions' => [
       'language' => 'th',
      'format' => 'yyyy-mm-dd hh:ii:ss',
-      $model->Booking_Date = date('Y-m-d h:i:s')
+      $model->Booking_Date = date('Y-m-d H:i:s')
     ]
 ]) ?> 
 <?php   endif;   ?>
@@ -70,7 +70,7 @@ use yii\web\Session;
       'pluginOptions' => [
       'language' => 'th',
      'format' => 'yyyy-mm-dd hh:ii:ss',
-      $model->Datestatus = date('Y-m-d h:i:s')
+      $model->Datestatus = date('Y-m-d H:i:s')
     ]
 ])  ?>  -->
 

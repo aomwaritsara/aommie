@@ -77,7 +77,7 @@ class ReIncomeController extends Controller
         // $model = $data;
         //12-04-2017 end edit
 
-        $model_history = History::find()->all(); 
+        $model_history = History::find()->where('PaymentStatus'=='1')->all(); 
         $model_deposit =Deposit::find()->all();        
         //print_r($model);
 

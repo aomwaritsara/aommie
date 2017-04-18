@@ -48,21 +48,21 @@ a:visited {
             // 'Deposit',
             // 'Status',
        
-[
-                'attribute'=>'Action',
-
-                'content'=>function($data){
-                return Html::a ('<i class="glyphicon glyphiconfile"></i>เก็บเงิน', Url::to (['payment/create','Apart_Id'=>$data->Apart_Id,'Room_Id'=>$data->Room_Id,'Cus_Id'=>$data->Cus_Id]),['class'=>'btn btn-md btn-primary']);
+            [
+                'attribute'=>'บันทึกการเก็บเงิน',
+                'contentOptions' => ['class'=>'text-center'],
+                 'content'=>function($data){
+                return Html::a ('<i class="glyphicon glyphiconfile"></i>เก็บเงิน', Url::to (['payment/create','Apart_Id'=>$data->Apart_Id,'Room_Id'=>$data->Room_Id,'Cus_Id'=>$data->Cus_Id]),['class'=>'btn btn-md btn-primary' ]);
 
             },
-            'contentOptions'=>['class'=>'text center']
+            
             ],
 
             [
                 
                 'class' => 'yii\grid\ActionColumn',
                 'template' => '{view} ',
-               // 'contentOptions' => ['class'=>'text center']
+                'contentOptions' => ['class'=>'text center']
             ],
            //['class' => 'yii\grid\ActionColumn'],
         ],

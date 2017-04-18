@@ -10,7 +10,7 @@ use yii\web\Session;
 $session = new Session;
 $session->open();
 
-$this->title = 'รายงานรายรับรวม';
+$this->title = 'รายงานรายรับ-รายจ่าย';
 
 ?>
 

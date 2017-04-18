@@ -56,7 +56,12 @@ $this->params['breadcrumbs'][] = $this->title;
             'Water_Used',
             'Cost',
             'TotalPrice',
-            'PaymentStatus',
+            //'PaymentStatus',
+            [
+             'attribute' => 'PaymentStatus',
+             'format'=>'raw',
+             'value'=>$model->PaymentStatus ? 'จ่ายแล้ว' : 'ยังไม่ได้จ่ายเงิน'
+        ],
         ],
     ]) ?>
 

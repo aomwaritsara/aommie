@@ -64,7 +64,7 @@ $this->title = 'รายงานรายรับรวม';
         $mysqlyear = date( 'Y', $phpdate ); 
         $mysqldate = date( 'm', $phpdate );
     ?>
-    
+        <?php  echo number_format($value["TotalPrice"]); ?>
     <?php if(($mysqlyear==$year)&&($mysqldate==$month)): ?>
         <?php 
             	$sequence++;
@@ -76,7 +76,7 @@ $this->title = 'รายงานรายรับรวม';
                       
                       
                         <td align='center' style='vertical-align:middle'>".$value["TotalPrice"]."</td>
-                       
+                    
                     </tr>
                 ";
 

@@ -49,7 +49,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 
                 'class' => 'yii\grid\ActionColumn',
-                'template' => '{changer} {print-restore}',
+                'template' => '{print-restore} {changer} ',
                 'contentOptions' => ['class'=>'text center']
             ],
 

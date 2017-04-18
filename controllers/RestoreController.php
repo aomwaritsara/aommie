@@ -90,7 +90,7 @@ class RestoreController extends Controller
         }*/
           
         // $Payment= History::find('Elec_Used')->where(['Apart_Id' => $model->Apart_Id])->all();
-
+                $Date = date('Y:m:d');
         $content = $this->renderPartial('_preview', [
             'model' => $model,
         ]);
@@ -102,7 +102,8 @@ class RestoreController extends Controller
                 // portrait orientation
                 'orientation' => Pdf::ORIENT_PORTRAIT,
                 // // stream to browser inline
-                'destination' => Pdf::DEST_BROWSER,
+                'destination' => Pdf::DEST_DOWNLOAD,
+                'filename' => 'ใบเสร็จการคืนห้องพัก :'.$Room_Id .'วันที่' .$Date,
                 // your html content input
                 'content' => $content,
                 // format content from your own css file if needed or use the
@@ -115,7 +116,7 @@ class RestoreController extends Controller
                 //'cssInline' => '.bd{border:1.5px solid; text-align: center;} .ar{text-align:right} .imgbd{border:1px solid}',
 
                 // set mPDF properties on the fly
-                'options' => ['title' => 'สัญาญาเช่าห้องที่'],
+                'options' => ['title' => 'ใบเสร็จการคืนห้องพัก'],
                 // call mPDF methods on the fly
                 'methods' => [
                     //'SetHeader'=>[''],
