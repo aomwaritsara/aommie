@@ -42,7 +42,7 @@ $this->title = 'รายงานรายรับรวม';
 ?>
 <a href="javascript:history.go(-1)"><button class="btn">กลับ</button></a>
 
-        <center><h3><b><p>รายงานรายรับประจำเดือน <?= $namemonth; ?>ปี<?= $year; ?></p></b></h3></center>
+        <center><h3><b><p>รายงานรายรับประจำเดือน <?= $namemonth; ?> ปี <?= $year; ?></p></b></h3></center>
 
         <?php 
             echo 
@@ -64,18 +64,21 @@ $this->title = 'รายงานรายรับรวม';
         $mysqlyear = date( 'Y', $phpdate ); 
         $mysqldate = date( 'm', $phpdate );
     ?>
-        <?php  echo number_format($value["TotalPrice"]); ?>
+        <?php//  echo number_format($value["TotalPrice"]); ?>
     <?php if(($mysqlyear==$year)&&($mysqldate==$month)): ?>
         <?php 
             	$sequence++;
+                 $phpdate = strtotime($value->CheckDate);
+                 $mysqlshowdateR = date( 'd/m/Y', $phpdate ); 
+                $totalprice = number_format($value["TotalPrice"]);
             	$data = "
                     <tr>
                         <td align='center'>".$sequence."</td>
-                          <td align='center' style='vertical-align:middle'>"."ค่าเช่าห้อง"."</td>
-                        <td align='center' style='vertical-align:middle'>".$value["CheckDate"]."</td>
+                          <td align='center' style='vertical-align:middle'>"."เงินค่าเช่าห้อง"."</td>
+                        <td align='center' style='vertical-align:middle'>". $mysqlshowdateR."</td>
                       
                       
-                        <td align='center' style='vertical-align:middle'>".$value["TotalPrice"]."</td>
+                        <td align='center' style='vertical-align:middle'>".$totalprice."</td>
                     
                     </tr>
                 ";
@@ -97,29 +100,35 @@ $this->title = 'รายงานรายรับรวม';
     <?php if(($mysqlyear==$year)&&($mysqldate==$month)): ?>
         <?php 
                 $sequence++;
+                $phpdate = strtotime($value->Date);
+                 $mysqlshowdateD = date( 'd/m/Y', $phpdate ); 
+                $price = number_format($value["Price"]);
                 $data = "
                     <tr>
                         <td align='center'>".$sequence."</td>
-                          <td align='center' style='vertical-align:middle'>"."ค่ามัดจำ"."</td>
-                        <td align='center' style='vertical-align:middle'>".$value["Date"]."</td>
+                          <td align='center' style='vertical-align:middle'>"."เงินค่ามัดจำ"."</td>
+                        <td align='center' style='vertical-align:middle'>".$mysqlshowdateD ."</td>
                       
                       
-                        <td align='center' style='vertical-align:middle'>".$value["Price"]."</td>
+                        <td align='center' style='vertical-align:middle'>".$price."</td>
                        
                     </tr>
                 ";
 
                 echo $data;
-
-                $sum = $sum+$value["Price"];
+                $sum = $sum + $value["Price"];
 
             ?>
     <?php endif ?>
-<?php endforeach ?>
+
+<?php 
+    endforeach; 
+    $number = number_format($sum);
+?>
     <tr bgcolor=#FDFD96>
         <td colspan="2" ></td>
         <td align='center' style='vertical-align:middle'>รวม</td>
-        <td align='center' style='vertical-align:middle'><?= $sum;?></td>
+        <td align='center' style='vertical-align:middle'><?= $number;?></td>
     </tr>
 
 </table>

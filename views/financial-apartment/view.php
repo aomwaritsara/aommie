@@ -12,6 +12,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Financial Apartments', 'url' => ['
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="financial-apartment-view">
+<br><br>
  <div class="box box-info box-solid">
             <div class="box-header with-border">
     <h4>ค่าใช้จ่ายกิจการ</h4>

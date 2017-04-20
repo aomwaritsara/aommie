@@ -42,7 +42,7 @@ $this->title = 'รายงานการคืนห้องพัก';
     
 ?>
 <a href="javascript:history.go(-1)"><button class="btn">กลับ</button></a>
-<center><h3><b><p>รายงานการคืนห้องพักประจำเดือน <?= $namemonth; ?>ปี<?= $year; ?></p></b></h3></center>
+<center><h3><b><p>รายงานการคืนห้องพักประจำเดือน <?= $namemonth; ?> ปี <?= $year; ?></p></b></h3></center>
  
 
 
@@ -71,12 +71,14 @@ $this->title = 'รายงานการคืนห้องพัก';
         <?php 
         
                 $sequence++;
+                 $phpdate = strtotime($value->DateTo);
+                 $mysqlshowSdateT = date( 'd/m/Y', $phpdate ); 
                 $data = "
         <tr>
             <td align='center'>".$sequence."</td>
             <td align='center' style='vertical-align:middle'>".$value["Room_Id"]."</td>
             <td align='center' style='vertical-align:middle'>".$value["Cus_Id"]."</td>
-            <td align='center' style='vertical-align:middle'>".$value["DateTo"]."</td>
+            <td align='center' style='vertical-align:middle'>".$mysqlshowSdateT."</td>
         </tr>
     ";
 

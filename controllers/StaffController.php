@@ -83,6 +83,9 @@ $session = new Session;
         $model = new Staff();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $model->PasswordString = $model->Password;
+            $model->Password = md5($model->Password);
+            $model->save();
             return $this->redirect(['view', 'id' => $model->Staff_Id]);
         } else {
             return $this->render('create', [

@@ -11,6 +11,7 @@ $this->params['breadcrumbs'][] = ['label' => $model->Apart_Id, 'url' => ['view',
 $this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="booking-update">
+<br><br>
 <div class="box box-info box-solid">
             <div class="box-header with-border">
     <h4>การจองห้องพัก</h4>

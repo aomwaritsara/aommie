@@ -12,7 +12,7 @@ $this->title = 'การคืนห้องพัก';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="restore-index">
-
+<br><br>
    <div class="box box-info box-solid">
         <div class="box-header with-border">
             <h4>การคืนห้องพัก</h4>

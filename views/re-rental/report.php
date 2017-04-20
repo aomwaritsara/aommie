@@ -42,7 +42,7 @@ $this->title = 'รายงานการเช่าห้องพัก';
     
 ?>
 <a href="javascript:history.go(-1)"><button class="btn">กลับ</button></a>
-<center><h3><b><p>รายงานการเช่าห้องพักประจำเดือน <?= $namemonth; ?>ปี<?= $year; ?></p></b></h3></center>
+<center><h3><b><p>รายงานการเช่าห้องพักประจำเดือน <?= $namemonth; ?> ปี <?= $year; ?></p></b></h3></center>
  
 
 
@@ -54,8 +54,7 @@ $this->title = 'รายงานการเช่าห้องพัก';
             <td align='center' style='font-weight: bold'>รหัสห้องพัก</td>
             <td align='center' style='font-weight: bold'>รหัสผู้เช่า</td>
             <td align='center' style='font-weight: bold'>วันที่เข้า</td>
-          <td align='center' style='font-weight: bold'>วันที่ออก</td>
-           <td align='center' style='font-weight: bold'>สถานะ 1:คืนห้องพัก 2:เช่าห้องพัก</td>
+            <td align='center' style='font-weight: bold'>สถานะ 1:คืนห้องพัก 2:เช่าห้องพัก</td>
         </tr>";
 ?>
 
@@ -70,14 +69,16 @@ $this->title = 'รายงานการเช่าห้องพัก';
     <?php if(($mysqlyear==$year)&&($mysqldate==$month)): ?>
         <?php 
                 $sequence++;
+                $phpdate = strtotime($value->StartDate);
+                 $mysqlshowSdate = date( 'd/m/Y', $phpdate ); 
+                
                 $data = "
         <tr>
             <td align='center'>".$sequence."</td>
             <td align='center' style='vertical-align:middle'>".$value["Room_Id"]."</td>
             <td align='center' style='vertical-align:middle'>".$value["Cus_Id"]."</td>
-            <td align='center' style='vertical-align:middle'>".$value["StartDate"]."</td>
-            <td align='center' style='vertical-align:middle'>".$value["DateFrom"]."</td>
-             <td align='center' style='vertical-align:middle'>".$value["Status"]."</td>
+            <td align='center' style='vertical-align:middle'>".$mysqlshowSdate."</td>
+            <td align='center' style='vertical-align:middle'>".$value["Status"]."</td>
         </tr>
     ";
 

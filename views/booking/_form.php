@@ -16,7 +16,7 @@ use yii\widgets\MaskedInput;
 ?>
 
 <div class="_form-member-form">
-
+  <?php $form = ActiveForm::begin(['layout' => 'horizontal']); ?>
 
    <?php
     $session = new Session;

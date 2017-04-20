@@ -11,6 +11,7 @@ $this->title = 'เช่าห้องพัก';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="rental-index">
+<br><br>
 <div class="box box-info box-solid">
             <div class="box-header with-border">
     <h4>การเช่าห้องพัก</h4>

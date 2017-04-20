@@ -13,6 +13,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Set Rooms', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="set-room-view">
+<br><br>
 <div class="box box-info box-solid">
             <div class="box-header with-border">
     <h4>การตั้งค่าอพาร์ตเมนต์</h4>

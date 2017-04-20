@@ -11,6 +11,7 @@ $this->params['breadcrumbs'][] = ['label' => $model->Cus_Id, 'url' => ['view', '
 $this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="customer-update">
+<br><br>
 <div class="box box-info box-solid">
             <div class="box-header with-border">
     <h4>แก้ไขข้อมูลส่วนตัวผู้เข้าพัก</h4>

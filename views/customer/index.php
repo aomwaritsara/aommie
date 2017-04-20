@@ -11,6 +11,7 @@ $this->title = 'ข้อมูลส่วนตัวผู้เข้าพ�
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="customer-index">
+<br><br>
 <div class="box box-info box-solid">
     <div class="box-header with-border">
     <h4>ข้อมูลส่วนตัวผู้เข้าพัก</h4>

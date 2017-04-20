@@ -11,6 +11,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Rentals', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="rental-create">
+<br><br>
 <div class="box box-info box-solid">
             <div class="box-header with-border">
     <h4>การเช่าห้องพัก</h4>

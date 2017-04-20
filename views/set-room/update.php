@@ -18,6 +18,7 @@ $this->params['breadcrumbs'][] = 'Update';
   }
 ?>
 <div class="set-room-update">
+<br><br>
 <div class="box box-info box-solid">
             <div class="box-header with-border">
     <h4>การตั้งค่าอพาร์ตเมนต์</h4>

@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Customers', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="customer-create">
-
+<br><br>
 <div class="box box-info box-solid">
             <div class="box-header with-border">
     <h4>ข้อมูลส่วนตัวผู้เข้าพัก</h4>

@@ -137,7 +137,7 @@ $this->title = 'รายงานรายรับ-รายจ่าย';
 						    	<?php $sum_income = $sum_income+$value_depo->Price; ?>
 						    <?php endif ?>
 						<?php endforeach ?>
-                        <td align='center' style='vertical-align:middle'><?= $sum_income; ?></td>
+                        <td align='center' style='vertical-align:middle'><?= number_format($sum_income); ?></td>
                         <?php foreach ($model_Finance as $key => $value_Fi) : ?>
 						    <?php 
 						        $phpdate_Fi = strtotime($value_Fi->Date);
@@ -149,7 +149,7 @@ $this->title = 'รายงานรายรับ-รายจ่าย';
 						    	<?php $sum_outcome = $sum_outcome+$value_Fi->TotalPrice; ?>
 						    <?php endif ?>
 						<?php endforeach; ?>
-                        <td align='center' style='vertical-align:middle'><?= $sum_outcome; ?></td>
+                        <td align='center' style='vertical-align:middle'><?= number_format($sum_outcome); ?></td>
                        
                     </tr>
             <?php
@@ -163,14 +163,14 @@ $this->title = 'รายงานรายรับ-รายจ่าย';
     <tr >
         <td colspan="1" ></td>
         <td  align='center' style='vertical-align:middle'>รวม</td>
-        <td bgcolor=#FDFD96 align='center' style='vertical-align:middle'><?= $sumIn;?></td>
-        <td bgcolor=#FDFD96 align='center' style='vertical-align:middle'><?= $sumOut;?></td>
+        <td bgcolor=#FDFD96 align='center' style='vertical-align:middle'><?= number_format($sumIn);?></td>
+        <td bgcolor=#FDFD96 align='center' style='vertical-align:middle'><?= number_format($sumOut);?></td>
     </tr>
 
   <tr >
         <td colspan="2" ></td>
         <td align='center' style='vertical-align:middle'>รวมรายได้สุทธิ</td>
-        <td bgcolor=Pink align='center' style='vertical-align:middle'><?= $sum;?></td>
+        <td bgcolor=Pink align='center' style='vertical-align:middle'><?= number_format($sum);?></td>
        
     </tr>
 </table>   

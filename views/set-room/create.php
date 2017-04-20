@@ -18,6 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
   }
 ?>
 <div class="set-room-create">
+<br><br>
 <div class="box box-info box-solid">
             <div class="box-header with-border">
     <h4>ตั้งค่าอพาร์ตเมนต์</h4>

@@ -15,14 +15,14 @@ use app\models\Serviceofrental;
 <?php foreach ($model as $key => $value) : ?>
 	
 	<?php 
-		$getCus = Customer::findone($value->Cus_Id);
-		$getRoomType = Roomtype::find()->where(['Room_Id' => $value->Room_Id])->one();
-		$getHistory = History::find()->where(['Room_Id' => $value->Room_Id, 'Cus_Id' => $value->Cus_Id])->one();
+		// $value = Customer::findone($value["Cus_Id"]);
+		// $value = Roomtype::find()->where(['Room_Id' => $value["Room_Id"]])->one();
+		// $value = History::find()->where(['Room_Id' => $value["Room_Id"], 'Cus_Id' => $value["Cus_Id"]])->one();
 	?>
 
 	<?php
-		$value->DateTo = date('m');
-		$getMonth = $value->DateTo;
+		$value["DateTo"] = date('m');
+		$getMonth = $value["DateTo"];
 		$getMonth--;
 
 		switch ($getMonth) {
@@ -75,9 +75,9 @@ use app\models\Serviceofrental;
 	</h4>
 
 	<p style="font-size: 14pt"> 
-		เลขห้อง <?= $value->Room_Id ?>
+		เลขห้อง <?= $value["Room_Id"] ?>
 		วันที่ <?= $date."/".$year ?> <br>
-		ชื่อ <?= $getCus->Fname." ".$getCus->Lname ?> <br>
+		ชื่อ <?= $value["Fname"]." ".$value["Lname"] ?> <br>
 	</p>
 
 	<table class="table" border="1" align="center" style="font-size: 12pt; text-align: center">
@@ -96,7 +96,10 @@ use app\models\Serviceofrental;
 			<td>บาท</td>
 			<td></td>
 			<td></td>
-			<td><?= number_format("$getRoomType->Price"); ?></td>
+			<?php 
+				$number_price = $value["Price"];
+			?>
+			<td><?= number_format($number_price); ?></td>
 			<td>บาท</td>
 		</tr>
 		<tr>
@@ -104,20 +107,26 @@ use app\models\Serviceofrental;
 			<td>ค่าไฟฟ้า</td>
 			<td>หน่วย</td>
 			<?php 
-				$nuew = $getHistory->Elec_Used / $getRoomType->Eletricity;
+				$nuew = $value["Elec_Used"] / $value["Eletricity"];
 			?>
 			<td><?= $nuew ?></td>
-			<td><?= $getRoomType->Eletricity ?></td>
-			<td><?= number_format("$getHistory->Elec_Used") ?></td>
+			<td><?= $value["Eletricity"] ?></td>
+			<?php 
+				$number_elec = $value["Elec_Used"];
+			?>
+			<td><?= number_format($number_elec) ?></td>
 			<td>บาท</td>
 		</tr>
 		<tr>
 			<td>3</td>
 			<td>ค่าน้ำ</td>
 			<td>ห้อง</td>
-			<td><?= $value->NumCus; ?></td>
+			<td><?= $value["NumCus"]; ?></td>
 			<td>100</td>
-			<td><?= number_format("$getHistory->Water_Used") ?></td>
+			<?php 
+				$number_water = $value["Water_Used"];
+			?>
+			<td><?= number_format($number_water) ?></td>
 			<td>บาท</td>
 		</tr>
 		<tr>
@@ -129,12 +138,12 @@ use app\models\Serviceofrental;
 			<td>
 			<?php 
 				$SV = "SV1"; // Internet
-				if ($getHistory->SoR_Id != NULL) {
-					$SR = Serviceofrental::find()->where(['SoR_Id' => $getHistory->SoR_Id])->all();
+				if ($value["SoR_Id"] != NULL) {
+					$SR = Serviceofrental::find()->where(['SoR_Id' => $value["SoR_Id"]])->all();
 					foreach ($SR as $key => $sr_value) {
-						if ($sr_value->Service_Id == "SV1") {
-							$service = Service::findone($sr_value->Service_Id);
-							echo number_format("$service->Price");
+						if ($sr_value["Service_Id"] == "SV1") {
+							$service = Service::findone($sr_value["Service_Id"]);
+							echo number_format($service->Price);
 						}	
 					}
 				}
@@ -151,12 +160,12 @@ use app\models\Serviceofrental;
 			<td>
 			<?php 
 				$SV = "SV2"; // Internet
-				if ($getHistory->SoR_Id != NULL) {
-					$SR = Serviceofrental::find()->where(['SoR_Id' => $getHistory->SoR_Id])->all();
+				if ($value["SoR_Id"] != NULL) {
+					$SR = Serviceofrental::find()->where(['SoR_Id' => $value["SoR_Id"]])->all();
 					foreach ($SR as $key => $sr_value) {
-						if ($sr_value->Service_Id == "SV2") {
-							$service = Service::findone($sr_value->Service_Id);
-							echo number_format("$service->Price");
+						if ($sr_value["Service_Id"] == "SV2") {
+							$service = Service::findone($sr_value["Service_Id"]);
+							echo number_format($service->Price);
 						}		
 					}
 				}
@@ -173,12 +182,12 @@ use app\models\Serviceofrental;
 			<td>
 			<?php 
 				$SV = "SV3"; // Internet
-				if ($getHistory->SoR_Id != NULL) {
-					$SR = Serviceofrental::find()->where(['SoR_Id' => $getHistory->SoR_Id])->all();
+				if ($value["SoR_Id"] != NULL) {
+					$SR = Serviceofrental::find()->where(['SoR_Id' => $value["SoR_Id"]])->all();
 					foreach ($SR as $key => $sr_value) {
-						if ($sr_value->Service_Id == "SV3") {
-							$service = Service::findone($sr_value->Service_Id);
-							echo number_format("$service->Price");
+						if ($sr_value["Service_Id"] == "SV3") {
+							$service = Service::findone($sr_value["Service_Id"]);
+							echo number_format($service->Price);
 						}		
 					}
 				}
@@ -199,7 +208,10 @@ use app\models\Serviceofrental;
 		<tr>
 			<td colspan="4"></td>
 			<td>รวมเป็นเงิน</td>
-			<td><?= number_format("$getHistory->TotalPrice")?></td>
+			<?php 
+				$number_total = $value["TotalPrice"];
+			?>
+			<td><?= number_format($number_total)?></td>
 			<td>บาท</td>
 		</tr>
 	</table>

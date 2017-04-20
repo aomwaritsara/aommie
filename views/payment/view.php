@@ -15,6 +15,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Payments', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="payment-view">
+<br><br>
 <div class="box box-info box-solid">
             <div class="box-header with-border">
     <h4>บันทึกข้อมูลการออกใบวางบิล</h4>
@@ -54,7 +55,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'CheckDate:date',
             'Elec_Used',
             'Water_Used',
-            'Cost',
+           // 'Cost',
             'TotalPrice',
             //'PaymentStatus',
             [

@@ -13,7 +13,7 @@ use yii\widgets\MaskedInput;
 
 <div class="rental-form">
 
-
+  <?php $form = ActiveForm::begin(['layout' => 'horizontal']); ?>
 
     <?= $form->field($model, 'Apart_Id')->textinput(['readonly'=>true,'value'=>'1']) ?>
 

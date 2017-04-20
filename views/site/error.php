@@ -1,5 +1,5 @@
 <?php
-
+use yii\helpers\Url;
 /* @var $this yii\web\View */
 /* @var $name string */
 /* @var $message string */
@@ -18,10 +18,10 @@ $this->title = $name;
     </div>
 
     <p>
-        The above error occurred while the Web server was processing your request.
+       ไม่พบข้อมูล กรุณาเพิ่มข้อมูลการออกใบวางบิล
     </p>
-    <p>
-        Please contact us if you think this is a server error. Thank you.
-    </p>
+   <p align="left"><a href="<?= Url::to(['payment/index']) ?>"<button class="btn">กลับ</button></a></p>
 
 </div>
+<!--  The above error occurred while the Web server was processing your request.
+Please contact us if you think this is a server error. Thank you. -->

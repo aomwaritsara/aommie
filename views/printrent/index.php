@@ -60,8 +60,13 @@
        <p></p>
        <p></p>
          <p></p>
+      <?php 
+        $phpdate = strtotime($model->DateFrom);
+        $mysqlShow = date( 'd/m/Y', $phpdate ); 
+       
+    ?>
        <p>เข้าพักวันที่</p>
-       <p> <?= $model->DateFrom?>  </p>
+       <p> <?= $mysqlShow?>  </p>
        <p>กำหนดออก</p>
        <p> __/__/____  </p>
 <p></p>

@@ -12,6 +12,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="booking-index">
+<br><br>
 <div class="box box-info box-solid">
             <div class="box-header with-border">
     <h4>การจองห้องพัก</h4>
@@ -39,8 +40,9 @@ $this->params['breadcrumbs'][] = $this->title;
              [
                 
                 'class' => 'yii\grid\ActionColumn',
+                'contentOptions' => ['class'=>'text center'],
                 'template' => '{view} {update} {changeb}',
-               // 'contentOptions' => ['class'=>'text center']
+                
             ],
         ],
     ]); ?>

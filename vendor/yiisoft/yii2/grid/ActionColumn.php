@@ -149,6 +149,7 @@ class ActionColumn extends Column
                     'aria-label' => Yii::t('yii', 'View'),
                     'data-pjax' => '0',
                      'class'=>"btn btn-success btn-xs",
+                     'contentOptions' => ['class'=>'text center']
                 ], $this->buttonOptions);
                 return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', $url, $options);
             };
@@ -160,6 +161,7 @@ class ActionColumn extends Column
                     'aria-label' => Yii::t('yii', 'Update'),
                     'data-pjax' => '0',
                      'class'=>"btn btn-primary btn-xs",
+                     'contentOptions' => ['class'=>'text center']
                 ], $this->buttonOptions);
                 return Html::a('<span class="glyphicon glyphicon-pencil"></span>', $url, $options);
             };
@@ -173,6 +175,7 @@ class ActionColumn extends Column
                     'data-method' => 'post',
                     'data-pjax' => '0',
                     'class'=>"btn btn-danger btn-xs",
+                    'contentOptions' => ['class'=>'text center']
                 ], $this->buttonOptions);
                 return Html::a('<span class="glyphicon glyphicon-trash"></span>', $url, $options);
             };
@@ -186,6 +189,7 @@ class ActionColumn extends Column
                       'data-confirm' => Yii::t('yii', 'ยกเลิก?'),
                     'data-pjax' => '0',
                     'class'=>"btn btn-warning btn-xs",
+                    'contentOptions' => ['class'=>'text center']
                 ], $this->buttonOptions);
                 return Html::a('<span class="glyphicon glyphicon-remove"></span>', $url, $options);
             };
@@ -197,7 +201,7 @@ class ActionColumn extends Column
                     'title' => Yii::t('yii', 'Change'),
                     'aria-label' => Yii::t('yii', 'Change'),
                     'data-pjax' => '0',
-
+                    'contentOptions' => ['class'=>'text center']
                 ], $this->buttonOptions);
                 return Html::a('<button class="btn btn-primary">เปลี่ยนสถานะ</button>', $url, $options);
             };
@@ -210,6 +214,7 @@ class ActionColumn extends Column
                       'data-confirm' => Yii::t('yii', 'ยืนยันยกเลิกการจอง?'),
                     'data-pjax' => '0',
                     'class'=>"btn btn-warning btn-xs",
+                    'contentOptions' => ['class'=>'text center']
                 ], $this->buttonOptions);
                 return Html::a('<span class="glyphicon glyphicon-remove"></span>', $url, $options);
             };
@@ -220,6 +225,7 @@ class ActionColumn extends Column
                     'title' => Yii::t('yii', 'Changer'),
                     'aria-label' => Yii::t('yii', 'Changer'),
                     'data-pjax' => '0',
+                    'contentOptions' => ['class'=>'text center']
                 ], $this->buttonOptions);
                 return Html::a('<button class="btn btn-primary">ยืนยันการคืน</button>',  $url, $options);
             };
@@ -231,6 +237,7 @@ class ActionColumn extends Column
                     'aria-label' => Yii::t('yii', 'print-restore'),
                     'data-pjax' => '0',
                    'target' =>'_blank',
+                   'contentOptions' => ['class'=>'text center']
                 ], $this->buttonOptions);
                 return Html::a('<button class="btn btn-success">พิมพ์ใบเสร็จ</button>',  $url, $options);
             };

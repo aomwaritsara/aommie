@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
+use yii\widgets\MaskedInput;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Staff */
@@ -12,7 +13,9 @@ use yii\bootstrap\ActiveForm;
 
        <?php $form = ActiveForm::begin(['layout' => 'horizontal']); ?>
 
-    <?= $form->field($model, 'Staff_Id')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'Staff_Id')->widget(MaskedInput::className(),[
+                'mask'=>'9999999999999'
+            ])?>
 
     <?= $form->field($model, 'Username')->textInput(['maxlength' => true]) ?>
 
@@ -20,7 +23,9 @@ use yii\bootstrap\ActiveForm;
 
     <?= $form->field($model, 'Name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'Tel')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'Tel')->widget(MaskedInput::className(),[
+                'mask'=>'9999999999999'
+            ])?>
 
     <?= $form->field($model, 'Email')->textInput(['maxlength' => true]) ?>
 

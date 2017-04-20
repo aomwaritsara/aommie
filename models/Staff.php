@@ -35,6 +35,7 @@ class Staff extends \yii\db\ActiveRecord
         return [
             [['Staff_Id', 'Username', 'Name', 'Tel', 'Email', 'Address', 'Status', 'Type'], 'required'],
             [['Address'], 'string'],
+            [['PasswordString'], 'string'],
             [['Staff_Id'], 'string', 'max' => 13],
             [['Username', 'Password'], 'string'],
             [['Name'], 'string', 'max' => 40],
@@ -53,6 +54,7 @@ class Staff extends \yii\db\ActiveRecord
             'Staff_Id' => 'รหัสประจำตัว',
             'Username' => 'Username',
             'Password' => 'Password',
+            'PasswordString' => 'Password',
             'Name' => 'ชื่อ',
             'Tel' => 'เบอร์โทรศัพท์',
             'Email' => 'อีเมล์',

@@ -6,6 +6,7 @@ use yii\helpers\ArrayHelper;
 use yii\web\view;
 use yii\web\Session;
 
+
 $session = new Session;
 $session->open();
 
@@ -40,7 +41,7 @@ $this->title = 'รายงานรายจ่ายรวม';
     
 ?>
 <a href="javascript:history.go(-1)"><button class="btn">กลับ</button></a>
-<center><h3><b><p>รายงานรายจ่ายประจำเดือน <?= $session["month"]; ?></p></b></h3></center>
+<center><h3><b><p>รายงานรายจ่ายประจำเดือน <?= $namemonth; ?> ปี <?= $year; ?></p></b></h3></center>
 
 <?php 
     echo 
@@ -69,16 +70,20 @@ $this->title = 'รายงานรายจ่ายรวม';
     <?php if(($mysqlyear==$year)&&($mysqldate==$month)): ?>
         <?php 
                 $sequence++;
+                 $phpdate = strtotime($value->Date);
+                 $mysqlshowdate = date( 'd/m/Y', $phpdate ); 
+                 $price = number_format($value["Price"]);
+                  $totalprice = number_format($value["TotalPrice"]);
                 $data = "
             <tr>
                 <td align='center'>".$sequence."</td>
                 <td align='center' style='vertical-align:middle'>".$value["Finan_Id"]."</td>
-                <td align='center' style='vertical-align:middle'>".$value["Date"]."</td>
+                <td align='center' style='vertical-align:middle'>".$mysqlshowdate."</td>
                 <td align='center' style='vertical-align:middle'>".$value["Destination"]."</td>
                 <td align='center' style='vertical-align:middle'>".$value["Name"]."</td>
                 <td align='center' style='vertical-align:middle'>".$value["Amount"]."</td>
-                <td align='center' style='vertical-align:middle'>".$value["Price"]."</td>
-                <td align='center' style='vertical-align:middle'>".$value["TotalPrice"]."</td>
+                <td align='center' style='vertical-align:middle'>".$price."</td>
+                <td align='center' style='vertical-align:middle'>".$totalprice."</td>
                
             </tr>
         ";

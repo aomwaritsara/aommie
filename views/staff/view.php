@@ -37,7 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'Staff_Id',
             'Username',
-            'Password',
+            'PasswordString',
             'Name',
             'Tel',
             'Email:email',
@@ -53,7 +53,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
              'attribute' => 'Type',
              'format'=>'raw',
-             'value'=>$model->Type? 'ผู้ดูแลระบบ' : 'ผู้ดูแลอพาร์ตเมนต์'
+             'value'=>$model->Type? 'ผู้ดูแลอพาร์ตเมนต์' : 'ผู้ดูแลระบบ'
             ],
 
         ],

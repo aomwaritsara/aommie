@@ -20,12 +20,20 @@ a:visited {
 </style>
 </head>
 <div class="payment-index">
+<br><br>
+    <?php if ($payment_alert=='1'): ?>
+        <br><br>
+        <div class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <strong>ไม่สามารถพิมพ์ใบวางบิลได้!</strong> กรุณาเพิ่มข้อมูลการออกใบวางบิลให้ครบ
+        </div>
+    <?php endif ?>
 
     <div class="box box-info box-solid">
             <div class="box-header with-border">
     <h4>ใบวางบิล</h4>
     <div class="box-tools pull-right">
-                <?= Html::a('<span class = "fa fa-plus"></span> พิมพ์ใบวางบิล', ['print-payment/index'], ['class' => 'btn btn-block btn-primary', 'target' => '_blank']) ?>
+                <?= Html::a('<span class = "fa fa-plus"></span> พิมพ์ใบวางบิล', ['print-payment/index'], ['class' => 'btn btn-block btn-primary'/*, 'target' => '_blank'*/]) ?>
                
               </div>
               <!-- /.box-tools -->
@@ -62,7 +70,7 @@ a:visited {
                 
                 'class' => 'yii\grid\ActionColumn',
                 'template' => '{view} ',
-                'contentOptions' => ['class'=>'text center']
+                'contentOptions' => ['class'=>'text center'],
             ],
            //['class' => 'yii\grid\ActionColumn'],
         ],

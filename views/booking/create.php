@@ -11,6 +11,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Bookings', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="booking-create">
+<br><br>
 <div class="box box-info box-solid">
             <div class="box-header with-border">
     <h4>การจองห้องพัก</h4>

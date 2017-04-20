@@ -51,6 +51,7 @@ class PaymentController extends Controller
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'payment_alert'=>'0',
         ]);
     }
 

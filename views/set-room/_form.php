@@ -47,7 +47,7 @@ use app\models\ApartmentSearch;
     <?= $form->field($model, 'Watersupply')->textInput() ?>
 
 
-    <?= $form->field($model2, 'Status')->dropDownList([1=>'ว่าง',2=>'ถูกจอง',3=>'ถูกเช่า',4=>'ไม่พร้อมใช้งาน'],['prompt'=>'กรุณาเลือกสถานะ']) ?>
+    <?= $form->field($model2, 'Status')->dropDownList([1=>'ว่าง',2=>'ถูกเช่า',3=>'ถูกจอง',4=>'ไม่พร้อมใช้งาน'],['prompt'=>'กรุณาเลือกสถานะ']) ?>
 
     <div class="form-group" align="center">
         <?= Html::submitButton($model->isNewRecord ? 'บันทึก' : 'บันทึก', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

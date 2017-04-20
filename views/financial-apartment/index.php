@@ -11,6 +11,7 @@ $this->title = 'ค่าใช้จ่ายกิจการ';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="financial-apartment-index">
+<br><br>
    <div class="box box-info box-solid">
             <div class="box-header with-border">
     <h4>ค่าใช้จ่ายกิจการ</h4>

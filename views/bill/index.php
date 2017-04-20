@@ -13,7 +13,7 @@ $this->title = 'ใบเสร็จชำระเงิน';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="bill-index">
-
+<br><br>
     <div class="box box-info box-solid">
 		<div class="box-header with-border">
 			<h4>ใบเสร็จชำระเงิน</h4>
