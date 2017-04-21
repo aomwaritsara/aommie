@@ -11,7 +11,23 @@ $this->params['breadcrumbs'][] = ['label' => 'Rentals', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="rental-create">
-<br><br>
+  <br><br>
+  <?php if ($Deposit_alert=='1'): ?>
+    
+              <div class="alert alert-warning alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <strong>จำนวนเงินมัดจำไม่ตรงกับการจองห้องพัก !</strong> กรุณาตรวจสอบอีกครั้ง
+        </div>
+    <?php endif ?>
+
+    <?php if ($CusId_alert=='1'): ?>
+         
+              <div class="alert alert-warning alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <strong>รหัสประจำตัวประชาชนไม่ตรงกับข้อมูลการจองห้องพัก !</strong> กรุณาตรวจสอบอีกครั้ง
+        </div>
+    <?php endif ?>
+
 <div class="box box-info box-solid">
             <div class="box-header with-border">
     <h4>การเช่าห้องพัก</h4>

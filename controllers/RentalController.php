@@ -74,14 +74,7 @@ class RentalController extends Controller
         $model2 =new Room();
        $model4 =new Deposit();
        
-     $request = Yii::$app->getRequest();
-        if ($request->isPost && $request->post('ajax') !== null) {
-            $model ->load(Yii::$app->request->post());
-            Yii::$app->response->format = Response::FORMAT_JSON;
-            $result = ActiveForm::validate($model );
-            return $result;
-        }
-         
+ 
       if ($model->load(Yii::$app->request->post())  ) {
         if (Booking::find()->where(['Apart_Id' => $model->Apart_Id,'Room_Id' => $model->Room_Id,'Cus_Id' => $model->Cus_Id])->one()) {
             
@@ -93,40 +86,36 @@ class RentalController extends Controller
                      $model2->save();
                     //ลบ model bookking ++++ 
                      if($model3 = Booking::find()->where(['Apart_Id' => $model->Apart_Id,'Room_Id' => $model->Room_Id])->one()){
-                     // $model->Deposit=$model3->Deposit;
-                    // $model3->save();
-                        //ย้ายมัดจำ
-
-             
-                        //
+               
                         if( $model3->Status ='3'){
-                 //                $model4->Apart_Id = $model3->Apart_Id;
-                 // $model4->Room_Id = $model3->Room_Id;
-                 // $model4->Cus_Id = $model3->Cus_Id;
-                 // $model4->Date = $model3->Booking_Date;
-                 // $model4->Price = $model3->Deposit;
-                 // $model4->Status = '1';
-                 // $model4->save();
-                     $model3->Status ='0';
-                     $model3->save();
-                        (new Query)
-                 ->createCommand()
-                ->delete('booking', ['Status' => '0'])
-                ->execute(); 
-                        $model3->save();
+                            $model3->Status ='0';
+                            $model3->save();
+                             (new Query)
+                            ->createCommand()
+                            ->delete('booking', ['Status' => '0'])
+                            ->execute(); 
+                             $model3->save();
+                        }
                     }
-                }
               //  echo "yes";
                      $this->redirect(['printrent/index', 'Apart_Id' => $model->Apart_Id, 'Room_Id' => $model->Room_Id, 'Cus_Id' => $model->Cus_Id,'StartDate' => $model->StartDate]);
            }
             else
             {
-                echo "จำนวนเงินมัดจำไม่ตรงกับการจองห้องพัก กรุณาตรวจสอบอีกครั้ง";
+                //echo "จำนวนเงินมัดจำไม่ตรงกับการจองห้องพัก กรุณาตรวจสอบอีกครั้ง";
+                 return $this->render('create', [
+                    'model' => $model,
+                'Deposit_alert'=>'1',
+                'CusId_alert'=>'0',
+                ]);
+            
             }
         }
         elseif ($model->load(Yii::$app->request->post()) ) {
+            $model2 = Room::find()->where(['Apart_Id' => $model->Apart_Id,'Room_Id' => $model->Room_Id])->one();
+             if (Booking::find()->where(['Cus_Id' => $model->Cus_Id])->one() || $model2->Status == '1') {
              $model->save();
-                    $model2 = Room::find()->where(['Apart_Id' => $model->Apart_Id,'Room_Id' => $model->Room_Id])->one();
+                    
                      // Yii::log('start calculating average revenue');
                      $model2->Status = $model->Status;
                      $model2->save();
@@ -138,24 +127,30 @@ class RentalController extends Controller
                      $model3->Status ='0';
                      $model3->save();
                         (new Query)
-                 ->createCommand()
-                ->delete('booking', ['Status' => '0'])
-                ->execute(); 
+                        ->createCommand()
+                        ->delete('booking', ['Status' => '0'])
+                        ->execute(); 
                         $model3->save();
                     }
                 }
               //  echo "yes";
                      $this->redirect(['printrent/index', 'Apart_Id' => $model->Apart_Id, 'Room_Id' => $model->Room_Id, 'Cus_Id' => $model->Cus_Id,'StartDate' => $model->StartDate]);
-           
+           }
+          else
+            {
+            // echo  "รหัสประจำตัวประชาชนไม่ตรงกับข้อมูลการจองห้องพัก กรุณาตรวจสอบอีกครั้ง";
+                 return $this->render('create', [
+                    'model' => $model,
+                'CusId_alert'=>'1',
+                'Deposit_alert'=>'0',
+                ]);
+            } 
         }
-        else
-        {
-            echo  "รหัสประจำตัวประชาชนไม่ตรงกับข้อมูลการจองห้องพัก กรุณาตรวจสอบอีกครั้ง";
-        }
-        
-        } else {
+    } else {
             return $this->render('create', [
                 'model' => $model,
+                  'Deposit_alert'=>'0',
+                   'CusId_alert'=>'0',
             ]);
         }
     }

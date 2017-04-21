@@ -20,7 +20,7 @@ a:visited {
 </style>
 </head>
 <div class="payment-index">
-<br><br>
+
     <?php if ($payment_alert=='1'): ?>
         <br><br>
         <div class="alert alert-danger alert-dismissible" role="alert">
