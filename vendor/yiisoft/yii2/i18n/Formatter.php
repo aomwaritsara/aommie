@@ -88,7 +88,7 @@ class Formatter extends Component
      *
      * @since 2.0.1
      */
-    public $defaultTimeZone = 'UTC';
+    public $defaultTimeZone = 'Asia/Bangkok';
     /**
      * @var string the default format string to be used to format a [[asDate()|date]].
      * This can be "short", "medium", "long", or "full", which represents a preset format of different lengths.

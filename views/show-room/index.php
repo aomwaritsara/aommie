@@ -3,12 +3,6 @@ use app\models\Roomtype;
 use yii\helpers\Html;
 use yii\widgets\LinkPager;
 
-
-use yii\web\Session;
-
-$session = new Session;
-$session->open();
-
 use app\models\Room;
 use app\models;
 

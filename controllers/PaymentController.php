@@ -105,7 +105,7 @@ class PaymentController extends Controller
             $model->Room_Id = $getRoom->Room_Id;
             $model->Cus_Id = $getCus->Cus_Id;
 
-            
+            $model->CheckDate=date('Y-m-d H:i:s');
             $getRental->DateFrom = $model->CheckDate;
             $date = strtotime($getRental->DateFrom);
             $date = strtotime("+30 day", $date);

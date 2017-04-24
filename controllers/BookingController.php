@@ -106,7 +106,7 @@ class BookingController extends Controller
              if (Customer::find()->where(['Cus_Id' => $model->Cus_Id])->one()){
           
                 $model->Apart_Id = $apartment->Apart_Id;
-                  $model->Datestatus =date('Y-m-d H:i:s');
+                  $model->Datestatus = date('Y-m-d H:i:s');
                   $model->Status = '3';
                      $model->save();
 

@@ -52,6 +52,7 @@ class ShowRoomController extends \yii\web\Controller
                  ->leftJoin('customer', 'customer.Cus_Id = rental.Cus_Id') 
                  ->leftJoin('booking', 'booking.Room_Id = room.Room_Id') 
                  ->where('rental.Status=2') 
+                 ->orWhere('room.Status=1')
                 ->orWhere('rental.Status IS  NULL') 
                 ->orderBy('Room_Id')
                  ->createCommand()                                                      

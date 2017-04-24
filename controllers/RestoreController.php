@@ -57,27 +57,33 @@ class RestoreController extends Controller
      */
     public function actionChanger($Apart_Id, $Room_Id, $Cus_Id, $StartDate)
     {
-        //$model2 = new Room();
-        $restore= $this->findModel($Apart_Id, $Room_Id, $Cus_Id,$StartDate);
+       // $model2 = new Room();
+        $restore= $this->findModel($Apart_Id, $Room_Id, $Cus_Id, $StartDate);
+ $model2 = Room::find()->where(['Apart_Id' => $restore->Apart_Id,'Room_Id' => $restore->Room_Id])->one();
+
+        
         
         if($restore->Status == '2')
         {
+                         
             $restore->Status = '1';
             $restore->DateTo = date('Y/m/d H:m:s');
             $restore->save();
-            $model2 = Room::find()->where(['Apart_Id' => $Apart_Id,'Room_Id' => $Room_Id])->one();
-            $model2->Status = '1';
-            $model2->save();
+            // $model2->Apart_Id=$restore->Apart_Id;
+            //  $model2->Room_Id=$restore->Room_Id;
+             $model2->Status = '1';
+             $model2->save();
           
             return $this->redirect(['index']);
         }
         else
         {
-            $restore->Status = '2';
-            $restore->save();
-            $model2 = Room::find()->where(['Apart_Id' => $Apart_Id,'Room_Id' => $Room_Id])->one();
-            $model2->Status = '2';
-            return $this->redirect(['index']);
+            // $restore->Status = '1';
+            // $restore->save();
+            // $model2 = Room::find()->where(['Apart_Id' => $Apart_Id,'Room_Id' => $Room_Id])->one();
+            // $model2->Status = '2';
+            // $model2->save();
+            // return $this->redirect(['index']);
         }
     }
 

@@ -76,6 +76,7 @@ class RentalController extends Controller
        
  
       if ($model->load(Yii::$app->request->post())  ) {
+        $model->DateFrom = date('Y-m-d H:i:s');
         if (Booking::find()->where(['Apart_Id' => $model->Apart_Id,'Room_Id' => $model->Room_Id,'Cus_Id' => $model->Cus_Id])->one()) {
             
             if (Booking::find()->where(['Deposit' => $model->Deposit])->one()) {

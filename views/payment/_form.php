@@ -36,8 +36,7 @@ $session->open();
         $today = date('Y-m-d H:i:s');
         $model->CheckDate = $today;
     ?>
-    <?= $form->field($model, 'CheckDate')->textInput(['readonly' => true]) ?>
-    <?= $form->field($getRental, 'DateFrom')->textInput(['readonly' => true]) ?> 
+     
     <?= $form->field($model, 'SoR_Id')->dropDownList($listServiceData, ['prompt' => 'ไม่มี'])->label('บริการเสริม') ?>
     <?= $form->field($model, 'Elec_Used')->textInput() ?>
     <?php 

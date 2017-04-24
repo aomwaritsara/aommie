@@ -70,7 +70,7 @@ class History extends \yii\db\ActiveRecord
             'Cus_Id' => 'รหัสประจำตัวประชาชน',
             'DateFrom' => 'วันที่เก็บค่าเช่าเช่า',
             'SoR_Id' => 'รหัสบริการเสริมของห้องพัก',
-            'CheckDate' => 'วันที่ปัจจุบัน',
+            'CheckDate' => 'วันที่บันทึกข้อมูล',
             'Elec_Used' => 'ค่าไฟฟ้า',
             'Water_Used' => 'ค่าน้ำ',
             'Cost' => 'ราคา',

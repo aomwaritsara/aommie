@@ -2,9 +2,9 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
-Yii::$app->formatter->locale = 'Asia-BKK';
 /* @var $this yii\web\View */
 /* @var $model app\models\Booking */
+Yii::$app->formatter->locale = 'Asia-BKK';
 
 $this->title = 'การจองห้องพัก';
 $this->params['breadcrumbs'][] = ['label' => 'Bookings', 'url' => ['index']];
@@ -46,3 +46,4 @@ $this->params['breadcrumbs'][] = $this->title;
     ]) ?>
 
 </div>
+

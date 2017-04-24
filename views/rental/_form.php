@@ -35,6 +35,7 @@ use yii\widgets\MaskedInput;
 <?php if ($isUpdated == 1): ?>
     <?= $form->field($model, 'Cus_Id')->textinput(['readonly'=>true,'value'=>$model->Cus_Id])?>
     <?php   endif;   ?>
+
 <?php $model->StartDate = date('Y-m-d H:i:s'); ?>
 <?= $form->field($model, 'StartDate')->textinput()
       ->widget(DateTimePicker::classname(), [
@@ -46,16 +47,10 @@ use yii\widgets\MaskedInput;
       ]
 ])  ?> 
 
-    <?= $form->field($model, 'DateFrom')->textinput([ 
-      'readonly'=> true,
-      'pluginOptions' => [
-      'language' => 'th',
-     'format' => 'yyyy-mm-dd hh:ii:ss',
-      $model->DateFrom = date('Y-m-d H:i:s')
-    ]
-])  ?> 
+
+
     <?php 
-      $date = strtotime($model->DateFrom);
+      $date = strtotime($model->StartDate);
       $date = strtotime("+30 day", $date);
       $date = date('Y-m-d H:i:s', $date);
       $model->DateTo = $date;
