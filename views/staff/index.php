@@ -37,8 +37,8 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'Email:email',
             // 'Address:ntext',
              //'Status',
-    ['attribute'=>'Status',
-            'contentOptions' => ['class'=>'text-center'],
+        ['attribute'=>'Status',
+           // 'contentOptions' => ['class'=>'text-center'],
             'content'=>function($data){
                $Status=['1'=>"<label>ใช้งาน</label>",'0'=>"<label>ระงับการใช้งาน</label>"];
                return $Status[$data->Status];
@@ -48,7 +48,7 @@ $this->params['breadcrumbs'][] = $this->title;
  ],
            // 'Type',
               ['attribute'=>'Type',
-            'contentOptions' => ['class'=>'text-center'],
+            //'contentOptions' => ['class'=>'text-center'],
             'content'=>function($data){
                $Type=['1'=>"<label>ผู้ดูแลอพาร์ตเมนต์</label>",'0'=>"<label>ผู้ดูแลระบบ</label>"];
                return $Type[$data->Type];
@@ -61,7 +61,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 
                 'class' => 'yii\grid\ActionColumn',
                 'template' => '{view} {update} {cencel} {delete}',
-               // 'contentOptions' => ['class'=>'text center']
+               'contentOptions' => ['class'=>'text-center']
             ],
         ],
     ]); ?>

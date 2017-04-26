@@ -26,18 +26,19 @@ AppAsset::register($this);
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
-<body class="sidebar-mini skin-blue"  >
+<body class="sidebar-mini skin-blue" style="background-color:#FFFFCC;"  >
 <?php $this->beginBody() ?>
 <?php
 
-$this->title = 'Login';
+$this->title = 'เข้าสู่ระบบ';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="site-login" align="center" >
 <h2><marquee>ระบบการบริหารจัดการอพาร์ตเมนต์ </marquee></h2>
 <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> 
-    <h1><?= Html::encode($this->title) ?></h1>
+<div  style="background-color:#CCFFCC;" >
+    <strong><h1><?= Html::encode($this->title) ?></h1></strong>
 
         <p>กรุณากรอกข้อมูลสำหรับเข้าสู่ระบบ</p>
 
@@ -67,7 +68,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?php ActiveForm::end(); ?>
 </div>
 </div>
-</div>
+
 </body>
 
  

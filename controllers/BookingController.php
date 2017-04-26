@@ -50,11 +50,13 @@ class BookingController extends Controller
 
         $searchModel = new BookingSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+         
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
-        ]);
+           
+              ]);
     }
 
     /**
@@ -68,6 +70,7 @@ class BookingController extends Controller
     {
         return $this->render('view', [
             'model' => $this->findModel($Apart_Id, $Room_Id, $Cus_Id,$Booking_Date),
+            
         ]);
     }
 
@@ -129,7 +132,15 @@ class BookingController extends Controller
                 // echo "yes";
                        return $this->redirect(['view', 'Apart_Id' => $model->Apart_Id, 'Room_Id' => $model->Room_Id, 'Cus_Id' => $model->Cus_Id,'Booking_Date' => $model->Booking_Date]);
             }
-            else return "รหัสประจำตัวไม่ถูกต้อง กรุณากรอกใหม่อีกครั้ง";
+            else  {
+            // echo  "รหัสประจำตัวประชาชนไม่ตรงกับข้อมูลการจองห้องพัก กรุณาตรวจสอบอีกครั้ง";
+                 return $this->render('create', [
+                    'model' => $model,
+                     'apartment' => $apartment,
+                'CusId_alert'=>'1',
+                
+                ]);
+            } 
       
       }
             
@@ -137,6 +148,7 @@ class BookingController extends Controller
             return $this->render('create', [
                 'model' => $model,
                 'apartment' => $apartment,
+                'CusId_alert'=>'0',
                  //'Cus'  =>  $Cus,
                 
             ]);

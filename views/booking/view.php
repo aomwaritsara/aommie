@@ -33,6 +33,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'Apart_Id',
             'Room_Id',
             'Cus_Id',
+            'cus.Fname',
+          'cus.Lname',
             'Deposit:decimal',
             'Booking_Date:date',
            //'Status',

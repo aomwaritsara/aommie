@@ -17,6 +17,7 @@ class PrintBillController extends \yii\web\Controller
     	
 		$model = History::find()->where(['PaymentStatus' => '0'])->all();
         $Date = date('Y:m');
+        $Date++;
 		/*foreach ($model as $check =>$value) {
             $rental = History::find('Elec_Used')->where(['Apart_Id' => $value->Apart_Id])->andWhere(['Apart_Id' => $value->Apart_Id])->andWhere(['Cus_Id' => $value->Cus_Id])->one();
 		}*/

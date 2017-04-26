@@ -67,8 +67,8 @@ class Bill extends \yii\db\ActiveRecord
         return [
             'Apart_Id' => 'รหัสอพาร์ตเมนต์',
             'Room_Id' => 'รหัสห้องพัก',
-            'Cus_Id' => 'รหัสประจำตัวประชาชน',
-             'DateFrom' => 'วันที่เช่า',
+            'Cus_Id' => 'ชื่อ',
+             'DateFrom' => 'วันที่บันทึกการเก็บเงิน',
             'SoR_Id' => 'รหัสบริการเสริมของห้องพัก',
             'CheckDate' => 'วันที่ปัจจุบัน',
             'Elec_Used' => 'ค่าไฟฟ้า',
@@ -98,10 +98,10 @@ class Bill extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getCus()
-    {
-        return $this->hasOne(Rental::className(), ['Cus_Id' => 'Cus_Id']);
-    }
+    // public function getCus()
+    // {
+    //     return $this->hasOne(Rental::className(), ['Cus_Id' => 'Cus_Id']);
+    // }
 
     /**
      * @return \yii\db\ActiveQuery
@@ -117,5 +117,9 @@ class Bill extends \yii\db\ActiveRecord
     public function getSoR()
     {
         return $this->hasOne(Serviceofrental::className(), ['SoR_Id' => 'SoR_Id']);
+    }
+     public function getCus()
+    {
+        return $this->hasOne(Customer::className(), ['Cus_Id' => 'Cus_Id']);
     }
 }

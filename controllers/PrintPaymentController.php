@@ -20,6 +20,7 @@ class PrintPaymentController extends \yii\web\Controller
     public function actionIndex()
     {
     	$Date = date('Y:m');
+        $Date++;
 		//$model = Rental::find()->where(['Status' => '2'])->all();
         
 
@@ -36,21 +37,25 @@ class PrintPaymentController extends \yii\web\Controller
                 ->innerJoin('History', 'History.Cus_Id = Rental.Cus_Id AND History.Room_Id = Rental.Room_Id' )
                 ->innerJoin('Roomtype', 'Roomtype.Room_Id = Rental.Room_Id')
                 ->where('Rental.Status=2 AND History.Room_Id = Rental.Room_Id AND History.Cus_Id = Rental.Cus_Id' )
+                ->groupBy(['Rental.Room_Id'])
                 ->orderBy(['Rental.Room_Id' => SORT_ASC]);
 
         $command = $query->createCommand();
         $data = $command->queryAll();
         $model = $data;
-
+      
         $rental = Rental::find()->where(["Status" => '2'])->all();
         $rental_count = 0 ;
         foreach ($rental as $key => $value) {
             $rental_count++;
+            echo $rental_count;
+            echo "rt";
         }
-
+        $model1 = History::find()->where(["PaymentStatus" => '0'])->all();
         $count = 0;
-        foreach ($model as $key => $value) {
+        foreach ($model1 as $key => $value) {
             $count++;
+            echo $count;
         }
 
         if ($count === $rental_count) {

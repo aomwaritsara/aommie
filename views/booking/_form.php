@@ -53,12 +53,8 @@ use yii\widgets\MaskedInput;
      <?php if ($isUpdated == 0): ?>
     <?= $form->field($model, 'Booking_Date')->textinput([ 
       'readonly'=> true,
-      'pluginOptions' => [
-      'language' => 'th',
-     'format' => 'yyyy-mm-dd hh:ii:ss',
-      $model->Booking_Date = date('Y-m-d H:i:s')
-    ]
-]) ?> 
+       $model->Booking_Date = date('Y-m-d H:i:s')
+          ]) ?> 
 <?php   endif;   ?>
 
   <?php if ($isUpdated == 1): ?> 
@@ -66,17 +62,6 @@ use yii\widgets\MaskedInput;
    <?php   endif;   ?>
 
     
-     
-
-<!--     <?= $form->field($model, 'Datestatus')->textinput([ 
-      'readonly'=> true,
-      'pluginOptions' => [
-      'language' => 'th',
-     'format' => 'yyyy-mm-dd hh:ii:ss',
-      $model->Datestatus = date('Y-m-d H:i:s')
-    ]
-])  ?>  -->
-
 
  
     <div class="form-group" align="center">

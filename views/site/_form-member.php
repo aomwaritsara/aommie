@@ -20,6 +20,7 @@ use yii\bootstrap\ActiveForm;
     <?= $form->field($model, 'Type')->textInput(['maxlength' => true, 'readonly' => true]) ?>
     <!-- <?//= $form->field($model, 'Password')->passwordInput(['maxlength' => true]) ?> -->
  <?= $form->field($model, 'Username')->textInput(['maxlength' => true, ]) ?>
+ 
     <?= $form->field($model, 'Name')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'Tel')->textInput(['maxlength' => true]) ?>

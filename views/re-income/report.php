@@ -13,7 +13,7 @@ $session->open();
 $this->title = 'รายงานรายรับรวม';
 
 ?>
-
+<div class="set-room-view">
 <style type="text/css">
     #img{
         height: 60px;
@@ -132,3 +132,4 @@ $this->title = 'รายงานรายรับรวม';
     </tr>
 
 </table>
+</div>

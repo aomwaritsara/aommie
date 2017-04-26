@@ -35,7 +35,13 @@ $this->params['breadcrumbs'][] = $this->title;
             //'Email:email',
             // 'Address:ntext',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'contentOptions' => ['class'=>'text-center'],
+                'template' => '{view} {update} {delete}',
+                
+            ],
+             
         ],
     ]); ?>
 </div>

@@ -38,7 +38,7 @@ $session->open();
     ?>
      
     <?= $form->field($model, 'SoR_Id')->dropDownList($listServiceData, ['prompt' => 'ไม่มี'])->label('บริการเสริม') ?>
-    <?= $form->field($model, 'Elec_Used')->textInput() ?>
+    <?= $form->field($model, 'Elec_Used')->textInput(['type' => 'number','min'=>"0"]) ?>
     <?php 
         $water = $getRental->NumCus * $getRoom->Watersupply;
         $model->Water_Used = $water;

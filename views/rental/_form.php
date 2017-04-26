@@ -37,15 +37,9 @@ use yii\widgets\MaskedInput;
     <?php   endif;   ?>
 
 <?php $model->StartDate = date('Y-m-d H:i:s'); ?>
-<?= $form->field($model, 'StartDate')->textinput()
-      ->widget(DateTimePicker::classname(), [
-      'language' => 'th',
-          'readonly'=> true,
-        'pluginOptions' => [
-          'format' => 'yyyy-mm-dd hh:ii:ss',
-          
-      ]
-])  ?> 
+<?= $form->field($model, 'StartDate')->textinput(['readonly'=> true,])
+     
+  ?> 
 
 
 
@@ -55,14 +49,8 @@ use yii\widgets\MaskedInput;
       $date = date('Y-m-d H:i:s', $date);
       $model->DateTo = $date;
     ?>
-    <?= $form->field($model, 'DateTo')->textinput()
-      ->widget(DateTimePicker::classname(), [
-      'language' => 'th',
-          'readonly'=> true,
-        'pluginOptions' => [
-          'format' => 'yyyy-mm-dd hh:ii:ss'
-      ]
-])  ?> 
+    <?= $form->field($model, 'DateTo')->textinput(['readonly'=> true,])
+ ?> 
 
 
 

@@ -53,6 +53,7 @@ $this->title = 'รายงานการเช่าห้องพัก';
             <td width='6%' align='center' style='font-weight: bold'>ลำดับที่</td>
             <td align='center' style='font-weight: bold'>รหัสห้องพัก</td>
             <td align='center' style='font-weight: bold'>รหัสผู้เช่า</td>
+            
             <td align='center' style='font-weight: bold'>วันที่เข้า</td>
             <td align='center' style='font-weight: bold'>สถานะ 1:คืนห้องพัก 2:เช่าห้องพัก</td>
         </tr>";

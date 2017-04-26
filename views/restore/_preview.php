@@ -3,6 +3,7 @@ use yii\helpers\Html;
 use app\models\Customer;
 use app\models\Roomtype;
 use app\models\History;
+use app\models\Rental;
 use app\models\Service;
 use app\models\Serviceofrental;
 
@@ -15,6 +16,7 @@ use app\models\Serviceofrental;
 <?php foreach ($model as $key => $value) : ?>
 	
 	<?php 
+		$getRent = Rental::find()->where(['Room_Id' => $value->Room_Id, 'Cus_Id' => $value->Cus_Id])->one();
 		$getCus = Customer::findone($value->Cus_Id);
 		$getRoomType = Roomtype::find()->where(['Room_Id' => $value->Room_Id])->one();
 		$getHistory = History::find()->where(['Room_Id' => $value->Room_Id, 'Cus_Id' => $value->Cus_Id])->one();
@@ -23,7 +25,7 @@ use app\models\Serviceofrental;
 	<?php
 		$value->DateTo = date('m');
 		$getMonth = $value->DateTo;
-		$getMonth--;
+		$getMonth;
 
 		switch ($getMonth) {
             case '1':
@@ -66,18 +68,22 @@ use app\models\Serviceofrental;
 
         $date = date('d/m');
         $year = date('Y')+543;
+        $startdate =$getRent->StartDate;
+        $startdate = date('d/m/Y');
 	?>
 
-	<h4 align = "center" style="font-size: 16pt">
+	<h3 align = "center" style="font-size: 16pt"><strong>
 		ใบเสร็จการคืนห้องพัก
 		อินเตอร์เรสสิเด้นท์<br>
 		ประจำเดือน <?= $month; ?>
-	</h4>
+	</strong></h3>
 
 	<p style="font-size: 14pt"> 
 		เลขห้อง <?= $value->Room_Id ?>
 		วันที่ <?= $date."/".$year ?> <br>
 		ชื่อ <?= $getCus->Fname." ".$getCus->Lname ?> <br>
+
+		วันที่เริ่มเช่าห้องพัก <?= $startdate ?>
 	</p>
 
 	<table class="table" border="1" align="center" style="font-size: 12pt; text-align: center;">
@@ -240,15 +246,16 @@ use app\models\Serviceofrental;
 			<td>บาท</td>
 		</tr>
 	</table>
-	<p>
+	<h4><p>
 
-	จำนวนเงินทั้งสิ้น <?= number_format("$restore_Cost")  ?> บาท <br>
+	จำนวนเงินทั้งสิ้น <?= number_format("$restore_Cost")  ?> บาท <br></h4>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	ลงชื่อ  ___________________________________  เจ้าหน้าที่
+	<h4>ลงชื่อ  ___________________________________  เจ้าหน้าที่</h4>
 	</p>
 
 	<p>
-		<u>หมายเหตุ</u>
+			<h4><u>หมายเหตุ </u>: หากเข้าพักไม่ถึง 6 เดือน นับจากวันที่เริ่มเช่า ผู้เช่าจะไม่ได้รับเงินประกันห้องคืน</h4>
+	</p>
 	</p>
 <?php 
 	if ($i == 1) { ?>

@@ -71,8 +71,10 @@ class BillSearch extends Bill
         $query->andFilterWhere(['like', 'Room_Id', $this->Room_Id])
             ->andFilterWhere(['like', 'Cus_Id', $this->Cus_Id])
             ->andFilterWhere(['like', 'SoR_Id', $this->SoR_Id])
-            ->andFilterWhere(['like', 'PaymentStatus', $this->PaymentStatus]);
-             $query->orderBy(['PaymentStatus' => SORT_DESC, 'PaymentStatus' => SORT_ASC]);
+            ->andFilterWhere(['like', 'PaymentStatus', $this->PaymentStatus = '0']);
+             $query->orderBy(['PaymentStatus' => SORT_ASC, ]);
+              $query->orderBy(['Room_Id' => SORT_ASC, ]);
+                $query->orderBy(['DateFrom' => SORT_DESC, ]);
 
         return $dataProvider;
     }

@@ -36,13 +36,13 @@ $this->params['breadcrumbs'][] = $this->title;
            // 'Apart_Id',
             'Room_Id',
             //'Type',
-            //'Price',
+            'Price',
             //'Eletricity',
             // 'Watersupply',
         
 
                 ['attribute'=>'Type',
-            'contentOptions' => ['class'=>'text-center'],
+          // 'contentOptions' => ['class'=>'text-center'],
             'content'=>function($data){
                $Type=['A'=>"<label>ทั่วไป</label>",'B'=>"<label>ร้านค้า</label>"];
                return $Type[$data->Type];
@@ -50,8 +50,14 @@ $this->params['breadcrumbs'][] = $this->title;
            
             'filter' =>Html::activeDropDownList($searchModel,'Type',['A'=>'ทั่วไป','B'=>'ร้านค้า'],['class'=>'form-control','prompt'=>'เลือกประเภท']),
  ],
+             [
+                'class' => 'yii\grid\ActionColumn',
+                'contentOptions' => ['class'=>'text-center'],
+                'template' => '{view} {update} {delete}',
+                
+            ],
 
-            ['class' => 'yii\grid\ActionColumn'],
+          //  ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
 </div>

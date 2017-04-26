@@ -11,16 +11,16 @@ use yii\helpers\Url;
 $this->title = 'ใบวางบิล';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<html>
+<!-- <html>
 <head>
 <style>
 a:visited {
     color: yellow;
 }
 </style>
-</head>
+</head> -->
 <div class="payment-index">
-
+ <br><br>
     <?php if ($payment_alert=='1'): ?>
         <br><br>
         <div class="alert alert-danger alert-dismissible" role="alert">
@@ -49,7 +49,15 @@ a:visited {
 
             //'Apart_Id',
             'Room_Id',
-            'Cus_Id',
+            //'Cus_Id',
+
+             ['attribute' =>'Cus_Id',
+            'value' => 'cus.Fname',
+           'filter' => $searchModel,
+          ],
+          
+     
+            //'history.PaymentStatus',
             //'DateFrom',
             //'DateTo',
             // 'NumCus',
@@ -57,20 +65,25 @@ a:visited {
             // 'Status',
        
             [
-                'attribute'=>'บันทึกการเก็บเงิน',
-                'contentOptions' => ['class'=>'text-center'],
+
+
+                //'attribute'=>'บันทึกการเก็บเงิน',
+                 'contentOptions' => ['class'=>'text-center'],
                  'content'=>function($data){
-                return Html::a ('<i class="glyphicon glyphiconfile"></i>เก็บเงิน', Url::to (['payment/create','Apart_Id'=>$data->Apart_Id,'Room_Id'=>$data->Room_Id,'Cus_Id'=>$data->Cus_Id]),['class'=>'btn btn-md btn-primary' ]);
+                return Html::a ('<i class="glyphicon glyphiconfile"></i>บันทึกการเก็บเงิน', Url::to (['payment/create','Apart_Id'=>$data->Apart_Id,'Room_Id'=>$data->Room_Id,'Cus_Id'=>$data->Cus_Id]),['class'=>'btn btn-md btn-primary' ]);
 
             },
-            
+            //    if($PaymentStatus == '0'){
+            //     echo "ok";
+            // },
             ],
+          
 
             [
                 
                 'class' => 'yii\grid\ActionColumn',
-                'template' => '{view} ',
-                'contentOptions' => ['class'=>'text center'],
+                'template' => '{view}       ',
+                'contentOptions' => ['class'=>'text-center'],
             ],
            //['class' => 'yii\grid\ActionColumn'],
         ],

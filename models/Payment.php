@@ -64,7 +64,7 @@ class Payment extends \yii\db\ActiveRecord
         return [
           'Apart_Id' => 'รหัสอพาร์ตเมนต์',
             'Room_Id' => 'รหัสห้องพัก',
-            'Cus_Id' => 'รหัสประจำตัวประชาชน',
+            'Cus_Id' => 'ชื่อ ',
             'StartDate' => 'วันที่เริ่มเช่า',
             'DateFrom' => 'วันที่เริ่มเก็บเงิน',
             'DateTo' => 'วันที่สิ้นสุดการเช่า',

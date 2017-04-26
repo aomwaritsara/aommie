@@ -63,7 +63,11 @@ if($model->Apart_Id == null){ //if insert
 
     <?= $form->field($model, 'Tel')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'Email')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'Email')->widget(MaskedInput::className(),[
+                'clientOptions' => [
+                    'alias' =>  'email'
+                ],
+            ])?>
 
     <?= $form->field($model, 'NumRoom')->textInput() ?>
 

@@ -56,8 +56,8 @@ public function actionReport($month,$year,$namemonth) // $date = Y-m-d // paymen
      
         $session = new Session;
         $session->open();
-
-         
+ // $Cus = new Customer();
+       
   $model = Rental::find()->orderBy(['StartDate' => SORT_ASC])->all(); 
 
         return $this->render('report', ['month' => $month,'year' => $year,'namemonth' =>$namemonth, 'model' =>$model]);

@@ -27,7 +27,11 @@ use yii\widgets\MaskedInput;
                 'mask'=>'9999999999999'
             ])?>
 
-    <?= $form->field($model, 'Email')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'Email')->widget(MaskedInput::className(),[
+                'clientOptions' => [
+                    'alias' =>  'email'
+                ],
+            ])?>
 
     <?= $form->field($model, 'Address')->textarea(['rows' => 6]) ?>
 

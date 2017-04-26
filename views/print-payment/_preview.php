@@ -21,9 +21,9 @@ use app\models\Serviceofrental;
 	?>
 
 	<?php
-		$value["DateTo"] = date('m');
-		$getMonth = $value["DateTo"];
-		$getMonth--;
+		$value["CheckDate"] = date('m');
+		$getMonth = $value["CheckDate"];
+		$getMonth++;
 
 		switch ($getMonth) {
             case '1':

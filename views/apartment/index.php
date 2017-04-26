@@ -39,7 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'NumFloor',
             // 'Status',
                       ['attribute'=>'Status',
-            'contentOptions' => ['class'=>'text-center'],
+            //'contentOptions' => ['class'=>'text-center'],
             'content'=>function($data){
                $Status=['1'=>"<label>ใช้งาน</label>",'0'=>"<label>ระงับการใช้งาน</label>"];
                return $Status[$data->Status];
@@ -52,7 +52,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 
                 'class' => 'yii\grid\ActionColumn',
                 'template' => '{view} {update} {cencel}',
-               // 'contentOptions' => ['class'=>'text center']
+             'contentOptions' => ['class'=>'text-center']
             ],
         ],
     ]); ?>

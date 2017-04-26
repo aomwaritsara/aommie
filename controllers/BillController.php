@@ -8,6 +8,8 @@ use app\models\BillSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\models\Customer;
+
 
 /**
  * BillController implements the CRUD actions for Bill model.
@@ -67,12 +69,16 @@ class BillController extends Controller
     public function actionCreate()
     {
         $model = new Bill();
+        //$Cus = new Customer();
+         
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            //$Cus =  Customer::find()->where(['Cus_Id' => $model->Cus_Id])->one();
             return $this->redirect(['view', 'Apart_Id' => $model->Apart_Id, 'Room_Id' => $model->Room_Id, 'Cus_Id' => $model->Cus_Id, 'DateFrom' => $model->DateFrom]);
         } else {
             return $this->render('create', [
                 'model' => $model,
+                //'Cus'  =>  $Cus
             ]);
         }
     }

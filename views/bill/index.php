@@ -32,7 +32,16 @@ $this->params['breadcrumbs'][] = $this->title;
 
             // 'Apart_Id',
             'Room_Id',
-            'Cus_Id',
+          //  'Cus_Id',
+           // 'cus.Fname',
+
+        ['attribute' =>'Cus_Id',
+            'value' => 'cus.Fname',
+           'filter' => $searchModel,
+          ],
+          
+         
+
             'DateFrom:date',
             // 'SoR_Id',
             //'CheckDate',
@@ -42,19 +51,20 @@ $this->params['breadcrumbs'][] = $this->title;
             'TotalPrice',
             // 'PaymentStatus', 
 
-            ['attribute' => 'สถานะการจ่ายเงิน', 	
+            [//'attribute' => 'สถานะการจ่ายเงิน', 	
+            'attribute'=>'PaymentStatus',
 				'contentOptions' => ['class'=>'text-center'],
 				'content'=>function($data){
-					$PaymentStatus=['0'=>"<label>ยังไม่ได้จ่าย</label>",'1'=>"<label>จ่ายแล้ว</label>"];
+					$PaymentStatus=['0'=>"<label>ยังไม่ได้จ่าย</label>"];
 					return $PaymentStatus[$data->PaymentStatus];
 				},
-				'filter' =>Html::activeDropDownList($searchModel,'PaymentStatus',['0'=>'ยังไม่ได้จ่าย','1'=>'จ่ายแล้ว'],['class'=>'form-control','prompt'=>'เลือกสถานะ']),
+				'filter' =>Html::activeDropDownList($searchModel,'PaymentStatus',['0'=>'ยังไม่ได้จ่าย'],['class'=>'form-control']),
 
 			],
 			[
 		        'class' => 'yii\grid\ActionColumn',
 		        'template' => '{change}',
-		        'contentOptions' => ['class'=>'text center']
+		        'contentOptions' => ['class'=>'text-center']
 		    ],
         ],
     ]); ?>

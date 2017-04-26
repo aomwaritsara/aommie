@@ -190,9 +190,11 @@ class SiteController extends Controller
         }
 
         $model = Staff::findone($session['staff_id']);
-
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->render('profile', ['model' => $model]);
+        } else {
         return $this->render('profile', ['model' => $model]);
-
+            }
     }
 
     public function actionPassword()

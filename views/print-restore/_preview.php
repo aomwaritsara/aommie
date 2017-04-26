@@ -23,7 +23,7 @@ use app\models\Serviceofrental;
 	<?php
 		$value->DateTo = date('m');
 		$getMonth = $value->DateTo;
-		$getMonth--;
+		$getMonth++;
 
 		switch ($getMonth) {
             case '1':

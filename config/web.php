@@ -14,6 +14,7 @@ $config = [
     
     //'defaultRoute' => 'show-room',
    //'defaultRoute' => 'login',
+    'language' => 'th',
     'timeZone' => 'Asia/Bangkok',
 
  'components' => [

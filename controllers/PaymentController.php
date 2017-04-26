@@ -52,6 +52,7 @@ class PaymentController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
             'payment_alert'=>'0',
+           
         ]);
     }
 
@@ -62,16 +63,25 @@ class PaymentController extends Controller
      * @param string $Cus_Id
      * @return mixed
      */
-    public function actionView($Apart_Id, $Room_Id, $Cus_Id)
+    public function actionView($Apart_Id, $Room_Id, $Cus_Id, $StartDate)
     {
+        $rental = Rental::find()->where(['Apart_Id' => $Apart_Id, 'Room_Id' => $Room_Id, 'Cus_Id' => $Cus_Id, 'StartDate' => $StartDate])->one();
+        $date = $rental->DateFrom;
+
+        $model = History::find()->where(['Apart_Id' => $Apart_Id, 'Room_Id' => $Room_Id, 'Cus_Id' => $Cus_Id, 'DateFrom' => $date])->one();
+
+        // echo "<pre>";
+        // echo print_r($model);
+        // echo "</pre>";
+        
         return $this->render('view', [
-            'model' => $this->findModel2($Apart_Id, $Room_Id, $Cus_Id),
+            'model' => $model,
         ]);
     }
 
-     protected function findModel2($Apart_Id, $Room_Id, $Cus_Id)
+     protected function findModel2($Apart_Id, $Room_Id, $Cus_Id, $StartDate)
     {
-        if (($model = History::findOne(['Apart_Id' => $Apart_Id, 'Room_Id' => $Room_Id, 'Cus_Id' => $Cus_Id])) !== null) {
+        if (($model = History::findOne(['Apart_Id' => $Apart_Id, 'Room_Id' => $Room_Id, 'Cus_Id' => $Cus_Id,'DateFrom' => $CheckDate])) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
@@ -296,11 +306,15 @@ class PaymentController extends Controller
  
             
             if ($model->save()) {
-                return $this->redirect(['view', 'Apart_Id' => $model->Apart_Id, 'Room_Id' => $model->Room_Id, 'Cus_Id' => $model->Cus_Id]);
+                
+                return $this->redirect(['index' ]);
             }
 
             
         }
+
+
+
 
         return $this->render('create', [
             'model' => $model,

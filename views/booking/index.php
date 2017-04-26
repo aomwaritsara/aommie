@@ -23,6 +23,8 @@ $this->params['breadcrumbs'][] = $this->title;
               <!-- /.box-tools -->
             </div>
 
+ 
+
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -32,15 +34,28 @@ $this->params['breadcrumbs'][] = $this->title;
            // 'Apart_Id',
             'Room_Id',
             'Cus_Id',
+
+         // 'cus.Fname',
+          // ['attribute' =>'Cus_Id',
+          //   'value' => 'cus.Fname',
+          //  'filter' => $searchModel,
+          // ],
+          
+          // ['attribute' =>'Cus_Id',
+          //   'value' => 'cus.Lname',
+          //  'filter' => $searchModel,
+          // ],
+          // 'cus.Lname',
             'Deposit',
-           // 'Booking_Date',
+          
+            // 'Booking_Date',
             // 'Status',
             // 'Datestatus',
 
              [
                 
                 'class' => 'yii\grid\ActionColumn',
-                'contentOptions' => ['class'=>'text center'],
+                'contentOptions' => ['class'=>'text-center'],
                 'template' => '{view} {update} {changeb}',
                 
             ],
