@@ -59,19 +59,19 @@ AppAsset::register($this);
   <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
 
-
     <section class="sidebar" style="height: auto;">
       <!-- Sidebar user panel -->
-      <div class="user-panel">
+      <div class="user-panel" style="height: 130px;">
         <div class="pull-left image">
-          <img src="dist/img/user2155.jpg" class="img-circle" alt="User Image">
+          <img src="dist/img/User2155.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
          <?php if (isset($session['member_name'])) { ?>
           <p><?= $session['member_name']; ?></p>
       <a href="<?= Url::to(['site/profile'])?>"><i class="fa fa-circle text-primary">Profile</i> </a>
             <a href="<?= Url::to(['site/password'])?>"><i class="fa fa-circle text-warning">EditPassword</i> </a>
-          <p><a href="<?= Url::to(['site/gologout'])?>"><i class="fa fa-circle text-danger">logout</i> </a></p>
+            
+          <p><br><a href="<?= Url::to(['site/gologout'])?>"><i class="fa fa-circle text-danger">logout</i> </a></p>
 
          <?php }else{ ?>
             
@@ -79,11 +79,9 @@ AppAsset::register($this);
             
     <?php } ?>
         </div>
+       
       </div>
-      <li>
-      </li>
-      <li>
-      </li>
+        
    
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">

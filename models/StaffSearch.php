@@ -66,6 +66,7 @@ class StaffSearch extends Staff
             ->andFilterWhere(['like', 'Address', $this->Address])
             ->andFilterWhere(['like', 'Status', $this->Status])
             ->andFilterWhere(['like', 'Type', $this->Type]);
+             $query->orderBy(['Type' => SORT_ASC]);
 
         return $dataProvider;
     }

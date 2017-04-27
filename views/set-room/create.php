@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\SetRoom */
 
-$this->title = 'เพิ่มข้อมูลตั้งค่าอพาร์ตเมนต์';
+$this->title = 'เพิ่มข้อมูลการตั้งค่าอพาร์ตเมนต์';
 $this->params['breadcrumbs'][] = ['label' => 'Set Rooms', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

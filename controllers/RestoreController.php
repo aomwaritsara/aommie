@@ -10,6 +10,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use app\models\Rental;
 use app\models\Room;
+use app\models\History;
 use kartik\mpdf\Pdf;
 
 /**
@@ -44,6 +45,7 @@ class RestoreController extends Controller
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+             'payment_alert'=>'1',
         ]);
     }
 
@@ -57,18 +59,25 @@ class RestoreController extends Controller
      */
     public function actionChanger($Apart_Id, $Room_Id, $Cus_Id, $StartDate)
     {
-       // $model2 = new Room();
+        $History = new History();
+
         $restore= $this->findModel($Apart_Id, $Room_Id, $Cus_Id, $StartDate);
  $model2 = Room::find()->where(['Apart_Id' => $restore->Apart_Id,'Room_Id' => $restore->Room_Id])->one();
 
+   $History = History::find()->where(['Apart_Id' => $restore->Apart_Id, 'Room_Id' =>$restore->Room_Id, 'Cus_Id' => $restore->Cus_Id])->one();
         
         
         if($restore->Status == '2')
         {
-                         
+              
+             $History->PaymentStatus ='1';
+             $History->save();
+             
             $restore->Status = '1';
             $restore->DateTo = date('Y/m/d H:m:s');
             $restore->save();
+
+
             // $model2->Apart_Id=$restore->Apart_Id;
             //  $model2->Room_Id=$restore->Room_Id;
              $model2->Status = '1';
@@ -109,7 +118,7 @@ class RestoreController extends Controller
                 'orientation' => Pdf::ORIENT_PORTRAIT,
                 // // stream to browser inline
                 'destination' => Pdf::DEST_DOWNLOAD,
-                'filename' => 'ใบเสร็จการคืนห้องพัก :'.$Room_Id .'วันที่' .$Date,
+                'filename' => 'ใบเสร็จการคืนห้องพัก :'.$Room_Id .'วันที่' .$Date .'.pdf',
                 // your html content input
                 'content' => $content,
                 // format content from your own css file if needed or use the

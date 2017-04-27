@@ -38,7 +38,7 @@ class PrintBillController extends \yii\web\Controller
             // // stream to browser inline
             //'destination' => Pdf::DEST_BROWSER,
              'destination' => Pdf::DEST_DOWNLOAD,
-              'filename' => 'ใบเสร็จชำระเงิน' .$Date,
+              'filename' => 'ใบเสร็จชำระเงิน' .$Date .'.pdf',
             // your html content input
             'content' => $content,
             // format content from your own css file if needed or use the

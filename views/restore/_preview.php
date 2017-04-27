@@ -223,7 +223,7 @@ use app\models\Serviceofrental;
 			?>
 			<td>
 				<?php 
-					if ($startDate <= $month6) {
+					if ($startDate <= $month6||$getHistory->PaymentStatus==0) {
 						$value->Deposit = 0;
 						echo number_format("$value->Deposit");
 					}
@@ -254,7 +254,7 @@ use app\models\Serviceofrental;
 	</p>
 
 	<p>
-			<h4><u>หมายเหตุ </u>: หากเข้าพักไม่ถึง 6 เดือน นับจากวันที่เริ่มเช่า ผู้เช่าจะไม่ได้รับเงินประกันห้องคืน</h4>
+			<h4><u>หมายเหตุ </u>: หากเข้าพักไม่ถึง 6 เดือน นับจากวันที่เริ่มเช่า และผู้เช่าไม่ทำการชำระเงินค่าห้องพักภายใน 1 เดือน ผู้เช่าจะไม่ได้รับเงินประกันห้องคืน</h4>
 	</p>
 	</p>
 <?php 

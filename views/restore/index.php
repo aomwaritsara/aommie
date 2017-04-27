@@ -13,6 +13,13 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="restore-index">
 <br><br>
+  <?php if ($payment_alert=='1'): ?>
+        
+        <div class="alert alert-warning alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <strong>กรุณาตรวจสอบการบันทึกข้อมูลใบวางบิลของห้องพักที่ต้องการคืน ก่อนดำเนินการยืนยันการคืนห้องพัก!</strong>
+        </div>
+    <?php endif ?>
    <div class="box box-info box-solid">
         <div class="box-header with-border">
             <h4>การคืนห้องพัก</h4>
@@ -38,7 +45,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //'Deposit',
             // 'Status',
             ['attribute' => 'สถานะการคืนห้องพัก',     
-                'contentOptions' => ['class'=>'text-center'],
+                //'contentOptions' => ['class'=>'text-center'],
                 'content'=>function($data){
                     $Status=['2'=>"<label>ยังไม่ได้คืน</label>",'1'=>"<label>คืนแล้ว</label>"];
                     return $Status[$data->Status];

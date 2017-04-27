@@ -81,7 +81,7 @@ use app\models\Serviceofrental;
 	</p>
 
 	<table class="table" border="1" align="center" style="font-size: 12pt; text-align: center">
-		<tr>
+		<tr align="center">
 			<th>ลำดับ</th>
 			<th>รายการ</th>
 			<th>หน่วย</th>
@@ -90,7 +90,7 @@ use app\models\Serviceofrental;
 			<th>จำนวนเงิน</th>
 			<th></th>
 		</tr>
-		<tr>
+		<tr >
 			<td>1</td>
 			<td>ค่าเช่าห้อง</td>
 			<td>บาท</td>

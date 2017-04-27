@@ -45,19 +45,34 @@ class ShowRoomController extends \yii\web\Controller
                             , 'customer.Lname AS Lname' 
                             , 'rental.Deposit AS Deposit'
                             , 'booking.Deposit AS DepositBooking'                           
-                 ])  
+                 ])
+                 ->distinct()  
                  ->from('room')         
                  ->leftJoin('roomtype', 'roomtype.Room_Id = room.Room_Id')               
                  ->leftJoin('rental', 'rental.Room_Id = room.Room_Id AND rental.Apart_Id = room.Apart_Id')                                        
                  ->leftJoin('customer', 'customer.Cus_Id = rental.Cus_Id') 
                  ->leftJoin('booking', 'booking.Room_Id = room.Room_Id') 
+
                  ->where('rental.Status=2') 
                  ->orWhere('room.Status=1')
                 ->orWhere('rental.Status IS  NULL') 
+                ->groupBy('Room_Id')
                 ->orderBy('Room_Id')
                  ->createCommand()                                                      
                  ->queryAll();
 
+                 for($i= 0;$i<count($rooms);$i++)
+                 {
+                    if($rooms[$i]['Status'] == '1')
+                    {
+                        $rooms[$i]['Fname'] = '';
+                        $rooms[$i]['Lname'] = '';
+                        $rooms[$i]['Deposit'] = '';
+                        $rooms[$i]['NumCus'] = '';
+
+                    }
+                 }
+               
        
         $deposits = $query2
                 ->select([  'customer.Fname AS Fname'

@@ -11,27 +11,35 @@ use yii\helpers\Url;
 $this->title = 'ใบวางบิล';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<!-- <html>
+<html>
 <head>
 <style>
 a:visited {
     color: yellow;
 }
 </style>
-</head> -->
+</head>
 <div class="payment-index">
  <br><br>
     <?php if ($payment_alert=='1'): ?>
-        <br><br>
+        
         <div class="alert alert-danger alert-dismissible" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <strong>ไม่สามารถพิมพ์ใบวางบิลได้!</strong> กรุณาเพิ่มข้อมูลการออกใบวางบิลให้ครบ
+            <strong>ไม่สามารถพิมพ์ใบวางบิลได้!</strong> กรุณาตรวจสอบข้อมูลการออกใบวางบิลอีกครั้ง
         </div>
     <?php endif ?>
-
+    
+ <?php if ($bill_alert=='1'): ?>
+      
+        <div class="alert alert-warning alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <strong>กรุณาตรวจสอบการชำระเงินของผู้เช่าก่อนดำเนินการบันทึกข้อมูลออกใบวางบิลในเดือนถัดไป!</strong>
+        </div>
+    <?php endif ?>
     <div class="box box-info box-solid">
             <div class="box-header with-border">
     <h4>ใบวางบิล</h4>
+    <!-- <h5 align="center">**กรุณาตรวจสอบการชำระเงินของผู้เช่าก่อนดำเนินการบันทึกข้อมูลออกใบวางบิลในเดือนถัดไป**</h5> -->
     <div class="box-tools pull-right">
                 <?= Html::a('<span class = "fa fa-plus"></span> พิมพ์ใบวางบิล', ['print-payment/index'], ['class' => 'btn btn-block btn-primary'/*, 'target' => '_blank'*/]) ?>
                
@@ -57,7 +65,7 @@ a:visited {
           ],
           
      
-            //'history.PaymentStatus',
+           // 'history.PaymentStatus',
             //'DateFrom',
             //'DateTo',
             // 'NumCus',

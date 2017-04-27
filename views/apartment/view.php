@@ -14,6 +14,8 @@ $this->params['breadcrumbs'][] = ['label' => 'Apartments', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="apartment-view">
+<br><br>
+
 <div class="box box-info box-solid">
             <div class="box-header with-border">
     <h4>ข้อมูลอพาร์ตเมนต์</h4>

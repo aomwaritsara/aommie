@@ -30,7 +30,7 @@ use app\models\ApartmentSearch;
 
     <?= $form->field($model, 'Apart_Id')->textInput(['readonly'=> true,'value'=>'1']) ?>
 
-    <?= $form->field($model, 'Room_Id')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'Room_Id')->textInput(['type' => 'number','maxlength' => true]) ?>
 
     <?= $form->field($model, 'Type')->dropDownList(['A'=>'ทั่วไป','B'=>'ร้านค้า'],['prompt'=>'เลือกประเภท'])  ?> 
     
@@ -40,14 +40,14 @@ use app\models\ApartmentSearch;
     <?= $form->field($model2, 'Floor')->dropDownList($listApartment) ?> 
     
    
-    <?= $form->field($model, 'Price')->textInput() ?>
+    <?= $form->field($model, 'Price')->textInput(['type' => 'number','min'=>"0"]) ?>
 
-    <?= $form->field($model, 'Eletricity')->textInput() ?>
+    <?= $form->field($model, 'Eletricity')->textInput(['type' => 'number','min'=>"0"]) ?>
 
-    <?= $form->field($model, 'Watersupply')->textInput() ?>
+    <?= $form->field($model, 'Watersupply')->textInput(['type' => 'number','min'=>"0"]) ?>
 
 
-    <?= $form->field($model2, 'Status')->dropDownList([1=>'ว่าง',2=>'ถูกเช่า',3=>'ถูกจอง',4=>'ไม่พร้อมใช้งาน'],['prompt'=>'กรุณาเลือกสถานะ']) ?>
+    <?= $form->field($model2, 'Status')->dropDownList([1=>'ว่าง',4=>'ไม่พร้อมใช้งาน'],['prompt'=>'กรุณาเลือกสถานะ']) ?>
 
     <div class="form-group" align="center">
         <?= Html::submitButton($model->isNewRecord ? 'บันทึก' : 'บันทึก', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

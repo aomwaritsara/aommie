@@ -24,7 +24,7 @@ use yii\widgets\MaskedInput;
     <?= $form->field($model, 'Name')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'Tel')->widget(MaskedInput::className(),[
-                'mask'=>'9999999999999'
+                'mask'=>'9999999999'
             ])?>
 
     <?= $form->field($model, 'Email')->widget(MaskedInput::className(),[

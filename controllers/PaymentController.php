@@ -52,6 +52,7 @@ class PaymentController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
             'payment_alert'=>'0',
+            'bill_alert'=>'1',
            
         ]);
     }

@@ -85,12 +85,13 @@ class BillController extends Controller
 
 public function actionChange($Apart_Id, $Room_Id, $Cus_Id, $DateFrom)
     {
-        $bill = $this->findModel($Apart_Id, $Room_Id, $Cus_Id, $DateFrom);
+        $bill = $this->findModel($Apart_Id, $Room_Id, $Cus_Id,$DateFrom);
         
         if($bill->PaymentStatus == '1')
         {
             $bill->PaymentStatus = '0';
             $bill->save();
+            
             return $this->redirect(['index']);
         }
         else

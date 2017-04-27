@@ -56,7 +56,7 @@ if($model->Service_Id == null){ //if insert
 
     <?= $form->field($model, 'Name')->textinput(['readonly'=> true]) ?>
 
-    <?= $form->field($model, 'Price')->textInput() ?>
+    <?= $form->field($model, 'Price')->textInput(['type' => 'number','min'=>"0"]) ?>
 
     <?= $form->field($model, 'Unit')->textInput(['maxlength' => true,'readonly'=> true]) ?>
 

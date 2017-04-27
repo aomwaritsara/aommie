@@ -48,14 +48,13 @@ class PrintPaymentController extends \yii\web\Controller
         $rental_count = 0 ;
         foreach ($rental as $key => $value) {
             $rental_count++;
-            echo $rental_count;
-            echo "rt";
+            
         }
         $model1 = History::find()->where(["PaymentStatus" => '0'])->all();
         $count = 0;
         foreach ($model1 as $key => $value) {
             $count++;
-            echo $count;
+            
         }
 
         if ($count === $rental_count) {
@@ -76,7 +75,7 @@ class PrintPaymentController extends \yii\web\Controller
                 // // stream to browser inline
                 //'destination' => Pdf::DEST_BROWSER,
                     'destination' => Pdf::DEST_DOWNLOAD,
-                  'filename' => 'ใบวางบิล' .$Date,
+                  'filename' => 'ใบวางบิล' .$Date .'.pdf',
                 // your html content input
                 'content' => $content,
                 // format content from your own css file if needed or use the
@@ -110,6 +109,7 @@ class PrintPaymentController extends \yii\web\Controller
                 'searchModel' => $searchModel,
                 'dataProvider' => $dataProvider,
                 'payment_alert'=>'1',
+                'bill_alert'=>'0',
                 ]);
             
            

@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Rental;
+use app\models\Customer;
 use app\models\ReRentalSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -57,6 +58,7 @@ public function actionReport($month,$year,$namemonth) // $date = Y-m-d // paymen
         $session = new Session;
         $session->open();
  // $Cus = new Customer();
+        //$cus = Customer::find()->all();
        
   $model = Rental::find()->orderBy(['StartDate' => SORT_ASC])->all(); 
 

@@ -14,6 +14,8 @@ $this->params['breadcrumbs'][] = ['label' => $model->Name, 'url' => ['view', 'id
 $this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="apartment-update">
+<br><br>
+
 <div class="box box-info box-solid">
             <div class="box-header with-border">
     <h4>ข้อมูลอพาร์ตเมนต์</h4>
