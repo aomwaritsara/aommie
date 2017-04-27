@@ -82,12 +82,12 @@ use app\models\Serviceofrental;
 
 	<table class="table" border="1" align="center" style="font-size: 12pt; text-align: center">
 		<tr align="center">
-			<th>ลำดับ</th>
-			<th>รายการ</th>
-			<th>หน่วย</th>
-			<th>จำนวน</th>
-			<th>หน่วยละ</th>
-			<th>จำนวนเงิน</th>
+			<th align="center">ลำดับ</th>
+			<th align="center">รายการ</th>
+			<th align="center">หน่วย</th>
+			<th align="center">จำนวน</th>
+			<th align="center">หน่วยละ</th>
+			<th align="center">จำนวนเงิน</th>
 			<th></th>
 		</tr>
 		<tr >
