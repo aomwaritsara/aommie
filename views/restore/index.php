@@ -14,13 +14,14 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="restore-index">
 
    <div class="box box-info box-solid">
-            <div class="box-header with-border">
-    <h4>การคืนห้องพัก</h4>
-    <div class="box-tools pull-right">
-              
-              </div>
-              <!-- /.box-tools -->
-            </div>
+        <div class="box-header with-border">
+            <h4>การคืนห้องพัก</h4>
+            <!-- <div class="box-tools pull-right">
+            <?//= Html::a('<span class = "fa fa-plus"></span> พิมพ์ใบเสร็จการคืนห้องพัก', ['print-restore/index'], ['class' => 'btn btn-block btn-primary', 'target' => '_blank']) ?>
+
+            </div> -->
+            <!-- /.box-tools -->
+        </div>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -32,21 +33,23 @@ $this->params['breadcrumbs'][] = $this->title;
             'Room_Id',
             'Cus_Id',
             //'DateFrom',
-           // 'DateTo',
-            // 'NumCus',
-            // 'Deposit',
-           // 'Status',
-            //  [
-            //     'attribute'=>'คืนห้องพัก',
-            //     'content'=>function($data){
-            //     return Html::a ('<i class="glyphicon glyphiconfile"></i>คืนห้องพัก', Url::to (['printbill/index']),['class'=>'btn btn-xs btn-primary']);
-            // },
-            // //'contentOptions'=>['class'=>'text center']
-            // ],
+            //'DateTo',
+            //'NumCus',
+            //'Deposit',
+            // 'Status',
+            ['attribute' => 'สถานะการคืนห้องพัก',     
+                'contentOptions' => ['class'=>'text-center'],
+                'content'=>function($data){
+                    $Status=['2'=>"<label>ยังไม่ได้คืน</label>",'1'=>"<label>คืนแล้ว</label>"];
+                    return $Status[$data->Status];
+                },
+                //'filter' =>Html::activeDropDownList($searchModel,'Status',['0'=>'ยังไม่ได้จ่าย','1'=>'จ่ายแล้ว'],['class'=>'form-control','prompt'=>'เลือกสถานะ']),
+
+            ],
             [
                 
                 'class' => 'yii\grid\ActionColumn',
-                'template' => '{changer}',
+                'template' => '{changer} {print-restore}',
                 'contentOptions' => ['class'=>'text center']
             ],
 
@@ -55,3 +58,6 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]); ?>
 </div>
+
+
+        

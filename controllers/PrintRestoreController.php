@@ -3,33 +3,31 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\History;
 use app\models\Rental;
-use app\models\RentalSearch;
-
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use kartik\mpdf\Pdf;
 
 
-class PrintPaymentController extends \yii\web\Controller
+class PrintRestoreController extends \yii\web\Controller
 {
     public function actionIndex()
     {
-    	
-		$model = Rental::find()->where(['Status' => '2'])->all();
+      
+    $model = Rental::find()->where(['Status' => '2'])->all();
 
-		/*foreach ($model as $check =>$value) {
+    /*foreach ($model as $check =>$value) {
             $rental = History::find('Elec_Used')->where(['Apart_Id' => $value->Apart_Id])->andWhere(['Apart_Id' => $value->Apart_Id])->andWhere(['Cus_Id' => $value->Cus_Id])->one();
-		}*/
-			
-		// $Payment= History::find('Elec_Used')->where(['Apart_Id' => $model->Apart_Id])->all();
+    }*/
+      
+    // $Payment= History::find('Elec_Used')->where(['Apart_Id' => $model->Apart_Id])->all();
+
         $content = $this->renderPartial('_preview', [
             'model' => $model,
         ]);
 
-		$pdf = new Pdf([
+    $pdf = new Pdf([
             'mode' => Pdf::MODE_UTF8,
 
             // A4 paper format
@@ -59,7 +57,6 @@ class PrintPaymentController extends \yii\web\Controller
         ]);
     
         // return the pdf output as per the destination setting
-
         return $pdf->render();
 
     }

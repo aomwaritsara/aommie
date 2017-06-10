@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="box-header with-border">
     <h4>ใบวางบิล</h4>
     <div class="box-tools pull-right">
-                <?= Html::a('<span class = "fa fa-plus"></span>พิมพ์ใบวางบิล', ['print-payment/index'], ['class' => 'btn btn-block btn-primary ']) ?>
+                <?= Html::a('<span class = "fa fa-plus"></span> พิมพ์ใบวางบิล', ['print-payment/index'], ['class' => 'btn btn-block btn-primary', 'target' => '_blank']) ?>
                
               </div>
               <!-- /.box-tools -->

@@ -7,18 +7,17 @@ use Yii;
 /**
  * This is the model class for table "history".
  *
- * @property integer $Apart_Id
- * @property string $Room_Id
- * @property string $Cus_Id
- * @property string $DateFrom
- * @property string $SoR_Id
- * @property string $CurrentDate
- * @property integer $Elec_Used
- * @property integer $Water_Used
- * @property integer $Cost
- * @property string $Unit
- * @property integer $TotalAmount
- * @property string $PaymentStatus
+ * @property int $Apart_Id รหัสอพาร์ตเมนต์
+ * @property string $Room_Id รหัสห้องพัก
+ * @property string $Cus_Id รหัสประจำตัวประชาชน
+ * @property string $DateFrom วันที่เริ่มเช่า
+ * @property string $SoR_Id รหัสบริการเสริม
+ * @property string $CheckDate วันที่ปัจจุบัน
+ * @property int $Elec_Used จำนวนหน่วยไฟฟ้าที่ใช้
+ * @property int $Water_Used จำนวนผู้เข้าพัก
+ * @property int $Cost ราคาของบริการเสริม
+ * @property int $TotalPrice ค่าใช้จ่ายทั้งหมด
+ * @property string $PaymentStatus สถานะการชำระเงิน
  *
  * @property Rental $apart
  * @property Rental $room
@@ -42,14 +41,15 @@ class History extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['Apart_Id', 'Room_Id', 'Cus_Id', 'DateFrom', 'SoR_Id', 'CurrentDate', 'Elec_Used', 'Water_Used', 'Cost', 'Unit', 'TotalAmount', 'PaymentStatus'], 'required'],
-            [['Apart_Id', 'Elec_Used', 'Water_Used', 'Cost', 'TotalAmount'], 'integer'],
-            [['DateFrom', 'CurrentDate'], 'safe'],
-            [['Room_Id', 'SoR_Id', 'Unit'], 'string', 'max' => 10],
+            [['Apart_Id', 'Room_Id', 'Cus_Id', 'DateFrom', 'CheckDate', 'Elec_Used', 'Water_Used', 'Cost', 'TotalPrice', 'PaymentStatus'], 'required'],
+            [['Apart_Id', 'Elec_Used', 'Water_Used', 'Cost', 'TotalPrice'], 'integer'],
+            [['DateFrom', 'CheckDate'], 'safe'],
+            [['Room_Id', 'SoR_Id'], 'string', 'max' => 10],
             [['Cus_Id'], 'string', 'max' => 13],
             [['PaymentStatus'], 'string', 'max' => 1],
-            [['SoR_Id'], 'unique'],
             [['DateFrom'], 'unique'],
+            [['CheckDate'], 'unique'],
+            [['SoR_Id'], 'unique'],
             [['SoR_Id'], 'unique'],
             [['Apart_Id'], 'exist', 'skipOnError' => true, 'targetClass' => Rental::className(), 'targetAttribute' => ['Apart_Id' => 'Apart_Id']],
             [['Room_Id'], 'exist', 'skipOnError' => true, 'targetClass' => Rental::className(), 'targetAttribute' => ['Room_Id' => 'Room_Id']],
@@ -70,12 +70,11 @@ class History extends \yii\db\ActiveRecord
             'Cus_Id' => 'Cus  ID',
             'DateFrom' => 'Date From',
             'SoR_Id' => 'So R  ID',
-            'CurrentDate' => 'Current Date',
+            'CheckDate' => 'Check Date',
             'Elec_Used' => 'Elec  Used',
             'Water_Used' => 'Water  Used',
             'Cost' => 'Cost',
-            'Unit' => 'Unit',
-            'TotalAmount' => 'Total Amount',
+            'TotalPrice' => 'Total Price',
             'PaymentStatus' => 'Payment Status',
         ];
     }

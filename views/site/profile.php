@@ -11,6 +11,14 @@ $this->params['breadcrumbs'][] = ['label' => $model->Name, 'url' => ['view', 'id
 $this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="staff-form">
+<div class="box box-info box-solid">
+            <div class="box-header with-border">
+    <h4>แก้ไขข้อมูลผู้ดูแล</h4>
+    <div class="box-tools pull-right">
+                
+              </div>
+              <!-- /.box-tools -->
+            </div>
 
     <h1><?= Html::encode($this->title) ?></h1>
 

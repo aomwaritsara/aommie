@@ -5,11 +5,12 @@ namespace app\controllers;
 use Yii;
 use app\models\Restore;
 use app\models\RestoreSearch;
+use app\models\Rental;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use app\models\Room;
-use kartik\datetime\DateTimePicker;
+use kartik\mpdf\Pdf;
 /**
  * RestoreController implements the CRUD actions for Restore model.
  */
@@ -113,6 +114,79 @@ class RestoreController extends Controller
         return $this->redirect(['index']);
     }
 
+    public function actionChanger($Apart_Id, $Room_Id, $Cus_Id)
+    {
+        //$model2 = new Room();
+        $restore= $this->findModel($Apart_Id, $Room_Id, $Cus_Id);
+        
+        if($restore->Status == '2')
+        {
+            $restore->Status = '1';
+            $restore->DateTo = date('Y/m/d H:m:s');
+            $restore->save();
+            $model2 = Room::find()->where(['Apart_Id' => $Apart_Id,'Room_Id' => $Room_Id])->one();
+            $model2->Status = '1';
+            $model2->save();
+          
+            return $this->redirect(['index']);
+        }
+        else
+        {
+            $restore->Status = '2';
+            $restore->save();
+            $model2 = Room::find()->where(['Apart_Id' => $Apart_Id,'Room_Id' => $Room_Id])->one();
+            $model2->Status = '2';
+            return $this->redirect(['index']);
+        }
+    }
+
+    public function actionPrintRestore($Apart_Id, $Room_Id, $Cus_Id)
+    {
+        $model = Rental::find()->where(['Apart_Id' => $Apart_Id, 'Room_Id' => $Room_Id, 'Cus_Id' => $Cus_Id])->all();
+
+        /*foreach ($model as $check =>$value) {
+                $rental = History::find('Elec_Used')->where(['Apart_Id' => $value->Apart_Id])->andWhere(['Apart_Id' => $value->Apart_Id])->andWhere(['Cus_Id' => $value->Cus_Id])->one();
+        }*/
+          
+        // $Payment= History::find('Elec_Used')->where(['Apart_Id' => $model->Apart_Id])->all();
+
+        $content = $this->renderPartial('_preview', [
+            'model' => $model,
+        ]);
+
+        $pdf = new Pdf([
+                'mode' => Pdf::MODE_UTF8,
+
+                // A4 paper format
+                'format' => Pdf::FORMAT_A4,
+                // portrait orientation
+                'orientation' => Pdf::ORIENT_PORTRAIT,
+                // // stream to browser inline
+                'destination' => Pdf::DEST_BROWSER,
+                // your html content input
+                'content' => $content,
+                // format content from your own css file if needed or use the
+                // enhanced bootstrap css built by Krajee for mPDF formatting
+                'cssFile' => '@vendor/kartik-v/yii2-mpdf/assets/kv-mpdf-bootstrap.min.css',
+                // any css to be embedded if required
+                'cssInline' => '.kv-heading-1{font-size:24px}', 
+                //'cssFile' => 'web/css/pdf.css',
+                // any css to be embedded if required
+                //'cssInline' => '.bd{border:1.5px solid; text-align: center;} .ar{text-align:right} .imgbd{border:1px solid}',
+
+                // set mPDF properties on the fly
+                'options' => ['title' => 'สัญาญาเช่าห้องที่'],
+                // call mPDF methods on the fly
+                'methods' => [
+                    //'SetHeader'=>[''],
+                    //'SetFooter'=>['{PAGENO}'],
+                ]
+            ]);
+        
+            // return the pdf output as per the destination setting
+            return $pdf->render();
+    }
+
     /**
      * Finds the Restore model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
@@ -130,35 +204,6 @@ class RestoreController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
-    public function actionChanger($Apart_Id, $Room_Id, $Cus_Id)
-    {
-        //$model2 = new Room();
-        $restore= $this->findModel($Apart_Id, $Room_Id, $Cus_Id);
-
-        
-        if($restore->Status == '2')
-        {
-            $restore->DateTo = date('Y-m-d h:i:s');
-             $restore->Status = '1';
-              $restore->save();
-              $model2 = Room::find()->where(['Apart_Id' => $restore->Apart_Id,'Room_Id' => $restore->Room_Id])->one();
-             $model2->Apart_Id=$restore->Apart_Id;
-             $model2->Room_Id=$restore->Room_Id;
-              $model2->Status = '1';
-              $model2->save();
-          
-            return $this->redirect(['printbill/index']);
-        }
-         else
-        {
-             $restore->Status = '2';
-              $restore->save();
-              $model2 = Room::find()->where(['Apart_Id' => $restore->Apart_Id,'Room_Id' => $restore->Room_Id])->one();
-              $model2->Status = '2';
-              $model2->save();
-          
-            return $this->redirect(['printbill/index']);
-        }
-    }
+    
 
 }

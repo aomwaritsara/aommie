@@ -25,7 +25,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'SoR_Id') ?>
 
-    <?php // echo $form->field($model, 'CurrentDate') ?>
+    <?php // echo $form->field($model, 'CheckDate') ?>
 
     <?php // echo $form->field($model, 'Elec_Used') ?>
 
@@ -33,9 +33,7 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'Cost') ?>
 
-    <?php // echo $form->field($model, 'Unit') ?>
-
-    <?php // echo $form->field($model, 'TotalAmount') ?>
+    <?php // echo $form->field($model, 'TotalPrice') ?>
 
     <?php // echo $form->field($model, 'PaymentStatus') ?>
 

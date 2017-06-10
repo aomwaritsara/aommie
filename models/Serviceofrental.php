@@ -7,13 +7,11 @@ use Yii;
 /**
  * This is the model class for table "serviceofrental".
  *
- * @property integer $Apart_Id
+ * @property string $SoR_Id
+ * @property int $Apart_Id
  * @property string $Room_Id
  * @property string $Service_Id
- * @property string $SoR_Id
- * @property integer $Amount
- * @property string $Cost
- * @property integer $TotalCost
+ * @property string $Cus_Id
  *
  * @property History $history
  * @property Service $service
@@ -36,11 +34,13 @@ class Serviceofrental extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['Apart_Id', 'Room_Id', 'Service_Id', 'SoR_Id', 'Amount', 'Cost', 'TotalCost'], 'required'],
-            [['Apart_Id', 'Amount', 'TotalCost'], 'integer'],
-            [['Room_Id', 'SoR_Id', 'Cost'], 'string', 'max' => 10],
+            [['SoR_Id', 'Apart_Id', 'Room_Id', 'Service_Id', 'Cus_Id'], 'required'],
+            [['Apart_Id'], 'integer'],
+            [['SoR_Id', 'Room_Id'], 'string', 'max' => 10],
             [['Service_Id'], 'string', 'max' => 5],
+            [['Cus_Id'], 'string', 'max' => 13],
             [['SoR_Id'], 'unique'],
+            [['Cus_Id'], 'unique'],
             [['Service_Id'], 'exist', 'skipOnError' => true, 'targetClass' => Service::className(), 'targetAttribute' => ['Service_Id' => 'Service_Id']],
             [['Apart_Id'], 'exist', 'skipOnError' => true, 'targetClass' => Rental::className(), 'targetAttribute' => ['Apart_Id' => 'Apart_Id']],
             [['Room_Id'], 'exist', 'skipOnError' => true, 'targetClass' => Rental::className(), 'targetAttribute' => ['Room_Id' => 'Room_Id']],
@@ -53,13 +53,11 @@ class Serviceofrental extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
+            'SoR_Id' => 'So R  ID',
             'Apart_Id' => 'Apart  ID',
             'Room_Id' => 'Room  ID',
             'Service_Id' => 'Service  ID',
-            'SoR_Id' => 'So R  ID',
-            'Amount' => 'Amount',
-            'Cost' => 'Cost',
-            'TotalCost' => 'Total Cost',
+            'Cus_Id' => 'Cus  ID',
         ];
     }
 

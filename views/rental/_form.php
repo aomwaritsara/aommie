@@ -32,31 +32,38 @@ use kartik\datetime\DateTimePicker;
 <?php if ($isUpdated == 1): ?>
     <?= $form->field($model, 'Cus_Id')->textinput(['readonly'=>true,'value'=>$model->Cus_Id])?>
     <?php   endif;   ?>
-
-
+<?php $model->StartDate = date('Y-m-d H:i:s'); ?>
+<?= $form->field($model, 'StartDate')->textinput()
+      ->widget(DateTimePicker::classname(), [
+      'language' => 'th',
+          'readonly'=> true,
+        'pluginOptions' => [
+          'format' => 'yyyy-mm-dd hh:ii:ss',
+          
+      ]
+])  ?> 
 
     <?= $form->field($model, 'DateFrom')->textinput([ 
       'readonly'=> true,
       'pluginOptions' => [
       'language' => 'th',
      'format' => 'yyyy-mm-dd hh:ii:ss',
-      $model->DateFrom = date('Y-m-d h:i:s')
+      $model->DateFrom = date('Y-m-d H:i:s')
     ]
 ])  ?> 
-
-    <?= $form->field($model, 'DateTo')->textinput([ 
-      //'readonly'=> true,
-      'pluginOptions' => [
+    <?php 
+      $date = strtotime($model->DateFrom);
+      $date = strtotime("+30 day", $date);
+      $date = date('Y-m-d H:i:s', $date);
+      $model->DateTo = $date;
+    ?>
+    <?= $form->field($model, 'DateTo')->textinput()
+      ->widget(DateTimePicker::classname(), [
       'language' => 'th',
-     'format' => 'yyyy-mm-dd hh:ii:ss',
-      $model->DateTo = date('Y-m-d h:i:s')
-    ]
-])->widget(DateTimePicker::classname(), [
-    'language' => 'th',
-        'readonly'=> true,
-      'pluginOptions' => [
-        'format' => 'yyyy-mm-dd hh:ii:ss'
-    ]
+          'readonly'=> true,
+        'pluginOptions' => [
+          'format' => 'yyyy-mm-dd hh:ii:ss'
+      ]
 ])  ?> 
 
 

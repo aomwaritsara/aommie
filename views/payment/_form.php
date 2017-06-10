@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\web\Session;
 use yii\models\History;
 use app\models\PaymentSearch;
 use yii\helpers\ArrayHelper;
@@ -10,47 +11,46 @@ use app\models\Payment;
 /* @var $this yii\web\View */
 /* @var $model app\models\Payment */
 /* @var $form yii\widgets\ActiveForm */
+
+$session = new Session;
+$session->open();
 ?>
 
+<?php 
+    $listServiceData = array("อินเตอร์เน็ต", "โทรทัศน์", "ตู้เย็น", "อินเตอร์เน็ต+โทรทัศน์", "อินเตอร์เน็ต+ตู้เย็น", "โทรทัศน์+ตู้เย็น", "อินเตอร์เน็ต+โทรทัศน์+ตู้เย็น");
+    $listStatusData = array("ยังไม่ได้จ่ายเงิน", "จ่ายเงิน");
+?>
 <div class="payment-form">
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model2, 'Apart_Id')->textInput(['value'=>$model->Apart_Id]) ?>
-
-    <?= $form->field($model2, 'Room_Id')->textInput(['value'=>$model->Room_Id]) ?>
-
-    <?= $form->field($model2, 'Cus_Id')->textInput(['value'=>$model->Cus_Id]) ?>
-         
- 
-    <input type="checkbox" id="queue-order" name="Queue[order]" value="1" > 1
-    <input type="checkbox" id="queue-order2" name="Queue2[order]" value="2" >2
-    <input type="checkbox" id="queue-order3" name="Queue4[order]" value="3" >3
-    <input type="checkbox" id="queue-order4" name="Que4[order]" value="4" >4
-    <p>
-    </p>
-<p>
-<select name="net">
-  <option value="300">3 เดือน</option>
-  <option value="250">2 เดือน</option>
-  <option value="200">1 เดือน</option>
-
-</select>
-</p>
-<p>
-    </p>
-    <?= $form->field($model2, 'Elec_Used')->textInput() ?>
-
-    <?= $form->field($model2, 'Water_Used')->textInput(['value'=>$model->NumCus]) ?>
-
-    <?= $form->field($model2, 'PaymentStatus')->textInput(['value'=>'1']) ?>
+    <?= $form->field($getApartment, 'Apart_Id')->textInput(['readonly' => true]); ?>
+    <?= $form->field($getRoom, 'Room_Id')->textInput(['readonly' => true]) ?>
+    <?= $form->field($getCus, 'Cus_Id')->textInput(['readonly' => true]) ?>
+    <?php 
+        $today = date('Y-m-d H:i:s');
+        $model->CheckDate = $today;
+    ?>
+    <?= $form->field($model, 'CheckDate')->textInput(['readonly' => true]) ?>
+    <?= $form->field($getRental, 'DateFrom')->textInput(['readonly' => true]) ?> 
+    <?= $form->field($model, 'SoR_Id')->dropDownList($listServiceData, ['prompt' => 'ไม่มี'])->label('บริการเสริม') ?>
+    <?= $form->field($model, 'Elec_Used')->textInput() ?>
+    <?php 
+        $water = $getRental->NumCus * $getRoom->Watersupply;
+        $model->Water_Used = $water;
+    ?>
+    <?= $form->field($model, 'Water_Used')->textInput(['readonly' => true]) ?>
+    <!-- <?//= $form->field($model, 'PaymentStatus')->dropDownList($listStatusData, ['prompt' => 'เลือกสถานะ']) ?> -->
 
   
-
+    <center>
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>
+    </center>
+    
 
     <?php ActiveForm::end(); ?>
 
 </div>
+

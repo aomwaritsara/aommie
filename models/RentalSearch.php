@@ -19,7 +19,7 @@ class RentalSearch extends Rental
     {
         return [
             [['Apart_Id', 'NumCus', 'Deposit'], 'integer'],
-            [['Room_Id', 'Cus_Id', 'DateFrom', 'DateTo', 'Status'], 'safe'],
+            [['Room_Id', 'Cus_Id','StartDate','DateFrom', 'DateTo', 'Status'], 'safe'],
         ];
     }
 
@@ -60,6 +60,7 @@ class RentalSearch extends Rental
         // grid filtering conditions
         $query->andFilterWhere([
             'Apart_Id' => $this->Apart_Id,
+             'StartDate' => $this->StartDate,
             'DateFrom' => $this->DateFrom,
             'DateTo' => $this->DateTo,
             'NumCus' => $this->NumCus,
@@ -68,7 +69,9 @@ class RentalSearch extends Rental
 
         $query->andFilterWhere(['like', 'Room_Id', $this->Room_Id])
             ->andFilterWhere(['like', 'Cus_Id', $this->Cus_Id])
-            ->andFilterWhere(['like', 'Status', $this->Status='2']);
+            ->andFilterWhere(['like', 'Status', $this->Status=2]);
+
+        
 
         return $dataProvider;
     }

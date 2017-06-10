@@ -14,7 +14,7 @@ use yii\web\Session;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="booking-form">
+<div class="_form-member-form">
 
    <?php $form = ActiveForm::begin(['layout' => 'horizontal']); ?>
    <?php

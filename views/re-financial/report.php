@@ -49,7 +49,7 @@ $this->title = 'รายงานรายจ่ายรวม';
             <td width='6%' align='center' style='font-weight: bold'>ลำดับที่</td>
             <td align='center' style='font-weight: bold'>รหัสบัญชีอพาร์ตเมนต์</td>
             <td align='center' style='font-weight: bold'>วันที่</td>
-            <td align='center' style='font-weight: bold'>กิจการที่ชำาระให้</td>
+            <td align='center' style='font-weight: bold'>กิจการที่ชำระให้</td>
             <td align='center' style='font-weight: bold'>รายการ</td>
              <td align='center' style='font-weight: bold'>ราคา</td>  
              <td align='center' style='font-weight: bold'>จำนวน</td>

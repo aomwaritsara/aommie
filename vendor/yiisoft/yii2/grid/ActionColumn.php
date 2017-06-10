@@ -224,6 +224,17 @@ class ActionColumn extends Column
                 return Html::a('<button class="btn btn-primary">คืนห้องพัก</button>',  $url, $options);
             };
         }
+         if (!isset($this->buttons['print-restore'])) {
+            $this->buttons['print-restore'] = function ($url, $model, $key) {
+                $options = array_merge([
+                    'title' => Yii::t('yii', 'print-restore'),
+                    'aria-label' => Yii::t('yii', 'print-restore'),
+                    'data-pjax' => '0',
+                    'target' =>'_blank',
+                ], $this->buttonOptions);
+                return Html::a('<button class="btn btn-primary">พิมพ์ใบเสร็จ</button>',  $url, $options);
+            };
+        }
     }
 
     /**
